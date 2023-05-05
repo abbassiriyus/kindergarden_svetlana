@@ -1,0 +1,135 @@
+.bodyadmpn {
+    width: 100%;
+    margin: 0;
+
+}
+
+.nodir3{
+    padding-top: 60px;
+}
+
+.bodyadmp_h2 {
+    margin-left: 5.5%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #334155;
+}
+
+.bodyadmp_h2 b {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #334155;
+}
+
+.btnadmp_box1 {
+    width: 90%;
+    padding-top: 5%;
+    margin: auto;
+}
+
+.btnchil_table {
+    width: 100%;
+    border-radius: 30px 30px 0px 0;
+    -webkit-border-radius: 30px 30px 0px 0;
+    -moz-border-radius: 30px 30px 0px 0;
+    -ms-border-radius: 30px 30px 0px 0;
+    -o-border-radius: 30px 30px 0px 0;
+}
+
+.btnadmp_tr,
+.btnadmp_tr1 {
+    text-align: center;
+
+}
+
+.btnadmp_th1 {
+    border-radius: 30px 0 0 0;
+    -webkit-border-radius: 30px 0 0 0;
+    -moz-border-radius: 30px 0 0 0;
+    -ms-border-radius: 30px 0 0 0;
+    -o-border-radius: 30px 0 0 0;
+}
+
+.btnadmp_th2 {
+    border-radius: 0px 30px 0 0;
+    -webkit-border-radius: 0px 30px 0 0;
+    -moz-border-radius: 0px 30px 0 0;
+    -ms-border-radius: 0px 30px 0 0;
+    -o-border-radius: 0px 30px 0 0;
+}
+
+.btnadmp_th,
+.btnadmp_th1,
+.btnadmp_th2 {
+    height: 60px;
+    background: rgba(51, 65, 85, 0.5);
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #334155;
+    width: 500px;
+
+}
+
+.btnadmp_td1,
+.btnadmp_td2 {
+    height: 60px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #334155;
+    margin: 0;
+
+}
+
+.btnadmp_td1 {
+    background: #D9D9D9;
+
+}
+
+.butadmp1,
+.butadmp2 {
+    background-color: transparent;
+    border: none;
+}
+
+.madin1 {
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #79BC6D;
+    margin-left: 40px;
+}
+
+.madin {
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 17px;
+
+    color: #EA5D4A;
+
+}
+
+.ustoz {
+    display: flex;
+    margin-top: 30px;
+    /* justify-content: center; */
+}
+
+.dropw {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}

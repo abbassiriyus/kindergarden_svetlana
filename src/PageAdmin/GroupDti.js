@@ -37,7 +37,6 @@ export default class App extends Component {
                      <option value="">Группа</option>
                      <option value="">Группа</option>
                   </select>
-                  <input className='mad' type="date" placeholder='Дата добавления' />
                   <button className="nodiruca">
                      + Добавить ребенка
                   </button>

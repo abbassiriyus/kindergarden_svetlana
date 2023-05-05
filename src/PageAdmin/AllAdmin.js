@@ -27,6 +27,15 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import Emp2 from './Emp2'
+import SpiskDti from './SpiskDti'
+import GroupDti from './GroupDti'
+import SpsRodtl from './SpsRodtl'
+import Zayavv from './Zayavv'
+import Vztsasd from './Vztsasd'
+import Zodaniii from './Zodaniii'
+import Plan from './Plan'
+import ByGrupss from './ByGrupss'
 
 
 
@@ -237,72 +246,102 @@ export default function AllAdmin() {
                 </Navbar>
                 <div className="bigbox">
                     <div className='Scroll-Page-Div'>
+                        <a href='/' >
+                            <h4 className='scrl-h4'><img src={ImgScrol} alt="" />ЛЕНТА НОВОСТЕЙ</h4>
+                        </a>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
-                            <AccordionSummary  aria-controls="panel1d-content" id="panel1d-header">
+                            <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                                 <Typography><img src={ImgScrol} alt="" />СОТРУДНИКИ</Typography>
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
-                                    <h5>СОТРУДНИКИ</h5>
-                                    <h5>Воспитатели</h5>
-                                    <h5>Педагоги</h5>
+                                    <a href='/page2'>
+                                        <h5>СОТРУДНИКИ</h5>
+                                    </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                            <AccordionSummary  aria-controls="panel2d-content" id="panel2d-header">
+                            <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                                 <Typography><img src={ImgScrol} alt="" />ДЕТИ</Typography>
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
+                                    <a href="/SpiskDti">
                                     <h5>Список детей</h5>
+                                    </a>
+                                    <a href="/groupDti">
                                     <h5>Группы</h5>
+                                    </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
-                            <AccordionSummary  aria-controls="panel3d-content" id="panel3d-header">
+                            <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
                                 <Typography><img src={ImgScrol} alt="" />РОДИТЕЛИ</Typography>
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
+                                    <a href="/SpsRodtl">
                                     <h5>Список родителей</h5>
+                                    </a>
+                                    <a href="/Zayavv">
                                     <h5>Заявки</h5>
+                                    </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
 
 
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel4'} onChange={handleChange('panel4')}>
-                            <AccordionSummary  aria-controls="panel2d-content" id="panel2d-header">
+                            <AccordionSummary aria-controls="panel2d-content" id="panel2d-header">
                                 <Typography><img src={ImgScrol} alt="" />ЖУРНАЛ</Typography>
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
+                                    <a href="/Vztsasd">
                                     <h5>Посещение</h5>
+                                    </a>
                                     <h5>Записи о пропусках</h5>
+                                    <a href="/Zodaniii">
                                     <h5>Задания</h5>
+                                    </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel5'} onChange={handleChange('panel5')}>
-                            <AccordionSummary  aria-controls="panel3d-content" id="panel3d-header">
+                            <AccordionSummary aria-controls="panel3d-content" id="panel3d-header">
                                 <Typography><img src={ImgScrol} alt="" />УЧЕБНЫЙ ПЛАН</Typography>
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
+                                    <a href="/Plan">
                                     <h5>Учебный план</h5>
+                                    </a>
+                                    <a href="/ByGrupss">
                                     <h5>Расписание</h5>
+                                    </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
+                        <h4 className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</h4>
+
                     </div>
                     <div className='routerDiv'>
-                    <Routes>
-                        <Route path="/page2" element={<Page1 />} />
-                        <Route path="/" element={<Page2 />} >
-                        </Route>
-                    </Routes>
+                        <Routes>
+                            <Route path="/" element={<Page1 />} />
+                            <Route path="/page2" element={<Page2 />} />
+                            <Route path="/Emp2" element={<Emp2 />} />
+                            <Route path="/SpiskDti" element={<SpiskDti />} />
+                            <Route path="/groupDti" element={<GroupDti />} />
+                            <Route path="/SpsRodtl" element={<SpsRodtl />} />
+                            <Route path="/Zayavv" element={<Zayavv />} />
+                            <Route path="/Vztsasd" element={<Vztsasd />} />
+                            <Route path="/Zodaniii" element={<Zodaniii />} />
+                            <Route path="/Plan" element={<Plan />} />
+                            <Route path="/ByGrupss" element={<ByGrupss />} >
+                            </Route>
+                        </Routes>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,6 @@ body{
 
 .The-Big .Scroll-Page-Div{
     width: 20%;
-    margin-top: 100px;
     background: none;
     padding-top: 100px;
 }
@@ -52,4 +51,19 @@ body{
 }
 .The-Big .MuiTypography-root h5:hover{
     background: #fff;
+}
+
+.scrl-h4{
+    padding: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.scrl-h4:hover{
+    background: #fff;
+}
+
+h5{
+    cursor: pointer;
 }
