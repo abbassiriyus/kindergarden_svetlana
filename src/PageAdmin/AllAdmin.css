@@ -1,0 +1,55 @@
+body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.The-Big{
+    width: 100% !important;
+    background: wheat;
+}
+
+.The-Big .bigbox{
+    width: 97%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.The-Big .routerDiv{
+    width: 75%;
+}
+
+.The-Big .Scroll-Page-Div{
+    width: 20%;
+    margin-top: 100px;
+    background: none;
+    padding-top: 100px;
+}
+
+.The-Big .Accor-Divs{
+    width: 100% !important;
+    background: none !important;
+}
+
+.The-Big .MuiTypography-root h5{
+    width: 100%;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+.The-Big .MuiPaper-root  {
+    border: none !important;
+    background: wheat !important;
+}
+
+.The-Big .MuiButtonBase-root{
+    background: none;
+    border-radius: 30px;
+}
+
+.The-Big .MuiButtonBase-root:hover {
+    background: #fff;
+}
+.The-Big .MuiTypography-root h5:hover{
+    background: #fff;
+}

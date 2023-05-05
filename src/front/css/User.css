@@ -1,0 +1,76 @@
+.User-h1{
+    color: #8081BD;
+    margin-left: 10%;
+    font-size: 40px;
+}
+.User-div{
+    width: 60%;
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+    justify-content: space-evenly;
+    padding-bottom: 30px;
+}
+
+.user-txt h3,
+.user-txt h1{
+    width: 65%;
+    color: #8081BD;
+    padding-bottom: 10px;
+}
+.user-name{
+    font-weight: 600;
+    font-size: 20px;
+    /* margin-top: -10px; */
+}
+.user-biz{
+    width: 80%;
+    margin: auto;
+}
+.Biz span{
+    color: #F6B31F;
+    font-weight: 600;
+}
+.user-vd{
+    color: #8081BD;
+    font-size: 35px;
+    margin-left: 10%;
+    margin-top: 60px;
+}
+.user-video{
+    display: flex;
+    justify-content: space-evenly;
+    width: 84%;
+    margin-top: 10px !important;
+    margin: auto;
+}
+.user-video img{
+    width: 30%;
+    border-radius: 20px;
+}
+.clok{
+    width: 100%;
+    display: flex;
+    margin-top: 20px;
+}
+.clok img{
+    width: 60px;
+    height: 60px;
+}
+
+.clocks{
+    display: flex;
+    margin: auto;
+    margin-top: 30px;
+    width: 80%;
+}
+.clok p span{
+    font-weight: 600;
+    margin-left: 2%;
+}
+.clok p{
+width: 100%;
+}
+.Big-clock{
+    padding-bottom: 30px;
+}

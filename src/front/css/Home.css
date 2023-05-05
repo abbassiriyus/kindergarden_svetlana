@@ -1,0 +1,175 @@
+.novs {
+  color: #8081BD;
+  margin-left: 10%;
+}
+
+
+.cards-home{
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.card-home img{
+  width: 100%;
+}
+
+.card-home{
+  width: 400px;
+  margin-top: 30px;
+}
+
+.card-home button{
+  width: 80%;
+  margin: auto;
+  background: #8081BD;
+  height: 40px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 20px;
+}
+
+.smotr-et {
+  width: 15%;
+  border-radius: 30px;
+  border: none;
+  height: 40px;
+  background: #FDDC4E;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #334155;
+  font-size: 13px;
+}
+
+.btn-01 {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.blog {
+  width: 100%;
+  height: auto;
+  background: url('../img/8190161\ 2.png');
+}
+
+.bgs {
+  align-content: center;
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.blogs h1 {
+  font-size: 35px;
+  width: 600px;
+  color: #334155;
+  margin-top: 130px;
+}
+
+.blogs p {
+  color: #334155;
+  font-size: 20px;
+  width: 40%;
+}
+
+.forms button {
+  width: 40%;
+  height: 34px;
+  background: #8081BD;
+  border-radius: 30px;
+  border: 1px solid white;
+  color: white;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.spans {
+  background: #334155;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+}
+
+.asdas {
+  margin-top: 30px;
+  align-items: center;
+  display: flex;
+}
+
+.spans {
+  margin-left: 4px;
+}
+
+@media(max-width: 470px){
+  .cards-home{
+    width: 100%;
+  }
+  .card-home{
+    margin-left: -25px !important;
+    width: 90%;
+  }
+  .card-home h1{
+    font-size: 20px;
+  }
+  .card-home p{
+    font-size: 15px;
+  }
+  .card-home button{
+    width: 100%;
+  }
+  .smotr-et{
+    width: 90% !important;
+    margin-left: -20px;
+  }
+}
+
+.form-control{
+  background: #FDDC4E !important;
+}
+
+.forms{
+  width: 60%;
+  display: flex;
+}
+
+@media(max-width: 573px){
+  .forms{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: start;
+  }
+  .form-control{
+    width: 90%;
+  }
+  .forms button{
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+@media(max-width: 445px){
+  .forms{
+    width: 90% !important;
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-left: -15px !important;
+  }
+  .form-control{
+    width: 50% !important;
+    background: #000;
+  }
+  .forms button{
+    width: 120% !important;
+    margin-top: 20px;
+  }
+  .blog{
+    margin-left: -10px !important;
+  }
+}

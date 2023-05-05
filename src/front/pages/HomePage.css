@@ -1,0 +1,880 @@
+
+
+
+
+/*  Section-1  */
+
+.HomePage  .HeaderHome{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+.HomePage .textImage{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+.HomePage .TextHeader{
+    background-color: #FDDC4E;
+    padding: 10%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    box-sizing: border-box;
+}
+.HomePage .TextHeader p{
+    font-weight: 700;
+    font-size: 1.6rem;
+    line-height: 39px;
+    color: white;
+}
+.HomePage .imgWizard{
+    box-sizing: border-box;
+    display: flex;
+    align-items: end;
+    background-image: url("../Images/back-stars.png");
+}
+
+.HomePage  .bannerHeader{
+    width: 100%;
+    background-image: url("../Images/babySleeping.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+}
+
+.HomePage  .formHeader{
+    background-color: #8081BD;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 50px 20px;
+    box-sizing: border-box;
+}
+.HomePage .formHeader h1{
+    font-weight: 700;
+    font-size: 1.8rem;
+    line-height: 39px;
+    color: #FFFFFF;
+}
+.HomePage .formHeader p{
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 17px;
+    color: #FFFFFF;
+    margin-top: 10px;
+}
+.HomePage .inputsHeader{
+    margin-top: 30px;
+}
+.HomePage .selected-flag{
+    display: none;
+}
+.Numberasd .form-control{
+    background: #fff !important;
+}
+.HomePage .react-tel-input .form-control{
+    border: none !important;
+    border-radius: 20px !important;
+    padding: 3% 5% !important;
+    outline: none !important;
+}
+.HomePage .react-tel-input .flag-dropdown{
+    border: none !important;
+}
+.HomePage .inputHeader{
+    display: grid;
+    width: 100%;
+    background-color: white;
+    border-radius: 50px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    grid-template-columns: 95% 5%;
+    align-items: center;
+}
+.HomePage .inputsHeader input{
+    outline: none;
+    border: none;
+    padding: 4% 5%;
+    background-color: transparent;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #334155;
+}
+.HomePage .agreeRadio{
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+}
+.HomePage .radioHeader{
+    padding: 10px;
+    display: block !important;
+}
+.HomePage .radioHeader div{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.HomePage .radioHeader div span{
+    background-color: white;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    display: block;
+}
+.HomePage .agreeRadio p{
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 14px;
+}
+.HomePage .activeAgree{
+    background-color: #79BC6D !important;
+}
+.HomePage .btnSubmitHeader{
+    width: 100%;
+    background-color: #79BC6D;
+    border-radius: 50px;
+    padding: 5% 0;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    color: white;
+    text-align: center;
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 1rem;
+}
+.HomePage .btnSubmitHeader:hover{
+    background-color: white;
+    color: #79BC6D;
+}
+@media screen and (max-width: 1024px){
+    .HomePage  .HeaderHome{
+        grid-template-columns: 1fr 1fr;
+    }
+    .HomePage  .bannerHeader{
+        display: none;
+    }
+}
+@media screen and (max-width: 568px){
+    .HomePage  .textImage{
+        display: none;
+    }
+    .HomePage  .HeaderHome{
+        grid-template-columns: 1fr;
+    }
+    .HomePage .formHeader{
+        border-radius: 20px;
+    }
+    .HomePage  .formHeader h1{
+        font-size: 1.5rem;
+        line-height: 1.1;
+    }
+    .HomePage   .formHeader p{
+        font-size: 0.8rem;
+    }
+    .HomePage  .radioHeader div{
+        width: 20px;
+        height: 20px;
+    }
+    .HomePage .inputsHeader input{
+        font-size: 0.8rem;
+    }
+    .HomePage  .btnSubmitHeader{
+        font-size: 0.8rem;
+    }
+
+}
+
+
+
+/*  Section-2  */
+
+.HomePage  .factorsHome{
+    padding: 5% 0;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    gap: 20px 30px;
+    justify-content: space-around;
+}
+.HomePage .factorHome{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+.HomePage .imgFactor{
+    min-width: 25%;
+    text-align: center;
+    border-radius: 10px;
+    padding: 3%;
+    box-sizing: border-box;
+}
+.HomePage .factorHome p{
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 20px;
+    color: #334155;
+
+}
+.HomePage .orange{
+    background-color: #F6B31F;
+}
+.HomePage .pink{
+    background: #F3ACC8;
+}
+.HomePage .purple{
+    background: #8081BD;
+}
+
+@media screen and (max-width: 1440px){
+    .HomePage  .factorsHome{
+        grid-template-columns: 30% 30% 30%;
+    }
+}
+@media screen and (max-width: 991px){
+    .HomePage  .factorsHome{
+        grid-template-columns: 45% 45%;
+    }
+}
+@media screen and (max-width: 576px){
+    .HomePage  .factorsHome{
+        grid-template-columns: 100%;
+        row-gap: 10px;
+    }
+    .HomePage  .factorHome{
+        column-gap: 20px;
+    }
+    .HomePage  .imgFactor{
+        max-width: 20%;
+    }
+    .HomePage   .imgFactor img{
+        max-width: 40px;
+        max-height: 40px;
+    }
+}
+
+
+
+/*  Section-3  */
+
+.HomePage  .consultationHome{
+    width: 100%;
+    box-sizing: border-box;
+    background-image: url("../Images/Rectangle 53.png");
+    border-radius: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 3% 10%;
+}
+.HomePage .ContentConsult{
+    width: 40%;
+}
+.HomePage .ContentConsult h2{
+    font-weight: 700;
+    font-size: 2.4rem;
+    line-height: 49px;
+    color: #FFFFFF;
+}
+.HomePage .ContentConsult p{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.HomePage .inputGroupConsult{
+    padding-top: 2%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    justify-content: space-between;
+}
+.HomePage .inputGroupConsult input{
+    border-radius: 50px;
+    padding: 5% 8%;
+    color: #334155;
+}
+.HomePage .SubmitConsult{
+    border-radius: 50px;
+    background-color: #F6B31F;
+    color: #334155;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    border: 2px solid #F6B31F;
+}
+.HomePage .SubmitConsult:hover{
+    background-color: white;
+    color: #F6B31F;
+}
+.HomePage .align-baseline{
+    align-items: baseline !important;
+}
+@media screen and (max-width: 1440px){
+    .HomePage  .ContentConsult{
+        width: 60%;
+    }
+    .HomePage  .ContentConsult h2{
+        font-size: 2rem;
+        line-height: 40px;
+    }
+}
+@media screen and (max-width: 768px){
+    .HomePage  .ContentConsult{
+        width: 100%;
+    }
+    .HomePage  .ContentConsult h2{
+        font-size: 2rem;
+        line-height: 40px;
+    }
+}
+@media screen and (max-width: 768px){
+    .HomePage  .ContentConsult h2{
+        font-size: 1.6rem;
+        line-height: 30px;
+    }
+    .HomePage  .ContentConsult p{
+        margin-top: 15px;
+        font-size: 1rem;
+    }
+    .HomePage  .inputGroupConsult{
+        padding-top: 5%;
+        grid-template-columns: 1fr;
+        row-gap: 20px;
+    }
+    .HomePage  .SubmitConsult{
+        width: 60%;
+        margin: auto;
+        padding: 3% 0;
+    }
+    .HomePage  .react-tel-input .form-control{
+        width: 100% !important;
+    }
+}
+
+
+/*  Section-4  */
+.HomePage  .moreServices{
+    padding: 5%;
+}
+.HomePage .moreServices h2{
+    font-weight: 700;
+    font-size: 2.5rem;
+    color: #8081BD;
+}
+.HomePage .rowServices{
+    margin-top: 1%;
+    display: grid;
+    justify-content: space-between;
+}
+.HomePage .row1{
+    margin-top: 2%;
+    grid-template-columns: 19% 38% 19% 19%;
+}
+.HomePage .row2{
+    grid-template-columns: 24% 24% 24% 24%;
+}
+.HomePage .row3{
+    grid-template-columns: 32% 32% 32%;
+}
+.HomePage .service{
+    background-color: #FFF6D1;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 3% 5%;
+    box-sizing: border-box;
+}
+.HomePage .imgService{
+    width: 76px;
+    height: 76px;
+    background-color: white;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.HomePage .textService{
+    width: 75%;
+    margin: auto;
+    text-align: center;
+}
+.HomePage .textService p{
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 20px;
+    color: #334155;
+}
+ 
+.HomePage  .btnMore{
+    display: none;
+    width: 60%;
+    margin: 5% auto 0 auto;
+    text-align: center;
+    color: white;
+    border-radius: 10px;
+    padding: 3%;
+    background-color: #F6B31F;
+}
+.HomePage .activeBtn{
+    display: block !important;
+}
+
+@media screen and (max-width: 1440px){
+    .HomePage  .textService{
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+    .HomePage .imgService{
+        width: 60px;
+        height: 60px;
+    }
+    .HomePage .imgService img{
+        max-width: 70%;
+        max-height: 80%;
+    }
+    .HomePage .textService p{
+        font-size: 0.9rem;
+    }
+}
+@media screen and (max-width: 991px){
+    .HomePage  .textService p{
+        font-size: 0.7rem;
+        line-height: 1.2;
+    }
+}
+@media screen and (max-width: 768px){
+    .HomePage  .rowServices{
+        grid-template-columns: 49% 49% !important;
+        margin: 0;
+    }
+    .HomePage .service{
+        margin-top: 4%;
+    }
+    .HomePage  .moreServices h2{
+        font-size: 2rem;
+    }
+}
+@media screen and (max-width: 567px){
+    .HomePage  .rowServices{
+        grid-template-columns: 1fr !important;
+        margin: 0;
+    }
+    .HomePage  .service{
+        margin-top: 2%;
+    }
+    .HomePage   .moreServices h2{
+        font-size: 2rem;
+    }
+    .HomePage  .imgService{
+        width: 80px;
+        height: 80px;
+    }
+    .HomePage  .textService p{
+        font-size: 1.2rem;
+    }
+    .HomePage  .moreServices{
+        padding: 5% 0;
+    }
+}
+
+
+
+/*  Carousel  */
+.HomePage .PhotosCarousel{
+    position: relative;
+    padding-bottom: 25%;
+    z-index: 3;
+}
+#carousel{
+    position: absolute;
+    left: 30%;
+    transform-style: preserve-3d;
+}
+ .HomePage .card{
+    position: absolute;
+    width: 700px;
+    height: 300px;
+    transform-style: preserve-3d;
+    transition: 1s;
+    border-radius: 20px;
+    background-size: cover;
+}
+.HomePage .card:nth-child(1){
+    transform: translateX(0) translateZ(0);
+    background-image: url("../Images/carousel.png");
+    background-repeat: no-repeat;
+}
+.HomePage .card:nth-child(2){
+    transform: translateX(-60%) translateZ(-50px) scale(0.8);
+    opacity: 0.8;
+    background-image: url("../Images/carousel.png");
+    background-repeat: no-repeat;
+
+}
+.HomePage .card:nth-child(3){
+    opacity: 0.8;
+    transform: translateX(60%) translateZ(-50px) scale(0.8);
+    background-image: url("../Images/carousel.png");
+    background-repeat: no-repeat;
+
+}
+@media screen and (max-width: 1600px){
+    .HomePage  .card{
+        width: 500px;
+    }
+}
+@media screen and (max-width: 1600px){
+    .HomePage  .card{
+        width: 500px;
+    }
+}
+@media screen and (max-width: 1200px){
+    .HomePage .card{
+        width: 350px;
+    }
+    .HomePage  .PhotosCarousel{
+        padding-bottom: 40%;
+    }
+}
+@media screen and (max-width: 850px){
+    .HomePage  .card{
+        width: 300px;
+    }
+    .HomePage  .PhotosCarousel{
+        padding-bottom: 50%;
+    }
+}
+@media screen and (max-width: 576px){
+    .HomePage  .PhotosCarousel{
+        padding-bottom: 40%;
+    }
+    .HomePage  #carousel{
+        margin: auto;
+        left: 20%;
+    }
+    .HomePage  .card{
+        width: 230px;
+        height: 150px;
+    } .HomePage  .card:nth-child(1){
+         transform: translateX(0) translateZ(0);
+     }
+     .HomePage    .card:nth-child(2){
+        transform: translateX(-40%) translateZ(-50px) scale(0.8);
+    }
+    .HomePage  .card:nth-child(3){
+        transform: translateX(40%) translateZ(-50px) scale(0.8);
+    }
+
+    .HomePage  .forStarBanner > img{
+        display: none;
+    }
+}
+@media screen and (max-width: 390px){
+    .HomePage  .PhotosCarousel{
+        padding-bottom: 50%;
+    }
+    .HomePage  .card{
+        width: 200px;
+    }
+}
+
+
+/*  section-5  */
+
+.HomePage .sectionPremFactors{
+    justify-content: space-between !important;
+    padding: 10% 0 !important;
+    grid-template-columns: 30% 30% 30%
+
+}
+.HomePage .textPrem p{
+    font-size: 1.5rem !important;
+}
+.HomePage .imgPeople{
+    max-width: 25%;
+}
+.HomePage .imgPeople img{
+    width: 100%;
+}
+.HomePage .sectionPrem{
+    padding-top: 100px;
+    position: relative;
+}
+.HomePage .sectionPrem h2{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    color: #8081BD;
+    margin-bottom: 20px;
+}
+.HomePage .sectionPrem > img{
+    position: absolute;
+    right: 10%;
+    top: 0;
+    width: 10vw;
+}
+.HomePage .sectionPrem > p{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    width: 70%;
+    line-height: 24px;
+    color: #334155;
+}
+
+.HomePage  .forStarBanner{
+    background-image: url("../Images/backStars.png");
+    background-size:100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.HomePage  .forStarBanner > h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    color: #8081BD;
+}
+.HomePage .forStarBanner > p{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #334155;
+    margin-bottom: 50px;
+}
+.HomePage .kVtMtA{
+    background-color: #8081BD !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+.HomePage .kVtMtA::before{
+    border-top: 2px solid #fff !important;
+    border-right: 2px solid #fff !important;
+}
+.HomePage .bhRnqO{
+    background-color: #8081BD !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    width: 50px !important;
+    height: 50px !important;
+}
+.HomePage .bhRnqO::before{
+    border-top: 2px solid #fff !important;
+    border-right: 2px solid #fff !important;
+}
+
+.HomePage  .cardsCarousel{
+    padding: 0 5%;
+}
+.HomePage .cardsCarousel h2{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    color: #8081BD;
+}
+.HomePage .textCard{
+    padding: 3% 0;
+}
+.HomePage .textCard h3{
+    font-size: 20px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #8081BD;
+}
+.HomePage .textCard h6{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #334155;
+}
+.HomePage .textCard p{
+    margin-top: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #334155;
+}
+@media screen and (max-width: 1440px){
+    .HomePage  .sectionPrem > img{
+        top: 10%;
+    }
+}
+@media screen and (max-width: 1200px){
+    .HomePage  .sectionPrem{
+        padding-top: 0;
+    }
+    .HomePage  .sectionPrem > img{
+        top: 0;
+        width: 130px;
+    }
+}
+@media screen and (max-width: 991px){
+    .HomePage  .sectionPrem{
+        margin-top: 10%;
+    }
+    .HomePage  .sectionPrem > img{
+        top: 0;
+        width: 130px;
+    }
+}
+@media screen and (max-width: 768px){
+    .HomePage  .sectionPremFactors{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media screen and (max-width: 576px){
+    .HomePage .sectionPrem > p{
+        width: 100%;
+    }
+    .HomePage .sectionPremFactors{
+        grid-template-columns: 1fr;
+    }
+    .HomePage  .sectionPrem > img{
+        display: none;
+    }
+}
+
+
+
+/*  section-6  */
+.HomePage .form2{
+    display: grid;
+    align-items:center;
+    grid-template-columns: 1fr 1fr;
+    background-image: url("../Images/backStars.png");
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 5% 5% 0 5%;
+}
+.HomePage .form2 .ContentConsult{
+    width: 100%;
+}
+.HomePage .form2 .ContentConsult h2{
+    color: #334155;
+}
+.HomePage .form2 .ContentConsult p{
+    color: #334155;
+}
+.HomePage .form2 .inputGroupConsult{
+    width: 70%;
+}
+.HomePage .form2 .react-tel-input .form-control{
+    background-color: #F6B31F;
+    width: 100%;
+}
+.HomePage .form2 .SubmitConsult{
+    background-color: #8081BD;
+    border: 1px solid #8081BD;
+    color: white;
+}
+.HomePage .form2 .radioHeader div span, .form2 .radioHeader div{
+    background-color: #334155;
+}
+.HomePage .form2 .SubmitConsult:hover{
+    background-color: white;
+    color: #8081BD;
+    cursor: pointer;
+}
+.HomePage .opaImg{
+    text-align: end;
+}
+@media screen and (max-width: 991px){
+    .HomePage  .opaImg{
+        display: none;
+    }
+    .HomePage  .form2{
+        grid-template-columns: 1fr;
+    }
+}
+@media screen and (max-width: 576px){
+    .HomePage  .form2 .inputGroupConsult{
+        margin: auto;
+    }
+}
+
+
+
+.HomePage .CarouselComments{
+    background-color: #F2F2FF;
+    padding: 4% 8%;
+    border-radius: 20px;
+}
+.HomePage .CarouselComments h2{
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 49px;
+    color: #334155;
+}
+.HomePage .CarouselCards{
+    padding: 3% 0;
+}
+
+@media screen and (max-width: 576px){
+    .HomePage  .CarouselComments h2{
+        font-size: 25px;
+    }
+}
+
+
+.HomePage .forWidth{
+    width: 90%;
+    margin: auto;
+}
+.HomePage .textCarouselBottom{
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 35px;
+}
+.HomePage .avatarName{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 25%;
+}
+.HomePage .avatarName span{
+    display: block;
+}
+.HomePage .avatarName h2{
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #334155;
+}
+.HomePage .avatarName h6{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #334155;
+}
+.HomePage .textCarouselBottom > p{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    color: #334155;
+}
+.HomePage .forWidth p{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    color: #334155;
+    margin-top: 20px;
+}
+#userNumberasd{
+    background: #000 !important;
+    width: 10px;
+}
