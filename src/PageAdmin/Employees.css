@@ -135,7 +135,7 @@
     width:100%;
     min-height:100vh;
    background: #FFF6D1;
-    position:fixed;
+    position:absolute;
     right:0px;
     top: 0px;
     z-index: 11;
