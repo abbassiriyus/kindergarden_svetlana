@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import icon1 from '../img/free-icon-edit-6488637 (2).png'
-import icon2 from '../img/free-icon-edit-6488637 (2).png'
+import icon2 from '../img/free-icon-delete-5396993.png'
 import './Employees.css'
 import axios from 'axios';
 import url from '../host';
@@ -18,6 +18,21 @@ export default class Employees extends Component {
     openModal(){
     document.querySelector('.modal11').style="display:block"
     }
+
+    postModalopen(key){
+axios.get(`${url}/person`).then(res=>{
+    res.data.map(item=>{
+        if(item.personid==key){
+            document.querySelector("#form1").value=item.personlastname
+            document.querySelector("#form2").value=item.personfirstname
+            document.querySelector("#form3").value=item.personmiddlename
+            document.querySelector("#form4").value=item.gender
+            document.querySelector("#form5").value=item.dateofbirth
+        }
+    })
+})
+    }
+
     closeModal() {
         document.querySelector('.modal11').style = "display:none"
     }
@@ -100,7 +115,7 @@ this.setState({data:abu})
         formData.append("personmiddlename", document.querySelector("#form3").value)
         formData.append("gender", document.querySelector("#form4").value)
         formData.append("dateofbirth", document.querySelector("#form5").value)
-        formData.append("photo", document.querySelector(".form6").files[0])
+        // formData.append("photo", document.querySelector(".form6").files[0])
         this.setState({postperson:formData})
         this.openPageNumber(2)
     }
@@ -334,7 +349,7 @@ window.location.reload()
                                     <input className='aform4' placeholder='Номер дома' style={{ marginTop: '30px' }} type="text" />
                                 </div>
                                 <div className="pages11">
-                                    <input className='aform5' placeholder='Улица'  type="text" />
+                                    <input className='aform5' placeholder='building' style={{ marginTop: '30px' }}  type="text" />
                                 </div>
                                 <div className="pages11">
                                     <input className='aform6' placeholder='Квартира' style={{ marginTop: '30px' }} type="text" />
@@ -450,7 +465,7 @@ return <div id='inform2'>
         <p>{item.positiontitle}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
                         <div id='iconci'>
-                            <img src={icon1}  alt='' />
+                            <img src={icon1}  onClick={()=>this.postModalopen(item.personid)} alt='' />
                             <img src={icon2} onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} alt='' />
                         </div>
                     </div>
@@ -466,7 +481,7 @@ return <div id='inform1'>
         <p>{item.positiontitle}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
                         <div id='iconci'>
-                            <img src={icon1} alt='' />
+                            <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' />
                             <img onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} src={icon2} alt='' />
                         </div>
                     </div>
