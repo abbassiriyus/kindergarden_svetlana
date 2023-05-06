@@ -16,7 +16,7 @@ export default class App extends Component {
 
 
    componentDidMount = () => {
-      axios.get(`https://backend-school-0u75.onrender.com/person`).then(res => {
+      axios.get(`https://backend-school-0u75.onrender.com/group`).then(res => {
          // console.log(res.data);
          this.setState({
             person: res.data
@@ -52,13 +52,13 @@ export default class App extends Component {
 
                            <th className="btnadmp_th1">ID</th>
 
-                           <th className="btnadmp_th"> Фамилия</th>
-                           <th className="btnadmp_th">Имя</th>
-                           <th className="btnadmp_th">Отчество</th>
-                           <th className="btnadmp_th">Дата  <br />рождения</th>
-                           <th className="btnadmp_th">Пол</th>
-                           <th className="btnadmp_th">Дата  <br /> добавления</th>
-                           <th className="btnadmp_th2">Действие </th>
+                           <th className="btnadmp_th"> Название</th>
+                           <th className="btnadmp_th">Учебный год</th>
+                           <th className="btnadmp_th">Воспитатели</th>
+                           <th className="btnadmp_th">Активность</th>
+                           <th className="btnadmp_th"  id='borDr'>Действие</th>
+                           {/* <th className="btnadmp_th">Дата  <br /> добавления</th>
+                           <th className="btnadmp_th2">Действие </th> */}
 
 
                         </tr>
@@ -70,13 +70,13 @@ export default class App extends Component {
                            this.state.person.map(item => {
                               return (
                                  <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">{item.personid}</td>
-                                    <td className="btnadmp_td1">{item.personlastname}</td>
-                                    <td className="btnadmp_td1"> {item.personfirstname}</td>
+                                    <td className="btnadmp_td1">{item.groupid}</td>
+                                    <td className="btnadmp_td1">{item.groupname}</td>
+                                    <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
                                     <td className="btnadmp_td1"> {item.personmiddlename}</td>
                                     <td className="btnadmp_td1"> {item.dateofbirth}</td>
-                                    <td className="btnadmp_td1"> {item.gender}</td>
-                                    <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
+                                    {/* <td className="btnadmp_td1"> {item.gender}</td> */}
+                                    {/* <td className="btnadmp_td1"> {item.syscreatedatutc}</td> */}
                                     <td className="btnadmp_td1">
                                        <button className="butadmp1"><img src={ico2} alt="" /></button>
                                        <button className="butadmp2"><img src={ico1} alt="" /></button>

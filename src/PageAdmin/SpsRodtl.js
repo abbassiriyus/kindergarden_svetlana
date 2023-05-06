@@ -29,6 +29,10 @@ export default class App extends Component {
         document.querySelector('.ModalsInps').style = 'display: block'
         document.querySelector('.asdasdasdasd').style = 'display: none'
     }
+    closeMzg = () => {
+        document.querySelector('.ModalsInps').style = 'display: none'
+        document.querySelector('.asdasdasdasd').style = 'display: block'
+    }
 
 
     render() {
@@ -37,98 +41,98 @@ export default class App extends Component {
                 <div className="ModalsInps">
                     <div className="haskd">
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Фамилия</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Имя</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Отчество</h4>
                             <input type="text" />
                         </div>
                     </div>
 
                     <div className="haskd">
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Статус</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Место работы</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Телефон</h4>
                             <input type="text" />
                         </div>
                     </div>
                     <div className="haskd">
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Эл.почта </h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4> Номер паспорта</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Серия паспорта</h4>
                             <input type="text" />
                         </div>
                     </div>
                     <div className="haskd">
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Дата выдачи</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4> № Договора</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4> Ребенок</h4>
                             <input type="text" />
                         </div>
                     </div>
                     <div className="haskd">
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>Адрес регистрации</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>&nbsp;</h4>
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            <h4>&nbsp;</h4>
                             <input type="text" />
                         </div>
                     </div>
                     <div className="haskd" id='iktali'>
                         <div className="asd">
-                            <h4>hello</h4>
+                            {/* <h4>&nbsp;</h4> */}
                             <input type="text" />
                         </div>
 
                         <div className="asd">
-                            <h4>hello</h4>
+                            {/* <h4>&nbsp;</h4> */}
                             <input type="text" />
                         </div>
                     </div>
                     <div className="btn-grupasdasdasdasd">
-                        <button>Назад</button>
+                        <button onClick={() => this.closeMzg()}>Назад</button>
                         <button>Сохранить</button>
                     </div>
                 </div>
@@ -161,8 +165,8 @@ export default class App extends Component {
                                         <th className="btnadmp_th"> Фамилия</th>
                                         <th className="btnadmp_th">Имя</th>
                                         <th className="btnadmp_th">Отчество</th>
-                                        <th className="btnadmp_th">Дата  <br />рождения</th>
-                                        <th className="btnadmp_th">Пол</th>
+                                        <th className="btnadmp_th">Дети</th>
+                                        <th className="btnadmp_th">Телефон</th>
                                         <th className="btnadmp_th">Дата  <br /> добавления</th>
                                         <th className="btnadmp_th2">Действие </th>
 

@@ -39,7 +39,6 @@
   .btnadmp_tr  ,.btnadmp_tr1{
     text-align: center; 
     height: 80px;
-    
   }
   
   .btnadmp_th1{
@@ -56,16 +55,19 @@
     -ms-border-radius: 0px 30px 0 0 ;
     -o-border-radius: 0px 30px 0 0 ;
   }
+  #borDr{
+    border-top-right-radius: 30px !important;
+  }
   .btnadmp_th , .btnadmp_th1 , .btnadmp_th2{
     height: 60px;
-    background: rgba(51, 65, 85, 0.5);
+    /* background: rgba(51, 65, 85, 0.5); */
     font-style: normal;
     font-weight: 700;
     font-size: 16px;
     line-height: 20px;
     color: #334155;
     width: 500px;
-   
+    /* border-top-right-radius: 50px; */
   }
   .btnadmp_td1  , .btnadmp_td2 {
     height: 60px;
@@ -99,6 +101,7 @@
   border: none;
   outline: none;
   color: #334155;
+  padding-left: 10px;
   }
   .bt21{
     width: 256px;
@@ -113,6 +116,7 @@
   border: none;
   outline: none;
   border-color: gray;
+  padding-left: 10px;
   }
   .amygdala{
     width: 50%;

@@ -36,6 +36,8 @@ import Vztsasd from './Vztsasd'
 import Zodaniii from './Zodaniii'
 import Plan from './Plan'
 import ByGrupss from './ByGrupss'
+import PageProfilr from './PageProfilr'
+import Statics from './Statics'
 
 
 
@@ -169,9 +171,9 @@ export default function AllAdmin() {
                                 <a
                                     className='abu'
                                     onClick={() => {
-                                        window.location = '/'
+                                        window.location = '/PageProfilr'
                                     }}
-                                    href='/'
+                                    href='/PageProfilr'
                                 >
                                     <p>Настройки</p>
                                 </a>
@@ -206,7 +208,7 @@ export default function AllAdmin() {
                                         onMouseEnter={() => openModal11()}
                                         src={accountImg}
                                     />
-                                    <a href='/'>
+                                    <a href='/PageProfilr'>
                                         <div
                                             onMouseLeave={() => closeModal11()}
                                             className='pageUser11'
@@ -216,7 +218,7 @@ export default function AllAdmin() {
                                             ))}
                                             <img src={accountImg} alt='' />
 
-                                            <Link to='/' className='abu'>
+                                            <Link to='/PageProfilr' className='abu'>
                                                 <p>Настройки</p>
                                             </Link>
                                             <p onClick={() => {
@@ -324,7 +326,9 @@ export default function AllAdmin() {
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
+                        <a href="/Statics">
                         <h4 className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</h4>
+                        </a>
 
                     </div>
                     <div className='routerDiv'>
@@ -339,7 +343,9 @@ export default function AllAdmin() {
                             <Route path="/Vztsasd" element={<Vztsasd />} />
                             <Route path="/Zodaniii" element={<Zodaniii />} />
                             <Route path="/Plan" element={<Plan />} />
-                            <Route path="/ByGrupss" element={<ByGrupss />} >
+                            <Route path="/ByGrupss" element={<ByGrupss />} />
+                            <Route path="/PageProfilr" element={<PageProfilr />} />
+                            <Route path="/Statics" element={<Statics />} >
                             </Route>
                         </Routes>
                     </div>

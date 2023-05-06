@@ -2,7 +2,7 @@
 import './css/New.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component, useState } from 'react'
-import ico1 from '../img/free-icon-edit-6488637 (2).png'
+import ico1 from '../img/free-icon-delete-5396993 (2).png'
 import ico2 from '../img/free-icon-edit-6488637 (2).png'
 import axios from 'axios';
 
@@ -25,10 +25,34 @@ export default class App extends Component {
       })
    }
 
+   DobavNovs = () => {
+      document.querySelector('.SozdatNovs').style='display: block'
+      document.querySelector('.asdsad').style='display: none'
+   }
 
+   
    render() {
       return (
          <div className="nodir5">
+            <div className="SozdatNovs">
+               <h2>Создать новость</h2>
+               <div className="Anket">
+               <h4>Заголовок</h4>
+               <input type="text" />
+               <h4>Текст</h4>
+               <textarea></textarea>
+               <h4>Прикрепить файл</h4>
+               <input type="text" />
+               
+               <h4>Выбрать адресата</h4>
+               <select>
+                  <option>hello_As</option>
+                  <option>hello_As</option>
+               </select>
+               </div>
+            </div>
+            <div className="asdsad">
+               
             <div className="cake">
                <div className="cake1">
                   <select className='mad' name="" id="">
@@ -38,8 +62,8 @@ export default class App extends Component {
                      <option value="">Группа</option>
                   </select>
                   <input className='mad' type="date" placeholder='Дата добавления' />
-                  <button className="nodiruca">
-                     + Добавить ребенка
+                  <button className="nodiruca" onClick={() => this.DobavNovs()}>
+                     + Добавить новость
                   </button>
                </div>
             </div>
@@ -53,13 +77,13 @@ export default class App extends Component {
 
                            <th className="btnadmp_th1">ID</th>
 
-                           <th className="btnadmp_th"> Фамилия</th>
-                           <th className="btnadmp_th">Имя</th>
-                           <th className="btnadmp_th">Отчество</th>
-                           <th className="btnadmp_th">Дата  <br />рождения</th>
-                           <th className="btnadmp_th">Пол</th>
-                           <th className="btnadmp_th">Дата  <br /> добавления</th>
-                           <th className="btnadmp_th2">Действие </th>
+                           <th className="btnadmp_th"> Дата </th>
+                           <th className="btnadmp_th">Название</th>
+                           <th className="btnadmp_th">  </th>
+                           <th className="btnadmp_th">  </th>
+                           <th className="btnadmp_th">Группа</th>
+                           <th className="btnadmp_th">Автор</th>
+                           <th className="btnadmp_th" id='borDr'>Действие</th>
 
 
                         </tr>
@@ -74,8 +98,11 @@ export default class App extends Component {
                                     <td className="btnadmp_td1">{item.personid}</td>
                                     <td className="btnadmp_td1">{item.personlastname}</td>
                                     <td className="btnadmp_td1"> {item.personfirstname}</td>
-                                    <td className="btnadmp_td1"> {item.personmiddlename}</td>
-                                    <td className="btnadmp_td1"> {item.dateofbirth}</td>
+                                    <td className="btnadmp_td1"></td>
+                                    <td className="btnadmp_td1"></td>
+
+                                    {/* <td className="btnadmp_td1"> {item.personmiddlename}</td> */}
+                                    {/* <td className="btnadmp_td1"> {item.dateofbirth}</td> */}
                                     <td className="btnadmp_td1"> {item.gender}</td>
                                     <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
                                     <td className="btnadmp_td1">
@@ -94,6 +121,7 @@ export default class App extends Component {
                      </table>
                   </div>
                </div>
+            </div>
             </div>
 
          </div>

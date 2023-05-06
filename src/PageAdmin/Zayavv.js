@@ -55,19 +55,6 @@ export default class App extends Component {
                                     </td>
                                 </tr>
                                 <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"> </td>
-
-
-                                    <td className="btnadmp_td2">
-                                        <button className="butadmp1"><img src={icon2} alt="" /></button>
-                                        <button className="butadmp2"><img src={icon1} alt="" /></button>
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
                                     <td className="btnadmp_td1"> </td>
                                     <td className="btnadmp_td1"> </td>
                                     <td className="btnadmp_td1">  </td>
