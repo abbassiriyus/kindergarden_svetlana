@@ -2,7 +2,7 @@ import './css/Zayavv.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { Component } from 'react'
 import icon1 from '../img/free-icon-edit-6488637 (2).png'
-import icon2 from '../img/free-icon-edit-6488637 (2).png'
+import icon2 from '../img/free-icon-delete-5396993.png'
 export default class App extends Component {
     render() {
         return (

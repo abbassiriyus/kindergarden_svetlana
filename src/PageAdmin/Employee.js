@@ -19,19 +19,19 @@ export default class Employees extends Component {
     document.querySelector('.modal11').style="display:block"
     }
 
-    postModalopen(key){
-axios.get(`${url}/person`).then(res=>{
-    res.data.map(item=>{
-        if(item.personid==key){
-            document.querySelector("#form1").value=item.personlastname
-            document.querySelector("#form2").value=item.personfirstname
-            document.querySelector("#form3").value=item.personmiddlename
-            document.querySelector("#form4").value=item.gender
-            document.querySelector("#form5").value=item.dateofbirth
-        }
-    })
-})
-    }
+//     postModalopen(key){
+// axios.get(`${url}/person`).then(res=>{
+//     res.data.map(item=>{
+//         if(item.personid==key){
+//             document.querySelector("#form1").value=item.personlastname
+//             document.querySelector("#form2").value=item.personfirstname
+//             document.querySelector("#form3").value=item.personmiddlename
+//             document.querySelector("#form4").value=item.gender
+//             document.querySelector("#form5").value=item.dateofbirth
+//         }
+//     })
+// })
+//     }
 
     closeModal() {
         document.querySelector('.modal11').style = "display:none"
@@ -465,8 +465,29 @@ return <div id='inform2'>
         <p>{item.positiontitle}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
                         <div id='iconci'>
+
+
+
+
+
+
+
+
+
+                            
+                            {/* <img src={icon1}  onClick={()=>this.postModalopen(item.personid)} alt='' /> */}
                             <img src={icon1}  onClick={()=>this.postModalopen(item.personid)} alt='' />
                             <img src={icon2} onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} alt='' />
+                            {/* <img src={icon2} onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} alt='' /> */}
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
+                       
                         </div>
                     </div>
                 </div>
@@ -481,7 +502,8 @@ return <div id='inform1'>
         <p>{item.positiontitle}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
                         <div id='iconci'>
-                            <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' />
+                            {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                            <img src={icon1} alt='' />
                             <img onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} src={icon2} alt='' />
                         </div>
                     </div>
