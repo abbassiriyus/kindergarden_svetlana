@@ -14,9 +14,9 @@ export default class App extends Component {
         {this.state.page * 1 === 1 ? (
           <Allfront />
         ) : this.state.page * 1 === 3 ? (
-          <AllPage />
-        ) : this.state.page * 1 === 2 ? (
           <AllPage2 />
+        ) : this.state.page * 1 === 2 ? (
+          <AllPage />
         ) : this.state.page * 1 === 4 ? (
           <AllAdmin />
         ) : (

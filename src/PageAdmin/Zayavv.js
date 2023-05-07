@@ -50,7 +50,7 @@ export default class App extends Component {
 
 
                                     <td className="btnadmp_td2">
-                                        <button className="butadmp1"><img src={icon2} alt="" /></button>
+                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
                                         <button className="butadmp2"><img src={icon1} alt="" /></button>
                                     </td>
                                 </tr>
@@ -63,7 +63,7 @@ export default class App extends Component {
 
 
                                     <td className="btnadmp_td1">
-                                        <button className="butadmp1"><img src={icon2} alt="" /></button>
+                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
                                         <button className="butadmp2"><img src={icon1} alt="" /></button>
                                     </td>
                                 </tr>
@@ -79,7 +79,7 @@ export default class App extends Component {
 
 
                                     <td className="btnadmp_td2">
-                                        <button className="butadmp1"><img src={icon2} alt="" /></button>
+                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
                                         <button className="butadmp2"><img src={icon1} alt="" /></button>
                                     </td>
                                 </tr>

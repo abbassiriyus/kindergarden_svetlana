@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default class App extends Component {
    state = {
-      person: []
+      person: [],
    }
 
 
@@ -22,8 +22,12 @@ export default class App extends Component {
             person: res.data
          })
          console.log(this.state.person[11].addressid);
-      })
-   }
+      }) .finally(() => {
+         document.querySelector('.hallo_as').style = 'display: block'
+       });    
+       
+      }
+
 
    DobavNovs = () => {
       document.querySelector('.SozdatNovs').style='display: block'
@@ -34,6 +38,10 @@ export default class App extends Component {
    render() {
       return (
          <div className="nodir5">
+            <h1 className='hallo_as'>hello_As</h1>
+            <div className="redact">
+
+            </div>
             <div className="SozdatNovs">
                <h2>Создать новость</h2>
                <div className="Anket">
@@ -79,8 +87,8 @@ export default class App extends Component {
 
                            <th className="btnadmp_th"> Дата </th>
                            <th className="btnadmp_th">Название</th>
-                           <th className="btnadmp_th">  </th>
-                           <th className="btnadmp_th">  </th>
+                           {/* <th className="btnadmp_th">  </th> */}
+                           {/* <th className="btnadmp_th">  </th> */}
                            <th className="btnadmp_th">Группа</th>
                            <th className="btnadmp_th">Автор</th>
                            <th className="btnadmp_th" id='borDr'>Действие</th>
@@ -98,13 +106,13 @@ export default class App extends Component {
                                     <td className="btnadmp_td1">{item.personid}</td>
                                     <td className="btnadmp_td1">{item.personlastname}</td>
                                     <td className="btnadmp_td1"> {item.personfirstname}</td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
+                                    {/* <td className="btnadmp_td1"></td> */}
+                                    {/* <td className="btnadmp_td1"></td> */}
 
                                     {/* <td className="btnadmp_td1"> {item.personmiddlename}</td> */}
                                     {/* <td className="btnadmp_td1"> {item.dateofbirth}</td> */}
                                     <td className="btnadmp_td1"> {item.gender}</td>
-                                    <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
+                                    <td className="btnadmp_td1"> {item.personlastname}</td>
                                     <td className="btnadmp_td1">
                                        <button className="butadmp1"><img src={ico2} alt="" /></button>
                                        <button className="butadmp2"><img src={ico1} alt="" /></button>

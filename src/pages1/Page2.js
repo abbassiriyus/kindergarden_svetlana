@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table'
 /* import 'bootstrap/dist/css/bootstrap.min.css' */
 import Dropdown from 'react-bootstrap/Dropdown'
 
-export default function Page2 () {
+export default function Page2() {
   return (
     <div className='The-Big'>
       <div className='Big-Page2'>

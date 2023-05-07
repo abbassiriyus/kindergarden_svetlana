@@ -41,6 +41,7 @@ import Statics from './Statics'
 
 
 
+
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
@@ -187,21 +188,51 @@ export default function AllAdmin() {
                         <Navbar.Collapse id='navbarScroll'>
                             <Nav className='m-auto my-2 my-lg-0' navbarScroll>
                                 <NavDropdown title='О нас' id='navbarScrollingDropdown'>
-                                    <NavDropdown.Item>Action</NavDropdown.Item>
-                                    <NavDropdown.Item>Another action</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item>Something else here</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
                                 </NavDropdown>
                                 <NavDropdown title='Расписание' id='navbarScrollingDropdown'>
-                                    <NavDropdown.Item>Action</NavDropdown.Item>
-                                    <NavDropdown.Item>Another action</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
                                     <NavDropdown.Divider />
-                                    <NavDropdown.Item>dddd</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => {
+                                        sessionStorage.setItem("page", 1)
+                                        window.location = "/"
+                                    }}>Page</NavDropdown.Item>
                                 </NavDropdown>
-                                <Nav.Link>Программа</Nav.Link>
-                                <Nav.Link>Новости</Nav.Link>
-                                <Nav.Link>Команда</Nav.Link>
-                                <Nav.Link>Контакты</Nav.Link>
+                                <Nav.Link onClick={() => {
+                                    sessionStorage.setItem("page", 1)
+                                    window.location = "/"
+                                }}>Программа</Nav.Link>
+                                <Nav.Link onClick={() => {
+                                    sessionStorage.setItem("page", 1)
+                                    window.location = "/"
+                                }}>Новости</Nav.Link>
+                                <Nav.Link onClick={() => {
+                                    sessionStorage.setItem("page", 1)
+                                    window.location = "/"
+                                }}>Команда</Nav.Link>
+                                <Nav.Link onClick={() => {
+                                    sessionStorage.setItem("page", 1)
+                                    window.location = "/"
+                                }}>Контакты</Nav.Link>
                                 <Nav.Link id='pageUser111' className='minimodal11'>
                                     <img
                                         alt=''
@@ -270,10 +301,10 @@ export default function AllAdmin() {
                             <AccordionDetails >
                                 <Typography>
                                     <a href="/SpiskDti">
-                                    <h5>Список детей</h5>
+                                        <h5>Список детей</h5>
                                     </a>
                                     <a href="/groupDti">
-                                    <h5>Группы</h5>
+                                        <h5>Группы</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -285,10 +316,10 @@ export default function AllAdmin() {
                             <AccordionDetails >
                                 <Typography>
                                     <a href="/SpsRodtl">
-                                    <h5>Список родителей</h5>
+                                        <h5>Список родителей</h5>
                                     </a>
                                     <a href="/Zayavv">
-                                    <h5>Заявки</h5>
+                                        <h5>Заявки</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -302,11 +333,11 @@ export default function AllAdmin() {
                             <AccordionDetails >
                                 <Typography>
                                     <a href="/Vztsasd">
-                                    <h5>Посещение</h5>
+                                        <h5>Посещение</h5>
                                     </a>
                                     <h5>Записи о пропусках</h5>
                                     <a href="/Zodaniii">
-                                    <h5>Задания</h5>
+                                        <h5>Задания</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -318,16 +349,16 @@ export default function AllAdmin() {
                             <AccordionDetails >
                                 <Typography>
                                     <a href="/Plan">
-                                    <h5>Учебный план</h5>
+                                        <h5>Учебный план</h5>
                                     </a>
                                     <a href="/ByGrupss">
-                                    <h5>Расписание</h5>
+                                        <h5>Расписание</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
                         <a href="/Statics">
-                        <h4 className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</h4>
+                            <h4 className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</h4>
                         </a>
 
                     </div>
