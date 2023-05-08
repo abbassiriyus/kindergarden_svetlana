@@ -22,7 +22,8 @@ export default class ChildAdmin extends Component {
         voditelGroup:[],
         subject_group:[],
         subject:[],
-        postGroup:[]
+        postGroup:[],
+        legalrep:''
     }
 
 
@@ -82,7 +83,6 @@ axios.get(`${url}/subject`).then(res=>{
                     if(item.personid==document.querySelector("#child7").value){
                     axios.get(`${url}/address`).then(res=>{
                         for (let i = 0; i < res.data.length; i++) {
-                            
                        if(res.data[i].addressid==item.addressid){
                         console.log(res.data[i].addressid,item.addressid);
                         kluch.region=res.data[i].region
@@ -198,6 +198,7 @@ axios.post(`${url}/legal_rep`,legal_rep).then(res=>{
        res1.data.map(item=>{
         if(item.personid==this.state.oneperson.personid && item.company==document.querySelector(".companyperson").value){
             relation.append("legalrepid", item.legalrepid)
+            this.setState({legalrep:item.legalrepid})
             this.setState({relation:relation})
             this.openPageNumber(3)
         }
@@ -211,7 +212,7 @@ postData3(){
 var postGroup=new FormData()
 postGroup.append('number',document.querySelector('#group3').value)
 postGroup.append('date',document.querySelector('.group2').value)
-postGroup.append('legalrepid',postchild.get("legalrepid"))
+postGroup.append('legalrepid',this.state.legalrep)
 this.setState({postGroup:postGroup})
 postchild.append("groupid",document.querySelector('#group0').value)
 this.setState({postchild:postchild})
@@ -229,12 +230,14 @@ postchild.append("medicines",document.querySelector("#med5").value)
 postchild.append("healthrestrictions",document.querySelector("#med6").value)
 postchild.append("diet",document.querySelector("#med9").value)
 postchild.append("comment",document.querySelector("#med8").value)
+console.log(postchild);
 axios.post(`${url}/child`,postchild).then(res=>{
-axios.post(`${url}/child`).then(res=>{
+axios.get(`${url}/child`).then(res=>{
     res.data.map(item=>{
      if(postchild.get("childlastname")==item.childlastname && postchild.get("childfirstname")==item.childfirstname && postchild.get("childmiddlename")==item.childmiddlename && postchild.get("addressid")==item.addressid){
 var postGroup1=this.state.postGroup
 postGroup1.append("childid",item.childid)
+postGroup1.append("legalrepid", this.state.legalrep)
 axios.post(`${url}/contract`,postGroup1).then(res=>{
     this.openPageNumber(5)
     window.location.reload()

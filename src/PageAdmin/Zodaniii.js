@@ -16,12 +16,11 @@ export default class App extends Component {
 
 
    componentDidMount = () => {
-      axios.get(`https://backend-school-0u75.onrender.com/person`).then(res => {
+      axios.get(`https://backend-school-0u75.onrender.com/test`).then(res => {
          // console.log(res.data);
          this.setState({
             person: res.data
          })
-         console.log(this.state.person[11].addressid);
       })
    }
 
@@ -71,9 +70,9 @@ export default class App extends Component {
                            this.state.person.map(item => {
                               return (
                                  <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">{item.personid}</td>
-                                    <td className="btnadmp_td1">{item.personlastname}</td>
-                                    <td className="btnadmp_td1"> {item.personfirstname}</td>
+                                    <td className="btnadmp_td1">{item.testid}</td>
+                                    <td className="btnadmp_td1">{item.quation}</td>
+                                    <td className="btnadmp_td1"> {item.date}</td>
                                     {/* <td className="btnadmp_td1"></td> */}
                                     {/* <td className="btnadmp_td1"></td> */}
 

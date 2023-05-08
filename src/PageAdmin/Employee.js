@@ -41,40 +41,34 @@ export default class Employees extends Component {
         value = Math.max(Number(min), Math.min(Number(max), Number(value)));
 
         this.setState({ value });
+
     };
-    getData11() {
 
-        axios.get(`${url}/person`).then(res => {
-            var abu = res.data
-            axios.get(`${url}/employee`).then(res1 => {
-                for (let i = 0; i < res1.data.length; i++) {
-                    for (let j = 0; j < abu.length; j++) {
-                        if (abu[j].personid === res1.data[i].personid) {
-                            abu[j].positionid = res1.data[i].positionid
-                        }
-                    }
-                }
-                axios.get(`${url}/position`).then(res2 => {
-                    for (let i = 0; i < res2.data.length; i++) {
-                        for (let j = 0; j < abu.length; j++) {
-                            if (abu[j].positionid === res2.data[i].positionid) {
-                                abu[j].positiontitle = res2.data[i].positiontitle
-                            }
-                        }
-                    }
-                    this.setState({ data: abu })
-                })
-            })
-
-
-
-
-
-        }).catch(err => {
-            console.log(err);
-        })
+    getData11(){
+        
+        axios.get(`${url}/person`).then(res=>{
+        var abu=res.data
+        var abu2=[]
+axios.get(`${url}/employee`).then(res1=>{
+for (let i = 0; i <res1.data.length; i++) {
+for (let j = 0; j <abu.length; j++) {
+    if(abu[j].personid===res1.data[i].personid) {
+    abu[j].positionid=res1.data[i].positionid
+    abu2.push(abu[j])
     }
-    openPageNumber(key) {
+}}
+axios.get(`${url}/position`).then(res2=>{
+for (let i = 0; i < res2.data.length; i++) {
+for (let j = 0; j < abu2.length; j++) {
+if(abu2[j].positionid===res2.data[i].positionid){
+    abu2[j].positiontitle = res2.data[i].positiontitle
+}
+}}
+this.setState({data:abu2})
+})
+})
+    })}
+openPageNumber(key) {
         this.setState({ formpages: key })
         switch (key) {
             case 1:
@@ -288,12 +282,17 @@ export default class Employees extends Component {
                             <div className="pages11">
                                 <label htmlFor="form3">Отчество*</label><br />
                                 <input id='form3' type="text" />
-                            </div>
-                            <div className="pages11"><br /><label htmlFor="form4"> Пол*  </label><br />
-                                <input type="text" id='form4' />
-                            </div>
-                            <div className="pages11">
-                                <label htmlFor="form5">Дата рождения*   </label><br />
+
+                        </div>
+                        <div className="pages11"><br /><label htmlFor="form4"> Пол*  </label><br />
+                        <select name="" id="form4">
+                            <option value='М'>М</option>
+                            <option value='Ж'>Ж</option>
+                        </select>
+                        </div>
+                        <div className="pages11">
+                            <label htmlFor="form5">Дата рождения*   </label><br />
+
                                 <input id='form5' type="date" />
                             </div>
 
