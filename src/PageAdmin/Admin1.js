@@ -6,7 +6,7 @@ import ico1 from '../img/free-icon-delete-5396993 (2).png'
 import ico2 from '../img/free-icon-edit-6488637 (2).png'
 import axios from 'axios';
 
-
+ 
 export default class App extends Component {
    state = {
       person: [],
@@ -38,7 +38,6 @@ export default class App extends Component {
    render() {
       return (
          <div className="nodir5">
-            <h1 className='hallo_as'>hello_As</h1>
             <div className="redact">
 
             </div>

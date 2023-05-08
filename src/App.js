@@ -3,6 +3,7 @@ import AllPage from './pages1/AllPage'
 import AllPage2 from './pages2/AllPages2'
 import Allfront from './front/Allfront'
 import AllAdmin from './PageAdmin/AllAdmin'
+import './App.css'
 
 export default class App extends Component {
   state = {

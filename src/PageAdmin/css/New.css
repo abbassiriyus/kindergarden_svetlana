@@ -373,3 +373,28 @@
   border-radius: 30px;
   padding-left: 20px;
 }
+
+
+
+
+/* 
+
+      axios.get(`https://backend-school-0u75.onrender.com/group`).then(res => {
+         for (let i = 0; i < res.data; i++) {
+             this.setState({
+               groupId: res.data[i]
+             })
+         }
+         // console.log(res.data);
+         this.setState({
+            person: res.data,
+            groupId: res.data.groupid
+         })
+         // console.log(this.state.person);
+         console.log(this.state.person);
+         console.log(this.state.groupId);
+   
+         // console.log(this.state.person[11].addressid);
+      })
+
+*/

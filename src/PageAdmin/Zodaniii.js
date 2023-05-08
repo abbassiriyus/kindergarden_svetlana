@@ -54,7 +54,7 @@ export default class App extends Component {
                            <th className="btnadmp_th1">ID</th>
 
                            <th className="btnadmp_th"> Месяц </th>
-                           <th className="btnadmp_th">Месяц</th>
+                           <th className="btnadmp_th">Группа</th>
                            {/* <th className="btnadmp_th">  </th> */}
                            {/* <th className="btnadmp_th">  </th> */}
                            <th className="btnadmp_th">Дата отправки </th>
