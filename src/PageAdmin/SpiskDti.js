@@ -749,7 +749,7 @@ return <div id='inform2'>
         <p>{item.childfirstname}</p>
         <p>{item.childmiddlename}</p>
         <p>{item.dateofbirth.slice(0,10)}</p>
-        <p>{item.positiontitle}</p>
+        <p>{item.gender}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
                         <div id='iconci'>
                             <img src={icon1}  alt='' />
