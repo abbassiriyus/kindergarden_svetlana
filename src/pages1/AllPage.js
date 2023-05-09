@@ -48,17 +48,20 @@ export default function App () {
 
     const fetchData2 = async () => {
       try {
-        const response = await axios.get(`${url}/employee`)
+        const response = await axios.get(`${url}/employee`);
         const filteredData2 = response.data.filter(
-          person => person.personid === localStorage.getItem("personid")
-        )
-        setData2(filteredData2)
-        console.log(filteredData2)
-      } catch (err) {
-        console.error(err)
+          person => person.personid === parseInt(localStorage.getItem("personid"))
+        );
+        localStorage.setItem("employ", filteredData2[0].employeeid)
+        // console.log(filteredData2[0]);
+      } catch (error) {
+        console.log(error);
       }
+
+  
     }
     fetchData2()
+    
     
   }, [])
   function openModal11 () {
@@ -151,13 +154,10 @@ export default function App () {
                       className='pageUser11'
                     >
                       
-                      <div className="helloasd">
-
                       {data.map(element => (
-                        <h2 className='h2_elem'>{element.personlastname}</h2>
+                          <p className='h2_elem'>{element.personlastname}</p>
                         ))}
                         <img src={accountImg} alt='' />
-                        </div>
                       
                       <Link to='/PageProfilr' className='abu'>
                         <p>Настройки</p>

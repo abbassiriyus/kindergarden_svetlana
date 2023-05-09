@@ -1041,3 +1041,8 @@
     align-items: center;
     padding-top: 100px;
 }
+.typogRaf{
+    width: 100%;
+    display: flex !important;
+    
+}

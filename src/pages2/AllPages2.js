@@ -27,22 +27,6 @@ import ProfilPage from './PageProfil.js'
 import url from '../host'
 
 export default function App () {
-  /*   const [data, setData] = useState([])
-  function getPerson () {
-    axios.get(`${url}/person`).then(res => {
-      for (let i = 0; i < res.data.length; i++) {
-        if (res.data[i].email === localStorage.getItem('name')) {
-          setData(res.data[i])
-          console.log()
-          console.log(data.personlastname)
-          }
-      }
-    })
-  }
-
-  useEffect(() => {
-    getPerson()
-  }, ) */
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -52,8 +36,10 @@ export default function App () {
         const filteredData = response.data.filter(
           person => person.phone === localStorage.getItem('num')
         )
+        parseInt(localStorage.setItem("adressid", filteredData[0].addressid))
+        parseInt(localStorage.setItem("personid", filteredData[0].personid))
         setData(filteredData)
-        /* console.log(filteredData) */
+         console.log(filteredData) 
       } catch (err) {
         console.error(err)
       }
@@ -124,7 +110,7 @@ export default function App () {
                     window.location = '/'
                   }}
                 >
-                  Выйasdasdasdasdти
+                  Выйти
                 </p>
               </div>
             </div>
@@ -284,3 +270,4 @@ export default function App () {
     </BrowserRouter>
   )
 }
+
