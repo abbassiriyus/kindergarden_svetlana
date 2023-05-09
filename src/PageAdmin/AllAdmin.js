@@ -90,6 +90,7 @@ export default function AllAdmin() {
     const [data, setData] = useState([])
     const [data2, setData2] = useState([])
     useEffect(() => {
+        if(3>2){
         const fetchData = async () => {
             try {
                 const response = await axios.get(`${url}/person`)
@@ -102,7 +103,7 @@ export default function AllAdmin() {
             } catch (err) {
                 console.error(err)
             }
-        }
+        }}
         fetchData()
 
         const fetchData2 = async () => {
@@ -280,7 +281,7 @@ export default function AllAdmin() {
                 <div className="bigbox">
                     <div className='Scroll-Page-Div'>
                         <a href='/' >
-                            <h4 className='scrl-h4'><img src={ImgScrol} alt="" />ЛЕНТА НОВОСТЕЙ</h4>
+                            <p className='scrl-h4'><img src={ImgScrol} alt="" />ЛЕНТА НОВОСТЕЙ</p>
                         </a>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
@@ -358,7 +359,7 @@ export default function AllAdmin() {
                             </AccordionDetails>
                         </Accordion>
                         <a href="/Statics">
-                            <h4 className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</h4>
+                            <p className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</p>
                         </a>
 
                     </div>

@@ -21,9 +21,9 @@ export default class App extends Component {
          this.setState({
             person: res.data
          })
-         console.log(this.state.person[11].addressid);
+        
       }) .finally(() => {
-         document.querySelector('.hallo_as').style = 'display: block'
+         // document.querySelector('.hallo_as').style = 'display: block'
        });    
        
       }

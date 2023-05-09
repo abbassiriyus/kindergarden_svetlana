@@ -689,7 +689,7 @@ window.location.reload()
 
 </div>
 
-            <h1 className='bigah1'>Список сотрудников</h1>
+            <h1 className='bigah1'>Список детей</h1>
             <div className="biga-pages">
                 <Dropdown id="drop">
                     <Dropdown.Toggle variant="light" id="dropdown-basic">
@@ -727,7 +727,7 @@ window.location.reload()
                     </Dropdown.Menu>
                 </Dropdown>
 
-                <button id="btnlar1" onClick={()=>{this.openModal()}}>+ Добавить сотрудника</button>
+                <button id="btnlar1" onClick={()=>{this.openModal()}}>+ Добавить ребенка</button>
             </div>
             <div id='tables'>
                 <div id='names'>

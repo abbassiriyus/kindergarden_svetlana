@@ -20,16 +20,17 @@ export default class Employees extends Component {
     }
 
    getPerson=()=>{
-    var data1=[]
+    
     axios.get(`${url}/person`).then(res=>{
+    
 axios.get(`${url}/legal_rep`).then(res1=>{
+    var data1=[]
 for (let i = 0; i < res.data.length; i++) {
 for (let j = 0; j < res1.data.length; j++) {
 if(res.data[i].personid==res1.data[j].personid){
-
-data1.push(res.data[i])
- data1[i].legalrepid=res1.data[j].legalrepid
-data1[i].company=res1.data[j].company
+  res.data[i].legalrepid=res1.data[j].legalrepid
+ res.data[i].company=res1.data[j].company
+ data1.push(res.data[i])
 }}}
 axios.get(`${url}/relation`).then(res3=>{
 for (let i = 0; i < data1.length; i++) {
@@ -44,16 +45,12 @@ axios.get(`${url}/child`).then(res4=>{
 for (let j = 0; j < data1.length; j++) {
 if(res4.data[i].childid==data1[j].childid){
 data1[j].child=data1[j].child+`<br/>`+res4.data[i].child
-}
-
-}}
+}}}
 console.log(data1);
+this.setState({data:data1})
+})})})
 })
-
-
-})})
-    })
-   }
+}
 
     componentDidMount(){
        this.getPerson()
@@ -61,7 +58,103 @@ console.log(data1);
     }
 
 
+PostPerson(){
+    var formPerson=new FormData()
+    var formAdress=new FormData()
+    formAdress.append("region", document.querySelector(".aform1").value)
+    formAdress.append("city", document.querySelector(".aform2").value)
+    formAdress.append("street", document.querySelector(".aform3").value)
+    formAdress.append("house", document.querySelector(".aform4").value)
+    formAdress.append("building", document.querySelector(".aform5").value)
+    formAdress.append("flat", document.querySelector(".aform6").value)
+axios.post(`${url}/address`,formAdress).then(res=>{
+    var kluch=0
+    axios.get(`${url}/address`).then(res1 => {
+    for (let i = 0; i < res1.data.length; i++) {
+            if (
+                res1.data[i].region === document.querySelector(".aform1").value && res1.data[i].city === document.querySelector(".aform2").value &&
+                res1.data[i].street == document.querySelector(".aform3").value && res1.data[i].house == document.querySelector(".aform4").value &&
+                res1.data[i].building == document.querySelector(".aform5").value && res1.data[i].flat == document.querySelector(".aform6").value) {
+                kluch = res1.data[i].addressid
+            }
+        }
+    formPerson.append("addressid",kluch)
+    formPerson.append("personlastname",document.querySelector("#form1").value)
+    formPerson.append("personfirstname",document.querySelector("#form2").value)
+    formPerson.append("personmiddlename",document.querySelector("#form3").value)
+    formPerson.append("dateofbirth",document.querySelector("#form5").value)
+    formPerson.append("gender",document.querySelector("#form4").value)
+    formPerson.append("passportseries",document.querySelector(".form7").value)
+    formPerson.append("passportnumber",document.querySelector(".form8").value)
+    formPerson.append("passportdate",document.querySelector(".form9").value)
+    formPerson.append("phone",document.querySelector("#form51").value)
+    formPerson.append("email",document.querySelector(".form11").value)
 
+axios.post(`${url}/person`).then(res=>{
+    Window.location.reload()
+})
+
+
+
+    
+    })
+})
+
+
+    // formPerson.append("personlastname", document.querySelector("#form1").value)
+    // formPerson.append("personfirstname", document.querySelector("#form2").value)
+    // formPerson.append("personmiddlename", document.querySelector("#form3").value)
+    // formPerson.append("gender", document.querySelector("#form4").value)
+    // formPerson.append("dateofbirth", document.querySelector("#form5").value)
+    // formPerson.append("passportseries", document.querySelector(".form7").value)
+    // formPerson.append("passportnumber", document.querySelector(".form8").value)
+    // formPerson.append("passportdate", document.querySelector(".form9").value)
+    // formPerson.append("phone", document.querySelector("#form51").value)
+    // formPerson.append("email", document.querySelector(".form11").value)
+
+}
+
+deletePerson(){
+axios.get(`${url}/employee`).then(res4=>{
+
+for (let i = 0; i < res4.data.length; i++) {
+if(res4.data[i].personid==this.state.deleteData.personid){
+    axios.delete(`${url}/employee/${res4.data[i].employeeid}`).then(res=>{
+        axios.get(`${url}/relation`).then(res6=>{
+            res6.data.map(item=>{
+            if (item.legalrepid==this.state.deleteData.legalrepid) {
+            axios.delete(`${url}/relation/${item.relationid}`).then(res=>{console.log("err");})
+        }    
+            axios.delete(`${url}/legal_rep/${this.state.deleteData.legalrepid}`).then(res3=>{
+        axios.delete(`${url}/person/${this.state.deleteData.personid}`).then(res=>{
+        axios.delete(`${url}/address/${this.state.deleteData.addressid}`).then(res2=>{
+                    window.location.reload()
+                })
+            })})
+        })
+        })
+    })
+}else{
+    axios.get(`${url}/relation`).then(res6=>{
+        res6.data.map(item=>{
+        if (item.legalrepid==this.state.deleteData.legalrepid) {
+        axios.delete(`${url}/relation/${item.relationid}`).then(res=>{console.log("err");})
+    }    
+        axios.delete(`${url}/legal_rep/${this.state.deleteData.legalrepid}`).then(res3=>{
+    axios.delete(`${url}/person/${this.state.deleteData.personid}`).then(res=>{
+    axios.delete(`${url}/address/${this.state.deleteData.addressid}`).then(res2=>{
+                window.location.reload()
+            })
+        })})
+    })
+    })
+}
+
+}
+
+
+})
+}
 
   render() {
     return (
@@ -72,7 +165,7 @@ console.log(data1);
 <h4 className='deleteperson1'>{this.state.deleteData.personlastname}</h4>
 <h4 className='deleteperson1'>{this.state.deleteData.personfirstname}</h4>
 <button className='df_button1' onClick={()=>{document.querySelector('.modal12').style="display:none";}} >Назад</button>
-<button className='df_button2' onClick={()=>{this.deletePerson(this.state.deleteData.personid)}}>Удалить</button>
+<button className='df_button2' onClick={()=>{this.deletePerson()}}>Удалить</button>
 </div>
 </div>
 <div className="modal11">
@@ -101,16 +194,8 @@ console.log(data1);
                                 <input id='form5' type="date" />
                         </div> 
                         <div className="pages11">
-                            <label htmlFor="form5">Статус *</label><br />
-                                <input id='form5' type="text" />
-                        </div>
-                        <div className="pages11">
-                            <label htmlFor="form5"> Место работы *</label><br />
-                                <input id='form5' type="text" />
-                        </div>
-                        <div className="pages11">
-                            <label htmlFor="form5">Телефон*</label><br />
-                                <input id='form5' type="tel" />
+                            <label htmlFor="form51">Телефон*</label><br />
+                                <input id='form51' type="tel" />
                         </div>    
                          <div className="pages11">
                                     <label htmlFor="form11">Эл.почта</label><br />
@@ -129,18 +214,6 @@ console.log(data1);
                                     <label htmlFor="form9"> Дата выдачи*</label><br />
                                     <input className='form9' type="date" />
                                 </div>
-                                <div className="pages11">
-                                    <label htmlFor="form9">Договора</label><br />
-                                    <input className='form9' type="text" />
-                                </div>
-                                <div className="pages11">
-                                    <label htmlFor="form9">Ребенок</label><br />
-                                    <select name="" id="form4">
-                            <option value='М'>М</option>
-                        </select> 
-                                </div>
-
-                            
                             </div>
                             <label htmlFor="form12" style={{marginLeft:'10%',marginTop:'50px',marginBottom:'30px'}}>Адрес регистрации*</label>
                             <div className="oyna101">
@@ -165,8 +238,8 @@ console.log(data1);
 
                             </div>
     <div className="df_button" >
-                                <button className='df_button1' onClick={() => { this.closeModal() }}>Назад</button>
-                                <button className='df_button2' onClick={() => { this.postData2() }}>Сохранить</button>
+                                <button className='df_button1' onClick={() => {this.closeModal()}}>Назад</button>
+                                <button className='df_button2' onClick={() => {this.PostPerson()}}>Сохранить</button>
                             </div>                   
 
                                 
@@ -238,9 +311,9 @@ return <div id='inform2'>
         <p>{item.personmiddlename}</p>
         <p>{item.dateofbirth.slice(0,10)}</p>
         <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                        <div id='iconci'>
-                            <img src={icon1}  alt='' />
-                            <img src={icon2} onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} alt='' />
+        <div id='iconci'>
+                 <img src={icon1}  alt='' />
+                <img src={icon2} onClick={()=>{document.querySelector('.modal12').style="display:flex";this.setState({deleteData:item})}} alt='' />
                         </div>
                     </div>
                 </div>

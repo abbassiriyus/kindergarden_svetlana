@@ -112,7 +112,7 @@ export default function GroupDti() {
                   <option value="">Группа</option>
                </select>
                <button className="nodiruca">
-                  + Добавить ребенка
+                  + Добавить Группа
                </button>
             </div>
          </div>

@@ -14,27 +14,72 @@ export default class App extends Component {
       data:[],
       group:[]
    }
-
    openModal(){
       document.querySelector('.modal11').style="display:block"
       }
    closeModal() {
           document.querySelector('.modal11').style = "display:none"
       }
-
   postData(){
-   var formdata= new FormData()
    
+   var formdata2=new FormData()
+   formdata2.append("skillname",document.querySelector('#test10').value)
+   formdata2.append("skillgroupid",document.querySelector('#test3').value)
+   axios.post(`${url}/skill`,formdata2).then(res=>{
+   axios.get(`${url}/skill`).then(res1=>{
+         var resid=0
+         
+      res1.data.map(item=>{
+           if (item.skillname==document.querySelector('#test10').value && item.skillgroupid==document.querySelector('#test3').value) {
+            resid=item.skillid
+         } 
+         })
+   var formdata=new FormData()
+   formdata.append("skillid", resid)
+   formdata.append("month",document.querySelector('#test1').value)
+   formdata.append("question",document.querySelector('#test4').value)
+   formdata.append("question_img",document.querySelector('.test6').files[0])
+   formdata.append("answer",document.querySelector('#test5').value)
+   formdata.append("author",document.querySelector('#test2').value) 
+   axios.post(`${url}/question`,formdata).then(res=>{
+      window.location.reload()
+   })    
+      })
+
+   })
+  
+  
+   
+
   }
 
    componentDidMount = () => {
-      axios.get(`${url}/test`).then(res => {
-         this.setState({person: res.data})
+      axios.get(`${url}/question`).then(res => {
+      axios.get(`${url}/skill`).then(res1=>{
+for (let i = 0; i <res.data.length; i++) {
+for (let j = 0; j < res1.data.length; j++) {
+if (res.data[i].skillid==res1.data[j].skillid) {
+   res.data[i].skillname=res1.data[j].skillname
+}}}
+console.log(res.data);
+this.setState({person: res.data})
       })
-      axios.get(`${url}/group`).then(res=>{
+      
+         
+      
+      })
+      axios.get(`${url}/skill_group`).then(res=>{
          this.setState({group:res.data})
             }) 
      this.getData11()
+   }
+
+   deleteData(key){
+axios.delete(`${url}/question/${key.questionid}`).then(res=>{
+   axios.delete(`${url}/skill/${key.skillid}`).then(res1=>{
+window.location.reload()
+   })
+})
    }
    getData11(){
         
@@ -70,59 +115,59 @@ this.setState({data:abu2})
 <div className='Apages1'>
                     <div className="oyna101">
                       <div className="pages11"><br />
-                      <label htmlFor="form4"> Месяц * </label><br />
-                        <select name="" id="form4">
-                            <option value='январь'>январь</option>
-                            <option value='февраль'>февраль</option>
-                            <option value='марта'>марта</option>
-                            <option value='апрель'>апрель</option>
-                            <option value='мая'>мая</option>
-                            <option value='июнь'>июнь</option>
-                            <option value='июль'>июль</option>
-                            <option value='Август'>Август</option>
-                            <option value='Сентябрь'>Сентябрь</option>
-                            <option value='Октябрь'>Октябрь</option>
-                            <option value='ноябрь'>ноябрь</option>
-                            <option value='Декабрь'>Декабрь</option>
+                      <label htmlFor="test1"> Месяц * </label><br />
+                        <select name="" id="test1">
+                            <option value='yanvar'>январь</option>
+                            <option value='fevral'>февраль</option>
+                            <option value='mart'>марта</option>
+                            <option value='aprel'>апрель</option>
+                            <option value='may'>мая</option>
+                            <option value='iyun'>июнь</option>
+                            <option value='iyul'>июль</option>
+                            <option value='avgust'>Август</option>
+                            <option value='sentabr'>Сентябрь</option>
+                            <option value='octabr'>Октябрь</option>
+                            <option value='noyabr'>ноябрь</option>
+                            <option value='dekabr'>Декабрь</option>
                         </select>   
                         </div>
                              <div className="pages11"><br />
-                             <label htmlFor="form4"> Автор  *  </label><br />
-                        <select name="" id="form4">
-                           {this.state.data.map(item=>{return <option value={item.personid}>{item.personlastname}  {item.personfirstname} {item.personmiddlename} </option>})} 
+                             <label htmlFor="test2"> Автор  *  </label><br />
+                        <select name="" id="test2">
+                           {this.state.data.map(item=>{return <option value={item.personlastname+' '+item.personfirstname+' '+item.personmiddlename}>{item.personlastname}  {item.personfirstname} {item.personmiddlename} </option>})} 
                         </select>   
                         </div> 
                             <div className="pages11"><br />
-                            <label htmlFor="form4">Группа * </label><br />
-                        <select name="" id="form4">
-                        {this.state.group.map(item=>{return <option value={item.groupname}>{item.groupname}</option>})} 
+                            <label htmlFor="test3">Группа * </label><br />
+                        <select name="" id="test3">
+                        {this.state.group.map(item=>{return <option value={item.skillgroupid}>{item.skillgroupname}</option>})} 
                         </select>   
                         </div> 
                         <div className="pages11">
-                            <label htmlFor="form3">Область развития *</label><br />
-                                <input id='form3' type="text" />
+                            <label htmlFor="test10">Область развития *</label><br />
+                                <input id='test10' type="text" />
                         </div>
                         <div className="pages11">
-                            <label htmlFor="form3">Вопрос *</label><br />
-                                <input id='form3' type="text" />
+                            <label htmlFor="test4">Вопрос *</label><br />
+                                <input id='test4' type="text" />
                         </div>
                         <div className="pages11">
-                            <label htmlFor="form3">Ответ  *</label><br />
-                                <input id='form3' type="text" />
+                            <label htmlFor="test5">Ответ  *</label><br />
+                                <input id='test5' type="text" />
                         </div>
                         <div className="pages12">
-                            <label htmlFor="form6">Вложение</label>
+                            <label htmlFor="test6">Вложение</label>
                             <div className="upload_file">
                                 <h1>+</h1>
                                 <p>(Перетащите или щелкните, чтобы вставить)</p>
                             </div>
-                            <input className="form6" type="file" />
+                            <input className="test6" type="file" />
                         </div>
                         
                         </div>
     <div className="df_button" >
                                 <button className='df_button1' onClick={() => { this.closeModal() }}>Назад</button>
-                                <button className='df_button2' onClick={() => { this.postData2() }}>Сохранить</button>
+                                <button className='df_button2' onClick={() => { this.postData() }}>Сохранить</button>
                             </div>                   
 
                                 
@@ -134,7 +179,9 @@ this.setState({data:abu2})
 </div>
 </div>
 
-            <div className="cake">
+<h1 className='sss22'>Задания</h1>
+<div className="cake">
+
                <div className="cake1">
                   <select className='mad' name="" id="">
                      <option value="">Группа</option>
@@ -144,7 +191,7 @@ this.setState({data:abu2})
                   </select>
                   <input className='mad' type="date" placeholder='Дата добавления' />
                   <button onClick={()=>{this.openModal()}} className="nodiruca">
-                     + Добавить новость
+                     + Добавить тест
                   </button>
                </div>
             </div>
@@ -157,39 +204,32 @@ this.setState({data:abu2})
                         <tr className="btnadmp_tr">
 
                            <th className="btnadmp_th1">ID</th>
-
+                           <th className="btnadmp_th">img</th>
                            <th className="btnadmp_th"> Месяц </th>
                            <th className="btnadmp_th">Группа</th>
-                           {/* <th className="btnadmp_th">  </th> */}
-                           {/* <th className="btnadmp_th">  </th> */}
                            <th className="btnadmp_th">Дата отправки </th>
                            <th className="btnadmp_th">Автор</th>
                            <th className="btnadmp_th" id='borDr'>Действие</th>
-
-
                         </tr>
-
-
-
-
                         {
                            this.state.person.map(item => {
                               return (
                                  <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">{item.testid}</td>
-                                    <td className="btnadmp_td1">{item.date}</td>
-                                    <td className="btnadmp_td1"> {item.date}</td>
-                                    <td className="btnadmp_td1"> {item.gender}</td>
-                                    <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
+                                    <td className="btnadmp_td1">{item.questionid}</td>
+                                    <td className="btnadmp_td1"><img width='100px' src={`${url}/`+item.question_img} alt={`${url}/`+item.question_img} /></td>
+
+                                    <td className="btnadmp_td1">{item.month}</td>
+                                    <td className="btnadmp_td1"> {item.skillname}</td>
+                                    <td className="btnadmp_td1"> {item.syscreatedatutc.slice(0,10)}</td>
+                                    <td className="btnadmp_td1"> {item.author}</td>
                                     <td className="btnadmp_td1">
-                                       <button className="butadmp1"><img src={ico2} alt="" /></button>
-                                       <button className="butadmp2"><img src={ico1} alt="" /></button>
+                                    <button className="butadmp1"><img src={ico2} alt="" /></button>
+                                       <button className="butadmp2"><img onClick={()=>this.deleteData(item)} src={ico1} alt="" /></button>
                                     </td>
                                  </tr>
                               )
                            })
                         }
-
 
 
 
