@@ -1,19 +1,76 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import './AllPages.css'
-import Table from 'react-bootstrap/Table'
-/* import 'bootstrap/dist/css/bootstrap.min.css' */
-import Dropdown from 'react-bootstrap/Dropdown'
+import url from "../host";
+import axios from "axios";
 
-export default function Page2() {
+export default function Page2 () {
+  const[table,setTable]=useState([])
+  const [selectedValue, setSelectedValue] = useState([]);
+  const[dars,setdars]=useState([])
+
+  useEffect(() => {
+  const zafik = async () => {
+    axios
+    .get(`${url}/employee`)
+    .then((res)=>{
+      const filteredGroup = res.data.filter(
+        (group) =>
+          group.positionid === 5
+      );
+      axios
+      .get(`${url}/person`)
+      .then((res2)=>{
+        for(let i = 0; i < res2.data.length; i++){
+          for(let j = 0; j < filteredGroup.length; j++){
+            if(res2.data[i].personid === filteredGroup[j].personid){
+              filteredGroup[j].personlastname = res2.data[i].personlastname;
+              filteredGroup[j].employe = res2.data[i].employe;
+            }
+          }
+        }
+        setTable(filteredGroup)
+      })
+      axios
+      .get(`${url}/timetable`)
+      .then((res3)=>{
+setdars(res3.data)
+      })
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  }
+  zafik()
+  
+    },[]);
+    useEffect(
+      () => {
+        console.log(table);
+        console.log(dars);
+        // console.log("Selected value changed to:", selectedValue);
+      },
+      [table,dars],
+    );
+    // const handleSelectChange = (event) => {
+    //   setSelectedValue(event.target.value);
+    //   console.log(selectedValue);
+    // };
+    // useEffect(() => {
+    //   console.log("Selected value changed to:", selectedValue);
+    // }, [selectedValue]);
   return (
     <div className='The-Big'>
       <div className='Big-Page2'>
         <div className='data-group'>
-          <select>
-            <option>Малинина Виктория Петровна</option>
-            <option>Малинина Виктория Петровна2</option>
-            <option>Малинина Виктория Петровна3</option>
-          </select>
+        <select value={selectedValue} >
+  {table.map((element) => (
+    <option value={element.personlastname}>
+      {element.personlastname}
+    </option>
+  ))}
+</select>
+ 
           <input type='date' />
         </div>
         <div id='tables'>
@@ -32,7 +89,6 @@ export default function Page2() {
               <p>09.00 - 09.25</p>
             </div>
           </div>
-
           <div id='inform2'>
             <div id='inform-p'>
               <p>09.35 - 10.00</p>
@@ -112,7 +168,20 @@ export default function Page2() {
             </div>
           </div>
         </div>
+        <div className='zafik'>
+          {dars.map((ele)=>{
+            if (ele.weekday==="monday" && ele.begining==="2023-05-09T09:00:00.000Z" && ele.groupid===1) {
+              return<h2>{ele.weekday}</h2>
+            }
+  
+
+})}
+        </div>
+      </div>
+      <div>
+        
       </div>
     </div>
   )
 }
+
