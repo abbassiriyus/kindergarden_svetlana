@@ -1,4 +1,4 @@
-import React, { useState, center } from 'react'
+import React, { useState } from 'react'
 import Img1 from '../img/free-icon-daughter-8229500.png'
 import PhoneInput from 'react-phone-input-2'
 import Accordion from '@mui/material/Accordion'
@@ -18,7 +18,7 @@ import Imgcca from '../img/free-icon-file-968545 1.png'
 export default function Page5() {
   const data = '<ЯНВАРЬ 2023>'
   return (
-    <div className='The-Big'>
+    <div className='The-Big' id='useirud2'>
        <div className='Cards-Page1-1'>
         <center> <h1>{data}</h1> </center>
     <div className='Stackk'>

@@ -24,28 +24,24 @@ export default function Page1() {
     const fetchData = async () => {
       axios
         .get(`${url}/group_emp`)
-        .then((res)=>{
+        .then((res) => {
           const filteredGroup = res.data.filter(
             (group) =>
               group.employeeid === parseInt(localStorage.getItem("employ"))
           );
-          axios
-          .get(`${url}/group`)
-          .then((res2)=>{
-            for(let i = 0; i < res2.data.length; i++){
-              for(let j = 0; j < filteredGroup.length; j++){
-                if(res2.data[i].groupid === filteredGroup[j].groupid){  
+          axios.get(`${url}/group`).then((res2) => {
+            for (let i = 0; i < res2.data.length; i++) {
+              for (let j = 0; j < filteredGroup.length; j++) {
+                if (res2.data[i].groupid === filteredGroup[j].groupid) {
                   filteredGroup[j].groupname = res2.data[i].groupname;
                 }
               }
             }
-            setup(filteredGroup)
-          })
-          axios
-          .get(`${url}/child`)
-          .then((res3)=>{
-                  setChild(res3.data)
-          })
+            setup(filteredGroup);
+          });
+          axios.get(`${url}/child`).then((res3) => {
+            setChild(res3.data);
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -53,22 +49,20 @@ export default function Page1() {
     };
     fetchData();
   }, []);
-  useEffect(
-    () => {
-      console.log(up);
-      console.log(child);
-    },
-    [child,up],
-  );
+  useEffect(() => {
+    console.log(up);
+    console.log(child);
+  }, [child, up]);
   return (
-    <div className="The-Big">
+    <div className="The-Big" id="useirud">
       <div className="Cards-Page1-1">
         {up.map((element) => (
           <Accordion className="Accordion">
             <AccordionSummary
               expandIcon={<ExpandMoreIcon />}
               aria-controls="panel1a-content"
-              id="panel1a-header">
+              id="panel1a-header"
+            >
               <Typography className="ush">
                 <img src={Img002} alt="" />
                 <h1>{element.groupname}</h1>
@@ -76,17 +70,21 @@ export default function Page1() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography className="typogRaf">
-                {child.map((item)=>{
-                  if(element.groupid===item.groupid){
-                  return<div
-                    onClick={() => handleKidClick(item)}
-                    className="kids-baby">
-                    <div className="baby">
-                      <img src={Img001} alt="" />
-                      <h2>{item.childfirstname}</h2>
-                    </div>
-                  </div>}
-                   })}
+                {child.map((item) => {
+                  if (element.groupid === item.groupid) {
+                    return (
+                      <div
+                        onClick={() => handleKidClick(item)}
+                        className="kids-baby"
+                      >
+                        <div className="baby">
+                          <img src={Img001} alt="" />
+                          <h2>{item.childfirstname}</h2>
+                        </div>
+                      </div>
+                    );
+                  }
+                })}
               </Typography>
             </AccordionDetails>
           </Accordion>
@@ -95,8 +93,8 @@ export default function Page1() {
       {selectedKid && (
         <div className="Cards-Page1">
           <div className="CardProfil-Page1">
-            {/* <img src={selectedKid.image} alt="" />
-            <br /> */}
+            <img src={selectedKid.photo} alt="" />
+            <br />
             <h4>{selectedKid.name}</h4>
           </div>
           <div className="Card-Page1">
@@ -132,4 +130,3 @@ export default function Page1() {
     </div>
   );
 }
-

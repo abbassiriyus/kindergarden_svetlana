@@ -104,7 +104,7 @@ export default function AllAdmin() {
                 console.error(err)
             }
         }}
-        fetchData()
+        // fetchData()
 
         const fetchData2 = async () => {
             try {

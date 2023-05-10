@@ -54,10 +54,9 @@ function App() {
           <p>ПН 01/23</p>
           <p>10/9/1</p>
           <p>Лес</p>
-          <p></p>
-          <div id='iconci'>
-          <img onClick={() => openbypg4()} src={icon1} alt=''/> 
-          </div>
+          <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt=''/></p>
+          {/* <div id='iconciAlo'> */}
+          {/* </div> */}
           </div>
         </div>
       </div>

@@ -85,7 +85,7 @@ setdars(res3.data)
             <p>ВС</p>
           </div>
           <div id='inform1'>
-            <div id='iconci'>
+            <div id='iconciAlo'>
               <p>09.00 - 09.25</p>
             </div>
           </div>
@@ -107,7 +107,7 @@ setdars(res3.data)
                 Волшебник 1 уровня <br />
                 Эмоции каб.2
               </p>
-              <div id='iconci'></div>
+              <div id='iconciAlo'></div>
             </div>
           </div>
           <div id='inform1'>
@@ -128,11 +128,11 @@ setdars(res3.data)
                 Волшебник 1 уровня <br />
                 Эмоции каб.2
               </p>
-              <div id='iconci'></div>
+              <div id='iconciAlo'></div>
             </div>
           </div>
           <div id='inform2'>
-            <div id='iconci'>
+            <div id='iconciAlo'>
               <p>09.00 - 09.25</p>
             </div>
           </div>
@@ -154,21 +154,22 @@ setdars(res3.data)
                 Волшебник 1 уровня <br />
                 Эмоции каб.2
               </p>
-              <div id='iconci'></div>
+              <div id='iconciAlo'></div>
             </div>
           </div>
           <div id='inform2'>
-            <div id='iconci'>
+            <div id='iconciAlo'>
               <p>09.00 - 09.25</p>
             </div>
           </div>
           <div id='inform1'>
-            <div id='iconci'>
+            <div id='iconciAlo'>
               <p>09.00 - 09.25</p>
             </div>
           </div>
         </div>
         <div className='zafik'>
+          
           {dars.map((ele)=>{
             if (ele.weekday==="monday" && ele.begining==="2023-05-09T09:00:00.000Z" && ele.groupid===1) {
               return<h2>{ele.weekday}</h2>
