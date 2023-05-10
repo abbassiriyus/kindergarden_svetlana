@@ -29,43 +29,35 @@ export default function GroupDti() {
                    }
                  }
                }
-
-             })
-             axios
-             .get(`${url}/employee`)
-             .then((res3)=>{
-               for(let i = 0; i < res3.data.length; i++){
-               for(let j = 0; j < filteredGroup.length; j++){
-                  if(res3.data[i].employeeid === filteredGroup[j].employ){
-                     filteredGroup[j].person = res3.data[i].personid
-                  }
-               }
-               }
-               // setState(filteredGroup)
-             })
-             axios
-             .get(`${url}/person`)
-             .then((res4)=>{
-               for(let i = 0; i < res4.data.length; i++){
-                  for(let j = 0; j < filteredGroup.length; j++){
-                     if(res4.data[i].personid === filteredGroup[j].person){
-                        filteredGroup[j].personname = res4.data[i].personlastname
-                     }
-                  }
-                  }
-
-                  setState(filteredGroup)
+               axios
+               .get(`${url}/employee`)
+               .then((res3)=>{
+                 for(let i = 0; i < res3.data.length; i++){
+                 for(let j = 0; j < filteredGroup.length; j++){
+                    if(res3.data[i].employeeid === filteredGroup[j].employ){
+                       filteredGroup[j].person = res3.data[i].personid
+                    }
+                 }
+                 }
+                 axios
+                 .get(`${url}/person`)
+                 .then((res4)=>{
+                   for(let i = 0; i < res4.data.length; i++){
+                      for(let j = 0; j < filteredGroup.length; j++){
+                         if(res4.data[i].personid === filteredGroup[j].person){
+                            filteredGroup[j].personlastnam = res4.data[i].personlastname
+                         }
+                      }
+                      }
+                      setState(filteredGroup)
+                 })
+               })
              })
            })
            .catch((err) => {
              console.log(err);
            });
-         //   axios
-         //   .get(`${url}/person`)
-         //   .then((res)=>{
-         //    setnon(res.data)
-         //   }
-         //   )
+ 
 
 
        };
@@ -147,7 +139,7 @@ export default function GroupDti() {
                                  <td className="btnadmp_td1">{item.groupid}</td>
                                  <td className="btnadmp_td1">{item.groupname}</td>
                                  <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
-                                 <td className="btnadmp_td1"> {item.personname}</td>
+                                 <td className="btnadmp_td1"> {item.personlastnam}</td>
                                  <td className="btnadmp_td1"> {item.dateofbirth}</td>
                                  <td className="btnadmp_td1">
                                     <button className="butadmp1"><img src={ico2} alt="" /></button>
