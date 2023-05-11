@@ -79,7 +79,7 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 18px;
-    text-align: center;
+    /* text-align: center; */
     margin-top: 10px;
     color: #334155;
 }
@@ -91,10 +91,21 @@
 }
 
 #inform-p {
-    width: 100%;
+    width: 30%;
     display: flex;
     padding: 15px 0px 0px 0px;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.hyjkkl{
+    background: #000 !important;
+    width: 10px !important;
+}
+
+#inform2 #inform-p p{
+    width: 10%;
+    text-align: center;
+    /* background: #000; */
 }
 
 #inform2 {

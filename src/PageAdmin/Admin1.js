@@ -5,6 +5,9 @@ import React, { Component, useState } from 'react'
 import ico1 from '../img/free-icon-delete-5396993 (2).png'
 import ico2 from '../img/free-icon-edit-6488637 (2).png'
 import axios from 'axios';
+import url from '../host';
+
+
 
  
 export default class App extends Component {
@@ -16,7 +19,7 @@ export default class App extends Component {
 
 
    componentDidMount = () => {
-      axios.get(`https://backend-school-0u75.onrender.com/person`).then(res => {
+      axios.get(`${url}/person`).then(res => {
          // console.log(res.data);
          this.setState({
             person: res.data

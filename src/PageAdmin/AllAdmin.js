@@ -90,20 +90,21 @@ export default function AllAdmin() {
     const [data, setData] = useState([])
     const [data2, setData2] = useState([])
     useEffect(() => {
-        if(3>2){
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${url}/person`)
-                const filteredData = response.data.filter(
-                    person => person.email === localStorage.getItem('name')
-                )
-                setData(filteredData)
-                localStorage.setItem("personid", filteredData[0].personid)
-                /* console.log(filteredData) */
-            } catch (err) {
-                console.error(err)
+        if (3 > 2) {
+            const fetchData = async () => {
+                try {
+                    const response = await axios.get(`${url}/person`)
+                    const filteredData = response.data.filter(
+                        person => person.email === localStorage.getItem('name')
+                    )
+                    setData(filteredData)
+                    localStorage.setItem("personid", filteredData[0].personid)
+                    /* console.log(filteredData) */
+                } catch (err) {
+                    console.error(err)
+                }
             }
-        }}
+        }
         // fetchData()
 
         const fetchData2 = async () => {
@@ -245,9 +246,11 @@ export default function AllAdmin() {
                                             onMouseLeave={() => closeModal11()}
                                             className='pageUser11'
                                         >
-                                            {data.map(element => (
-                                                <h2 className='h2_elem'>{element.personlastname}</h2>
-                                            ))}
+                                            {data.map(element => {
+                                               return(
+                                            <h2 className='h2_elem'>{element.personlastname}</h2>
+                                            )
+                                            })}
                                             <img src={accountImg} alt='' />
 
                                             <Link to='/PageProfilr' className='abu'>

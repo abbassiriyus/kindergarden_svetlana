@@ -1,22 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ImgTest from '../img/image 37.png'
 import Succes from '../img/301-3011314_pe-success-icon-task-done-removebg-preview.png'
+import url from '../host'
+import axios from 'axios'
 
-export default function Page7 () {
+
+
+
+export default function Page7() {
+  const [data, setData] = useState()
   function openTest() {
-  document.querySelector('.btns-pg7').style = 'display: none'
-  document.querySelector('.Test-Page7').style = 'display: block'
+    document.querySelector('.btns-pg7').style = 'display: none'
+    document.querySelector('.Test-Page7').style = 'display: block'
   }
   function openModal() {
     document.querySelector('.Modal-Page7').style = 'display: block;'
     setInterval(() => {
-    document.querySelector('.Modal-Page7').style = 'display: none;'
+      document.querySelector('.Modal-Page7').style = 'display: none;'
     }, 3000);
-    
+
   }
   function closeModal() {
     document.querySelector('.Modal-Page7').style = 'display: none;'
   }
+
+
+
+  useEffect(() => {
+
+    function getPostPut() {
+      axios.get(`${url}/question`).then(res => {
+        console.log(res.data);
+        setData(
+          res.data[2]
+        )
+      })
+    }
+    getPostPut()
+
+  }, [])
+
+
+
   return (
     <div className='Bnt' >
       <div className='btns-pg7'>
@@ -43,7 +68,13 @@ export default function Page7 () {
       </div>
       <div className='Test-Page7'>
         <div className='Tests'>
-          <h2>Какой из этих предметов не относится к живой природе?</h2>
+          {
+            data.map(item => {
+              return (
+                <h2>{item.question}</h2>
+              )
+            })
+          }
           <div className='Testt'>
             <img src={ImgTest} alt='' />
             <div className='inpt'>
