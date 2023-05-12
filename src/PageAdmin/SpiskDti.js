@@ -390,13 +390,13 @@ window.location.reload()
                         </div>
                         <div className="pages11">
                             <label htmlFor="child6">Свидетельство о рождении * </label><br />
-                                <input id='child6' type="text" />
+                                <input id='child6' placeholder='III-КЕ 456789' type="text" />
                         </div>
-                        <div className="pages11"><br /><label htmlFor="form4"> СНИЛС Полис   </label><br />
+                        <div className="pages11"><br /><label htmlFor="form4"> СНИЛС   </label><br />
                                 <input type="text" id='form4' />
                         </div>
                         <div className="pages11">
-                            <label htmlFor="form5">ОМС</label><br />
+                            <label htmlFor="form5">Полис ОМС</label><br />
                                 <input id='form5' type="text" />
                         </div></div>
                         <label htmlFor="form12" style={{marginLeft:'10%',marginTop:'50px',marginBottom:'30px'}}>Адрес регистрации*</label>
@@ -567,9 +567,9 @@ window.location.reload()
                         <div className="pages11">
                             <label htmlFor="med2"> Прививки по графику вакцинации</label><br />
                              <select name="med2" id="med2">
-                             <option value="1">Да</option>
-                             <option value="2">Нет</option>
-                             <option value="3">Частично</option>
+                             <option value="Да">Да</option>
+                             <option value="Нет">Нет</option>
+                             <option value="Частично">Частично</option>
                              </select>
                         </div>
                         <div className="pages11">
@@ -579,31 +579,31 @@ window.location.reload()
                         <div className="pages11">
                             <label htmlFor="med4"> Отклонения в психомоторном развитии</label><br />
                              <select name="med4" id="med4">
-                             <option value="1">Да</option>
-                             <option value="2">Нет</option>
+                             <option value="Да">Да</option>
+                             <option value="Нет">Нет</option>
                              </select>
                         </div>
                         <div className="pages11">
                             <label htmlFor="med5">Ребенок регулярно принимает лекарства</label><br />
                              <select name="med5" id="med5">
-                             <option value="1">Да</option>
-                             <option value="2">Нет</option>
+                             <option value="Да">Да</option>
+                             <option value="Нет">Нет</option>
                              </select>
                         </div>
                         <div className="pages11">
                             <label htmlFor="med6">Необходимость интеграции по ограничению здоровья</label><br />
                              <select name="med6" id="med6">
-                             <option value="1">Да</option>
-                             <option value="2">Нет</option>
-                             <option value="3">Частично</option>
+                             <option value="Да">Да</option>
+                             <option value="Нет">Нет</option>
+                             <option value="Частично">Частично</option>
 
                              </select>
                         </div>
                    <div className="d-flex">         <div className="pages11">
                             <label htmlFor="med7">Аллергия </label><br />
                              <select name="med7" id="med7">
-                             <option value="1">Да</option>
-                             <option value="2">Нет</option>
+                             <option value="Да">Да</option>
+                             <option value="Нет">Нет</option>
 
 
                              </select>
