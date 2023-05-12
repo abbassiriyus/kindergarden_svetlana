@@ -33,7 +33,7 @@ export default class Form extends Component {
 
     getMail = () => {
         var data=new FormData()
-        data.append('phone',document.querySelector('.form-control').value)
+        data.append('phone',((document.querySelector('.form-control').value).replaceAll(/ /g,"")))
         axios.post(`${url}/login`,data)
         .then((res) => {
          sessionStorage.setItem("page",res.data)

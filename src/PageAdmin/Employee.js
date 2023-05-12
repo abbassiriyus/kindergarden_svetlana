@@ -315,11 +315,11 @@ openPageNumber(key) {
                         <div className="oyna101">
                             <div className="pages11">
                                 <label htmlFor="form7">Серия паспорта* </label><br />
-                                <input className='form7' type="text" />
+                                <input className='form7' placeholder='0000' type="text" />
                             </div>
                             <div className="pages11">
                                 <label htmlFor="form8"> Номер паспорта* </label><br />
-                                <input className='form8' type="number" />
+                                <input className='form8' placeholder='000000' type="text" />
                             </div>
                             <div className="pages11">
                                 <label htmlFor="form9"> Дата выдачи*</label><br />
@@ -331,7 +331,7 @@ openPageNumber(key) {
                             </div>
                             <div className="pages11">
                                 <label htmlFor="form11">Эл.почта</label><br />
-                                <input className='form11' type="email" />
+                                <input className='form11' placeholder='info@gmail.com' type="email" />
                             </div>
 
                         </div>
