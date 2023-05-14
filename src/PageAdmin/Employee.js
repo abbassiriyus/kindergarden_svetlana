@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from 'react-bootstrap/Dropdown';
 import icon1 from '../img/free-icon-edit-6488637 (2).png'
@@ -8,15 +8,23 @@ import axios from 'axios';
 import url from '../host';
 
 export default class Employees extends Component {
+
     state = {
         data: [],
         formpages: 1,
+        formpages2:1,
         postperson: [],
         personid: 0,
-        deleteData: {}
+        deleteData: {},
+        putData:[],
+        perosndata:{}
     }
+
     openModal() {
-        document.querySelector('.modal11').style = "display:block"
+        document.querySelector("#dd").style = "display:block"
+    }
+    openModal2() {
+        document.querySelector('#dd2').style = "display:block"
     }
 
     //     postModalopen(key){
@@ -35,6 +43,9 @@ export default class Employees extends Component {
 
     closeModal() {
         document.querySelector('.modal11').style = "display:none"
+    }
+    closeModal2() {
+        document.querySelector('.modal22').style = "display:none"
     }
     handleChange = event => {
         let { value, min, max } = event.target;
@@ -68,6 +79,22 @@ this.setState({data:abu2})
 })
 })
     })}
+    getInfa(key){
+        axios
+        .get(`${url}/person`)
+        .then(res=>{
+            const zb2 =[];
+for(let i = 0; i < res.data.length; i++){
+if(res.data[i].personid===key){
+zb2.push(res.data[i])
+this.setState({perosndata: res.data[i]})
+}
+}
+console.log(zb2);
+console.log(key);
+
+        })
+    }
 openPageNumber(key) {
         this.setState({ formpages: key })
         switch (key) {
@@ -102,6 +129,7 @@ openPageNumber(key) {
     componentDidMount() {
         this.openPageNumber(1)
         this.getData11()
+
     }
 
     postData1() {
@@ -250,6 +278,19 @@ openPageNumber(key) {
 
         })
     }
+
+    // putdata(key){
+    //     axios
+    //     .get(`${url}/person`)
+    //     .then(res=>{
+    //         const filterperson = res.data.filter(
+    //             (person) =>
+    //               person.personid === key
+    //           );
+    //           this.setState({ putData: filterperson})
+    
+    //          })}
+    
     render() {
         return (
             <div className='body'>
@@ -262,7 +303,7 @@ openPageNumber(key) {
                         <button className='df_button2' onClick={() => { this.deletePerson(this.state.deleteData.personid) }}>Удалить</button>
                     </div>
                 </div>
-                <div className="modal11">
+                <div id='dd' className="modal11">
                     <ul className="tabs11">
                         <li className="lipage1" onClick={() => { this.openPageNumber(1) }}>Основная информация</li>
                         <li className="lipage2" onClick={() => { this.openPageNumber(2) }} >Контакты</li>
@@ -402,6 +443,127 @@ openPageNumber(key) {
 
 
                 </div>
+                <div id='dd2' className="modal11">
+                    <div className='Apages1'>
+                        <div className="oyna101">
+                            <div className="pages11">
+                                <label htmlFor="form1">Фамилия*</label><br />
+                                <input placeholder={this.state.putData.personid} id='form1' type="text" />
+                              
+                                <p>{this.state.perosndata.personlastname}</p>
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="form2">Имя* </label><br />
+                                <input id='form2' type="text" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="form3">Отчество*</label><br />
+                                <input id='form3' type="text" />
+
+                        </div>
+                        <div className="pages11"><br /><label htmlFor="form4"> Пол*  </label><br />
+                        <select name="" id="form4">
+                            <option value='М'>М</option>
+                            <option value='Ж'>Ж</option>
+                        </select>
+                        </div>
+                        <div className="pages11">
+                            <label htmlFor="form5">Дата рождения*   </label><br />
+
+                                <input id='form5' type="date" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className='Apages2'>
+                        <div className="oyna101">
+                            <div className="pages11">
+                                <label htmlFor="form7">Серия паспорта* </label><br />
+                                <input className='form7' placeholder='0000' type="text" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="form8"> Номер паспорта* </label><br />
+                                <input className='form8' placeholder='000000' type="text" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="form9"> Дата выдачи*</label><br />
+                                <input className='form9' type="date" />
+                            </div>
+                            <div className="pages11"><br /><label htmlFor="form10"> Телефон *   </label><br />
+
+                                <input className='form10' type="tel" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="form11">Эл.почта</label><br />
+                                <input className='form11' placeholder='info@gmail.com' type="email" />
+                            </div>
+
+                        </div>
+                        <label htmlFor="form12" style={{ marginLeft: '10%', marginTop: '50px', marginBottom: '30px' }}>Адрес регистрации*</label>
+                        <div className="oyna101">
+                            <div className="pages11">
+                                <input className='aform1' placeholder='Страна' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+                            <div className="pages11">
+                                <input className='aform2' placeholder='Город' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+                            <div className="pages11">
+                                <input className='aform3' placeholder='Улица' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+                            <div className="pages11">
+                                <input className='aform4' placeholder='Номер дома' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+                            <div className="pages11">
+                                <input className='aform5' placeholder='building' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+                            <div className="pages11">
+                                <input className='aform6' placeholder='Квартира' style={{ marginTop: '30px' }} type="text" />
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div className='Apages3'>
+                        <div className="oyna101">
+                            <div className="pages11">
+                                <label htmlFor="">Должность *</label><br />
+                                <input className="dform1" type="text" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor=""> Образование *</label><br />
+                                <input className="dform2" type="text" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="">Дата приема * </label><br />
+                                <input className="dform3" type="date" />
+                            </div>
+                            <div className="pages11"><br /><label htmlFor=""> Дата увольнения *</label><br />
+                                <input className="dform4" type="date" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="">Дата выдачи мед.справки *   </label><br />
+                                <input className="dform5" type="date" />
+                            </div>
+                            <div className="pages11">
+                                <label htmlFor="">Курсы/ Сертификаты*</label><br />
+                                <input className="dform6" type="text" />
+                            </div>
+
+                        </div>
+                        <div className="df_button">
+                            <button className='df_button1' onClick={() => { this.openPageNumber(2) }}>Назад</button>
+                           
+                            <button className='df_button2' onClick={() => { this.putdata() }}>Сохранить</button>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
 
                 <h1 className='bigah1'>Список сотрудников</h1>
                 <div className="biga-pages">
@@ -467,7 +629,7 @@ openPageNumber(key) {
                                     <p className='itemPrsnLst'>{item.syscreatedatutc.slice(0, 10)}</p>
                                     <div id='iconci'>
                                         {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                                        <img src={icon1} alt='' />
+                                        <img onClick={() => { this.openModal2(); this.getInfa(item.personid)}} src={icon1} alt='' />
                                         <img onClick={() => { document.querySelector('.modal12').style = "display:flex"; this.setState({ deleteData: item }) }} src={icon2} alt='' />
                                     </div>
                                 </div>

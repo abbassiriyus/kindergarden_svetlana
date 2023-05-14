@@ -17,7 +17,7 @@ export default class PageProfil extends Component {
       .get(`${url}/person`)
       .then(res => {
         var abu = res.data.filter(
-          item => item.email === localStorage.getItem('name')
+          item => item.phone === localStorage.getItem('num')
         )
 
         axios.get(`${url}/address`).then(res1 => {
