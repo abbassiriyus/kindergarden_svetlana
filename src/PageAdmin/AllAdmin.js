@@ -38,6 +38,7 @@ import Plan from './Plan'
 import ByGrupss from './ByGrupss'
 import PageProfilr from './PageProfilr'
 import Statics from './Statics'
+import Zapissi from './Zapissi';
 
 
 
@@ -247,9 +248,9 @@ export default function AllAdmin() {
                                             className='pageUser11'
                                         >
                                             {data.map(element => {
-                                               return(
-                                            <h2 className='h2_elem'>{element.personlastname}</h2>
-                                            )
+                                                return (
+                                                    <h2 className='h2_elem'>{element.personlastname}</h2>
+                                                )
                                             })}
                                             <img src={accountImg} alt='' />
 
@@ -339,7 +340,9 @@ export default function AllAdmin() {
                                     <a href="/Vztsasd">
                                         <h5>Посещение</h5>
                                     </a>
+                                    <a href="/Zapissi">
                                     <h5>Записи о пропусках</h5>
+                                    </a>
                                     <a href="/Zodaniii">
                                         <h5>Задания</h5>
                                     </a>
@@ -361,9 +364,6 @@ export default function AllAdmin() {
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
-                        <a href="/Statics">
-                            <p className='scrl-h4'><img src={ImgScrol} alt="" />СТАТИСТИКА</p>
-                        </a>
 
                     </div>
                     <div className='routerDiv'>
@@ -380,6 +380,7 @@ export default function AllAdmin() {
                             <Route path="/Plan" element={<Plan />} />
                             <Route path="/ByGrupss" element={<ByGrupss />} />
                             <Route path="/PageProfilr" element={<PageProfilr />} />
+                            <Route path="/Zapissi" element={<Zapissi />} />
                             <Route path="/Statics" element={<Statics />} >
                             </Route>
                         </Routes>

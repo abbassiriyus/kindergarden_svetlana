@@ -8,7 +8,7 @@ import axios from 'axios'
 
 
 export default function Page7() {
-  const [data, setData] = useState()
+  const [data, setData] = useState([])
   function openTest() {
     document.querySelector('.btns-pg7').style = 'display: none'
     document.querySelector('.Test-Page7').style = 'display: block'
@@ -32,7 +32,7 @@ export default function Page7() {
       axios.get(`${url}/question`).then(res => {
         console.log(res.data);
         setData(
-          res.data[2]
+          res.data
         )
       })
     }
@@ -76,7 +76,13 @@ export default function Page7() {
             })
           }
           <div className='Testt'>
-            <img src={ImgTest} alt='' />
+          {
+            data.map(item => {
+              return (
+                <img src={item.question_img} alt='' />
+              )
+            })
+          }
             <div className='inpt'>
               <div className='inpss'>
                 <input type='checkbox' />

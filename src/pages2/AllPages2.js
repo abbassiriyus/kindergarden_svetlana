@@ -26,7 +26,7 @@ import Page5 from './Page5'
 import ProfilPage from './PageProfil.js'
 import url from '../host'
 
-export default function App () {
+export default function App() {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export default function App () {
         parseInt(localStorage.setItem("adressid", filteredData[0].addressid))
         parseInt(localStorage.setItem("personid", filteredData[0].personid))
         setData(filteredData)
-         console.log(filteredData) 
+        console.log(filteredData)
       } catch (err) {
         console.error(err)
       }
@@ -47,22 +47,22 @@ export default function App () {
     fetchData()
   }, [])
 
-  function openModal11 () {
+  function openModal11() {
     document.querySelector('.pageUser11').style = 'display:block'
     document.querySelector('.pageUser112').style = 'display:block'
   }
-  function closeModal11 () {
+  function closeModal11() {
     document.querySelector('.pageUser11').style = 'display:none'
     document.querySelector('.pageUser112').style = 'display:none'
   }
 
-  function otke1 () {
+  function otke1() {
     var navigation = document.querySelector('.BottomNavigation')
     navigation.style = 'bottom: 0;'
     document.querySelector('.och').style = 'display: none;'
     document.querySelector('.yop').style = 'display: block;'
   }
-  function otke2 () {
+  function otke2() {
     var navigation = document.querySelector('.BottomNavigation')
     navigation.style = ' bottom: -110px'
 
@@ -118,21 +118,51 @@ export default function App () {
             <Navbar.Collapse id='navbarScroll'>
               <Nav className='m-auto my-2 my-lg-0' navbarScroll>
                 <NavDropdown title='О нас' id='navbarScrollingDropdown'>
-                  <NavDropdown.Item>Action</NavDropdown.Item>
-                  <NavDropdown.Item>Another action</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}>Action</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}>Another action</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>Something else here</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}>Something else here</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown title='Расписание' id='navbarScrollingDropdown'>
-                  <NavDropdown.Item>Action</NavDropdown.Item>
-                  <NavDropdown.Item>Another action</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}>Action</NavDropdown.Item>
+                  <NavDropdown.Item> onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}Another action</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>dddd</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => {
+                    sessionStorage.setItem("page", 1)
+                    window.location = "/"
+                  }}>dddd</NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link>Программа</Nav.Link>
-                <Nav.Link>Новости</Nav.Link>
-                <Nav.Link>Команда</Nav.Link>
-                <Nav.Link>Контакты</Nav.Link>
+                <Nav.Link onClick={() => {
+                  sessionStorage.setItem("page", 1)
+                  window.location = "/"
+                }}>Программа</Nav.Link>
+                <Nav.Link onClick={() => {
+                  sessionStorage.setItem("page", 1)
+                  window.location = "/"
+                }}>Новости</Nav.Link>
+                <Nav.Link onClick={() => {
+                  sessionStorage.setItem("page", 1)
+                  window.location = "/"
+                }}>Команда</Nav.Link>
+                <Nav.Link onClick={() => {
+                  sessionStorage.setItem("page", 1)
+                  window.location = "/"
+                }}>Контакты</Nav.Link>
                 <Nav.Link id='pageUser111' className='minimodal11'>
                   <img
                     alt=''

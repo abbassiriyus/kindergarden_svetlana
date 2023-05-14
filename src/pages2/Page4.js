@@ -17,8 +17,10 @@ export default function Page4 () {
           <div className='asd'>
             <img src={Img1} alt='' />
             <div className='kid-prfl'>
+              <div className="fxdckhl">
               <h4>Маринина Наташа</h4>
               <p>4 года</p>
+              </div>
               <h3 className='volss'>
                 <img src={Img2} alt='' />
                 Волшебник 2 уровня

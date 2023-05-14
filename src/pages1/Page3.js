@@ -108,7 +108,7 @@ export default function Page1() {
             </div>
             <div className="Input-grup">
               <h4>Группа</h4>
-              {/* <p>{selectedKid.group}</p> */}
+              <p>{selectedKid.groupid}</p>
             </div>
             <div className="Input-grup">
               <h4>Дата рождения</h4>

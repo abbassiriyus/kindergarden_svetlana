@@ -91,14 +91,21 @@
 }
 
 #inform-p {
-    width: 30%;
     display: flex;
-    padding: 15px 0px 0px 0px;
     justify-content: space-evenly;
 }
 
+#inform-p p{
+    width: 70px !important;
+    max-width: 150px;
+}
+
+.p-width{
+    width: 10px !important;
+    margin-left: -30px !important;
+}
+
 .hyjkkl{
-    background: #000 !important;
     width: 10px !important;
 }
 

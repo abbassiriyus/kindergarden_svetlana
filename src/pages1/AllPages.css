@@ -588,7 +588,7 @@
 
 .The-Big .data-group select {
   width: 45%;
-  height: 40px;
+  /* height: 40px; */
   border-radius: 20px;
   padding: 10px;
 }
@@ -1039,6 +1039,7 @@
   align-items: center;
   padding-top: 100px;
 }
+
 .typogRaf {
   width: 100%;
   display: flex !important;
@@ -1070,12 +1071,95 @@
   text-align: start;
 }
 
-#useirud2 .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
-    background: #fff !important;
+#useirud2 .css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root {
+  background: #fff !important;
 }
 
-#useirud2 .css-pwcg7p-MuiCollapse-root{
-    background: #fff;
-    padding-top: 50px;
-    margin-top: -30px;
+#useirud2 .css-pwcg7p-MuiCollapse-root {
+  background: #fff;
+  padding-top: 50px;
+  margin-top: -30px;
+}
+
+.table_test {
+  width: 85%;
+  display: block;
+  margin-top: 20px;
+}
+
+.number_test {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  background: #263346db;
+  padding: 10px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.number_test p {
+  width: 250px;
+  color: white;
+  font-weight: 600;
+}
+
+.test_test {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  background: #f0f0f0;
+}
+
+.test_test p{
+  width: 250px;
+}
+
+#sxdcfgh{
+  height: auto;
+}
+
+.asdasdasdasdasd{
+  padding-top: 100px;
+}
+
+.tablle{
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+}
+
+.numbersss{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background: #334155;
+  padding: 15px;
+  height: 70px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+}
+
+.numbersss p{
+  color: white;
+  font-weight: 600;
+}
+
+.tesxtt{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background: #fff;
+  padding: 15px;
+}
+
+.tesxtt p ,
+.numbersss p{
+  width: 250px;
+  max-width: 300px;
+}
+
+.tesxtt img{
+  cursor: pointer;
+  margin-left: 10px;
 }

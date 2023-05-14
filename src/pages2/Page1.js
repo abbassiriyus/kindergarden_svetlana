@@ -1,27 +1,27 @@
-import React, {useState, axios} from 'react'
+import React, { useState, axios } from 'react'
 import ImgTeacher from '../img/free-icon-teacher-1425402 1.png'
 import './AllPages2.css'
 
-export default function Page1 () {
-  const [state, setState] = useState({yozu: 'Экскурсия в музей'})
+export default function Page1() {
+  const [state, setState] = useState({ yozu: 'Экскурсия в музей' })
 
   var yozu1 = 'Экскурсия в музей'
   var yozup1 =
     'На следующей неделе мы планируем выезд в краеведческий музей на выставку “История новогодней игрушки”. Среда 26 декабря 10.00 Стоимость 300 р. Просьба ко всем родителям определиться сегодня до конца дня'
-  function openModalNo1 () {
+  function openModalNo1() {
     document.querySelector('.Modal-Redat').style =
       'opacity: 0.9;z-index: 9999999999;'
   }
-  function closeModalNo1 () {
+  function closeModalNo1() {
     document.querySelector('.Modal-Redat').style =
       'opacity: 0;z-index: -9999999999;'
   }
   function redakt() {
-    document.querySelector('.Modal-Redat2').style='display: block;'
-    document.querySelector('.Modal-Redat').style='display: none;'
+    document.querySelector('.Modal-Redat2').style = 'display: block;'
+    document.querySelector('.Modal-Redat').style = 'display: none;'
   }
   function closse() {
-    document.querySelector('.Modal-Redat2').style='display: none;'  
+    document.querySelector('.Modal-Redat2').style = 'display: none;'
   }
 
 
@@ -39,7 +39,7 @@ export default function Page1 () {
         <h2>{yozu1}</h2>
         <p>{yozup1}</p>
         <div className='btn-grup'>
-          <button  onClick={() => redakt()}>Редакторавать</button>
+          <button onClick={() => redakt()}>Редакторавать</button>
           <button className='Otmen1' onClick={() => closeModalNo1()}>
             Отмена
           </button>
@@ -81,7 +81,7 @@ export default function Page1 () {
             </div>
           </div>
           <h2>Экскурсия в музей</h2>
-          <p>
+          <p> v
             На следующей неделе мы планируем выезд в краеведческий музей на
             выставку “История новогодней игрушки”. Среда 26 декабря 10.00
             Стоимость 300 р. Просьба ко всем родителям определиться сегодня до

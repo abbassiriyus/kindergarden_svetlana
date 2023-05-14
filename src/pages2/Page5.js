@@ -1,11 +1,23 @@
 import React from 'react'
 import Img1 from '../img/free-icon-daughter-8229500.png'
 import Img2 from '../img/free-icon-kindergarden-5235725 1.png'
+import './AllPages2.css'
+
 
 export default function Page5() {
   return (
     <div className='Page5niki'>
-       <div className='kids-Page2'>
+      <div className="sxdcfvgbiuhn">
+        <div className="rftgyh">
+          <img src={Img1} alt="" />
+          <div className="fghjn">
+            <h4>Маринина Наташа</h4>
+            <p>4 года</p>
+            <p><img src={Img2} alt="" /> Волшебник 2 уровня</p>
+          </div>
+        </div>
+      </div>
+       {/* <div className='kids-Page2'>
         <div className='kid-Page2'>
           <div className='asd'>
             <img src={Img1} alt='' />
@@ -19,8 +31,7 @@ export default function Page5() {
             </div>
           </div>
         </div>
-      </div>
-
+      </div> */}
     </div>
   )
 }
