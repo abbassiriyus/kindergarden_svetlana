@@ -21,18 +21,21 @@ const weekday=[{
     day:'четверг'
 },
 {
-    number:3,
+    number:6,
     day:'среда'
 },
 {
-    number:5,
+    number:7,
     day:'четверг'
 },
 {
-    number:6,
-    day:'пятница'
+    number:7,
+    day:'четверг'
 }
 ];
+
+
+
 const time=[{
     start:"09:00",
     finish:"09:25"
@@ -59,6 +62,28 @@ state={
     weekday:[]
 }
 
+// getData1(){
+
+// for (let i = 0; i < weekday.length; i++) {
+// for (let j = 0; j < time.length; j++) {
+// console.log(this.testData(time[j].start,time[j].finish,weekday[i].number));
+// }}
+
+// }
+testData(start,finish,day){
+    var kluch=true
+this.state.weekday.map(item=>{
+ //console.log(item.begining,start,item.finishing,finish,item.day,day);
+    if(item.begining==start && item.finishing==finish && item.day==day){
+kluch=false
+}})
+if(kluch){
+return "-"
+}else{
+return "1"
+}
+
+}
 getTable(value){
 var data=[]
 axios.get(`${url}/timetable`).then(res=>{
@@ -68,27 +93,29 @@ res.data.map(item=>{
     }
 })
 this.setState({weekday:data})
+// this.getData1()
 })
 }
 
-helloData(start,finish,day){
-    for (let i = 0; i < this.state.weekday.length; i++) {
-      console.log(this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day);  
-if (this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day) {
-return `${start} ${finish} ${day}`    
-}else{
-    return "-"
-}
-    }
+// helloData(start,finish,day){
+//     for (let i = 0; i < this.state.weekday.length; i++) {
+//     //   console.log(this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day);  
+// if (this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day) {
+// return `${start} ${finish} ${day}`    
+// }else{
+//     return "-"
+// }
+//     }
 
 
-}
+// }
 
 componentDidMount(){
     axios.get(`${url}/group`).then(res=>{
         this.setState({group:res.data})
-        console.log(res.data)
+      
         this.getTable(res.data[0].groupid)
+          
     })
 
 }
@@ -136,7 +163,7 @@ time.map(item=>{
  return  <tr className="btnadmp_tr1" >
     <td className="btnadmp_td1">{item.start}-{item.finish}</td>
   {weekday.map(item2=>{ return <td className="btnadmp_td1">
-   {this.helloData(item.start,item.finish,item2.number)}
+   {this.testData(item.start,item.finish,item2.number)}
   </td>})} 
 </tr>
 
