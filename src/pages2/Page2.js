@@ -48,7 +48,7 @@ export default function Page2() {
   const [value, setValue] = React.useState(0);
   const [child22, useChild] = useState([]);
   const [bolas, useBola] = useState([]);
-  const [group, useGroup]= useState([])
+  const [group, useGroup] = useState([])
   // const[gruo,setGruo]=useState()
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Page2() {
               child.personid === parseInt(localStorage.getItem("personid"))
           );
           axios
-          .get(`${url}/relation`)
+            .get(`${url}/relation`)
           axios.get(`${url}/relation`).then((res22) => {
             const tempBolas = [];
             for (let i = 0; i < res22.data.length; i++) {
@@ -94,7 +94,7 @@ export default function Page2() {
       console.log(bolas);
       console.log(group);
     },
-    [bolas, child22,group],
+    [bolas, child22, group],
 
   );
 
@@ -191,34 +191,37 @@ export default function Page2() {
       </Box>
 
       <div className="kids-Page2">
-        {bolas.map(item=>(
-               <div className="kid-Page2">
-                 {child22.map(item22=>{
-                  if(item.childid===item22.childid){
-               return<div className="asd">
-                 <img src={Img1} alt="" />
-                 <div className="kid-prfl">
-                   <h4>{item22.childlastname}</h4>
-                   <p>4 года</p>
-                   {group.map(item33=>{
-                    if (item22.groupid===item33.groupid) {
-                      return<h3 className="volss">
-                      <img src={Img2} alt="" />
-                      <p>{item33.groupname}</p>
-                    </h3>
-                    }
-                  })}
+        {bolas.map(item => (
+          <div className="kid-Page2">
+            {child22.map(item22 => {
+              if (item.childid === item22.childid) {
+                return <div className="asd">
+                  <img src={Img1} alt="" />
+                  <div className="kid-prfl">
+                    <div className="asd">
+                      <h4>{item22.childlastname}</h4>
+                      {/* <p>4 года</p> */}
+                    </div>
+                    {group.map(item33 => {
+                      if (item22.groupid === item33.groupid) {
+                        return <h3 className="volss">
+                          <img src={Img2} alt="" />
+                          <p>{item33.groupname}</p>
+                        </h3>
+                      }
+                    })}
 
-                 </div>
-               </div>
-}})}
-           {/* <button onClick={() => KidsBlock()}>Подробнее</button> */}
-         </div>
-         
+                  </div>
+                </div>
+              }
+            })}
+            {/* <button onClick={() => KidsBlock()}>Подробнее</button> */}
+          </div>
+
         ))}
 
       </div>
-      
+
 
 
     </div>
