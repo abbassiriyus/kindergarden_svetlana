@@ -77,11 +77,13 @@ const AccordionSummary = styled((props) => (
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     padding: theme.spacing(2),
     borderTop: '1px solid rgba(0, 0, 0, .125)',
+    
 }));
 
 
 
 export default function AllAdmin() {
+    const [page12, setPage12] = React.useState((sessionStorage.getItem('page12')?sessionStorage.getItem('page12'):1));
     const [expanded, setExpanded] = React.useState('panel1');
 
     const handleChange = (panel) => (event, newExpanded) => {
@@ -284,17 +286,17 @@ export default function AllAdmin() {
                 </Navbar>
                 <div className="bigbox">
                     <div className='Scroll-Page-Div'>
-                        <a href='/' >
-                            <p className='scrl-h4'><img src={ImgScrol} alt="" />ЛЕНТА НОВОСТЕЙ</p>
+                        <a href='/' onClick={()=>{sessionStorage.setItem('page12',1)}}   >
+                            <p style={page12==1?{background:'white'}:{background:'none'}} className='scrl-h4'><img src={ImgScrol} alt=""  />ЛЕНТА НОВОСТЕЙ</p>
                         </a>
                         <Accordion className='Accor-Divs' expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                             <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
                                 <Typography><img src={ImgScrol} alt="" />СОТРУДНИКИ</Typography>
                             </AccordionSummary>
-                            <AccordionDetails >
+                            <AccordionDetails  >
                                 <Typography>
-                                    <a href='/page2'>
-                                        <h5>СОТРУДНИКИ</h5>
+                                    <a  href='/page2' onClick={()=>{sessionStorage.setItem('page12',2)}}>
+                                        <h5 style={page12==2?{background:'white'}:{background:'none'}} >СОТРУДНИКИ</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -305,11 +307,11 @@ export default function AllAdmin() {
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
-                                    <a href="/SpiskDti">
-                                        <h5>Список детей</h5>
+                                    <a href="/SpiskDti" onClick={()=>{sessionStorage.setItem('page12',3)}}>
+                                        <h5 style={page12==3?{background:'white'}:{background:'none'}}>Список детей</h5>
                                     </a>
-                                    <a href="/groupDti">
-                                        <h5>Группы</h5>
+                                    <a href="/groupDti" onClick={()=>{sessionStorage.setItem('page12',4)}}>
+                                        <h5 style={page12==4?{background:'white'}:{background:'none'}}>Группы</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -320,11 +322,11 @@ export default function AllAdmin() {
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
-                                    <a href="/SpsRodtl">
-                                        <h5>Список родителей</h5>
+                                    <a href="/SpsRodtl" onClick={()=>{sessionStorage.setItem('page12',5)}}>
+                                        <h5 style={page12==5?{background:'white'}:{background:'none'}}>Список родителей</h5>
                                     </a>
-                                    <a href="/Zayavv">
-                                        <h5>Заявки</h5>
+                                    <a href="/Zayavv" onClick={()=>{sessionStorage.setItem('page12',6)}}>
+                                        <h5 style={page12==6?{background:'white'}:{background:'none'}}>Заявки</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -337,14 +339,15 @@ export default function AllAdmin() {
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
-                                    <a href="/Vztsasd">
-                                        <h5>Посещение</h5>
+                                    <a href="/Vztsasd" onClick={()=>{sessionStorage.setItem('page12',7)}}>
+                                        <h5 style={page12==7?{background:'white'}:{background:'none'}}>Посещение</h5>
                                     </a>
                                     <a href="/Zapissi">
                                     <h5>Записи о пропусках</h5>
-                                    </a>
-                                    <a href="/Zodaniii">
-                                        <h5>Задания</h5>
+</a>
+                                    <a href="/Zodaniii" onClick={()=>{sessionStorage.setItem('page12',8)}}>
+                                        <h5 style={page12==8?{background:'white'}:{background:'none'}}>Задания</h5>
+
                                     </a>
                                 </Typography>
                             </AccordionDetails>
@@ -355,15 +358,16 @@ export default function AllAdmin() {
                             </AccordionSummary>
                             <AccordionDetails >
                                 <Typography>
-                                    <a href="/Plan">
-                                        <h5>Учебный план</h5>
+                                    <a href="/Plan" onClick={()=>{sessionStorage.setItem('page12',9)}}>
+                                        <h5 style={page12==9?{background:'white'}:{background:'none'}}>Учебный план</h5>
                                     </a>
-                                    <a href="/ByGrupss">
-                                        <h5>Расписание</h5>
+                                    <a href="/ByGrupss" onClick={()=>{sessionStorage.setItem('page12',9)}}>
+                                        <h5 style={page12==9?{background:'white'}:{background:'none'}}>Расписание</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
                         </Accordion>
+
 
                     </div>
                     <div className='routerDiv'>
@@ -380,9 +384,9 @@ export default function AllAdmin() {
                             <Route path="/Plan" element={<Plan />} />
                             <Route path="/ByGrupss" element={<ByGrupss />} />
                             <Route path="/PageProfilr" element={<PageProfilr />} />
+
                             <Route path="/Zapissi" element={<Zapissi />} />
-                            <Route path="/Statics" element={<Statics />} >
-                            </Route>
+
                         </Routes>
                     </div>
                 </div>
