@@ -196,23 +196,29 @@ export default function Page2() {
                  {child22.map(item22=>{
                   if(item.childid===item22.childid){
                return<div className="asd">
-                 <img src={Img1} alt="" />
+                 <img className="img6767" src={Img1} alt="" />
                  <div className="kid-prfl">
                    <h4>{item22.childlastname}</h4>
                    <p>4 года</p>
                    {group.map(item33=>{
                     if (item22.groupid===item33.groupid) {
-                      return<h3 className="volss">
-                      <img src={Img2} alt="" />
+                      return<div className="volss">
+                      <img className="img777" src={Img2} alt="" />
                       <p>{item33.groupname}</p>
-                    </h3>
+                    </div>
+
                     }
+                 
                   })}
+                  
 
                  </div>
-               </div>
+                 <button className="btnuu" onClick={() => KidsBlock()}>Подробнее</button>
+                 
+               </div>     
 }})}
-           {/* <button onClick={() => KidsBlock()}>Подробнее</button> */}
+
+         
          </div>
          
         ))}
