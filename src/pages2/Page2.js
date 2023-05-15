@@ -198,24 +198,25 @@ export default function Page2() {
                 return <div className="asd">
                   <img src={Img1} alt="" />
                   <div className="kid-prfl">
-                    <div className="asd">
+                    <div className="asd23">
                       <h4>{item22.childlastname}</h4>
-                      {/* <p>4 года</p> */}
                     </div>
                     {group.map(item33 => {
                       if (item22.groupid === item33.groupid) {
-                        return <h3 className="volss">
+                        return <div className="volss">
                           <img src={Img2} alt="" />
                           <p>{item33.groupname}</p>
-                        </h3>
+                        </div>
                       }
                     })}
 
                   </div>
+                  <button className="btnuu" onClick={() => KidsBlock()}>Подробнее</button>
                 </div>
+                
               }
             })}
-            {/* <button onClick={() => KidsBlock()}>Подробнее</button> */}
+          
           </div>
 
         ))}

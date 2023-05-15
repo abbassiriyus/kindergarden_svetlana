@@ -517,8 +517,8 @@
     height: 188px;
     margin-bottom: 30px;
     display: flex;
-    justify-content: space-evenly;
-    background: white;
+    background: #FFFFFF;
+
     padding: 10px;
     align-items: center;
     border-radius: 30px;
@@ -529,18 +529,18 @@
 }
 .only_you .asd {
     width: 100%;
-    margin: 58px 238px 53px 35px;
+    margin: 28px 238px 53px 35px;
     display: flex;
     align-items: center;
 
-    background-color: white;
+    background: #FFFFFF;
+
 }
 
 .only_you .volss {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+width: 180px;
+display: flex;
+align-items: center;
 }
 .volss p{
     font-family: 'Inter';
@@ -571,6 +571,7 @@ color: #334155;
     display: block;
     /* background: #FFF6D1; */
     background: rgba(245, 222, 179, 0.797);
+
 
 }
 
