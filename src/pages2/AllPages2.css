@@ -513,26 +513,48 @@
 }
 
 .only_you .kid-Page2 {
-    width: 80%;
+    width: 980px;
+    height: 188px;
+    margin-bottom: 30px;
     display: flex;
     justify-content: space-evenly;
-    background: #fff;
+    background: white;
     padding: 10px;
     align-items: center;
     border-radius: 30px;
+    margin-top: 20px;
 }
-
+.btnuu{
+    margin-left: 200px;
+}
 .only_you .asd {
-    width: 40%;
+    width: 100%;
+    margin: 58px 238px 53px 35px;
     display: flex;
-    justify-content: space-evenly;
+    align-items: center;
+
+    background-color: white;
 }
 
 .only_you .volss {
-    align-items: center;
-    font-size: 17px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
+.volss p{
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 14px;
+line-height: 17px;
 
+color: #334155;
+}
+.img777{
+    width: 32px;
+    height: 32px;
+}
 .only_you .kid-Page2 button {
     width: 30%;
     height: 40px;
@@ -547,6 +569,9 @@
     width: 90%;
     padding-bottom: 60vh;
     display: block;
+    /* background: #FFF6D1; */
+    background: rgba(245, 222, 179, 0.797);
+
 }
 
 .only_you .divs-tst {
@@ -729,6 +754,7 @@
     display: flex;
     justify-content: space-between;
     padding-left: 2%;
+    background: #a70909;
 }
 
 .only_you .h2_elem {
@@ -774,18 +800,14 @@
 
 
 .kid-prfl {
-    display: flex;
-    justify-content: space-evenly;
-    width: 400px;
-    padding-left: 20px !important;
+
+    padding-left: 28px !important;
 }
 
-.volss {
-    width: 300px;
-}
+
 
 .kid-prfl p {
-    width: 200px;
+  
 }
 
 .sxdcfvgbiuhn {
@@ -805,4 +827,8 @@
     width: 55%;
     display: flex;
     justify-content: space-evenly;
+}
+.img6767{
+    width: 100px;
+    height: 100px;
 }

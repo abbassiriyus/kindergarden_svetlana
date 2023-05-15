@@ -88,56 +88,36 @@ export default function GroupDti() {
    function opensModal2(groupid) {
       document.querySelector('.Dobav_Group2').style = 'display: block'
       document.querySelector('.asdasdasdasd').style = 'display: none'
-      console.log(groupid);
-      // axios.get(`${url}/group`)
-      // .then(res2 => {
-      //    console.log(res2.data);
-      // })
-      // for (let i = 0; i < groupid.length; i++) {
-      //    for (let j = 0; j < res2.data.length; j++) {
-      //       if (res2[j].groupid === res.data[i].person) {
-      //          res2[j].groupid = res.data[i.groupid]
-      //          res2.push(abu[j])
-      //       }
-      //    }
-      // }
+      // console.log(groupid);
+      axios.get(`${url}/group/${groupid}`).then(res => {
+         setnon(
+            res.data
+         )
+      })
    }
-
-
-
-
-
-   // `<button onclick="put(${item.id})">edit</button>`
-   // function put(id) {
-   // console.log(id)
-   // }
-
 
    function closesModal2() {
       document.querySelector('.Dobav_Group2').style = 'display: none'
       document.querySelector('.asdasdasdasd').style = 'display: block'
    }
 
-   function postData() {
+   function postData(groupid) {
       const data = new FormData()
-      data.append('groupname', document.querySelector('.textDobav').value)
-      data.append('ageid', document.querySelector('.ageidDobav').value)
-      // data.append('syscreatedatutc')
-      // data.append('syschangedatutc')
-      axios.post(`${url}/group`, data)
-         .then(res => {
-            alert("Yaratildi")
-            console.log(res.data);
-         }).catch((err) => {
-            console.log(err);
-         })
+      data.append('groupname', document.querySelector('#textDobav').value)
+      data.append('ageid', document.querySelector('#ageidDobav').value)
+      // data.append('syscreatedatutc', '2023-05-07T15:25:25.361Z')
+      // data.append('syschangedatutc', '2023-05-10T17:55:57.943Z')
+      axios.put(`${url}/group/${groupid}`, data).then(res => {
+         alert('yangilandi')
+         window.location = '/groupdti'
+      })
    }
 
-   function putDataS() {
+   function putDataS(groupid) {
       const data2 = new FormData()
       data2.append('groupname', document.querySelector('.testPut').value)
       data2.append('ageid', document.querySelector('.testPut2').value)
-      axios.put(`${url}/group/1`, data2)
+      axios.put(`${url}/group/${groupid}`, data2)
          .then(res => {
             console.log(res.data);
          }).catch((err) => {
@@ -148,9 +128,20 @@ export default function GroupDti() {
 
    function deleteGroup(groupid) {
       axios.delete(`${url}/group/${groupid}`)
-      .then(res => {
-         console.log(res.data);
-      })
+         .then(res => {
+            console.log(res.data);
+         })
+   }
+
+   function postData2() {
+      var datts = new FormData()
+      datts.append('groupname', document.querySelector('.hthgnhdnd').value)
+      datts.append('ageid', document.querySelector('.ageidDobav2').value)
+      axios.post(`${url}/group`, datts).then(res => {
+         alert('Yaratildi!!!!!!!!!!!!!!!!!')
+      }).catch(
+         alert('Yaratildi!!!!!!!!!!!!!!!!!')
+      )
    }
 
    return (
@@ -160,11 +151,11 @@ export default function GroupDti() {
             <h2>+ Добавить Группа</h2>
             <div className="sdfgdf">
                <h4>Название *</h4>
-               <input className='textDobav' type="text" />
+               <input className='textDobav2' type="text" />
                <h4>Учебный год</h4>
-               <input className='ageidDobav' type="number" />
+               <input className='ageidDobav2' type="number" />
                <h4>Воспитатели</h4>
-               <select>
+               <select className='hthgnhdnd'>
                   <option></option>
                   <option>Воспитатели1</option>
                   <option>Воспитател2</option>
@@ -184,48 +175,32 @@ export default function GroupDti() {
             </div>
             <div className="grp_btn">
                <button onClick={() => closesModal()}>Назад</button>
-               <button onClick={() => postData()}>Сохранить</button>
+               <button onClick={() => postData2()}>Сохранить</button>
             </div>
          </div>
 
          <div className="Dobav_Group2">
-            <h2>+ Изменит Группа</h2>
-            <div className="sdfgdf2">
-               <h4>Название *</h4>
-               {/* {
-                  state.map(item => {
-                     return (
-                        <div>
-                           <input className='textDobav' placeholder={item.groupname} type="text" />
-                           <h4>Учебный год</h4>
-                           <input className='textDobav' placeholder={item.ageid} type="number" />
+            {
+               non.map(item => {
+                  return (
+                     <div>
+                        <h2>+ Изменит Группа</h2>
+                        <div className="sdfgdf2">
+                           <h4>Название *</h4>
+                           <div>
+                              <input id='textDobav' placeholder={item.groupname} type="text" />
+                              <h4>Учебный год</h4>
+                              <input id='ageidDobav' placeholder={item.ageid} type="number" />
+                           </div>
                         </div>
-                     )
-                  })
-               } */}
-               <h4>Воспитатели</h4>
-               <select>
-                  <option></option>
-                  <option>Воспитатели1</option>
-                  <option>Воспитател2</option>
-               </select>
-               <h4>Активность</h4>
-               <select>
-                  <option></option>
-                  <option>Активность1</option>
-                  <option>Активность2</option>
-               </select>
-               <h4>Дети</h4>
-               <select>
-                  <option></option>
-                  <option>Дети1</option>
-                  <option>Дети2</option>
-               </select>
-            </div>
-            <div className="grp_btn2">
-               <button onClick={() => closesModal2()}>Назад</button>
-               <button onClick={() => postData()}>Сохранить</button>
-            </div>
+                        <div className="grp_btn2">
+                           <button onClick={() => closesModal2()}>Назад</button>
+                           <button onClick={() => postData(item.groupid)}>Сохранить</button>
+                        </div>
+                     </div>
+                  )
+               })
+            }
          </div>
          <div className="asdasdasdasd">
 
@@ -268,9 +243,9 @@ export default function GroupDti() {
                                  <tr className="btnadmp_tr1" >
                                     <td className="btnadmp_td1">{item.groupid}</td>
                                     <td className="btnadmp_td1">{item.groupname}</td>
-                                    <td className="btnadmp_td1"> {item.syscreatedatutc}</td>
+                                    <td className="btnadmp_td1"> {item.syscreatedatutc.slice(0, 10)}</td>
                                     <td className="btnadmp_td1"> {item.personlastname}</td>
-                                    <td className="btnadmp_td1"> {item.groupid}</td>
+                                    <td className="btnadmp_td1"> {item.ageid}</td>
                                     <td className="btnadmp_td1">
                                        <button onClick={() => opensModal2(item.groupid)} className="butadmp1">
                                           <img src={ico2} alt="" />

@@ -51,7 +51,7 @@ export default class Employees extends Component {
                                 }
                             }
                         }
-                        console.log(data1);
+                        // console.log(data1);
                         this.setState({ data: data1 })
                     })
                 })
