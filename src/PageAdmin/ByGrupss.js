@@ -2,19 +2,105 @@ import './css/ByGrupss.css'
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import Tabe from '../pages/tabe.js'
 import React, { Component } from 'react'
-
+import axios from 'axios'
+import url from '../host';
+const weekday=[{
+    number:1,
+    day:'понедельник'
+},
+{
+    number:2,
+    day:'вторник'
+},
+{
+    number:3,
+    day:'среда'
+},
+{
+    number:5,
+    day:'четверг'
+},
+{
+    number:3,
+    day:'среда'
+},
+{
+    number:5,
+    day:'четверг'
+},
+{
+    number:6,
+    day:'пятница'
+}
+];
+const time=[{
+    start:"09:00",
+    finish:"09:25"
+},
+{
+    start:"09:35",
+    finish:"10:00"
+},
+{
+    start:"10:35",
+    finish:"11:00"
+},
+{
+    start:"15:05",
+    finish:"15:30"
+},
+{
+    start:"16:05",
+    finish:"15:30"
+}]
 export default class App extends Component {
+state={
+    group:[],
+    weekday:[]
+}
+
+getTable(value){
+var data=[]
+axios.get(`${url}/timetable`).then(res=>{
+res.data.map(item=>{
+    if(item.groupid===value){
+        data.push(item)
+    }
+})
+this.setState({weekday:data})
+})
+}
+
+helloData(start,finish,day){
+    for (let i = 0; i < this.state.weekday.length; i++) {
+      console.log(this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day);  
+if (this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day) {
+return `${start} ${finish} ${day}`    
+}else{
+    return "-"
+}
+    }
+
+
+}
+
+componentDidMount(){
+    axios.get(`${url}/group`).then(res=>{
+        this.setState({group:res.data})
+        console.log(res.data)
+        this.getTable(res.data[0].groupid)
+    })
+
+}
     render() {
         return (
             <div className="metgala">
                 {/* <Tabe /> */}
                 <div className="amygdala">
                     <select className='bts' name="" id="">
-                        <option value="">Малинина Виктория Петровна</option>
-                        <option value="">Малинина Виктория Петровна</option>
-                        <option value="">Малинина Виктория Петровна</option>
-                        <option value="">Малинина Виктория Петровна</option>
-
+               {this.state.group.map((item,key)=>{
+                return <option onClick={()=>this.getTable(item.groupid)} value={item.groupid}>{item.groupname}</option>
+               })}         
                     </select>
                     <input type="date" className="bt21"
                         // value="2018-07-22"
@@ -35,130 +121,30 @@ export default class App extends Component {
                         <div className="btnadmp_box1">
                             <table className="btnchil_table">
                                 <tr className="btnadmp_tr">
-
                                     <th className="btnadmp_th1"></th>
-
-                                    <th className="btnadmp_th"> ПН</th>
+                                    <th className="btnadmp_th">ПН</th>
                                     <th className="btnadmp_th">ВТ</th>
                                     <th className="btnadmp_th">СР</th>
                                     <th className="btnadmp_th">ЧТ</th>
                                     <th className="btnadmp_th">ПТ</th>
                                     <th className="btnadmp_th">СБ</th>
                                     <th className="btnadmp_th2">ВС</th>
-
-
-
                                 </tr>
 
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">09.00 - 09.25 </td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1">  ФЭМП <br />Ручкина К.Е. <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"> ФЭМП <br /> Ручкина К.Е.<br /> каб.2</td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
+{
+time.map(item=>{
+ return  <tr className="btnadmp_tr1" >
+    <td className="btnadmp_td1">{item.start}-{item.finish}</td>
+  {weekday.map(item2=>{ return <td className="btnadmp_td1">
+   {this.helloData(item.start,item.finish,item2.number)}
+  </td>})} 
+</tr>
 
+})   
+ 
+}
 
-
-                                    <td className="btnadmp_td1">
-
-                                    </td>
-                                </tr>
-
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2"> 09.35 - 10.00 </td>
-                                    <td className="btnadmp_td2"> Волшебник 1 <br /> уровня <br /> Эмоции <br /> каб.2 </td>
-                                    <td className="btnadmp_td2">  </td>
-                                    <td className="btnadmp_td2"> </td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"> Волшебник 1 <br />  уровня <br /> Эмоции <br /> каб.2</td>
-                                    <td className="btnadmp_td2"></td>
-
-
-
-                                    <td className="btnadmp_td2">
-
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">10.00 - 10.25</td>
-                                    <td className="btnadmp_td1">   Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"> Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2  </td>
-                                    <td className="btnadmp_td1"> Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2 </td>
-                                    <td className="btnadmp_td1">Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"> Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
-
-                                    <td className="btnadmp_td1">
-
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2">10.35 - 11.00 </td>
-                                    <td className="btnadmp_td2">Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2</td>
-                                    <td className="btnadmp_td2">Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2  </td>
-                                    <td className="btnadmp_td2">Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2</td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"> Волшебник 3  <br /> уровня <br /> Первые открытия <br /> каб.2</td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-
-
-
-                                    <td className="btnadmp_td2">
-
-                                    </td>
-                                </tr>
-
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">15.05 - 15.30</td>
-                                    <td className="btnadmp_td1">  Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2 </td>
-                                    <td className="btnadmp_td1">  </td>
-                                    <td className="btnadmp_td1">Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1">Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2 </td>
-                                    <td className="btnadmp_td1"></td>
-
-
-
-                                    <td className="btnadmp_td1">
-
-                                    </td>
-                                </tr>
-
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2">16.05 - 15.30 </td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"> Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2 </td>
-                                    <td className="btnadmp_td2">Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2</td>
-                                    <td className="btnadmp_td2">Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2</td>
-                                    <td className="btnadmp_td2"> Волшебник 2 <br /> уровня <br /> Доброта <br /> каб.2</td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-
-
-
-                                    <td className="btnadmp_td2">
-
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1">   </td>
-                                    <td className="btnadmp_td1">  </td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
-                                    <td className="btnadmp_td1"></td>
-
-
-
-                                    <td className="btnadmp_td1">
-
-                                    </td>
-                                </tr>
+     
 
 
 
