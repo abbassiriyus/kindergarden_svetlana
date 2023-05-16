@@ -54,33 +54,33 @@ const time=[{
 },
 {
     start:"16:05",
-    finish:"15:30"
+    finish:"16:30"
 }]
 export default class App extends Component {
 state={
     group:[],
-    weekday:[]
+    weekday:[],
+    employee:[],
+    subject:[],
+    group:[],
+    room:[]
+
 }
 
-// getData1(){
 
-// for (let i = 0; i < weekday.length; i++) {
-// for (let j = 0; j < time.length; j++) {
-// console.log(this.testData(time[j].start,time[j].finish,weekday[i].number));
-// }}
-
-// }
 testData(start,finish,day){
     var kluch=true
+    var data12
 this.state.weekday.map(item=>{
  //console.log(item.begining,start,item.finishing,finish,item.day,day);
     if(item.begining==start && item.finishing==finish && item.day==day){
 kluch=false
+data12=`${item.subjectname}\n\n\n${item.personlastname+" "+item.personfirstname+item.personmiddlename}\n${item.roomnumber}`
 }})
 if(kluch){
 return "-"
 }else{
-return "1"
+return data12
 }
 
 }
@@ -89,57 +89,145 @@ var data=[]
 axios.get(`${url}/timetable`).then(res=>{
 res.data.map(item=>{
     if(item.groupid===value){
-        data.push(item)
-    }
+    data.push(item)}
 })
-this.setState({weekday:data})
-// this.getData1()
-})
+
+axios.get(`${url}/room`).then(res2=>{
+for (let i = 0; i <data.length; i++) {
+for(let j=0; j<res2.data.length;j++){
+if(res2.data[j].roomid==data[i].roomid){
+    data[i].roomnumber=res2.data[j].roomnumber
+}}}
+
+axios.get(`${url}/employee`).then(res3=>{
+    for (let i = 0; i <data.length; i++) {
+    for(let j=0; j<res3.data.length;j++){
+    if(res3.data[j].employeeid==data[i].employeeid){
+        data[i].personid=res3.data[j].personid
+        data[i].positionid=res3.data[j].positionid
+    
+    }}}
+    axios.get(`${url}/person`).then(res4=>{
+        for (let i = 0; i <data.length; i++) {
+        for(let j=0; j<res4.data.length;j++){
+        if(res4.data[j].personid==data[i].personid){
+            data[i].personlastname=res4.data[j].personlastname
+            data[i].personfirstname=res4.data[j].personfirstname.slice(0,1).toUpperCase()+"."
+            data[i].personmiddlename=res4.data[j].personmiddlename.slice(0,1).toUpperCase()+"."
+        }}}
+        axios.get(`${url}/subject`).then(res5=>{
+            for (let i = 0; i <data.length; i++) {
+            for(let j=0; j<res5.data.length;j++){
+            if(res5.data[j].subjectid==data[i].subjectid){
+                data[i].subjectname=res5.data[j].subjectname
+            }}}
+            this.setState({weekday:data})
+        })
+        })})})})
 }
 
-// helloData(start,finish,day){
-//     for (let i = 0; i < this.state.weekday.length; i++) {
-//     //   console.log(this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day);  
-// if (this.state.weekday[i].begining==start && this.state.weekday[i].finishing==finish && this.state.weekday[i].weekday==day) {
-// return `${start} ${finish} ${day}`    
-// }else{
-//     return "-"
-// }
-//     }
 
 
-// }
 
 componentDidMount(){
     axios.get(`${url}/group`).then(res=>{
         this.setState({group:res.data})
-      
-        this.getTable(res.data[0].groupid)
-          
-    })
+        this.getTable(res.data[0].groupid)    
+   axios.get(`${url}/employee`).then(res3=>{
+axios.get(`${url}/person`).then(res2=>{
+   
+for (let i = 0; i < res3.data.length; i++) {
+for (let j = 0; j < res2.data.length; j++) {
+if(res3.data[i].personid==res2.data[j].personid){
+    res3.data[i].personlastname=res2.data[j].personlastname
+    res3.data[i].personfirstname=res2.data[j].personfirstname
+    res3.data[i].personmiddlename=res2.data[j].personmiddlename   
+}
+}}
+
+ this.setState({employee:res3.data})
+axios.get(`${url}/group`).then(res=>{
+    this.setState({group:res.data})
+})
+axios.get(`${url}/room`).then(res=>{
+    this.setState({room:res.data})
+})
+})
+
+
+
+   
+axios.get(`${url}/subject`).then(res=>{
+this.setState({subject:res.data})
+})
+}) })
+
 
 }
     render() {
         return (
             <div className="metgala">
-                {/* <Tabe /> */}
+<div className="bigAbbas">
+<div className="modalAbbas">
+<label htmlFor="">Дата</label><br />
+<select name="" id="select_1">
+{weekday.map(item=>{
+    return   <option  value={item.number}>{item.day}</option>
+})}  </select><br />
+<label htmlFor="">Время с</label><br />
+<select name="" id="select_1">
+{time.map(item=>{
+    return   <option  value={item.start}>{item.start}</option>
+})}  
+
+
+</select>по
+<select name="" id="select_2">
+{time.map(item=>{
+    return   <option  value={item.finish}>{item.finish}</option>
+})}  
+   
+</select><br />
+<label htmlFor="">Группа</label><br />
+<select name="" id="">
+{this.state.group.map(res=>{
+    return <option value="">{res.groupname}</option>
+})}
+</select><br />
+<label htmlFor="">Тема</label><br />
+<select name="" id="">
+{this.state.subject.map(item=>{return <option  value={item.subjsctid}>{item.subjectname}</option>}) }
+</select><br />
+<label htmlFor="">Занятие</label><br />
+<select name="" id="">
+{this.state.subject.map(item=>{return <option  value={item.subjectid}>{item.topic}</option>}) }
+</select><br />
+
+
+<label htmlFor="">Педагог</label><br />
+<select name="" id="">
+{this.state.employee.map(res=>{
+    return <option value="">{res.personfirstname} {res.personlastname} {res.personmiddlename} </option>
+})}
+</select><br />
+<label htmlFor="">Кабинет</label><br />
+<select name="" id="">
+{this.state.room.map(item=>{return <option value={item.roomid}>{item.roomnumber}</option>}) }
+</select><br />
+<button className='first_button'>Назад</button><button className='second_button' >Сохранить</button>
+</div></div>
                 <div className="amygdala">
                     <select className='bts' name="" id="">
                {this.state.group.map((item,key)=>{
                 return <option onClick={()=>this.getTable(item.groupid)} value={item.groupid}>{item.groupname}</option>
                })}         
                     </select>
-                    <input type="date" className="bt21"
-                        // value="2018-07-22"
-                        // min="2018-01-01" max="2018-12-31"
-                         />
+                        <button id="btnlar1" style={{margin:'auto', marginRight:'30px'}} onClick={() => { this.openModal() }}>+ Добавить сотрудника</button>
                 </div>
-                <div className="nood">
-                    {/* <p className="nod">
-Малинина Виктория Петровна
-</p> */}
-                    <p className="nod2">
 
+
+                <div className="nood">
+                    <p className="nod2">
                     </p>
                 </div>
                 <div className=" bigbox">
