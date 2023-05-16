@@ -53,6 +53,10 @@ export default function Page2() {
   const [relation, setRelation] = useState([]);
   const [legalrep, setLegalrep] = useState([]);
   const [person, setPerson] = useState([]);
+  const [test, setTest]=useState([]);
+  const [question, setQuestion]=useState([])
+  const [skill, setKill]=useState([])
+  const [skillgroup, setKillgroup]=useState([])
   // const[gruo,setGruo]=useState()
 
   useEffect(() => {
@@ -94,6 +98,12 @@ export default function Page2() {
           axios.get(`${url}/person`).then((res77) => {
             setPerson(res77.data);
           });
+          axios.get(`${url}/test`).then((res88) => {
+            setTest(res88.data);
+          });
+          axios.get(`${url}/question`).then((res99) => {
+            setQuestion(res99.data);
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -103,15 +113,18 @@ export default function Page2() {
   }, []);
 
   useEffect(() => {
-    console.log(child22);
-    console.log(bolas);
-    console.log(group);
-    console.log(selectedKid);
-    console.log(relation);
-    console.log(legalrep);
-    console.log(person);
+    // console.log(child22);
+    // console.log(bolas);
+    // console.log(group);
+    // console.log(selectedKid);
+    // console.log(relation);
+    // console.log(legalrep);
+    // console.log(person);
+    // console.log(test);
+    // console.log(question);
+
     // console.log(Kid);
-  }, [bolas, child22, group, selectedKid,relation,legalrep,person]);
+  }, [bolas, child22, group, selectedKid,relation,legalrep,person,test,question,]);
 
   /////////
   const handleChange = (event, newValue) => {
@@ -122,6 +135,57 @@ export default function Page2() {
     document.querySelector(".box-ss").style = "display: block;";
     document.querySelector(".kids-Page2").style = "display: none;";
   }
+  function CHECK (id) {
+    // if (setKill===id) {
+    //   console.log("dkdkdkkdkdkdkd");
+    //   console.log(skill);
+    // }
+    // console.log("dkdjdj");
+    // console.log(selectedKid);
+    axios
+    .get(`${url}/test`)
+    .then(res=>{
+      let usa =[]
+      let uk =[]
+      for (let e = 0; e < res.data.length; e++) {
+        if (selectedKid.childid===res.data[e].childid) {
+          usa.push(res.data[e].questionid)
+          // console.log(usa);
+        }
+        
+      }
+        axios
+        .get(`${url}/question`)
+        .then(res2=>{
+          for (let j = 0; j < res2.data.length; j++) {
+            for (let i = 0; i < usa.length; i++) {
+              if (usa[0]===res2.data[j].questionid) {
+                uk.push(res2.data[j].answer)
+               }
+            }
+
+            
+          }
+          // console.log(usa[0]);
+          // console.log(id);
+          // console.log(uk);
+          if (id===uk[0]) {
+            console.log("turi");
+          }else{
+            console.log("notori");
+          }
+       
+
+        })
+       
+        
+      
+
+    })
+    
+  }
+  
+
 
   return (
     <div>
@@ -206,28 +270,28 @@ export default function Page2() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className="divs-tst">
-            <h1>Какой из этих предметов не относится к живой природе?</h1>
-            <div className="dvasew">
-              <img src={Img3} alt="" />
-              <div className="aysdu">
-                <div className="inpsgrps">
-                  <h2>1</h2>
-                  <input type="checkbox" />
-                </div>
-                <div className="inpsgrps">
-                  <h2>2</h2>
-                  <input type="checkbox" />
-                </div>
-                <div className="inpsgrps">
-                  <h2>3</h2>
-                  <input type="checkbox" />
-                </div>
-                <div className="inpsgrps">
-                  <h2>4</h2>
-                  <input type="checkbox" />
-                </div>
-              </div>
-            </div>
+            {test.map((item)=>{
+              if (selectedKid.childid===item.childid) {
+                return<>{question.map((item2)=>{
+                  if (item.questionid===item2.questionid) {
+                    // setKill(item2.answer)
+                    return<div className="dvasew">
+                    <p>{item2.question}</p>
+
+                      <div className="aysdu">
+<button onClick={() => CHECK(1)} >1</button>
+<button value={2}>2</button>
+<button value={3}>3</button>
+<button value={4}>4</button>
+                    </div>
+                  </div>
+                  }
+                })}
+               </>
+   
+              }
+            })}
+
           </div>
         </TabPanel>
       </Box>

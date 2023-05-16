@@ -664,6 +664,7 @@
 .The-Big #inform2 {
   width: 100%;
   height: 70px;
+  min-height: 100vh;
   background: white;
 }
 
@@ -1112,25 +1113,25 @@
   background: #f0f0f0;
 }
 
-.test_test p{
+.test_test p {
   width: 250px;
 }
 
-#sxdcfgh{
+#sxdcfgh {
   height: auto;
 }
 
-.asdasdasdasdasd{
+.asdasdasdasdasd {
   padding-top: 100px;
 }
 
-.tablle{
+.tablle {
   width: 80%;
   display: block;
   margin: 0 auto;
 }
 
-.numbersss{
+.numbersss {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -1141,12 +1142,12 @@
   border-top-left-radius: 30px;
 }
 
-.numbersss p{
+.numbersss p {
   color: white;
   font-weight: 600;
 }
 
-.tesxtt{
+.tesxtt {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
@@ -1154,13 +1155,13 @@
   padding: 15px;
 }
 
-.tesxtt p ,
-.numbersss p{
+.tesxtt p,
+.numbersss p {
   width: 250px;
   max-width: 300px;
 }
 
-.tesxtt img{
+.tesxtt img {
   cursor: pointer;
   margin-left: 10px;
 }
