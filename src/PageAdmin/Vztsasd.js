@@ -12,6 +12,7 @@ export default function Vztsasd() {
   const [data3, setData3] = useState([]);
   const [state, setState] = useState([]);
   const [posted, setPosted] = useState([]);
+  const [getted, setGetted] = useState([]);
 
   useEffect(() => {
     function getsOne() {
@@ -40,6 +41,7 @@ export default function Vztsasd() {
           });
         });
       });
+
       // axios.get(`${url}/attendance`).then(res => {
       //    const abu = res.data
       //    const abu2 = []
@@ -55,6 +57,7 @@ export default function Vztsasd() {
       //    })
       // })
     }
+    console.log(state, "tiug1");
 
     getsOne();
   }, []);
@@ -87,13 +90,65 @@ export default function Vztsasd() {
     axios.get(`${url}/child`).then((res) => {
       var data1 = [];
       res.data.map((data) => {
-        if (data.groupid == key) {
+        if (data.groupid == document.querySelector(".dddaa").value) {
           data1.push(data);
         }
       });
       setPosted(data1);
     });
-    console.log(posted);
+    console.log(posted, "iuoooooobykgjl");
+    // console.log("hello world");
+
+    // console.log(key, "hello world");
+    // var asd = document.querySelector(".dddaa").value;
+    // console.log(asd, "kdkdkdkd");
+  }
+
+  function postAtten() {
+    // setGetted
+    // axios.get(`${url}/child`).then((res) => {
+    //   var data1 = [];
+    //   res.data.map((data) => {
+    //     if (data.groupid == document.querySelector(".dddaa").value) {
+    //       data1.push(data);
+    //     }
+    //   });
+    //   setPosted(data1);
+    // });
+
+    // console.log(personname);
+
+    // axios.get(`${url}/child`).then((res) => {
+    //   res.data.map((item) => {
+    //     if (personname == item.childlastname) {
+    //     }
+    //   });
+    // });
+    var personname = document.querySelector(".itemChildname").value;
+
+    var data = new FormData();
+    data.append("date", document.querySelector(".datee1").value);
+    data.append("childid", personname);
+    data.append("arrivaltime", document.querySelector(".datee1").value);
+    data.append("leavingtime", document.querySelector(".datee2").value);
+    data.append("employeeid", 1);
+    axios.post(`${url}/attendance`, data).then((res) => {
+      console.log(res.data);
+      window.location = "/Vztsasd";
+    });
+  }
+
+  function OpenSRF2(key) {
+    document.querySelector(".srdhcfghjbk2").style = "display: block";
+    document.querySelector(".hyeraysd2").style = "display: block";
+    // console.log(key);
+    axios.get(`${url}/attendance/${key}`).then((res) => {
+      setGetted(res.data);
+    });
+  }
+  function closeSRF2() {
+    document.querySelector(".srdhcfghjbk2").style = "display: none";
+    document.querySelector(".hyeraysd2").style = "display: none";
   }
 
   return (
@@ -106,32 +161,56 @@ export default function Vztsasd() {
               <span onClick={() => closeSRF()}>X</span>
             </h1>
             <h4>Группа *</h4>
-            <select>
+            <select onClick={() => GetData()} className="dddaa">
               {state.map((item) => {
                 return (
-                  <option onClick={() => GetData(item.groupid)}>
+                  <option className="dddaa2" value={item.groupid}>
                     {item.groupname}
                   </option>
                 );
               })}
             </select>
             <h4>Дети *</h4>
-            <select>
+            <select className="itemChildname">
               {posted.map((item) => {
-                return <option>{item.childlastname}</option>;
+                return (
+                  <option value={item.childid}>{item.childlastname}</option>
+                );
               })}
             </select>
             <h4>Приход *</h4>
-            <input type="text" />
+            <input className="datee1" type="date" />
             <h4>Уход *</h4>
-            <input type="text" />
-            <button>Сохранить</button>
+            <input className="datee2" type="date" />
+            <button onClick={() => postAtten()}>Сохранить</button>
+          </div>
+        </div>
+
+        <div className="hyeraysd2">
+          <div className="srdhcfghjbk2">
+            <h1>
+              Введите новое приход и уход
+              <span onClick={() => closeSRF2()}>X</span>
+            </h1>
+            <h4>Группа *</h4>
+            <select>
+              <option>asd</option>
+            </select>
+            <h4>Дети *</h4>
+            <select className="itemChildname">
+              <option>name</option>
+            </select>
+            <h4>Приход *</h4>
+            <input className="datee1" type="date" />
+            <h4>Уход *</h4>
+            <input className="datee2" type="date" />
+            <button onClick={() => postAtten()}>Сохранить</button>
           </div>
         </div>
         <div className="nodir3">
           <div className="abbas">
             <div className="dropw">
-              <Dropdown id="drop">
+              {/* <Dropdown id="drop">
                 <Dropdown.Toggle variant="light" id="dropdown-basic">
                   Должность
                 </Dropdown.Toggle>
@@ -152,7 +231,7 @@ export default function Vztsasd() {
                   <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
                   <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
               <button id="btnlar1" onClick={() => OpenSRF()}>
                 + Добавить посещение
               </button>
@@ -231,7 +310,7 @@ export default function Vztsasd() {
                           <td className="btnadmp_td1">
                             <button
                               className="butadmp1"
-                              onClick={() => PutData(item.attendanceid)}
+                              onClick={() => OpenSRF2(item.attendanceid)}
                             >
                               <img src={ico2} alt="" />
                             </button>
