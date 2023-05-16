@@ -27,19 +27,7 @@ export default class Employees extends Component {
         document.querySelector('#dd2').style = "display:block"
     }
 
-    //     postModalopen(key){
-    // axios.get(`${url}/person`).then(res=>{
-    //     res.data.map(item=>{
-    //         if(item.personid==key){
-    //             document.querySelector("#form1").value=item.personlastname
-    //             document.querySelector("#form2").value=item.personfirstname
-    //             document.querySelector("#form3").value=item.personmiddlename
-    //             document.querySelector("#form4").value=item.gender
-    //             document.querySelector("#form5").value=item.dateofbirth
-    //         }
-    //     })
-    // })
-    //     }
+  
 
     closeModal() {
         document.querySelector('.modal11').style = "display:none"
