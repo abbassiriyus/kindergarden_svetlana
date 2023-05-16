@@ -9,8 +9,10 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Img3 from "../img/image 37.png";
+import image from "../img/image 45.png";
 import url from "../host";
+import img from "../img/image 37.png";
+import imasd from "../img/image 46.png";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,10 +55,10 @@ export default function Page2() {
   const [relation, setRelation] = useState([]);
   const [legalrep, setLegalrep] = useState([]);
   const [person, setPerson] = useState([]);
-  const [test, setTest]=useState([]);
-  const [question, setQuestion]=useState([])
-  const [skill, setKill]=useState([])
-  const [skillgroup, setKillgroup]=useState([])
+  const [test, setTest] = useState([]);
+  const [question, setQuestion] = useState([]);
+  const [skill, setKill] = useState([]);
+  const [skillgroup, setKillgroup] = useState([]);
   // const[gruo,setGruo]=useState()
 
   useEffect(() => {
@@ -122,9 +124,18 @@ export default function Page2() {
     // console.log(person);
     // console.log(test);
     // console.log(question);
-
     // console.log(Kid);
-  }, [bolas, child22, group, selectedKid,relation,legalrep,person,test,question,]);
+  }, [
+    bolas,
+    child22,
+    group,
+    selectedKid,
+    relation,
+    legalrep,
+    person,
+    test,
+    question,
+  ]);
 
   /////////
   const handleChange = (event, newValue) => {
@@ -135,60 +146,60 @@ export default function Page2() {
     document.querySelector(".box-ss").style = "display: block;";
     document.querySelector(".kids-Page2").style = "display: none;";
   }
-  function CHECK (id) {
+  function CHECK(id) {
     // if (setKill===id) {
     //   console.log("dkdkdkkdkdkdkd");
     //   console.log(skill);
     // }
     // console.log("dkdjdj");
     // console.log(selectedKid);
-    axios
-    .get(`${url}/test`)
-    .then(res=>{
-      let usa =[]
-      let uk =[]
+    axios.get(`${url}/test`).then((res) => {
+      let usa = [];
+      let uk = [];
       for (let e = 0; e < res.data.length; e++) {
-        if (selectedKid.childid===res.data[e].childid) {
-          usa.push(res.data[e].questionid)
+        if (selectedKid.childid === res.data[e].childid) {
+          usa.push(res.data[e].questionid);
           // console.log(usa);
         }
-        
       }
-        axios
-        .get(`${url}/question`)
-        .then(res2=>{
-          for (let j = 0; j < res2.data.length; j++) {
-            for (let i = 0; i < usa.length; i++) {
-              if (usa[0]===res2.data[j].questionid) {
-                uk.push(res2.data[j].answer)
-               }
+      axios.get(`${url}/question`).then((res2) => {
+        for (let j = 0; j < res2.data.length; j++) {
+          for (let i = 0; i < usa.length; i++) {
+            if (usa[0] === res2.data[j].questionid) {
+              uk.push(res2.data[j].answer);
             }
-
-            
           }
-          // console.log(usa[0]);
-          // console.log(id);
-          // console.log(uk);
-          if (id===uk[0]) {
-            console.log("turi");
-          }else{
-            console.log("notori");
-          }
-       
-
-        })
-       
-        
-      
-
-    })
-    
+        }
+        // console.log(usa[0]);
+        // console.log(id);
+        // console.log(uk);
+        if (id === uk[0]) {
+          document.querySelector(".modall").style.display = "block";
+          setTimeout(() => {
+            document.querySelector(".modall").style.display = "none";
+          }, 2000);
+          console.log("turi");
+        } else {
+          document.querySelector(".modall2").style.display = "block";
+          setTimeout(() => {
+            document.querySelector(".modall2").style.display = "none";
+          }, 2000);
+        }
+      });
+    });
   }
-  
-
 
   return (
     <div>
+      <div className="modall">
+        <h1>Все верно! И эта звездочка тебе!</h1>
+        <img src={image} alt="" />
+      </div>
+
+      <div className="modall2">
+        <h1>Ошибочка! Попробуй еще раз!</h1>
+        <img src={imasd} alt="" />
+      </div>
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -222,10 +233,10 @@ export default function Page2() {
                     </div>
 
                     <div className="Input-grup">
-                    <h4>Группа</h4>
-                      {group.map((item2)=>{
-                        if (item.groupid===item2.groupid) {
-                          return(<p>{item2.groupname}</p>)
+                      <h4>Группа</h4>
+                      {group.map((item2) => {
+                        if (item.groupid === item2.groupid) {
+                          return <p>{item2.groupname}</p>;
                         }
                       })}
                     </div>
@@ -238,21 +249,35 @@ export default function Page2() {
                     <div className="Input-grup">
                       <h4>Представители</h4>
                       <ul>
-                        {relation.map((item3)=>{
-                          if (item.childid===item3.childid) {
-                            return(<li>
-                            {item3.status}
-                            {legalrep.map((item4)=>{
-                              if (item3.legalrepid===item4.legalrepid) {
-                                return(<>{person.map((item5)=>{
-                                  if (item4.personid===item5.personid) {
-                                    return(<span> {item5.personlastname} {item5.personfirstname} {item5.personmiddlename} {item5.phone}</span>)
+                        {relation.map((item3) => {
+                          if (item.childid === item3.childid) {
+                            return (
+                              <li>
+                                {item3.status}
+                                {legalrep.map((item4) => {
+                                  if (item3.legalrepid === item4.legalrepid) {
+                                    return (
+                                      <>
+                                        {person.map((item5) => {
+                                          if (
+                                            item4.personid === item5.personid
+                                          ) {
+                                            return (
+                                              <span>
+                                                {item5.personlastname}
+                                                {item5.personfirstname}
+                                                {item5.personmiddlename}
+                                                {item5.phone}
+                                              </span>
+                                            );
+                                          }
+                                        })}
+                                      </>
+                                    );
                                   }
-                                })}</>)
-                              }
-
-                            })}
-                          </li>)
+                                })}
+                              </li>
+                            );
                           }
                         })}
                       </ul>
@@ -270,28 +295,38 @@ export default function Page2() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className="divs-tst">
-            {test.map((item)=>{
-              if (selectedKid.childid===item.childid) {
-                return<>{question.map((item2)=>{
-                  if (item.questionid===item2.questionid) {
-                    // setKill(item2.answer)
-                    return<div className="dvasew">
-                    <p>{item2.question}</p>
-
-                      <div className="aysdu">
-<button onClick={() => CHECK(1)} >1</button>
-<button value={2}>2</button>
-<button value={3}>3</button>
-<button value={4}>4</button>
-                    </div>
-                  </div>
-                  }
-                })}
-               </>
-   
+            {test.map((item) => {
+              if (selectedKid.childid === item.childid) {
+                return (
+                  <>
+                    {question.map((item2) => {
+                      if (item.questionid === item2.questionid) {
+                        // setKill(item2.answer)
+                        return (
+                          <div className="dvasew">
+                            <p>{item2.question}</p>
+                            <div className="fykjh">
+                              <img src={img} alt="" />
+                              <div className="aysdu">
+                                <button onClick={() => CHECK(1)}>1</button>
+                                <br />
+                                <button onClick={() => CHECK(2)} value={2}>
+                                  2
+                                </button>
+                                <br />
+                                <button value={3}>3</button>
+                                <br />
+                                <button value={4}>4</button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }
+                    })}
+                  </>
+                );
               }
             })}
-
           </div>
         </TabPanel>
       </Box>

@@ -576,7 +576,7 @@
 }
 
 .only_you .dvasew {
-  display: flex;
+  /* display: flex; */
   align-items: center;
 }
 
@@ -811,49 +811,107 @@
   height: 100px;
 }
 
-.bodychil2{
-    display: none;
+.bodychil2 {
+  display: none;
 }
 
-.bodyAcc{
-    width: 40%;
-    margin: auto;
-    display: flex;
-    justify-content: space-evenly;
+.bodyAcc {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.bodyAcc input{
-    width: 50%;
-    height: 40px;
-    border-radius: 30px;
-    padding-left: 10px;
-    margin-left: 10px;
-    padding-right: 10px;
-    border: none;
+.bodyAcc input {
+  width: 50%;
+  height: 40px;
+  border-radius: 30px;
+  padding-left: 10px;
+  margin-left: 10px;
+  padding-right: 10px;
+  border: none;
 }
 
-.bodyAcc select{
-    width: 50%;
-    height: 40px;
-    border-radius: 30px;
-    padding-left: 10px;
-    border: none;
-    font-size: 25px;
+.bodyAcc select {
+  width: 50%;
+  height: 40px;
+  border-radius: 30px;
+  padding-left: 10px;
+  border: none;
+  font-size: 25px;
 }
 
-.bodyAcc2{
-    display: flex;
-    justify-content: space-evenly;
-    margin: 20px;
-    align-items: center;
+.bodyAcc2 {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20px;
+  align-items: center;
 }
 
-.personDiv{
-    width: 10%;
-    padding: 10px;
-    background: #fff;
-    border-radius: 50px;
-    align-items: center;
-    font-size: 20px;
-    text-align: center;
+.personDiv {
+  width: 10%;
+  padding: 10px;
+  background: #fff;
+  border-radius: 50px;
+  align-items: center;
+  font-size: 20px;
+  text-align: center;
+}
+
+.fykjh {
+  display: flex;
+  align-items: center;
+}
+
+.aysdu {
+  width: 300px;
+  display: block !important;
+  flex-wrap: wrap;
+}
+
+.aysdu button {
+  width: 11%;
+  border-radius: 50%;
+  padding: 3px;
+  background: #334155;
+  color: white;
+  margin-left: 10px;
+  border: 1px solid #fff;
+  margin-top: 10px;
+  transition: 0.2s;
+}
+
+.aysdu button:hover {
+  background: none;
+  color: #334155;
+  border: 1px solid #334155;
+  font-weight: 700;
+}
+
+.modall {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffffffc7;
+  text-align: center;
+  align-items: center;
+  padding-top: 100px;
+  z-index: 9;
+}
+
+.modall2 {
+  display: none;
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #ffffffc7;
+  text-align: center;
+  align-items: center;
+  padding-top: 100px;
+  z-index: 9;
 }
