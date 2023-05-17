@@ -376,7 +376,7 @@ export default class Employees extends Component {
           </div>
         </div>
 
-        <h1 className="bigah1">Список сотрудников</h1>
+        <h1 className="bigah1">Список Родитель</h1>
         <div className="biga-pages">
           <Dropdown id="drop">
             <Dropdown.Toggle variant="light" id="dropdown-basic">
@@ -420,7 +420,7 @@ export default class Employees extends Component {
               this.openModal();
             }}
           >
-            + Добавить сотрудника
+            + Добавить Родитель
           </button>
         </div>
         <div id="tables">

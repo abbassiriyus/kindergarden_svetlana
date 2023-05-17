@@ -86,6 +86,8 @@ export default class App extends Component {
 
     axios.post(`${url}/timetable`,data).then(res=>{
     alert("data create")
+    this.closeModal()
+    this.getAll()
     })
     }
     testData(start, finish, day) {
@@ -93,7 +95,7 @@ export default class App extends Component {
         var data12
         this.state.weekday.map(item => {
             //console.log(item.begining,start,item.finishing,finish,item.day,day);
-            if (item.begining == start && item.finishing == finish && item.day == day) {
+            if (item.begining == start && item.finishing == finish && item.weekday*1 == day*1) {
                 kluch = false
                 data12 = `${item.subjectname}\n\n\n${item.personlastname + " " + item.personfirstname + item.personmiddlename}\n${item.roomnumber}`
             }
@@ -159,45 +161,46 @@ export default class App extends Component {
         })
     }
 
+getAll(){
+    axios.get(`${url}/group`).then(res => {
+        this.setState({ group: res.data })
+        this.getTable(res.data[0].groupid)
+        axios.get(`${url}/employee`).then(res3 => {
+            axios.get(`${url}/person`).then(res2 => {
 
+                for (let i = 0; i < res3.data.length; i++) {
+                    for (let j = 0; j < res2.data.length; j++) {
+                        if (res3.data[i].personid == res2.data[j].personid) {
+                            res3.data[i].personlastname = res2.data[j].personlastname
+                            res3.data[i].personfirstname = res2.data[j].personfirstname
+                            res3.data[i].personmiddlename = res2.data[j].personmiddlename
+                        }
+                    }
+                }
+
+                this.setState({ employee: res3.data })
+                axios.get(`${url}/group`).then(res => {
+                    this.setState({ group: res.data })
+                })
+                axios.get(`${url}/room`).then(res => {
+                    this.setState({ room: res.data })
+                })
+            })
+
+
+
+
+            axios.get(`${url}/subject`).then(res => {
+                this.setState({ subject: res.data })
+            })
+        })
+    })
+
+}
 
 
     componentDidMount() {
-        axios.get(`${url}/group`).then(res => {
-            this.setState({ group: res.data })
-            this.getTable(res.data[0].groupid)
-            axios.get(`${url}/employee`).then(res3 => {
-                axios.get(`${url}/person`).then(res2 => {
-
-                    for (let i = 0; i < res3.data.length; i++) {
-                        for (let j = 0; j < res2.data.length; j++) {
-                            if (res3.data[i].personid == res2.data[j].personid) {
-                                res3.data[i].personlastname = res2.data[j].personlastname
-                                res3.data[i].personfirstname = res2.data[j].personfirstname
-                                res3.data[i].personmiddlename = res2.data[j].personmiddlename
-                            }
-                        }
-                    }
-
-                    this.setState({ employee: res3.data })
-                    axios.get(`${url}/group`).then(res => {
-                        this.setState({ group: res.data })
-                    })
-                    axios.get(`${url}/room`).then(res => {
-                        this.setState({ room: res.data })
-                    })
-                })
-
-
-
-
-                axios.get(`${url}/subject`).then(res => {
-                    this.setState({ subject: res.data })
-                })
-            })
-        })
-
-
+    this.getAll()  
     }
     render() {
         return (
@@ -207,7 +210,7 @@ export default class App extends Component {
                         <label htmlFor="">Дата</label><br />
                         <select name="" id="select_1">
                             {weekday.map(item => {
-                                return <option value={item.number}>{item.day}</option>
+                                return <option value={item.number} >{item.day}</option>
                             })}  </select><br />
                         <label htmlFor="">Время с</label><br />
                         <select name="" id="select_1s">
@@ -231,7 +234,7 @@ export default class App extends Component {
                         </select><br />
                         <label htmlFor="">Тема</label><br />
                         <select name="" id="select_4">
-                            {this.state.subject.map(item => { return <option value={item.subjsctid}>{item.subjectname}</option> })}
+                            {this.state.subject.map(item => { return <option value={item.subjectid}>{item.subjectname}</option> })}
                         </select><br />
                         <label htmlFor="">Занятие</label><br />
                         <select name="" id="">
@@ -257,7 +260,7 @@ export default class App extends Component {
                             return <option onClick={() => this.getTable(item.groupid)} value={item.groupid}>{item.groupname}</option>
                         })}
                     </select>
-                    <button id="btnlar1" style={{ margin: 'auto', marginRight: '30px' }} onClick={() => { this.openModal() }}>+ Добавить сотрудника</button>
+                    <button id="btnlar1" style={{ margin: 'auto', marginRight: '30px' }} onClick={() => { this.openModal() }}>+ Добавить расписание</button>
                 </div>
 
 

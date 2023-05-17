@@ -13,6 +13,10 @@ import { data } from 'jquery';
 export default function GroupDti() {
    const [state, setState] = useState([])
    const [non, setnon] = useState([])
+   const [Deti, setDeti] = useState([])
+   const [labor, setLabor] = useState([])
+   const [position, setposition] = useState([])
+
 
    useEffect(() => {
       const fetchData = async () => {
@@ -50,7 +54,21 @@ export default function GroupDti() {
                                        }
                                     }
                                  }
+
                                  setState(filteredGroup)
+                              
+                                 axios.get(`${url}/labor`)
+                                 .then((res5) => {
+                                   
+                                    setLabor(res5.data)
+                                 
+                                 
+                                 
+                                 
+                                 })  
+                              
+                              
+                              
                               })
                         })
                   })
