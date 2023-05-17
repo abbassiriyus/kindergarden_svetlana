@@ -256,14 +256,15 @@ export default function GroupDti() {
 
                         </tr>
                         {
-                           state.map(item => {
+                           state.map((item,key) => {
                               return (
                                  <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1">{item.groupid}</td>
+                                    <td className="btnadmp_td1">{key+1}</td>
                                     <td className="btnadmp_td1">{item.groupname}</td>
                                     <td className="btnadmp_td1"> {item.syscreatedatutc.slice(0, 10)}</td>
                                     <td className="btnadmp_td1"> {item.personlastname}</td>
-                                    <td className="btnadmp_td1"> {item.ageid}</td>
+                                    <td className="btnadmp_td1"><div style={{width:'10px',height:'10px',borderRadius:"50%",background:'lime',margin:'auto',border:'1px solid gray'}}>
+                                       </div></td>
                                     <td className="btnadmp_td1">
                                        <button onClick={() => opensModal2(item.groupid)} className="butadmp1">
                                           <img src={ico2} alt="" />

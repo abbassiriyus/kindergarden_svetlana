@@ -179,9 +179,9 @@ export default function Vztsasd() {
               })}
             </select>
             <h4>Приход *</h4>
-            <input className="datee1" type="date" />
+            <input className="datee1" type="datetime-local" />
             <h4>Уход *</h4>
-            <input className="datee2" type="date" />
+            <input className="datee2" type="datetime-local" />
             <button onClick={() => postAtten()}>Сохранить</button>
           </div>
         </div>
@@ -201,9 +201,9 @@ export default function Vztsasd() {
               <option>name</option>
             </select>
             <h4>Приход *</h4>
-            <input className="datee1" type="date" />
+            <input className="datee1" type="datetime-local" />
             <h4>Уход *</h4>
-            <input className="datee2" type="date" />
+            <input className="datee2" type="datetime-local" />
             <button onClick={() => postAtten()}>Сохранить</button>
           </div>
         </div>
@@ -273,20 +273,20 @@ export default function Vztsasd() {
                               </td>
                            </tr> */}
 
-                  {data.map((item) => {
+                  {data.map((item,key) => {
                     if (item.excuseid) {
                       return (
                         <tr className="btnadmp_tr1">
-                          <td className="btnadmp_td2">2</td>
+                          <td className="btnadmp_td2">{key+1}</td>
                           <td className="btnadmp_td2">
                             {item.childlastname} {item.childfirstname}
                           </td>
                           <td className="btnadmp_td2">{item.reason}</td>
                           <td className="btnadmp_td2">
-                            {item.arrivaltime.slice(0, 10)}
+                            {((item.arrivaltime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
                           </td>
                           <td className="btnadmp_td2">
-                            {item.arrivaltime.slice(0, 10)}
+                            {((item.leavingtime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
                           </td>
 
                           <td className="btnadmp_td2">
@@ -297,14 +297,14 @@ export default function Vztsasd() {
                     } else {
                       return (
                         <tr className="btnadmp_tr1">
-                          <td className="btnadmp_td1">{item.attendanceid}</td>
+                          <td className="btnadmp_td1">{key+1}</td>
                           <td className="btnadmp_td1">{item.childlastname}</td>
                           <td className="btnadmp_td1"> Присутствует </td>
                           <td className="btnadmp_td1">
-                            {item.arrivaltime.slice(0, 10)}
+                            {((item.arrivaltime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
                           </td>
                           <td className="btnadmp_td1">
-                            {item.leavingtime.slice(0, 10)}
+                            {((item.leavingtime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
                           </td>
 
                           <td className="btnadmp_td1">
