@@ -314,9 +314,9 @@ export default function Page2() {
                                   2
                                 </button>
                                 <br />
-                                <button value={3}>3</button>
+                                <button onClick={() => CHECK(3)} value={3}>3</button>
                                 <br />
-                                <button value={4}>4</button>
+                                <button onClick={() => CHECK(4)} value={4}>4</button>
                               </div>
                             </div>
                           </div>
@@ -325,6 +325,8 @@ export default function Page2() {
                     })}
                   </>
                 );
+              }else{
+                return<div>NETU</div>
               }
             })}
           </div>
