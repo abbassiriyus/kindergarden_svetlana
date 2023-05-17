@@ -1165,3 +1165,322 @@
   cursor: pointer;
   margin-left: 10px;
 }
+
+.bodyadmpn {
+  width: 100%;
+  margin: 0;
+}
+.metgala {
+  padding-top: 70px;
+}
+.bodyadmp_h2 {
+  margin-left: 5.5%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #334155;
+}
+.bodyadmp_h2 b {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+
+  color: #334155;
+}
+.btnadmp_box1 {
+  width: 90%;
+  padding-top: 5%;
+  margin: auto;
+}
+.bigAbbas {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #d9d9d94f;
+  backdrop-filter: blur(30px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: none;
+}
+.bigAbbas .first_button {
+  width: 163.5px;
+  height: 51px;
+  background: rgba(51, 65, 85, 0.5);
+  box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+  border-radius: 20px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+
+  color: #ffffff;
+}
+.bigAbbas .second_button {
+  width: 163.5px;
+  height: 51px;
+  background: #334155;
+  box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
+  border-radius: 20px;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 10px;
+  color: #ffffff;
+}
+.bigAbbas .modalAbbas {
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+.modalAbbas select {
+  background: #ffffff;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 10px;
+  width: 256px;
+  height: 41px;
+}
+.modalAbbas input {
+  background: #ffffff;
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: 10px;
+  width: 256px;
+  height: 41px;
+}
+.btnchil_table {
+  width: 100%;
+  border-radius: 30px 30px 0px 0;
+  -webkit-border-radius: 30px 30px 0px 0;
+  -moz-border-radius: 30px 30px 0px 0;
+  -ms-border-radius: 30px 30px 0px 0;
+  -o-border-radius: 30px 30px 0px 0;
+}
+
+.btnadmp_tr,
+.btnadmp_tr1 {
+  text-align: center;
+  height: 80px;
+}
+
+.btnadmp_th1 {
+  border-radius: 30px 0 0 0;
+  -webkit-border-radius: 30px 0 0 0;
+  -moz-border-radius: 30px 0 0 0;
+  -ms-border-radius: 30px 0 0 0;
+  -o-border-radius: 30px 0 0 0;
+}
+.btnadmp_th2 {
+  border-radius: 0px 30px 0 0;
+  -webkit-border-radius: 0px 30px 0 0;
+  -moz-border-radius: 0px 30px 0 0;
+  -ms-border-radius: 0px 30px 0 0;
+  -o-border-radius: 0px 30px 0 0;
+}
+#borDr {
+  border-top-right-radius: 30px !important;
+}
+.btnadmp_th,
+.btnadmp_th1,
+.btnadmp_th2 {
+  height: 60px;
+  /* background: rgba(51, 65, 85, 0.5); */
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #334155;
+  width: 500px;
+  /* border-top-right-radius: 50px; */
+}
+.btnadmp_td1,
+.btnadmp_td2 {
+  height: 60px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #334155;
+  margin: 0;
+}
+
+.btnadmp_td1 {
+  background: #d9d9d9;
+}
+
+.butadmp1,
+.butadmp2 {
+  background-color: transparent;
+  border: none;
+}
+.bts {
+  width: 317px;
+  height: 43px;
+  background: #ffffff;
+  border-radius: 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  border: none;
+  outline: none;
+  color: #334155;
+  padding-left: 10px;
+}
+.bt21 {
+  width: 256px;
+  height: 43px;
+  background: #ffffff;
+  border-radius: 30px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #334155;
+  border: none;
+  outline: none;
+  border-color: gray;
+  padding-left: 10px;
+}
+.amygdala {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+}
+.nod {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #334155;
+}
+.nod2 {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #334155;
+}
+.nood {
+  display: flex;
+}
+@media (max-width: 880px) {
+  .btnadmp_box1 {
+    overflow-x: scroll;
+  }
+  .btnchil_table {
+    width: 1000px;
+  }
+  /* .MuiPagination-ul li button:active {
+    color: red !important;
+    background-color: red !important;
+  } */
+}
+
+/* <div className="btns-pg7">
+<div className="btnss-pg7">
+  <button onClick={() => openTest()}>ЯНВАРЬ</button>
+  <button onClick={() => openTest()}>ФЕВРАЛЬ</button>
+  <button onClick={() => openTest()}>МАРТ</button>
+</div>
+<div className="btnss-pg7">
+  <button onClick={() => openTest()}>АПРЕЛЬ</button>
+  <button onClick={() => openTest()}>МАЙ</button>
+  <button onClick={() => openTest()}>ИЮНЬ</button>
+</div>
+<div className="btnss-pg7">
+  <button onClick={() => openTest()}>ИЮЛЬ</button>
+  <button onClick={() => openTest()}>АВГУСТ</button>
+  <button onClick={() => openTest()}>СЕНТЯБРЬ</button>
+</div>
+<div className="btnss-pg7">
+  <button onClick={() => openTest()}>ОКТЯБРЬ</button>
+  <button onClick={() => openTest()}>НОЯБРЬ</button>
+  <button onClick={() => openTest()}>ДЕКАБРЬ</button>
+</div>
+</div> */
+
+.divTest {
+  display: none;
+  width: 80%;
+  height: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 30px;
+  position: relative;
+}
+
+.Test_09 {
+  display: flex;
+  align-items: center;
+}
+
+.hashla h1 {
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50%;
+  padding: 10px;
+  text-align: center;
+  align-items: center;
+  border: 1px solid #334155;
+  transition: 0.3s;
+}
+
+.hashla h1:hover {
+  cursor: pointer;
+  background: #334155;
+  color: white;
+}
+
+.GroupsBtn {
+  width: 80%;
+  height: 600px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+.groupp {
+  width: 60%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.groupp button {
+  width: 30%;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: none;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.groupp button:hover {
+  background: #334155;
+  color: white;
+  font-weight: 700;
+}
+
+.ixx {
+  position: absolute;
+  font-size: 30px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
