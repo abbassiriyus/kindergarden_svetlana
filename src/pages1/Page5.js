@@ -25,8 +25,8 @@ export default function Page5() {
         setData1(res.data);
       });
     }
-    var hashbir = document.querySelector(".hashbir").innerHTML;
-    console.log(hashbir);
+    // var hashbir = document.querySelector(".hashbir").innerHTML;
+    // console.log(hashbir);
     getGroup();
   }, []);
 

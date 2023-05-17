@@ -923,3 +923,47 @@
   text-align: center;
   text-transform: uppercase;
 }
+
+.ModalChilds {
+  margin: auto;
+  width: 50%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.ModalChilds .childs {
+  /* width: 40%; */
+  display: flex;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+}
+
+.mchj {
+  display: flex;
+  align-items: center;
+}
+
+.mchj h4 {
+  margin-left: 10px;
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+.BigModalChild {
+  width: 100%;
+  min-height: 100vh;
+  background: #000000a1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.ixk {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
