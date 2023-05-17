@@ -25,9 +25,11 @@ export default function Page5() {
         setData1(res.data);
       });
     }
-
+    var hashbir = document.querySelector(".hashbir").innerHTML;
+    console.log(hashbir);
     getGroup();
   }, []);
+
   return (
     <div className="The-Big" id="useirud2">
       <div className="Cards-Page1-1">
@@ -53,7 +55,7 @@ export default function Page5() {
               >
                 <Typography className="ush">
                   <img src={Img002} alt="" />
-                  <h1>{item.groupname}</h1>
+                  <h1 className="hashbir">{item.groupname}</h1>
                 </Typography>
               </AccordionSummary>
               <AccordionDetails>

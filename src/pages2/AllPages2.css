@@ -915,3 +915,11 @@
   padding-top: 100px;
   z-index: 9;
 }
+
+.modall h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
