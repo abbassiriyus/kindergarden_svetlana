@@ -74,7 +74,7 @@ if (a==="17-05-2023") {
           </p>
         </div>
       </div>
-      <h1 className="text-center">{hlo}</h1>
+ 
       <div className="calendar-container">
         <Calendar
         onClickDay={() => clickaday(date)}  
