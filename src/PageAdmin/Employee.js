@@ -277,17 +277,9 @@ export default class Employees extends Component {
     });
   }
 
-  // putdata(key){
-  //     axios
-  //     .get(`${url}/person`)
-  //     .then(res=>{
-  //         const filterperson = res.data.filter(
-  //             (person) =>
-  //               person.personid === key
-  //           );
-  //           this.setState({ putData: filterperson})
-
-  //          })}
+  putdata(key){
+  window.location.reload()
+  }
 
   render() {
     return (
