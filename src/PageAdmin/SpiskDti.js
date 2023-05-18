@@ -333,9 +333,8 @@ export default class ChildAdmin extends Component {
   }
 
   deletechild(key) {
-    axios
-      .delete(`${url}/child/${this.state.deleteData.childid}`)
-      .then((res) => {
+
+    axios.delete(`${url}/child/${this.state.deleteData.childid}`).then((res) => {
         document.querySelector(".modal12").style = "display:none";
         document.querySelector(".modal12").style = "display:none";
         window.location.reload();
