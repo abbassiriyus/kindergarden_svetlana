@@ -51,6 +51,13 @@ export default function Allfront() {
     sessionStorage.setItem("page", 1);
     window.location.reload();
   };
+
+  const selectOpen0 = () => {
+    $(".selectNav0").addClass("ActiveSelect");
+  };
+  const selectClose0 = () => {
+    $(".selectNav0").removeClass("ActiveSelect");
+  };
   return (
     <div className="BigHome">
       <div className="Navbar">
@@ -86,16 +93,28 @@ export default function Allfront() {
             </div>
           </span>
           <span className="dropdown">
+            <p
+              onMouseEnter={selectOpen0}
+              onMouseLeave={selectClose0}
+              className="labelSelect"
+            >
+              Расписание <br /> <IoIosArrowDown />
+            </p>
+            <div
+              onMouseEnter={selectOpen1}
+              onMouseLeave={selectClose1}
+              className="selectNav0 "
+            >
+              <a href="/user">Расписание доп. занятий</a>
+            </div>
+          </span>
+          <span className="dropdown">
             <div
               onMouseEnter={selectOpen2}
               onMouseLeave={selectClose2}
               className="selectNav2"
-            >
-              <a href="">Расписание доп.занятий</a>
-            </div>
+            ></div>
           </span>
-
-          <a href="/">Расписание</a>
           <a href="/prog">Программа</a>
           <a href="/news">Новости</a>
           <a href="/home">Команда</a>
