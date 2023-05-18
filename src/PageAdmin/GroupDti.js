@@ -58,13 +58,12 @@ export default function GroupDti() {
                                  setState(filteredGroup)
                               
                                  axios.get(`${url}/labor`)
-                                 .then((res5) => {
-                                   
+                                 .then((res5) => {  
                                     setLabor(res5.data)
-                                 
-                                 
-                                 
-                                 
+                                    axios.get(`${url}/position`)
+                                    .then((res5) => {  
+                                       setposition(res5.data)
+                                    })  
                                  })  
                               
                               
@@ -174,21 +173,19 @@ export default function GroupDti() {
                <input className='ageidDobav2' type="number" />
                <h4>Воспитатели</h4>
                <select className='hthgnhdnd'>
-                  <option></option>
-                  <option>Воспитатели1</option>
-                  <option>Воспитател2</option>
+             
+                  {labor.map(item=>{ return <option>{item.laborname}</option>})}
                </select>
                <h4>Активность</h4>
                <select>
-                  <option></option>
-                  <option>Активность1</option>
-                  <option>Активность2</option>
+                  <option>Да</option>
+                  <option>Нет</option>
                </select>
                <h4>Дети</h4>
                <select>
                   <option></option>
-                  <option>Дети1</option>
-                  <option>Дети2</option>
+               {Deti.map(item=>{return <option>{item.childlastname} {item.childfirstname} {item.childmiddlename}</option>})} 
+               
                </select>
             </div>
             <div className="grp_btn">
