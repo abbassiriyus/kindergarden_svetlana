@@ -12,6 +12,7 @@ import RestApi from "./pages/RestApi";
 import Tema from "./pages/Tema";
 import HomePage from "./pages/HomePage";
 import Landing from "./pages/Landing";
+import Raspisaniya from "./pages/Raspisaniya";
 import "./AllFront.css";
 import $ from "jquery";
 
@@ -51,13 +52,6 @@ export default function Allfront() {
     sessionStorage.setItem("page", 1);
     window.location.reload();
   };
-
-  const selectOpen0 = () => {
-    $(".selectNav0").addClass("ActiveSelect");
-  };
-  const selectClose0 = () => {
-    $(".selectNav0").removeClass("ActiveSelect");
-  };
   return (
     <div className="BigHome">
       <div className="Navbar">
@@ -92,20 +86,12 @@ export default function Allfront() {
               <a href="/tema">Частые вопросы</a>
             </div>
           </span>
-          <span className="dropdown">
-            <p
-              onMouseEnter={selectOpen0}
-              onMouseLeave={selectClose0}
-              className="labelSelect"
-            >
+          <span id="nhyrfv5" className="dropdown">
+            <p className="labelSelect">
               Расписание <br /> <IoIosArrowDown />
             </p>
-            <div
-              onMouseEnter={selectOpen1}
-              onMouseLeave={selectClose1}
-              className="selectNav0 "
-            >
-              <a href="/user">Расписание доп. занятий</a>
+            <div className="selectNav0 ">
+              <a href="/Raspisaniya">Расписание доп. занятий</a>
             </div>
           </span>
           <span className="dropdown">
@@ -166,6 +152,7 @@ export default function Allfront() {
           <Route path="/RestApi" element={<RestApi />} />
           <Route path="/Tema" element={<Tema />} />
           <Route path="/Landing" element={<Landing />} />
+          <Route path="/Raspisaniya" element={<Raspisaniya />} />
         </Routes>
       </BrowserRouter>
 

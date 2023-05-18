@@ -494,5 +494,18 @@ input {
 }
 
 .selectNav0 {
+  /* top: 20px; */
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  width: 130px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 0 10px black;
+  height: 100px;
   display: none;
+}
+
+#nhyrfv5:hover .selectNav0 {
+  display: block;
 }
