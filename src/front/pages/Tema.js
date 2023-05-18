@@ -8,7 +8,7 @@ import HomeImg3 from '../img/About-news.png'
 import HomeImg4 from '../img/image 11.png'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { YMaps, Map, Placemark } from 'react-yandex-maps'
+
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 
@@ -84,19 +84,7 @@ export default function Tema() {
           </div>
         </div>
       </div>
-      <YMaps className='Map-1'>
-        <div>
-          <Map
-            defaultState={{
-              center: [55.751574, 37.573856],
-              zoom: 6,
-            }}
-            className='Map-1'
-          >
-            <Placemark geometry={[55.751574, 37.573856]} />
-          </Map>
-        </div>
-      </YMaps>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"  height="450" style={{border:'0',width:'80%',marginLeft:'10%'}} allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   )
 }

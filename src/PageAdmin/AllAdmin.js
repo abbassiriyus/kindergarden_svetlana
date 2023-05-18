@@ -361,8 +361,8 @@ export default function AllAdmin() {
                                     <a href="/Plan" onClick={()=>{sessionStorage.setItem('page12',9)}}>
                                         <h5 style={page12==9?{background:'white'}:{background:'none'}}>Учебный план</h5>
                                     </a>
-                                    <a href="/ByGrupss" onClick={()=>{sessionStorage.setItem('page12',9)}}>
-                                        <h5 style={page12==9?{background:'white'}:{background:'none'}}>Расписание</h5>
+                                    <a href="/ByGrupss" onClick={()=>{sessionStorage.setItem('page12',10)}}>
+                                        <h5 style={page12==10?{background:'white'}:{background:'none'}}>Расписание</h5>
                                     </a>
                                 </Typography>
                             </AccordionDetails>
