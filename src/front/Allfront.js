@@ -39,7 +39,7 @@ export default function Allfront() {
     $(".selectNav2").removeClass("ActiveSelect");
   };
   const enterOpen = () => {
-    $(".modalEnter").toggleClass("activeModalEnter");
+    $(".modalEnter").toggleClass("activeModalEnter");    
   };
   const closeModal = () => {
     $(".modalEnter").removeClass("activeModalEnter");
@@ -108,10 +108,10 @@ export default function Allfront() {
             Войти
           </div>
 
-          <div className="modalEnter">
-            <h2>Вход для</h2>
-            <a href="form">Для сотрудников</a>
-            <a href="number">Для родителей</a>
+          <div className="modalEnter1">
+            {/* <h2>Вход для</h2> */}
+            <a href="form">Для<br /> сотрудников</a><br />
+            <a href="number">Для <br />родителей</a>
             <div onClick={closeModal} className="closeModal">
               Закрыть
             </div>
