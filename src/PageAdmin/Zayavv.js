@@ -3,7 +3,21 @@ import './css/Zayavv.css'
 import React, { Component } from 'react'
 import icon1 from '../img/free-icon-edit-6488637 (2).png'
 import icon2 from '../img/free-icon-delete-5396993.png'
+import axios from 'axios'
+import url from '../host.js'
 export default class App extends Component {
+state={
+data:[]
+}
+componentDidMount(){
+axios.get(`${url}/contact`).then(res=>{
+    this.setState({data:res.data})
+})
+}
+
+
+
+    
     render() {
         return (
             <div className="nodir53">
@@ -40,62 +54,20 @@ export default class App extends Component {
                                     <th className="btnadmp_th2">Примечание </th>
 
                                 </tr>
-
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2"> 2 </td>
-                                    <td className="btnadmp_td2">Ирина</td>
-                                    <td className="btnadmp_td2">adf@yandex.ru</td>
-                                    <td className="btnadmp_td2"> +7(910)134-56-22 </td>
-                                    <td className="btnadmp_td2">15/07/2020</td>
-
-
-                                    <td className="btnadmp_td2">
-                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
-                                        <button className="butadmp2"><img src={icon1} alt="" /></button>
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1">  </td>
-                                    <td className="btnadmp_td1">  </td>
-                                    <td className="btnadmp_td1">   </td>
+{this.state.data.map((item,key)=>{
+    return  <tr className="btnadmp_tr1" >
+        <td className="btnadmp_td2"> {key}</td>
+        <td className="btnadmp_td2">{item.fullname}</td>
+        <td className="btnadmp_td2">{item.email}</td>
+        <td className="btnadmp_td2">{item.phone} </td>
+        <td className="btnadmp_td2">{item.syscreatedatutc.slice(0,10)}</td>
 
 
-                                    <td className="btnadmp_td1">
-                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
-                                        <button className="butadmp2"><img src={icon1} alt="" /></button>
-                                    </td>
-                                </tr>
-
-
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"></td>
-                                    <td className="btnadmp_td2"> </td>
-                                    <td className="btnadmp_td2">  </td>
-
-
-
-                                    <td className="btnadmp_td2">
-                                        {/* <button className="butadmp1"><img src={icon2} alt="" /></button> */}
-                                        <button className="butadmp2"><img src={icon1} alt="" /></button>
-                                    </td>
-                                </tr>
-                                <tr className="btnadmp_tr1" >
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1"> </td>
-                                    <td className="btnadmp_td1">  </td>
-                                    <td className="btnadmp_td1">  </td>
-
-
-
-                                    <td className="btnadmp_td1">
-
-                                    </td>
-                                </tr>
+        <td className="btnadmp_td2">
+            <button className="butadmp2"><img src={icon1} alt="" /></button>
+        </td>
+    </tr>
+})}
                             </table>
                         </div>
                     </div>

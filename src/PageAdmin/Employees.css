@@ -154,11 +154,12 @@
 }
 .modal11 {
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background: #fff6d1;
-  position: absolute;
+  position: fixed;
   right: 0px;
   top: 0px;
+  overflow-y: scroll;
   z-index: 11;
   display: none;
   padding: 10%;
@@ -310,7 +311,8 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
   position: fixed;
   top: 0px;
   left: 0px;
