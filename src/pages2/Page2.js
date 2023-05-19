@@ -252,10 +252,8 @@ export default function Page2() {
                         {relation.map((item3) => {
                           if (item.childid === item3.childid) {
                             return (
-                              <li>
-                                {item3.status}
-                                {legalrep.map((item4) => {
-                                  if (item3.legalrepid === item4.legalrepid) {
+                              <li> {item3.status} 
+                              {legalrep.map((item4) => {if (item3.legalrepid === item4.legalrepid) {
                                     return (
                                       <>
                                         {person.map((item5) => {
@@ -263,11 +261,7 @@ export default function Page2() {
                                             item4.personid === item5.personid
                                           ) {
                                             return (
-                                              <span>
-                                                {item5.personlastname}
-                                                {item5.personfirstname}
-                                                {item5.personmiddlename}
-                                                {item5.phone}
+                                              <span>  {item5.personlastname} {item5.personfirstname}  {item5.personmiddlename}   {item5.phone}
                                               </span>
                                             );
                                           }
@@ -356,7 +350,7 @@ export default function Page2() {
                         }
                       })}
                     </div>
-                    <button onClick={() => KidsBlock(item)}>Подробнее</button>
+                    <button className="kkk" onClick={() => KidsBlock(item)}>Подробнее</button>
                   </div>
                 );
               }
