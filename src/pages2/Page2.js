@@ -59,6 +59,7 @@ export default function Page2() {
   const [question, setQuestion] = useState([]);
   const [skill, setKill] = useState([]);
   const [skillgroup, setKillgroup] = useState([]);
+  const a ="image 37.png"
   // const[gruo,setGruo]=useState()
 
   useEffect(() => {
@@ -287,7 +288,8 @@ export default function Page2() {
                           <div className="dvasew">
                             <p>{item2.question}</p>
                             <div className="fykjh">
-                              <img src={img} alt="" />
+                              {/* <img src={img} alt="" /> */}
+                               <img src={"./img"+item2.question_img} alt={item2.question_img}/>
                               <div className="aysdu">
                                 <button onClick={() => CHECK(1)}>1</button>
                                 <br />
@@ -323,6 +325,7 @@ export default function Page2() {
                     <div className="kid-prfl">
                       <div className="asd23">
                         <h4>{item22.childlastname}</h4>
+                        <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
                       </div>
                       {group.map((item33) => {
                         if (item22.groupid === item33.groupid) {
