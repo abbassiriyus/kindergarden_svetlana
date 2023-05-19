@@ -49,7 +49,13 @@ export default class Form extends Component {
           <div className="Div-form">
             <img src={Image} alt="" />
             <div className="Inp-form">
-              <input type="number" className="form-control" />
+              <PhoneInput
+                id="userNumber2"
+                className="userNumber2"
+                country={"ru"}
+                value={this.state.phone2}
+                onChange={(e) => this.setState({ phone2: e })}
+              />
               <br />
               <button onClick={this.getMail}>Далее</button>
             </div>

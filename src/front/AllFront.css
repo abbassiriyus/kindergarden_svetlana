@@ -1,23 +1,23 @@
 /*  обнулирование */
-.BigHome{
-    padding: 20px;
+.BigHome {
+  padding: 20px;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    color: #334155;
+  margin: 0;
+  padding: 0;
+  color: #334155;
 }
 
 a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 button {
-    background-color: transparent;
-    border: none;
-    outline: none;
+  background-color: transparent;
+  border: none;
+  outline: none;
 }
 
 h1,
@@ -31,472 +31,476 @@ a,
 span,
 input,
 div {
-    font-family: 'Montserrat', sans-serif;
-    font-style: normal;
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
 }
 
 input {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 #root {
-    /* max-width: 1920px; */
-    margin: auto;
-    box-sizing: border-box;
+  /* max-width: 1920px; */
+  margin: auto;
+  box-sizing: border-box;
 }
 
 /*  Navbar    */
 .Navbar {
-    max-width: 100%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    justify-content: space-between;
-    background: #fff;
-    margin-bottom: 20px;
-    padding-right: 30px;
+  max-width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-content: space-between;
+  background: #fff;
+  margin-bottom: 20px;
+  padding-right: 30px;
 }
 
 .linksNav {
-    width: 80%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .linksNav,
 .activeNav {
-    transition: .4s !important;
+  transition: 0.4s !important;
 }
 
 .linksNav a,
 .dropdown p,
 .dropdown a {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .labelSelect {
-    text-align: center;
+  text-align: center;
 }
 
 .labelSelect:hover,
 .linksNav a:hover {
-    cursor: pointer;
-    opacity: 0.6;
-    color: black;
+  cursor: pointer;
+  opacity: 0.6;
+  color: black;
 }
 
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 .selectNav1,
 .selectNav2 {
-    height: fit-content;
-    position: absolute;
-    width: fit-content;
-    box-sizing: border-box;
-    display: grid;
-    row-gap: 10px;
-    font-size: 14px;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.338);
-    border-radius: 20px;
-    opacity: 0;
-    transition: .4s;
+  height: fit-content;
+  position: absolute;
+  width: fit-content;
+  box-sizing: border-box;
+  display: grid;
+  row-gap: 10px;
+  font-size: 14px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.338);
+  border-radius: 20px;
+  opacity: 0;
+  transition: 0.4s;
 }
 
 .selectNav1 {
-    left: -35px;
+  left: -35px;
 }
 
 .selectNav2 {
-    left: -10px;
-    z-index: -99;
+  left: -10px;
+  z-index: -99;
 }
 
 .ActiveSelect {
-    opacity: 1 !important;
-    z-index: 99;
+  opacity: 1 !important;
+  z-index: 99;
 }
 
 .btnEnter {
-    background: #334155;
-    border-radius: 5px;
-    padding: 1%;
-    color: white;
+  background: #334155;
+  border-radius: 5px;
+  padding: 1%;
+  color: white;
 }
 
 .btnEnter:hover {
-    cursor: pointer;
-    opacity: 0.8;
+  cursor: pointer;
+  opacity: 0.8;
 }
 
-.modalEnter {
-    position: absolute;
-    top: -100%;
-    width: 20%;
-    left: 40%;
-    background-color: white;
-    z-index: 200;
-    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.522);
-    transition: all 0.2s linear;
-    padding: 20px 10px;
-    display: grid;
-    row-gap: 10px;
-    font-size: 1.5rem;
-    border-radius: 20px;
-    text-align: center;
+.modalEnter1 {
+  width: 200px;
+  position: absolute;
+  top: 90px;
+  right: 25%;
+  font-size: 20px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px black;
 }
 
 .modalEnter h2,
 .modalEnter a {
-    font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 .closeModal {
-    color: #EA5D4A;
+  color: #ea5d4a;
 }
 
 .closeModal:hover {
-    cursor: pointer;
-    opacity: 0.7;
+  cursor: pointer;
+  opacity: 0.7;
 }
 
 .activeModalEnter {
-    top: 30%;
-
+  top: 30%;
 }
 
 .ContactsNav {
-    padding-top: 20px;
-    text-align: right;
+  padding-top: 20px;
+  text-align: right;
 }
 
 .Streetname p {
-    font-size: 14px;
-    margin-bottom: 10px;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .Streetname p,
 .NumberNav a {
-    font-family: 'Monserrat', sans-serif;
+  font-family: "Monserrat", sans-serif;
 }
 
 .NumberNav {
-    display: flex;
-    justify-content: space-around;
+  display: flex;
+  justify-content: space-around;
 }
 
 .NumberNav a {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .NumberNav a img {
-    width: 14px;
+  width: 14px;
 }
 
 .BurgerMenu {
-    display: none;
+  display: none;
 }
 
 .BurgerMenu span {
-    width: 50px;
-    height: 5px;
-    background-color: #334155;
-    transition: all 0.2s linear;
+  width: 50px;
+  height: 5px;
+  background-color: #334155;
+  transition: all 0.2s linear;
 }
 
 @media screen and (max-width: 1444px) {
-    .Navbar {
-        padding: 10px 5%;
-        grid-template-columns: 1fr 4fr 1.2fr;
-    }
+  .Navbar {
+    padding: 10px 5%;
+    grid-template-columns: 1fr 4fr 1.2fr;
+  }
 
-    .Logo img {
-        width: 15vw;
-    }
+  .Logo img {
+    width: 15vw;
+  }
 
-    .NumberNav {
-        width: 100%;
-    }
+  .NumberNav {
+    width: 100%;
+  }
 
-    .NumberNav a {
-        font-size: 1rem;
-    }
+  .NumberNav a {
+    font-size: 1rem;
+  }
 
-    .Streetname p {
-        font-size: 0.7rem;
-    }
+  .Streetname p {
+    font-size: 0.7rem;
+  }
 
-    .linksNav a,
-    .dropdown p,
-    .dropdown a,
-    .btnEnter {
-        font-size: 0.8rem;
-    }
+  .linksNav a,
+  .dropdown p,
+  .dropdown a,
+  .btnEnter {
+    font-size: 0.8rem;
+  }
 }
 
 @media screen and (max-width: 1024px) {
-    .Navbar {
-        grid-template-columns: 60% 40%;
-        align-items: center;
-    }
+  .Navbar {
+    grid-template-columns: 60% 40%;
+    align-items: center;
+  }
 
-    .linksNav,
-    .ContactsNav {
-        display: none;
-    }
+  .linksNav,
+  .ContactsNav {
+    display: none;
+  }
 
-    .Logo img {
-        width: 20vw;
-    }
+  .Logo img {
+    width: 20vw;
+  }
 
-    .BurgerMenu {
-        display: grid;
-        justify-content: end;
-        row-gap: 7px;
-        height: fit-content;
-    }
+  .BurgerMenu {
+    display: grid;
+    justify-content: end;
+    row-gap: 7px;
+    height: fit-content;
+  }
 
-    .activeMenu span:nth-child(1) {
-        background-color: transparent;
-    }
+  .activeMenu span:nth-child(1) {
+    background-color: transparent;
+  }
 
-    .activeMenu span:nth-child(2) {
-        transform: rotate(45deg);
-    }
+  .activeMenu span:nth-child(2) {
+    transform: rotate(45deg);
+  }
 
-    .activeMenu span:nth-child(3) {
-        transform: rotate(-45deg);
-        margin-top: -12px;
-    }
+  .activeMenu span:nth-child(3) {
+    transform: rotate(-45deg);
+    margin-top: -12px;
+  }
 
-    .activeNav {
-        margin-top: 5%;
-        display: flex;
-        width: 80vw;
-        padding: 5% 3%;
-        box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.475);
-    }
-
+  .activeNav {
+    margin-top: 5%;
+    display: flex;
+    width: 80vw;
+    padding: 5% 3%;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.475);
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .Navbar {
-        grid-template-columns: 1fr 1fr;
-    }
+  .Navbar {
+    grid-template-columns: 1fr 1fr;
+  }
 
-    .Logo img {
-        width: 30vw;
-    }
-
-
-
+  .Logo img {
+    width: 30vw;
+  }
 }
 
 @media screen and (max-width: 560px) {
-    .Navbar {
-        grid-template-columns: 1fr;
-    }
+  .Navbar {
+    grid-template-columns: 1fr;
+  }
 
-    .activeNav {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        row-gap: 20px;
-        box-sizing: border-box;
-    }
+  .activeNav {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 20px;
+    box-sizing: border-box;
+  }
 
-    .selectNav1 {
-        left: -25px
-    }
+  .selectNav1 {
+    left: -25px;
+  }
 
-    .btnEnter {
-        padding: 5%;
-    }
+  .btnEnter {
+    padding: 5%;
+  }
 
-    .BurgerMenu {
-        position: absolute;
-        top: 20px;
-        right: 15px;
-    }
+  .BurgerMenu {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+  }
 
-    .activeMenu span:nth-child(2) {
-        margin-bottom: 1px;
-    }
+  .activeMenu span:nth-child(2) {
+    margin-bottom: 1px;
+  }
 
-    .BurgerMenu span {
-        width: 40px;
-        height: 4px;
-    }
+  .BurgerMenu span {
+    width: 40px;
+    height: 4px;
+  }
 
-    .modalEnter {
-        width: 50%;
-        left: 25%;
-    }
+  .modalEnter {
+    width: 50%;
+    left: 25%;
+  }
 
-    .modalEnter h2 {
-        font-size: 1.6rem;
-    }
+  .modalEnter h2 {
+    font-size: 1.6rem;
+  }
 }
-
-
-
 
 /*  Footer   */
 .Footer {
-    padding: 10% 2% 2% 2%;
+  padding: 10% 2% 2% 2%;
 }
 
 .BelowMap {
-    width: 100%;
-    max-width: 1440px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    align-items: center;
-    flex-wrap: wrap;
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .contactsFooter {
-    display: grid;
-    row-gap: 30px;
-    padding-top: 20px;
+  display: grid;
+  row-gap: 30px;
+  padding-top: 20px;
 }
 
 .numberFooter {
-    display: grid;
-    row-gap: 5px;
+  display: grid;
+  row-gap: 5px;
 }
 
 .numberFooter a:nth-child(1) {
-    font-weight: 400;
-    font-size: 40px;
-    line-height: 49px;
-    color: #334155;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 49px;
+  color: #334155;
 }
 
 .numberFooter #text {
-    font-size: 1px !important;
+  font-size: 1px !important;
 }
 
 .numberFooter a span img {
-    width: 15px;
+  width: 15px;
 }
 
 .numberFooter a:nth-child(2) {
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    color: #334155;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  color: #334155;
 }
 
 .contactsFooter p {
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 17px;
-    color: #334155;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 17px;
+  color: #334155;
 }
 
 .pulsyet {
-    font-size: 20px;
-    margin-top: 10px;
-    margin-left: 10px;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
 }
 
 .ahref {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .linksSocial {
-    display: flex;
-    column-gap: 20px;
+  display: flex;
+  column-gap: 20px;
 }
 
 .linksSocial a {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .linksFooter {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .linksFooter ul {
-    width: fit-content;
+  width: fit-content;
 }
 
 .linksFooter ul li {
-    display: block;
-    margin: 10px 0;
+  display: block;
+  margin: 10px 0;
 }
 
 .linksFooter ul li h2 {
-    margin-bottom: 20px;
-    font-weight: 600;
-    font-size: 1.4rem;
-    line-height: 17px;
-    color: #334155;
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.4rem;
+  line-height: 17px;
+  color: #334155;
 }
 
 .linksFooter ul li a {
-    font-weight: 500;
-    font-size: 1rem;
-    line-height: 15px;
-    color: #334155;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 15px;
+  color: #334155;
 }
 
 @media screen and (max-width: 576px) {
-    .BelowMap {
-        grid-template-columns: 1fr;
-    }
+  .BelowMap {
+    grid-template-columns: 1fr;
+  }
 
-    .numberFooter a:nth-child(1) {
-        font-size: 1.6rem;
-    }
+  .numberFooter a:nth-child(1) {
+    font-size: 1.6rem;
+  }
 
-    .numberFooter a span img {
-        width: 15px;
-    }
+  .numberFooter a span img {
+    width: 15px;
+  }
 
-    .linksFooter {
-        padding-top: 10%;
-        display: grid;
-        justify-content: start;
-    }
+  .linksFooter {
+    padding-top: 10%;
+    display: grid;
+    justify-content: start;
+  }
 
-    .linksFooter ul {
-        margin-top: 10px;
-    }
+  .linksFooter ul {
+    margin-top: 10px;
+  }
 }
 
-@media(max-width: 903px) {
-    .linksFooter {
-        width: 500px;
-    }
+@media (max-width: 903px) {
+  .linksFooter {
+    width: 500px;
+  }
 }
 
-@media(max-width: 576px) {
-    .linksFooter {
-        display: grid;
-        justify-content: space-evenly;
-        grid-template-columns: auto auto;
-    }
+@media (max-width: 576px) {
+  .linksFooter {
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto;
+  }
 }
 
-@media(max-width: 514px) {
-    .linksFooter {
-        width: 300px;
-        flex-wrap: wrap;
-        display: flex;
-    }
+@media (max-width: 514px) {
+  .linksFooter {
+    width: 300px;
+    flex-wrap: wrap;
+    display: flex;
+  }
 }
 
 #Modal {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
+}
+
+.selectNav0 {
+  /* top: 20px; */
+  position: absolute;
+  padding: 10px;
+  border-radius: 10px;
+  width: 130px;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 0 10px black;
+  height: 100px;
+  display: none;
+}
+
+#nhyrfv5:hover .selectNav0 {
+  display: block;
 }
