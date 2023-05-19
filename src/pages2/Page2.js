@@ -115,16 +115,6 @@ export default function Page2() {
   }, []);
 
   useEffect(() => {
-    // console.log(child22);
-    // console.log(bolas);
-    // console.log(group);
-    // console.log(selectedKid);
-    // console.log(relation);
-    // console.log(legalrep);
-    // console.log(person);
-    // console.log(test);
-    // console.log(question);
-    // console.log(Kid);
   }, [
     bolas,
     child22,
@@ -147,15 +137,9 @@ export default function Page2() {
     document.querySelector(".kids-Page2").style = "display: none;";
   }
   function CHECK(id) {
-    // if (setKill===id) {
-    //   console.log("dkdkdkkdkdkdkd");
-    //   console.log(skill);
-    // }
-    // console.log("dkdjdj");
-    // console.log(selectedKid);
     axios.get(`${url}/test`).then((res) => {
-      let usa = [];
-      let uk = [];
+      const usa = [];
+      const uk = [];
       for (let e = 0; e < res.data.length; e++) {
         if (selectedKid.childid === res.data[e].childid) {
           usa.push(res.data[e].questionid);
@@ -165,26 +149,29 @@ export default function Page2() {
       axios.get(`${url}/question`).then((res2) => {
         for (let j = 0; j < res2.data.length; j++) {
           for (let i = 0; i < usa.length; i++) {
-            if (usa[0] === res2.data[j].questionid) {
+            if (usa[i] === res2.data[j].questionid) {
               uk.push(res2.data[j].answer);
             }
           }
         }
         // console.log(usa[0]);
         // console.log(id);
-        // console.log(uk);
-        if (id === uk[0]) {
-          document.querySelector(".modall").style.display = "block";
-          setTimeout(() => {
-            document.querySelector(".modall").style.display = "none";
-          }, 2000);
-          console.log("turi");
-        } else {
-          document.querySelector(".modall2").style.display = "block";
-          setTimeout(() => {
-            document.querySelector(".modall2").style.display = "none";
-          }, 2000);
-        }
+        console.log(uk);
+          if (uk.includes(id)) {
+            document.querySelector(".modall").style.display = "block";
+            setTimeout(() => {
+              document.querySelector(".modall").style.display = "none";
+            }, 2000);
+            console.log("turi");
+          } else {
+            document.querySelector(".modall2").style.display = "block";
+            setTimeout(() => {
+              document.querySelector(".modall2").style.display = "none";
+            }, 2000);
+          }
+          
+        
+ 
       });
     });
   }
@@ -304,13 +291,11 @@ export default function Page2() {
                               <div className="aysdu">
                                 <button onClick={() => CHECK(1)}>1</button>
                                 <br />
-                                <button onClick={() => CHECK(2)} value={2}>
-                                  2
-                                </button>
+                                <button onClick={() => CHECK(2)}>2</button>
                                 <br />
-                                <button onClick={() => CHECK(3)} value={3}>3</button>
+                                <button onClick={() => CHECK(3)}>3</button>
                                 <br />
-                                <button onClick={() => CHECK(4)} value={4}>4</button>
+                                <button onClick={() => CHECK(4)}>4</button>
                               </div>
                             </div>
                           </div>
