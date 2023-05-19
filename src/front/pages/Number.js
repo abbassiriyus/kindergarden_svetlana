@@ -1,10 +1,11 @@
 import React, { Component, useState } from "react";
 import "../css/Number.css";
 import "../media/NumberMedia.css";
-import Image from "../img/image 25.png";
+import Image from "../img/image 29.png";
 import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import url from "../../host";
+import "react-phone-input-2/lib/style.css";
 
 export default class Form extends Component {
   state = {

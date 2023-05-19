@@ -6,7 +6,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import Carousel from "react-grid-carousel";
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import "react-phone-input-2/lib/style.css";
 // images
 import wizard from "../Images/hazard.png";
 import clock from "../Images/clock.png";
@@ -38,6 +38,7 @@ import opa2 from "../Images/opa2.png";
 import ava from "../Images/Group 10.png";
 import url from "../../host";
 import axios from "axios";
+import modalImg from "../img/Заявка.png";
 
 const agreeRadio = () => {
   $(".radioHeader1").toggleClass("activeAgree");
@@ -133,7 +134,10 @@ export default function HomePage() {
     data.append("phone", document.querySelector(".form-control").value);
     data.append("email", document.querySelector(".gmailPost").value);
     if (document.querySelector(".gmailPost").value.includes("@gmail")) {
-      document.querySelector(".yoqqq").innerHTML = "created";
+      document.querySelector(".modalZyav").style = "display: flex";
+      setTimeout(() => {
+        document.querySelector(".modalZyav").style = "display: none";
+      }, 1000);
       axios
         .post(`${url}/contact`, data)
         .then((res) => {
@@ -150,6 +154,9 @@ export default function HomePage() {
 
   return (
     <>
+      <div className="modalZyav">
+        <img src={modalImg} alt="" />
+      </div>
       <div className="HomePage">
         <div className="HeaderHome">
           <div className="textImage">
@@ -210,7 +217,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
         <div className="factorsHome">
           <div className="factorHome ">
             <div className="imgFactor orange">
@@ -263,7 +269,6 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-
         <div className="consultationHome">
           <div className="ContentConsult">
             <h2>Есть вопросы? Получите бесплатную консультацию</h2>
@@ -290,7 +295,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
         <div className="moreServices">
           <h2>Дополнительные услуги</h2>
           <div className="rowServices row1">
@@ -388,7 +392,6 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
         <div className="forStarBanner">
           <h2>Фотогалерия нашего сада</h2>
           <p>Вы можете ознакомиться как проходят наши будни</p>
@@ -460,8 +463,7 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-
-        <div className="cardsCarousel">
+        <div id="kontactBlog" className="cardsCarousel">
           <h2>Наша команда</h2>
 
           <div className="CarouselCards">
@@ -517,7 +519,6 @@ export default function HomePage() {
             </Carousel>
           </div>
         </div>
-
         <div className="form2">
           <div className="ContentConsult">
             <h2>Остались вопросы? Получите бесплатную консультацию</h2>
@@ -547,9 +548,7 @@ export default function HomePage() {
             <img src={opa2} alt="No photo" />
           </div>
         </div>
-
         {/*   text section */}
-
         <div className="CarouselComments">
           <h2>Отзывы о саде</h2>
 
@@ -657,8 +656,21 @@ export default function HomePage() {
               </Carousel.Item>
             </Carousel>
           </div>
-        </div>
+        </div>{" "}
       </div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"
+        height="450"
+        style={{
+          border: "0",
+          width: "90%",
+          marginLeft: "5%",
+          marginTop: "10px",
+        }}
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
     </>
   );
 }

@@ -918,3 +918,17 @@
   margin-left: 10px;
   display: none;
 }
+
+.modalZyav {
+  width: 100%;
+  min-height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
+}
+
+.modalZyav img {
+  width: 100%;
+}

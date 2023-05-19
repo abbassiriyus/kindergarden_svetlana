@@ -13,6 +13,7 @@ import Tema from "./pages/Tema";
 import HomePage from "./pages/HomePage";
 import Landing from "./pages/Landing";
 import Raspisaniya from "./pages/Raspisaniya";
+import Food from "./pages/Food";
 import "./AllFront.css";
 import $ from "jquery";
 
@@ -39,10 +40,10 @@ export default function Allfront() {
     $(".selectNav2").removeClass("ActiveSelect");
   };
   const enterOpen = () => {
-    $(".modalEnter").toggleClass("activeModalEnter");    
+    document.querySelector(".modalEnter1").style = "display: block";
   };
   const closeModal = () => {
-    $(".modalEnter").removeClass("activeModalEnter");
+    document.querySelector(".modalEnter1").style = "display: none";
   };
   const burgerMenu = () => {
     $(".BurgerMenu").toggleClass("activeMenu");
@@ -83,6 +84,7 @@ export default function Allfront() {
             >
               <a href="/user">О Центре</a>
               <a href="landing">Документы</a>
+              <a href="/Teacher">Питание</a>
               <a href="/tema">Частые вопросы</a>
             </div>
           </span>
@@ -91,7 +93,7 @@ export default function Allfront() {
               Расписание <br /> <IoIosArrowDown />
             </p>
             <div className="selectNav0 ">
-              <a href="/Raspisaniya">Расписание доп. занятий</a>
+              <a href="/Table">Расписание доп. занятий</a>
             </div>
           </span>
           <span className="dropdown">
@@ -102,16 +104,23 @@ export default function Allfront() {
             ></div>
           </span>
           <a href="/prog">Программа</a>
-          <a href="/news">Новости</a>
-          <a href="/home">Команда</a>
+          <a href="/home">Новости</a>
+          <a href="#kontactBlog">Команда</a>
           <div onClick={enterOpen} className="btnEnter">
             Войти
           </div>
 
           <div className="modalEnter1">
             {/* <h2>Вход для</h2> */}
-            <a href="form">Для<br /> сотрудников</a><br />
-            <a href="number">Для <br />родителей</a>
+            <a href="form">
+              Для
+              <br /> сотрудников
+            </a>
+            <br />
+            <a href="number">
+              Для <br />
+              родителей
+            </a>
             <div onClick={closeModal} className="closeModal">
               Закрыть
             </div>
@@ -153,6 +162,7 @@ export default function Allfront() {
           <Route path="/Tema" element={<Tema />} />
           <Route path="/Landing" element={<Landing />} />
           <Route path="/Raspisaniya" element={<Raspisaniya />} />
+          <Route path="/Food" element={<Food />} />
         </Routes>
       </BrowserRouter>
 
@@ -168,14 +178,13 @@ export default function Allfront() {
                 <a className="ahref" href="#">
                   <span>
                     <img src={telephone} alt="" />
-                  </span>{" "}
+                  </span>
                   <h1 className="pulsyet"> +7 (8452) 57 79 35</h1>
                 </a>
                 <a href="#">wizardschool@mail.ru</a>
               </div>
 
               <p>
-                {" "}
                 Саратов, ул. Пугачева д.98/100
                 <br />
                 Вход со двора

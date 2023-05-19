@@ -1,159 +1,166 @@
-import React, { Component } from 'react'
+import React, { useState } from "react";
 
+import "../css/Table.css";
+import "../media/TableMedia.css";
+import Img4 from "../img/image 25.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+export default function Table() {
+  const [phone2, usePhone2] = useState();
 
-import '../css/Table.css'
-import '../media/TableMedia.css'
-import Img4 from '../img/image 25.png'
-import { Swiper, SwiperSlide } from 'swiper/react';
+  return (
+    <>
+      <h1 class="Table-h1">Расписание доп. занятий</h1>
+      <div className="helloAmirxan">
+        <div className="ras_bigblock">
+          <table className="body1_tabl_block1">
+            <tr>
+              <th className="th2_block1_body1">Название услуги</th>
+              <th className="th1_block1_body1">Пн</th>
+              <th className="th1_block1_body1">Вт</th>
+              <th className="th1_block1_body1">Ср</th>
+              <th className="th1_block1_body1">Чт</th>
+              <th className="th1_block1_body1">Пт</th>
+              <th className="th1_block1_body1">Сб</th>
+              <th className="th1_block1_body1">Вс</th>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Хореография</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Лепка из глины</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">ИЗО-студия</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Ментальная арифметика</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Шахматы</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Английский язык</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
 
-
-
-
-export default class Table extends Component {
-  render() {
-    return (
-      <>
-        <h1 class='Table-h1'>Расписание доп. занятий</h1>
-        <div className="BigTable">
-          <div className="table">
-            <ul className='table-idth'>
-              <h4 className='Table-h4'>Название услуги</h4>
-              <li>Хореография </li>
-              <li>Лепка из глины</li>
-              <li>ИЗО-студия</li>
-              <li>Ментальная арифметика</li>
-              <li>Шахматы</li>
-              <li>Английский язык</li>
-              <li>Йога</li>
-              <li>ОФП</li>
-              <li>Театральная мастерская</li>
-              <li>Конструирование</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Пн</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Вт</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Ср</h4>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-              <li>10.00 - 15.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Чт</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Пт</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Сб</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
-          <div className="table">
-            <ul className='table-blue'>
-              <h4>Вс</h4>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-              <li>10.00</li>
-            </ul>
-          </div>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Йога</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">ОФП</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Театральная мастерская</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+            <tr>
+              <td className="td2_block1_body1">Конструирование</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00 - 15.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+              <td className="td1_block1_body1">10.00</td>
+            </tr>
+          </table>
         </div>
-        <div className="blog">
-          <div className="bgs">
-            <div className="blogs">
-              <h1>Остались вопросы? Получите
-                бесплатную консультацию</h1>
-              <p>Оставьте телефон и мы перезвоним
-                и расскажем все подробности о филиале</p>
-              <div className="forms">
-                <input type="number" placeholder={'+ 7 _  _  _  -  _  _  _  -  _  _  -  _  _'} />
-                <button>отправить</button>
-              </div>
-            </div>
-            <div className="blogs">
-              <img src={Img4} alt="" />
+      </div>
+      <div className="blog">
+        <div className="bgs">
+          <div className="blogs">
+            <h1>Остались вопросы? Получите бесплатную консультацию</h1>
+            <p>
+              Оставьте телефон и мы перезвоним и расскажем все подробности о
+              филиале
+            </p>
+            <div className="forms">
+              <PhoneInput
+                id="userNumber2"
+                className="userNumber2"
+                country={"ru"}
+                value={phone2}
+                onChange={(phone2) => usePhone2}
+              />
+              <button>отправить</button>
             </div>
           </div>
+          <div className="blogs">
+            <img src={Img4} alt="" />
+          </div>
         </div>
-      </>
-    )
-  }
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"
+          height="450"
+          style={{ border: "0", width: "100%", marginTop: "10px" }}
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </>
+  );
 }
