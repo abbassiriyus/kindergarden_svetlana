@@ -71,7 +71,7 @@ export default function Page2() {
             (child) =>
               child.personid === parseInt(localStorage.getItem("personid"))
           );
-          axios.get(`${url}/relation`);
+          
           axios.get(`${url}/relation`).then((res22) => {
             const tempBolas = [];
             for (let i = 0; i < res22.data.length; i++) {
@@ -86,30 +86,31 @@ export default function Page2() {
             useBola(tempBolas);
             // useChild(filteredChildren);
           });
-          axios.get(`${url}/child`).then((res33) => {
-            useChild(res33.data);
-          });
-          axios.get(`${url}/group`).then((res44) => {
-            useGroup(res44.data);
-          });
-          axios.get(`${url}/relation`).then((res55) => {
-            setRelation(res55.data);
-          });
-          axios.get(`${url}/Legal_Rep`).then((res66) => {
-            setLegalrep(res66.data);
-          });
-          axios.get(`${url}/person`).then((res77) => {
-            setPerson(res77.data);
-          });
-          axios.get(`${url}/test`).then((res88) => {
-            setTest(res88.data);
-          });
-          axios.get(`${url}/question`).then((res99) => {
-            setQuestion(res99.data);
-          });
+
         })
         .catch((err) => {
           console.log(err);
+        });
+        axios.get(`${url}/child`).then((res33) => {
+          useChild(res33.data);
+        });
+        axios.get(`${url}/group`).then((res44) => {
+          useGroup(res44.data);
+        });
+        axios.get(`${url}/relation`).then((res55) => {
+          setRelation(res55.data);
+        });
+        axios.get(`${url}/Legal_Rep`).then((res66) => {
+          setLegalrep(res66.data);
+        });
+        axios.get(`${url}/person`).then((res77) => {
+          setPerson(res77.data);
+        });
+        axios.get(`${url}/test`).then((res88) => {
+          setTest(res88.data);
+        });
+        axios.get(`${url}/question`).then((res99) => {
+          setQuestion(res99.data);
         });
     };
     fetchData3();
