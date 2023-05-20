@@ -500,13 +500,13 @@
 .HomePage .card:nth-child(2) {
   transform: translateX(-60%) translateZ(-50px) scale(0.8);
   opacity: 0.8;
-  background-image: url("../Images/carousel.png");
+  background-image: url("../Images/image\ 8.png");
   background-repeat: no-repeat;
 }
 .HomePage .card:nth-child(3) {
   opacity: 0.8;
   transform: translateX(60%) translateZ(-50px) scale(0.8);
-  background-image: url("../Images/carousel.png");
+  background-image: url("../Images/image\ 7.png");
   background-repeat: no-repeat;
 }
 @media screen and (max-width: 1600px) {

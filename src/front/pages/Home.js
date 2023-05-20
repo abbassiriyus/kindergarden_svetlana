@@ -1,8 +1,8 @@
 import "../css/Home.css";
 import "../media/HomeMedia.css";
-import Img1 from "../img/img1.png";
+import Img1 from "../img/Screenshot_20230204_051501_com.vkontakte 1.png";
 import Img2 from "../img/img2.png";
-import Img3 from "../img/img3.png";
+import Img3 from "../img/Screenshot_20230204_051440_com.vkontakte 1.png";
 import Img4 from "../img/image 11.png";
 import PhoneInput from "react-phone-input-2";
 import { useState } from "react";
@@ -29,13 +29,10 @@ function App() {
       <h1 className="novs">Новости</h1>
       <div className="cards-home">
         <div className="card-home">
-          <img src={Img2} alt="" />
-          <h1>Волшебный новый год</h1>
+          <img src={Img3} alt="" />
+          <h1>Экскурсия в историческом парке “Россия - моя история”</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            veritatis itaque ipsum ex, magni rem eaque autem ratione corporis,
-            doloribus nesciunt numquam, nostrum laboriosam nisi hic aperiam
-            beatae quam soluta?
+          Сегодня мы были в историческом парке “Россия - моя история” на мастер-классе “Монетный двор”. Ребята узнали историю монеты и ее значение для археологии, попробовали сами чеканить монеты и ....
           </p>
           <a href="/news">
             <button>подробнее</button>
@@ -43,25 +40,20 @@ function App() {
         </div>
         <div className="card-home">
           <img src={Img2} alt="" />
-          <h1>Волшебный новый год</h1>
+          <h1>Черепашки-ниндзя в гостях у волшебников</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            veritatis itaque ipsum ex, magni rem eaque autem ratione corporis,
-            doloribus nesciunt numquam, nostrum laboriosam nisi hic aperiam
-            beatae quam soluta?
+          Сегодня к нам в гости заходили настоящие Черепашки Ниндзя!
+Провели день весело и вкусно ...
           </p>
           <a href="/news">
             <button>подробнее</button>
           </a>
         </div>
         <div className="card-home">
-          <img src={Img2} alt="" />
+          <img src={Img1} alt="" />
           <h1>Волшебный новый год</h1>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem
-            veritatis itaque ipsum ex, magni rem eaque autem ratione corporis,
-            doloribus nesciunt numquam, nostrum laboriosam nisi hic aperiam
-            beatae quam soluta?
+          Вот и настал долгожданный и волшебный праздник! Наши маленькие волшебники встретили Деда Мороза и Снегурочку и получили сказочные подарки ...
           </p>
           <a href="/news">
             <button>подробнее</button>
@@ -97,14 +89,7 @@ function App() {
           </div>
         </div>
       </div>
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"
-        height="450"
-        style={{ border: "0", width: "100%", marginTop: "10px" }}
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
+
     </div>
   );
 }
