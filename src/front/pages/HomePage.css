@@ -932,3 +932,59 @@
 .modalZyav img {
   width: 100%;
 }
+
+.otzfv {
+  width: 100%;
+  min-height: 100vh;
+  position: fixed !important;
+  top: 0;
+  background: #8081bdcc;
+  z-index: 99;
+  margin-left: -20px;
+  display: none;
+  cursor: pointer;
+}
+
+.otzff {
+  width: 35%;
+  /* height: 400px; */
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 100px;
+  z-index: 100;
+}
+
+.otzff button {
+  margin: auto;
+  width: 250px;
+  height: 30px;
+  background: #fddc4e;
+  color: black;
+  font-weight: 600;
+  border-radius: 30px;
+  margin-left: 30%;
+}
+
+.modalUser {
+  width: 30%;
+  justify-content: space-evenly;
+  display: flex;
+  align-items: center;
+  color: black !important;
+}
+
+.ixxk {
+  margin-left: 90%;
+  font-size: 30px;
+}
+
+.modalUser h4 {
+  color: black !important;
+  font-size: 20px;
+}
+
+p {
+  cursor: pointer;
+}

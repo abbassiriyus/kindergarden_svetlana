@@ -83,7 +83,7 @@ export default function Allfront() {
               className="selectNav1 "
             >
               <a href="/user">О Центре</a>
-              <a href="landing">Документы</a>
+              <a href="/landing">Документы</a>
               <a href="/Teacher">Питание</a>
               <a href="/tema">Частые вопросы</a>
             </div>
@@ -106,10 +106,10 @@ export default function Allfront() {
           <a href="/prog">Программа</a>
           <a href="/home">Новости</a>
           <a href="#kontactBlog">Команда</a>
+          <a href="#footer">Контакты</a>
           <div onClick={enterOpen} className="btnEnter">
             Войти
           </div>
-
           <div className="modalEnter1">
             {/* <h2>Вход для</h2> */}
             <a href="form">
@@ -167,7 +167,7 @@ export default function Allfront() {
       </BrowserRouter>
 
       {/* <HomePage /> */}
-      <div className="Footer">
+      <div className="Footer" id="footer">
         <div className="BelowMap">
           <div className="leftContent">
             <div className="logoFooter">
@@ -209,16 +209,16 @@ export default function Allfront() {
                   <h2>О нас</h2>
                 </li>
                 <li>
-                  <a href="#">О центре</a>
+                  <a href="/user">О центре</a>
                 </li>
                 <li>
-                  <a href="#">Документы</a>
+                  <a href="/landing">Документы</a>
                 </li>
                 <li>
-                  <a href="#">Частые вопросы</a>
+                  <a href="/Teacher">Питание</a>
                 </li>
                 <li>
-                  <a href="#">Питание</a>
+                  <a href="/tema">Частые вопросы</a>
                 </li>
               </ul>
               <ul>
@@ -226,30 +226,38 @@ export default function Allfront() {
                   <h2>Расписание</h2>
                 </li>
                 <li>
-                  <a href="#">Расписание основное</a>
+                  <a href="/Table">Расписание основное</a>
                 </li>
                 <li>
-                  <a href="#">Расписание доп. занятий</a>
-                </li>
-              </ul>
-              <ul>
-                <li>
-                  <h2>Программа</h2>
+                  <a href="/Table">Расписание доп. занятий</a>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <h2>Новости</h2>
+                  <a href="/prog">
+                    <h2>Программа</h2>
+                  </a>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <h2>Команда</h2>
+                  <a href="/home">
+                    <h2>Новости</h2>
+                  </a>
                 </li>
               </ul>
               <ul>
                 <li>
-                  <h2>Контакты</h2>
+                  <a href="/kontactBlog">
+                    <h2>Команда</h2>
+                  </a>
+                </li>
+              </ul>
+              <ul>
+                <li>
+                  <a href="/prog">
+                    <h2>Контакты</h2>
+                  </a>
                 </li>
               </ul>
             </div>

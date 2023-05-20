@@ -17,41 +17,254 @@ export default function Tema() {
   const [phone2, usePhone2] = useState();
   return (
     <div className="asos">
-      <h1 className="chastie">Частые вопросы</h1>
-      {/* <details className='accors'>
-          <summary>          Чем занят ребёнок в детском саду?</summary>
-          <p>Для оформления в детский сад необходимо предоставить следующие документы:</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>    Сколько детей в группах детского сада?</summary>
-          <p>1. Заявление (бланк можно скачать  в разделе О нас/ Документы);</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>           Кто занимается медицинским обслуживанием детей?</summary>
-          <p>2. Паспорта родителей;</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>         Какие документы нужны для оформления в детский сад?</summary>
-          <p>3. Свидетельство о рождении ребенка;</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>        Про питание</summary>
-          <p>4. СНИЛС ребенка и родителей;</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>           Какие кружки входят в оплату, а какие нужно оплачивать дополнительно?</summary>
-          <p>5. Медицинская карта Ф26;</p>
-        </details>
-        <hr className='hr' />
-        <details className='accors'>
-          <summary>           Как отслеживается развитие ребенка?</summary>
-          <p>6. Договор  (заключается в детском саду).</p>
-        </details> */}
+      <div className="card">
+        <div className="acch1">
+          <h1>Частые вопросы</h1>
+        </div>
+        <div className="acc">
+          <div className="accordion" id="accordionExample">
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseOne"
+                  aria-expanded="false"
+                  aria-controls="collapseOne"
+                >
+                  Чем занят ребёнок в детском саду?
+                </button>
+              </h2>
+              <div
+                id="collapseOne"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление бланк можно скачать в разделе О нас/ Документы
+                    <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseseven"
+                  aria-expanded="false"
+                  aria-controls="collapseseven"
+                >
+                  Сколько детей в группах детского сада?
+                </button>
+              </h2>
+              <div
+                id="collapseseven"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsesix"
+                  aria-expanded="false"
+                  aria-controls="collapsesix"
+                >
+                  Кто занимается медицинским обслуживанием детей?
+                </button>
+              </h2>
+              <div
+                id="collapsesix"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsefive"
+                  aria-expanded="false"
+                  aria-controls="collapsefive"
+                >
+                  Какие документы нужны для оформления в детский сад?
+                </button>
+              </h2>
+              <div
+                id="collapsefive"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsefour"
+                  aria-expanded="false"
+                  aria-controls="collapsefour"
+                >
+                  Про питаниe
+                </button>
+              </h2>
+              <div
+                id="collapsefour"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapsethree"
+                  aria-expanded="false"
+                  aria-controls="collapsethree"
+                >
+                  Какие кружки входят в оплату, а какие нужно оплачивать
+                  дополнительно?
+                </button>
+              </h2>
+              <div
+                id="collapsethree"
+                className="accordion-collapse collapse show"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="accordion-item">
+              <h2 className="accordion-header">
+                <button
+                  onclick="accc()"
+                  className="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  Как отслеживается развитие ребенка?
+                </button>
+              </h2>
+              <div
+                id="collapseTwo"
+                className="accordion-collapse collapse"
+                data-bs-parent="#accordionExample"
+              >
+                <div className="accordion-body">
+                  <p>
+                    Для оформления в детский сад необходимо предоставить
+                    следующие документы: <br />
+                    1. Заявление (бланк можно скачать в разделе О нас/
+                    Документы); <br />
+                    2. Паспорта родителей; <br />
+                    3. Свидетельство о рождении ребенка; <br />
+                    4. СНИЛС ребенка и родителей; <br />
+                    5. Медицинская карта Ф26; <br />
+                    6. Договор (заключается в детском саду). <br />
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="blog">
         <div className="bgs">
           <div className="blogs">

@@ -7,6 +7,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
+import modalImg from "../img/Group 10.png";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,8 +16,22 @@ import { Navigation } from "swiper";
 
 export default function Landing() {
   const [phone2, usePhone2] = useState();
+  function modalOpens() {
+    document.querySelector(".modalZyav").style = "display: block";
+    setTimeout(() => {
+      document.querySelector(".modalZyav").style = "display: none";
+    }, 1000);
+  }
   return (
     <div>
+      <div className="modalZyav" id="modl">
+        <img src={modalImg} />
+        <h1>
+          Ваша заявка <br /> отправлена!
+        </h1>
+        <br />
+        <h4>Спасибо, мы с Вами свяжемся в ближайшее время</h4>
+      </div>
       <h1 className="Landing-h1">Документы</h1>
       <div className="File">
         <img src={file} alt="" />
@@ -204,7 +219,7 @@ export default function Landing() {
                 value={phone2}
                 onChange={(phone2) => usePhone2}
               />
-              <button>отправить</button>
+              <button onClick={() => modalOpens()}>отправить</button>
             </div>
           </div>
           <div className="blogs">
