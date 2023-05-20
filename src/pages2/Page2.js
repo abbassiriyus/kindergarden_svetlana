@@ -13,7 +13,7 @@ import image from "../img/image 45.png";
 import url from "../host";
 import img from "../img/image 37.png";
 import imasd from "../img/image 46.png";
-
+// import imgtest from "/public/img"
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -59,7 +59,7 @@ export default function Page2() {
   const [question, setQuestion] = useState([]);
   const [skill, setKill] = useState([]);
   const [skillgroup, setKillgroup] = useState([]);
-  const a ="image 37.png"
+  // const a ="5773268.png"
   // const[gruo,setGruo]=useState()
 
   useEffect(() => {
@@ -139,43 +139,53 @@ export default function Page2() {
     document.querySelector(".kids-Page2").style = "display: none;";
   }
   function CHECK(id) {
-    axios.get(`${url}/test`).then((res) => {
-      const usa = [];
-      const uk = [];
-      for (let e = 0; e < res.data.length; e++) {
-        if (selectedKid.childid === res.data[e].childid) {
-          usa.push(res.data[e].questionid);
-          // console.log(usa);
-        }
-      }
-      axios.get(`${url}/question`).then((res2) => {
-        for (let j = 0; j < res2.data.length; j++) {
-          for (let i = 0; i < usa.length; i++) {
-            if (usa[i] === res2.data[j].questionid) {
-              uk.push(res2.data[j].answer);
-            }
-          }
-        }
-        // console.log(usa[0]);
-        // console.log(id);
-        console.log(uk);
-          if (uk.includes(id)) {
-            document.querySelector(".modall").style.display = "block";
-            setTimeout(() => {
-              document.querySelector(".modall").style.display = "none";
-            }, 2000);
-            console.log("turi");
-          } else {
-            document.querySelector(".modall2").style.display = "block";
-            setTimeout(() => {
-              document.querySelector(".modall2").style.display = "none";
-            }, 2000);
-          }
+const variant=id[0]
+const javob=id[1]
+console.log(variant);
+console.log(javob);
+if (variant===javob) {
+  console.log("turi");
+}else{
+  console.log("notori");
+}
+
+    // axios.get(`${url}/test`).then((res) => {
+    //   const usa = [];
+    //   const uk = [];
+    //   for (let e = 0; e < res.data.length; e++) {
+    //     if (selectedKid.childid === res.data[e].childid) {
+    //       usa.push(res.data[e].questionid);
+    //       // console.log(usa);
+    //     }
+    //   }
+    //   axios.get(`${url}/question`).then((res2) => {
+    //     for (let j = 0; j < res2.data.length; j++) {
+    //       for (let i = 0; i < usa.length; i++) {
+    //         if (usa[i] === res2.data[j].questionid) {
+    //           uk.push(res2.data[j].answer);
+    //         }
+    //       }
+    //     }
+    //     // console.log(usa[0]);
+    //     // console.log(id);
+    //     console.log(uk);
+    //       if (uk.includes(id)) {
+    //         document.querySelector(".modall").style.display = "block";
+    //         setTimeout(() => {
+    //           document.querySelector(".modall").style.display = "none";
+    //         }, 2000);
+    //         console.log("turi");
+    //       } else {
+    //         document.querySelector(".modall2").style.display = "block";
+    //         setTimeout(() => {
+    //           document.querySelector(".modall2").style.display = "none";
+    //         }, 2000);
+    //       }
           
         
  
-      });
-    });
+    //   });
+    // });
   }
 
   return (
@@ -290,15 +300,16 @@ export default function Page2() {
                             <p>{item2.question}</p>
                             <div className="fykjh">
                               {/* <img src={img} alt="" /> */}
-                               <img src={"./img"+item2.question_img} alt={item2.question_img}/>
+                              
+                               <img src={"./img/"+item2.question_img} alt={item2.question_img}/>
                               <div className="aysdu">
-                                <button onClick={() => CHECK(1)}>1</button>
+                                <button onClick={() => CHECK([1,item2.answer])}>1</button>
                                 <br />
-                                <button onClick={() => CHECK(2)}>2</button>
+                                <button onClick={() => CHECK([2,item2.answer])}>2</button>
                                 <br />
-                                <button onClick={() => CHECK(3)}>3</button>
+                                <button onClick={() => CHECK([3,item2.answer])}>3</button>
                                 <br />
-                                <button onClick={() => CHECK(4)}>4</button>
+                                <button onClick={() => CHECK([4,item2.answer])}>4</button>
                               </div>
                             </div>
                           </div>
