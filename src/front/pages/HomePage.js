@@ -535,25 +535,28 @@ export default function HomePage() {
               <Carousel.Item>
                 <img src={opa} alt="no Photo" />
                 <div className="textCard">
-                  <h3>АБрикосова</h3>
-                  <h6>Анастасия Александровна</h6>
-                  <p>Директор</p>
+                  <h3>Мехралиева</h3>
+                  <h6>Светлана Геннадиевна </h6>
+                  <p>Воспитатель, педагог - психолог</p>
+                  <p>Стаж 12 лет</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
                 <img src={opa} alt="no Photo" />
                 <div className="textCard">
-                  <h3>АБрикосова</h3>
-                  <h6>Анастасия Александровна</h6>
-                  <p>Директор</p>
+                  <h3>Курмалиева</h3>
+                  <h6>Жанна Гасановна</h6>
+                  <p>Воспитатель</p>
+                  <p>Стаж 18 лет</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
                 <img src={opa} alt="no Photo" />
                 <div className="textCard">
-                  <h3>АБрикосова</h3>
-                  <h6>Анастасия Александровна</h6>
-                  <p>Директор</p>
+                  <h6>Погодина</h6>
+                  <h3>Светлана Анатольевна</h3>
+                  <p>Музыкальный руководитель</p>
+                  <p>Стаж 15 лет</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
