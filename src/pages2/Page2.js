@@ -344,7 +344,7 @@ if (variant===javob) {
                     <img src={Img1} alt="" />
                     <div className="kid-prfl">
                       <div className="asd23">
-                        <h4>{item22.childlastname}</h4>
+                        <h4 className="kakak">{item22.childlastname}</h4>
                         <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
                       </div>
                       {group.map((item33) => {

@@ -16,6 +16,12 @@ import { FaPhone } from "react-icons/fa";
 import { TbBrandTelegram } from "react-icons/tb";
 import { SlSocialVkontakte } from "react-icons/sl";
 import ImgScrol from "../img/free-icon-news-5995360 1.png";
+import ImgScrol2 from "../img/free-icon-family-3597788 1.png";
+import ImgScrol3 from "../img/free-icon-file-968545 1.png";
+import ImgScrol4 from "../img/free-icon-business-report-7087350 1.png";
+import ImgScrol5 from "../img/free-icon-stats-1274370 1.png";
+
+
 import { AiFillCaretUp } from "react-icons/ai";
 import { BsFillCaretDownFill } from "react-icons/bs";
 import Page1 from "./Page1";
@@ -265,25 +271,25 @@ export default function App() {
             </a>
             <a href="/page2">
               <div className="ScrollBar-h2">
-                <img src={ImgScrol} alt="" />
-                <h2>Дети</h2>
+                <img src={ImgScrol2} alt="" />
+                <h2>ДЕТИ</h2>
               </div>
             </a>
             <a href="/page3">
               <div className="ScrollBar-h2">
-                <img src={ImgScrol} alt="" />
+                <img src={ImgScrol3} alt="" />
                 <h2>ЗАПИСИ О ПРОПУСКАХ</h2>
               </div>
             </a>
             <a href="/page4">
               <div className="ScrollBar-h2">
-                <img src={ImgScrol} alt="" />
+                <img src={ImgScrol4} alt="" />
                 <h2>РАСПИСАНИЕ</h2>
               </div>
             </a>
             <a href="/page5">
               <div className="ScrollBar-h2">
-                <img src={ImgScrol} alt="" />
+                <img src={ImgScrol5} alt="" />
                 <h2>ДИНАМИКА РАЗВИТИЯ</h2>
               </div>
             </a>
