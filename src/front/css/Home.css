@@ -1,10 +1,9 @@
 .novs {
-  color: #8081BD;
+  color: #8081bd;
   margin-left: 10%;
 }
 
-
-.cards-home{
+.cards-home {
   display: flex;
   justify-content: space-evenly;
   width: 90%;
@@ -12,24 +11,28 @@
   flex-wrap: wrap;
 }
 
-.card-home img{
+.card-home img {
   width: 100%;
 }
 
-.card-home{
+.card-home {
   width: 400px;
   margin-top: 30px;
 }
 
-.card-home button{
+.card-home button {
   width: 80%;
   margin: auto;
-  background: #8081BD;
+  background: none;
   height: 40px;
   border: none;
   border-radius: 30px;
   color: white;
   font-size: 20px;
+  border: 1px solid #334155;
+  color: #334155;
+  font-weight: 700;
+  transition: 0.3s;
 }
 
 .smotr-et {
@@ -37,7 +40,7 @@
   border-radius: 30px;
   border: none;
   height: 40px;
-  background: #FDDC4E;
+  background: #fddc4e;
   font-weight: 800;
   text-transform: uppercase;
   color: #334155;
@@ -54,7 +57,7 @@
 .blog {
   width: 100%;
   height: auto;
-  background: url('../img/8190161\ 2.png');
+  background: url("../img/8190161\ 2.png");
 }
 
 .bgs {
@@ -82,7 +85,7 @@
 .forms button {
   width: 40%;
   height: 34px;
-  background: #8081BD;
+  background: #8081bd;
   border-radius: 30px;
   border: 1px solid white;
   color: white;
@@ -107,69 +110,107 @@
   margin-left: 4px;
 }
 
-@media(max-width: 470px){
-  .cards-home{
+@media (max-width: 470px) {
+  .cards-home {
     width: 100%;
   }
-  .card-home{
+  .card-home {
     margin-left: -25px !important;
     width: 90%;
   }
-  .card-home h1{
+  .card-home h1 {
     font-size: 20px;
   }
-  .card-home p{
+  .card-home p {
     font-size: 15px;
   }
-  .card-home button{
+  .card-home button {
     width: 100%;
   }
-  .smotr-et{
+  .smotr-et {
     width: 90% !important;
     margin-left: -20px;
   }
 }
 
-.form-control{
-  background: #FDDC4E !important;
+.form-control {
+  background: #fddc4e !important;
 }
 
-.forms{
+.forms {
   width: 60%;
   display: flex;
 }
 
-@media(max-width: 573px){
-  .forms{
+@media (max-width: 573px) {
+  .forms {
     width: 100%;
     flex-wrap: wrap;
     justify-content: start;
   }
-  .form-control{
+  .form-control {
     width: 90%;
   }
-  .forms button{
+  .forms button {
     width: 100%;
     margin-top: 20px;
   }
 }
 
-@media(max-width: 445px){
-  .forms{
+@media (max-width: 445px) {
+  .forms {
     width: 90% !important;
     flex-wrap: wrap;
     justify-content: start;
     margin-left: -15px !important;
   }
-  .form-control{
+  .form-control {
     width: 50% !important;
     background: #000;
   }
-  .forms button{
+  .forms button {
     width: 120% !important;
     margin-top: 20px;
   }
-  .blog{
+  .blog {
     margin-left: -10px !important;
   }
+}
+
+#modl {
+  width: 100%;
+  height: 100vh;
+  align-items: center;
+  display: none;
+  position: fixed !important;
+  top: 0;
+  /* padding-top: 50vh; */
+  text-align: center;
+  background: #334155;
+}
+
+#modl img {
+  width: 40px !important;
+  margin-top: 100px;
+}
+
+#modl h1,
+h4 {
+  color: white !important;
+  width: 100%;
+  /* margin-top: 100px; */
+}
+
+.card-home h1 {
+  font-size: 30px;
+}
+
+.card-home img {
+  border-radius: 10px;
+}
+
+.card-home button:hover {
+  background: #ea5d4a;
+  color: white;
+  border: none;
 }

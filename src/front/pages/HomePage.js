@@ -38,7 +38,8 @@ import opa2 from "../Images/opa2.png";
 import ava from "../Images/Group 10.png";
 import url from "../../host";
 import axios from "axios";
-import modalImg from "../img/Заявка.png";
+import modalImg from "../img/Group 10.png";
+import modalImg2 from "../img/Group 10 (2).png";
 
 const agreeRadio = () => {
   $(".radioHeader1").toggleClass("activeAgree");
@@ -151,9 +152,42 @@ export default function HomePage() {
       document.querySelector(".yoqqq").style = "display: block";
     }
   }
+  function openss() {
+    document.querySelector(".otzfv").style = "display: block";
+  }
+
+  function closess() {
+    document.querySelector(".otzfv").style = "display: none";
+  }
 
   return (
     <>
+      <div className="otzfv" id="otzfv">
+        <div className="otzff">
+          <span onClick={() => closess()} className="ixxk">
+            x
+          </span>
+          <div className="modalUser">
+            <img src={modalImg2} alt="" />
+            <h4>
+              Елена <br /> <p>Саратовa</p>
+            </h4>
+          </div>
+          <p>
+            Водим двоих детей, очень довольны уровнем и качеством образования,
+            если нужен просто детский сад, то вам не сюда. Дети знают английский
+            (произношение, грамматика и пр.) Водим двоих детей, очень довольны
+            уровнем и качеством образования, если нужен просто детский сад, то
+            вам не сюда. Дети знают английский (произношение, грамматика и пр.)
+            Водим двоих детей, очень довольны уровнем и качеством образования,
+            если нужен просто детский сад, то вам не сюда. Дети знают английский
+            (произношение, грамматика и пр.) Водим двоих детей, очень довольны
+            уровнем и качеством образования, если нужен просто детский сад, то
+            вам не сюда. Дети знают английский (произношение, грамматика и пр.)
+          </p>
+          <button>источник</button>
+        </div>
+      </div>
       <div className="modalZyav">
         <img src={modalImg} alt="" />
       </div>
@@ -561,7 +595,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратов</h6>
+                        <h6>Саратовa</h6>
                       </span>
                     </div>
                     <p>
@@ -571,7 +605,7 @@ export default function HomePage() {
                       пр.)
                     </p>
                   </div>
-                  <p>Прочитать отзыв</p>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
@@ -581,7 +615,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратов</h6>
+                        <h6>Саратовa</h6>
                       </span>
                     </div>
                     <p>
@@ -591,7 +625,7 @@ export default function HomePage() {
                       пр.)
                     </p>
                   </div>
-                  <p>Прочитать отзыв</p>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
@@ -601,7 +635,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратов</h6>
+                        <h6>Саратовa</h6>
                       </span>
                     </div>
                     <p>
@@ -611,7 +645,7 @@ export default function HomePage() {
                       пр.)
                     </p>
                   </div>
-                  <p>Прочитать отзыв</p>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
@@ -621,7 +655,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратов</h6>
+                        <h6>Саратовa</h6>
                       </span>
                     </div>
                     <p>
@@ -631,7 +665,7 @@ export default function HomePage() {
                       пр.)
                     </p>
                   </div>
-                  <p>Прочитать отзыв</p>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
                 </div>
               </Carousel.Item>
               <Carousel.Item>
@@ -641,7 +675,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратов</h6>
+                        <h6>Саратовa</h6>
                       </span>
                     </div>
                     <p>
@@ -651,12 +685,12 @@ export default function HomePage() {
                       пр.)
                     </p>
                   </div>
-                  <p>Прочитать отзыв</p>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
                 </div>
               </Carousel.Item>
             </Carousel>
           </div>
-        </div>{" "}
+        </div>
       </div>
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"

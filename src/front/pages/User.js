@@ -14,8 +14,8 @@ import book from "../Images/book.png";
 import spoon from "../Images/spoon.png";
 import comments from "../Images/comments.png";
 import baby from "../Images/Baby.png";
-import vector1 from "../Images/Vector (4).png";
-import vector2 from "../Images/Vector (5).png";
+import vector1 from "../img/image 23.png";
+import vector2 from "../img/image 24.png";
 import vector3 from "../Images/Vector (6).png";
 import vector4 from "../Images/Vector (7).png";
 import vector5 from "../Images/Vector (8).png";
@@ -23,12 +23,29 @@ import vector6 from "../Images/Vector (9).png";
 import vector7 from "../Images/Vector (10).png";
 import vector8 from "../Images/Vector (11).png";
 import vector9 from "../Images/Group 23.png";
+import modalImg from "../img/Group 10.png";
 import "react-phone-input-2/lib/style.css";
 export default function User() {
   const [phone, usePhone] = useState();
+  const [phone2, usePhone2] = useState();
+  function modalOpens() {
+    document.querySelector(".modalZyav").style = "display: block";
+    setTimeout(() => {
+      document.querySelector(".modalZyav").style = "display: none";
+    }, 1000);
+  }
+
   return (
     <div>
       <>
+        <div className="modalZyav" id="modl">
+          <img src={modalImg} />
+          <h1>
+            Ваша заявка <br /> отправлена!
+          </h1>
+          <br />
+          <h4>Спасибо, мы с Вами свяжемся в ближайшее время</h4>
+        </div>
         <h1 className="User-h1">О центре</h1>
         <div className="User-div">
           <img src={ImgUser} alt="" />
@@ -71,8 +88,8 @@ export default function User() {
         <h1 className="user-vd">Видео из жизни нашего сада</h1>
         <div className="user-video">
           <img src={imgvd} alt="" />
-          <img src={imgvd} alt="" />
-          <img src={imgvd} alt="" />
+          <img src={vector1} alt="" />
+          <img src={vector2} alt="" />
         </div>
         <div className="factorsHome">
           <div className="factorHome ">
@@ -141,7 +158,7 @@ export default function User() {
                   value={phone}
                   onChange={(phone) => usePhone}
                 />
-                <button>отправить</button>
+                <button onClick={() => modalOpens()}>отправить</button>
               </div>
             </div>
             <div className="blogs">

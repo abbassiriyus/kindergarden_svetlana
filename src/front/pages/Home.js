@@ -6,12 +6,26 @@ import Img3 from "../img/img3.png";
 import Img4 from "../img/image 11.png";
 import PhoneInput from "react-phone-input-2";
 import { useState } from "react";
+import modalImg from "../img/Group 10.png";
 import "react-phone-input-2/lib/style.css";
 function App() {
   const [phone2, usePhone2] = useState();
-
+  function modalOpens() {
+    document.querySelector(".modalZyav").style = "display: block";
+    setTimeout(() => {
+      document.querySelector(".modalZyav").style = "display: none";
+    }, 1000);
+  }
   return (
     <div className="App">
+      <div className="modalZyav" id="modl">
+        <img src={modalImg} />
+        <h1>
+          Ваша заявка <br /> отправлена!
+        </h1>
+        <br />
+        <h4>Спасибо, мы с Вами свяжемся в ближайшее время</h4>
+      </div>
       <h1 className="novs">Новости</h1>
       <div className="cards-home">
         <div className="card-home">
@@ -24,7 +38,7 @@ function App() {
             beatae quam soluta?
           </p>
           <a href="/news">
-            <button>padrobnee</button>
+            <button>подробнее</button>
           </a>
         </div>
         <div className="card-home">
@@ -37,7 +51,7 @@ function App() {
             beatae quam soluta?
           </p>
           <a href="/news">
-            <button>padrobnee</button>
+            <button>подробнее</button>
           </a>
         </div>
         <div className="card-home">
@@ -50,7 +64,7 @@ function App() {
             beatae quam soluta?
           </p>
           <a href="/news">
-            <button>padrobnee</button>
+            <button>подробнее</button>
           </a>
         </div>
       </div>
@@ -75,7 +89,7 @@ function App() {
                 value={phone2}
                 onChange={(phone2) => usePhone2}
               />
-              <button>отправить</button>
+              <button onClick={() => modalOpens()}>отправить</button>
             </div>
           </div>
           <div className="blogs">
