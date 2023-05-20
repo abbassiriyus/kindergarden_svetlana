@@ -51,7 +51,7 @@ const agreeRadio2 = () => {
 export default function HomePage() {
   const [phone, usePhone] = useState();
   const [phone2, usePhone2] = useState();
-
+  const [agreement, setAgreement]=useState()
   if (window.innerWidth < 576) {
     var cards = document.getElementsByClassName("card"),
       transforms = [
@@ -130,15 +130,16 @@ export default function HomePage() {
   }, 1000);
 
   function postContact() {
+    let k =agreement
     var data = new FormData();
     data.append("fullname", document.querySelector(".personPost").value);
     data.append("phone", document.querySelector(".form-control").value);
     data.append("email", document.querySelector(".gmailPost").value);
-    if (document.querySelector(".gmailPost").value.includes("@gmail")) {
+    if (document.querySelector(".gmailPost").value.includes("@gmail")&& k===1 ){
       document.querySelector(".modalZyav").style = "display: flex";
       setTimeout(() => {
         document.querySelector(".modalZyav").style = "display: none";
-      }, 1000);
+      }, 10000000000000);
       axios
         .post(`${url}/contact`, data)
         .then((res) => {
@@ -146,11 +147,26 @@ export default function HomePage() {
         })
         .catch((err) => {
           console.log(err);
+          
         });
-      window.location = "/";
+       
+
     } else {
-      document.querySelector(".yoqqq").style = "display: block";
+      console.log("hatto");
+     console.log(k);
+ 
+      document.querySelector(".errorr").style = "display: block";
     }
+  }
+  function agree(id) {
+    $(".radioHeader1").toggleClass("activeAgree");
+    console.log(id);
+    if (id===1) {
+      setAgreement(1)
+    }else{
+      setAgreement(0)
+    }
+    console.log(agreement);
   }
   function openss() {
     document.querySelector(".otzfv").style = "display: block";
@@ -158,6 +174,9 @@ export default function HomePage() {
 
   function closess() {
     document.querySelector(".otzfv").style = "display: none";
+  }
+  function close (parameters) {
+    document.querySelector(".modalZyav").style = "display: none";
   }
 
   return (
@@ -188,8 +207,10 @@ export default function HomePage() {
           <button>источник</button>
         </div>
       </div>
-      <div className="modalZyav">
+      <div className="modalZyav" onClick={close}>
         <img src={modalImg} alt="" />
+        <h2>Ваша заявка отправлена!</h2>
+        <p>Спасибо, мы с Вами свяжемся в ближайшее время</p> 
       </div>
       <div className="HomePage">
         <div className="HeaderHome">
@@ -229,7 +250,6 @@ export default function HomePage() {
                 />
                 <span>*</span>
               </div>
-              <label className="yoqqq">неправильный gmail</label>
               <div className="inputHeader">
                 <input
                   type="text"
@@ -237,15 +257,17 @@ export default function HomePage() {
                   placeholder="Ваш e-mail"
                 />
               </div>
+              
             </div>
             <div className="agreeRadio">
-              <div onClick={agreeRadio} className="radioHeader">
+              <div onClick={() => agree(1)} className="radioHeader">
                 <div>
-                  <span className="radioHeader1 "></span>
+                  <span onClick={() => agree(0)} className="radioHeader1 "></span>
                 </div>
               </div>
               <p>Я принимаю условия пользовательского соглашения</p>
             </div>
+            <label className="errorr">error</label>
             <div className="btnSubmitHeader" onClick={() => postContact()}>
               записаться
             </div>
@@ -693,7 +715,7 @@ export default function HomePage() {
         </div>
       </div>
       <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2998.126783016199!2d69.35125797648543!3d41.284345102379696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef58a2f81879b%3A0x9111f25766467abb!2z0JTQtdGC0YHQutC40Lkg0YHQsNC0IOKEliA5Mw!5e0!3m2!1sru!2s!4v1684415277496!5m2!1sru!2s"
+       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.7861001880665!2d46.011060176536894!3d51.535482971819754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c7b706714d39%3A0xfcfe98f6fcfc6cdb!2z0YPQuy4g0J_Rg9Cz0LDRh9GR0LLQsCDQlS4g0JgsIDk4LzEwMCwg0KHQsNGA0LDRgtC-0LIsINCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC7Liwg0KDQvtGB0YHQuNGPLCA0MTAwMTI!5e0!3m2!1sru!2s!4v1684586014215!5m2!1sru!2s" 
         height="450"
         style={{
           border: "0",

@@ -145,8 +145,16 @@ console.log(variant);
 console.log(javob);
 if (variant===javob) {
   console.log("turi");
+  document.querySelector(".modall").style.display = "block";
+            setTimeout(() => {
+              document.querySelector(".modall").style.display = "none";
+            }, 2000);
 }else{
   console.log("notori");
+  document.querySelector(".modall2").style.display = "block";
+          setTimeout(() => {
+            document.querySelector(".modall2").style.display = "none";
+          }, 2000);
 }
 
     // axios.get(`${url}/test`).then((res) => {
