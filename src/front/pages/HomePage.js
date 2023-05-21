@@ -267,7 +267,7 @@ export default function HomePage() {
               </div>
               <p>Я принимаю условия пользовательского соглашения</p>
             </div>
-            <label className="errorr">error</label>
+            <label className="errorr">Данные введены некорректно или вы не приняли условия соглашения</label>
             <div className="btnSubmitHeader" onClick={() => postContact()}>
               записаться
             </div>
