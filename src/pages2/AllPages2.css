@@ -969,6 +969,10 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  color: #334155 !important;;
+}
+.uu{
+  color: #334155 !important;;
 }
 .kkk{
 margin-left: 140px  !important

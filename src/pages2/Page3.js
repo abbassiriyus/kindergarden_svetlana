@@ -55,17 +55,17 @@ if (a==="17-05-2023") {
             <span onClick={() => closeChildModal()}>X</span>
           </h4>
           <br />
-          <h4>Ребенок </h4>
+          <h4 className="uu">Ребенок </h4>
           <div classname="childs">
             <img src={img} alt="" />
             <p>Маринина Наташа</p>
           </div>
-          <h4>Дата</h4>
+          <h4 className="uu">Дата</h4>
           <div className="mchj">
-            <h4>2023/01/24</h4> <h4>Весь день</h4>
+            <h4 className="uu">2023/01/24</h4> <h4 className="uu">Весь день</h4>
           </div>
-          <h4>Причина </h4>
-          <p>Болезнь</p>
+          <h4 className="uu">Причина </h4>
+          <p className="uu">Болезнь</p>
           <br />
           <p>
             Автор: Спицына Маргарита Николаевна

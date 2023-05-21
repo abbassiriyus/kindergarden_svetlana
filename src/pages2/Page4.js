@@ -24,7 +24,7 @@ export default function Page4 () {
             <img src={Img1} alt='' />
             <div className='kid-prfl'>
               <div className="fxdckhl">
-              <h4>Маринина Наташа</h4>
+              <h4 className="uu">Маринина Наташа</h4>
               <p>4 года</p>
               </div>
               <h3 className='volss'>
