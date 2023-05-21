@@ -11,7 +11,7 @@ export default function Page5() {
         <div className="rftgyh">
           <img src={Img1} alt="" />
           <div className="fghjn">
-            <h4>Маринина Наташа</h4>
+            <h4 className="uu">Маринина Наташа</h4>
             <p>4 года</p>
             <p><img src={Img2} alt="" /> Волшебник 2 уровня</p>
           </div>
