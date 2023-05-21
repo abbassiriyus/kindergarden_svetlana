@@ -51,7 +51,7 @@ const agreeRadio2 = () => {
 export default function HomePage() {
   const [phone, usePhone] = useState();
   const [phone2, usePhone2] = useState();
-  const [agreement, setAgreement]=useState()
+  const [agreement, setAgreement] = useState();
   if (window.innerWidth < 576) {
     var cards = document.getElementsByClassName("card"),
       transforms = [
@@ -130,16 +130,20 @@ export default function HomePage() {
   }, 1000);
 
   function postContact() {
-    let k =agreement
+    let k = agreement;
     var data = new FormData();
     data.append("fullname", document.querySelector(".personPost").value);
     data.append("phone", document.querySelector(".form-control").value);
     data.append("email", document.querySelector(".gmailPost").value);
-    if (document.querySelector(".gmailPost").value.includes("@gmail")&& k===1 ){
+    if (
+      document.querySelector(".gmailPost").value.includes("@gmail") &&
+      k === 1
+    ) {
       document.querySelector(".modalZyav").style = "display: flex";
       setTimeout(() => {
         document.querySelector(".modalZyav").style = "display: none";
-      }, 10000000000000);
+      }, 10000);
+      window.location = "/";
       axios
         .post(`${url}/contact`, data)
         .then((res) => {
@@ -147,24 +151,20 @@ export default function HomePage() {
         })
         .catch((err) => {
           console.log(err);
-          
         });
-       
-
     } else {
       console.log("hatto");
-     console.log(k);
- 
+      console.log(k);
       document.querySelector(".errorr").style = "display: block";
     }
   }
   function agree(id) {
     $(".radioHeader1").toggleClass("activeAgree");
     console.log(id);
-    if (id===1) {
-      setAgreement(1)
-    }else{
-      setAgreement(0)
+    if (id === 1) {
+      setAgreement(1);
+    } else {
+      setAgreement(0);
     }
     console.log(agreement);
   }
@@ -175,7 +175,7 @@ export default function HomePage() {
   function closess() {
     document.querySelector(".otzfv").style = "display: none";
   }
-  function close (parameters) {
+  function close(parameters) {
     document.querySelector(".modalZyav").style = "display: none";
   }
 
@@ -210,7 +210,7 @@ export default function HomePage() {
       <div className="modalZyav" onClick={close}>
         <img src={modalImg} alt="" />
         <h2>Ваша заявка отправлена!</h2>
-        <p>Спасибо, мы с Вами свяжемся в ближайшее время</p> 
+        <p>Спасибо, мы с Вами свяжемся в ближайшее время</p>
       </div>
       <div className="HomePage">
         <div className="HeaderHome">
@@ -257,17 +257,21 @@ export default function HomePage() {
                   placeholder="Ваш e-mail"
                 />
               </div>
-              
             </div>
             <div className="agreeRadio">
               <div onClick={() => agree(1)} className="radioHeader">
                 <div>
-                  <span onClick={() => agree(0)} className="radioHeader1 "></span>
+                  <span
+                    onClick={() => agree(0)}
+                    className="radioHeader1 "
+                  ></span>
                 </div>
               </div>
               <p>Я принимаю условия пользовательского соглашения</p>
             </div>
-            <label className="errorr">Данные введены некорректно или вы не приняли условия соглашения</label>
+            <label className="errorr">
+              Данные введены некорректно или вы не приняли условия соглашения
+            </label>
             <div className="btnSubmitHeader" onClick={() => postContact()}>
               записаться
             </div>
@@ -591,7 +595,9 @@ export default function HomePage() {
                 value={phone2}
                 onChange={(phone2) => usePhone2}
               />
-              <div className="SubmitConsult">отправить</div>
+              <div className="SubmitConsult" onClick={() => postContact()}>
+                отправить
+              </div>
             </div>
             <div className="agreeRadio align-baseline">
               <div onClick={agreeRadio2} className="radioHeader">
@@ -609,12 +615,25 @@ export default function HomePage() {
         <div className="ocentre">
           <div className="kk">
             <h1 className="pi1">О нашем центре</h1>
-            <p className="pi4">Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя,< br/> развивает индивидуальные особенности и таланты.
-</p>
-            <p className="pi2">Наша задача — сделать так, чтобы каждый день в Школе Волшебников был для наших маленьких волшебников счастливым.
-</p>
-<p className="pi3">Детская студия «Школа волшебников» входит в тройку лучших детских дошкольных студий нашего города. Наши двери открыты < br/> для деток от 3-х до 7-ми лет. Основная наша миссия: заложить основы гармоничного и успешного развития ребенка. Выбирая< br/> развивающий центр для своего ребенка, Вы во многом определяете его будущее. «Школа волшебников» - станет отличным стартом< br/> для будущих успехов Вашего ребенка. </p>
-
+            <p className="pi4">
+              Мы создали пространство, в котором каждый ребёнок проявляет и
+              раскрывает себя,
+              <br /> развивает индивидуальные особенности и таланты.
+            </p>
+            <p className="pi2">
+              Наша задача — сделать так, чтобы каждый день в Школе Волшебников
+              был для наших маленьких волшебников счастливым.
+            </p>
+            <p className="pi3">
+              Детская студия «Школа волшебников» входит в тройку лучших детских
+              дошкольных студий нашего города. Наши двери открыты <br /> для
+              деток от 3-х до 7-ми лет. Основная наша миссия: заложить основы
+              гармоничного и успешного развития ребенка. Выбирая
+              <br /> развивающий центр для своего ребенка, Вы во многом
+              определяете его будущее. «Школа волшебников» - станет отличным
+              стартом
+              <br /> для будущих успехов Вашего ребенка.{" "}
+            </p>
           </div>
         </div>
         {/*   text section */}
@@ -654,8 +673,10 @@ export default function HomePage() {
                       </span>
                     </div>
                     <p>
-                    Водим двоих детей, очень довольны уровнем и качеством образования, если нужен просто детский сад, то вам не сюда. Дети знают английский (произношение, грамматика и пр.)
-
+                      Водим двоих детей, очень довольны уровнем и качеством
+                      образования, если нужен просто детский сад, то вам не
+                      сюда. Дети знают английский (произношение, грамматика и
+                      пр.)
                     </p>
                   </div>
                   <p onClick={() => openss()}>Прочитать отзыв</p>
@@ -725,9 +746,9 @@ export default function HomePage() {
           </div>
         </div>
       </div>
-      
-   <iframe
-       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.7861001880665!2d46.011060176536894!3d51.535482971819754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c7b706714d39%3A0xfcfe98f6fcfc6cdb!2z0YPQuy4g0J_Rg9Cz0LDRh9GR0LLQsCDQlS4g0JgsIDk4LzEwMCwg0KHQsNGA0LDRgtC-0LIsINCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC7Liwg0KDQvtGB0YHQuNGPLCA0MTAwMTI!5e0!3m2!1sru!2s!4v1684586014215!5m2!1sru!2s" 
+
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.7861001880665!2d46.011060176536894!3d51.535482971819754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4114c7b706714d39%3A0xfcfe98f6fcfc6cdb!2z0YPQuy4g0J_Rg9Cz0LDRh9GR0LLQsCDQlS4g0JgsIDk4LzEwMCwg0KHQsNGA0LDRgtC-0LIsINCh0LDRgNCw0YLQvtCy0YHQutCw0Y8g0L7QsdC7Liwg0KDQvtGB0YHQuNGPLCA0MTAwMTI!5e0!3m2!1sru!2s!4v1684586014215!5m2!1sru!2s"
         height="450"
         style={{
           border: "0",
