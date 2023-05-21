@@ -606,6 +606,17 @@ export default function HomePage() {
             <img src={opa2} alt="No photo" />
           </div>
         </div>
+        <div className="ocentre">
+          <div className="kk">
+            <h1 className="pi1">О нашем центре</h1>
+            <p className="pi4">Мы создали пространство, в котором каждый ребёнок проявляет и раскрывает себя,< br/> развивает индивидуальные особенности и таланты.
+</p>
+            <p className="pi2">Наша задача — сделать так, чтобы каждый день в Школе Волшебников был для наших маленьких волшебников счастливым.
+</p>
+<p className="pi3">Детская студия «Школа волшебников» входит в тройку лучших детских дошкольных студий нашего города. Наши двери открыты < br/> для деток от 3-х до 7-ми лет. Основная наша миссия: заложить основы гармоничного и успешного развития ребенка. Выбирая< br/> развивающий центр для своего ребенка, Вы во многом определяете его будущее. «Школа волшебников» - станет отличным стартом< br/> для будущих успехов Вашего ребенка. </p>
+
+          </div>
+        </div>
         {/*   text section */}
         <div className="CarouselComments">
           <h2>Отзывы о саде</h2>
@@ -638,8 +649,26 @@ export default function HomePage() {
                     <div className="avatarName">
                       <img src={ava} alt="Avatar" />
                       <span>
+                        <h2>Мария</h2>
+                        <h6>Саратов</h6>
+                      </span>
+                    </div>
+                    <p>
+                    Водим двоих детей, очень довольны уровнем и качеством образования, если нужен просто детский сад, то вам не сюда. Дети знают английский (произношение, грамматика и пр.)
+
+                    </p>
+                  </div>
+                  <p onClick={() => openss()}>Прочитать отзыв</p>
+                </div>
+              </Carousel.Item>
+              <Carousel.Item>
+                <div className="forWidth">
+                  <div className="textCarouselBottom">
+                    <div className="avatarName">
+                      <img src={ava} alt="Avatar" />
+                      <span>
                         <h2>Елена</h2>
-                        <h6>Саратовa</h6>
+                        <h6>Саратов</h6>
                       </span>
                     </div>
                     <p>
@@ -659,27 +688,7 @@ export default function HomePage() {
                       <img src={ava} alt="Avatar" />
                       <span>
                         <h2>Елена</h2>
-                        <h6>Саратовa</h6>
-                      </span>
-                    </div>
-                    <p>
-                      Водим двоих детей, очень довольны уровнем и качеством
-                      образования, если нужен просто детский сад, то вам не
-                      сюда. Дети знают английский (произношение, грамматика и
-                      пр.)
-                    </p>
-                  </div>
-                  <p onClick={() => openss()}>Прочитать отзыв</p>
-                </div>
-              </Carousel.Item>
-              <Carousel.Item>
-                <div className="forWidth">
-                  <div className="textCarouselBottom">
-                    <div className="avatarName">
-                      <img src={ava} alt="Avatar" />
-                      <span>
-                        <h2>Елена</h2>
-                        <h6>Саратовa</h6>
+                        <h6>Саратов</h6>
                       </span>
                     </div>
                     <p>
