@@ -92,8 +92,8 @@ export default class PageProfil extends Component {
             <input type='file' className='inpOpacity' />
           </div>
           <div className='Card-Page1'>
-            <h4 id='dolj'>Должность</h4>
-            <p>Воспитатель</p>
+            <h4 id='dolj'>Статус</h4>
+            <p> Родитель</p>
             <div className='Input-grup'>
               <h4>Фамилия</h4>
               {this.state.person1.map(item => {
