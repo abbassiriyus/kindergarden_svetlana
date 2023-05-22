@@ -725,7 +725,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  color: #334155;
+
   margin: 0;
 }
 
@@ -737,7 +737,7 @@
   display: flex;
   justify-content: space-between;
   padding-left: 2%;
-  background: #a70909;
+
 }
 
 .only_you .h2_elem {
@@ -819,7 +819,7 @@
 }
 
 .bodyAcc {
-  width: 40%;
+  width: 656px;
   margin: auto;
   display: flex;
   justify-content: space-evenly;
@@ -975,7 +975,7 @@
   color: #334155 !important;;
 }
 .kkk{
-margin-left: 140px  !important
+margin-left: 100px  !important
 }
 .kakak{
   color: #334155 !important;
