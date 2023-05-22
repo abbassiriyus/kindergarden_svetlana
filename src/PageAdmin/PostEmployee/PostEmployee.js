@@ -1,13 +1,9 @@
-import React, { Component, useState } from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import Dropdown from "react-bootstrap/Dropdown";
-import icon1 from "../img/free-icon-edit-6488637 (2).png";
-import icon2 from "../img/free-icon-delete-5396993.png";
-import "./Employees.css";
 import axios from "axios";
-import url from "../host";
+import React, { Component } from "react";
+import url from "../../host";
+// import "./PostEmployee.css";
 
-export default class Employees extends Component {
+export default class PostEmployee extends Component {
   state = {
     data: [],
     formpages: 1,
@@ -280,37 +276,9 @@ export default class Employees extends Component {
   putdata(key) {
     window.location.reload();
   }
-
   render() {
     return (
-      <div className="body">
-        <div className="modal12">
-          <div className="form12">
-            <h3>Удалить</h3>
-            <h4 className="deleteperson1">
-              {this.state.deleteData.personlastname}
-            </h4>
-            <h4 className="deleteperson1">
-              {this.state.deleteData.personfirstname}
-            </h4>
-            <button
-              className="df_button1"
-              onClick={() => {
-                document.querySelector(".modal12").style = "display:none";
-              }}
-            >
-              Назад
-            </button>
-            <button
-              className="df_button2"
-              onClick={() => {
-                this.deletePerson(this.state.deleteData.personid);
-              }}
-            >
-              Удалить
-            </button>
-          </div>
-        </div>
+      <div>
         <div id="dd" className="modal11">
           <ul className="tabs11">
             <li
@@ -758,158 +726,6 @@ export default class Employees extends Component {
               >
                 Сохранить
               </button>
-            </div>
-          </div>
-        </div>
-
-        <h1 className="bigah1">Список сотрудников</h1>
-        <div className="biga-pages">
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Должность
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Группа
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Занятие
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <button
-            id="btnlar1"
-            onClick={() => {
-              this.openModal();
-            }}
-          >
-            + Добавить сотрудника
-          </button>
-        </div>
-        <div id="tables">
-          <div id="names">
-            <p>ID</p>
-            <p>Фамилия</p>
-            <p>Имя</p>
-            <p>Отчество</p>
-            <p>
-              Дата <br /> рождения
-            </p>
-            <p>Должность</p>
-            <p>
-              Дата <br /> добавления
-            </p>
-            <p>Действие</p>
-          </div>
-          {this.state.data.map((item, key) => {
-            if (key % 2 === 0) {
-              return (
-                <div id="inform2">
-                  <div id="inform-p">
-                    <p className="itemPrsn">{item.personid}</p>
-                    <p className="itemPrsnLst">{item.personlastname}</p>
-                    <p className="itemPrsnLst">{item.personfirstname}</p>
-                    <p className="itemPrsnLst">{item.personmiddlename}</p>
-                    <p className="itemPrsnLst">
-                      {item.dateofbirth.slice(0, 10)}
-                    </p>
-                    <p className="itemPrsnLst">{item.positiontitle}</p>
-                    <p className="itemPrsnLst">
-                      {item.syscreatedatutc.slice(0, 10)}
-                    </p>
-                    <div id="iconci">
-                      {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                      <img
-                        onClick={() => {
-                          this.openModal2();
-                          this.getInfa(item.personid);
-                        }}
-                        src={icon1}
-                        alt=""
-                      />
-                      <img
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        src={icon2}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div id="inform1">
-                  <div id="inform-p">
-                    <p className="itemPrsn">{item.personid}</p>
-                    <p className="itemPrsnLst">{item.personlastname}</p>
-                    <p className="itemPrsnLst">{item.personfirstname}</p>
-                    <p className="itemPrsnLst">{item.personmiddlename}</p>
-                    <p className="itemPrsnLst">
-                      {item.dateofbirth.slice(0, 10)}
-                    </p>
-                    <p className="itemPrsnLst">{item.positiontitle}</p>
-                    <p className="itemPrsnLst">
-                      {item.syscreatedatutc.slice(0, 10)}
-                    </p>
-                    <div id="iconci">
-                      {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                      <img src={icon1} alt="" />
-                      <img
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        src={icon2}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-          })}
-
-          <div id="inform1">
-            <div id="inform-p">
-              {/* <p>1</p>
-          <p>Марина</p>
-          <p>Вероника</p>
-          <p>Петровна</p>
-          <p>20/03/1986</p>
-          <p>Воспитатель</p>
-          <p>15/07/2020</p>
-          <div id='iconci'>
-          <img src={icon1} alt=''/> 
-          <img src={icon2} alt=''/>
-          </div> */}
             </div>
           </div>
         </div>
