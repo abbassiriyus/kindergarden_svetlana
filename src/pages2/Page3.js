@@ -62,7 +62,7 @@ if (a==="17-05-2023") {
           </div>
           <h4 className="uu">Дата</h4>
           <div className="mchj">
-            <h4 className="uu">2023/01/24</h4> <h4 className="uu">Весь день</h4>
+            <h4 className="uu">2023/05/17</h4> <h4 className="uu">Весь день</h4>
           </div>
           <h4 className="uu">Причина </h4>
           <p className="uu">Болезнь</p>
