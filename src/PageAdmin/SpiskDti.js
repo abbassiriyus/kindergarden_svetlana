@@ -356,8 +356,17 @@ export default class ChildAdmin extends Component {
     document.querySelector(".mfhtrg").style = "display: none";
   }
 
-  closeModal1122(key) {
+  closeModal1122() {
+    document.querySelector(".modal1122").style = "display: none";
+    document.querySelector(".mfhtrg").style = "display: block";
+  }
+  closeModal1123(key) {
+    // var childid = key.childid;
+    var groupid = key.groupid;
+    var addressid = key.addressid;
     var formData = new FormData();
+    formData.append("addressid", addressid);
+    formData.append("groupid", groupid);
     formData.append("childlastname", document.querySelector(".itmChild").value);
     formData.append(
       "childfirstname",
@@ -382,12 +391,26 @@ export default class ChildAdmin extends Component {
       "deviations",
       document.querySelector(".childdeviations").value
     );
+    formData.append(
+      "medicines",
+      document.querySelector(".childmedicines").value
+    );
+    formData.append(
+      "healthrestrictions",
+      document.querySelector(".childhealthrestrictions").value
+    );
+    formData.append("diet", document.querySelector(".childdiet").value);
+    formData.append("comment", document.querySelector(".childdiet").value);
+    formData.append("photo");
     console.log(key);
-    axios.put(`${url}/child/${key.childid}`).then((res) => {
-      console.log("created");
-    });
-    // document.querySelector(".modal1122").style = "display: none";
-    // document.querySelector(".mfhtrg").style = "display: block";
+    axios
+      .put(`${url}/child/${key.childid}`, formData)
+      .then((res) => {
+        console.log("created");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -1073,14 +1096,16 @@ export default class ChildAdmin extends Component {
                     <input
                       className="childCertifi"
                       placeholder={item.certificateofbirth}
-                      type="date"
+                      type="number"
                     />
                   </div>
                   <div className="pages11">
                     <label htmlFor="child7"> health* </label>
                     <br />
-                    <select className="childHealth" value={item.health}>
-                      <option>asd</option>
+                    <select className="childHealth">
+                      <option>zor</option>
+                      <option>yomon</option>
+                      <option>ota gozal</option>
                     </select>
                   </div>
                   <div className="pages11">
@@ -1113,22 +1138,38 @@ export default class ChildAdmin extends Component {
                   <div className="pages11">
                     <label htmlFor="form5">medicines</label>
                     <br />
-                    <input placeholder={item.medicines} type="date" />
+                    <input
+                      className="childmedicines"
+                      placeholder={item.medicines}
+                      type="text"
+                    />
                   </div>
                   <div className="pages11">
                     <label htmlFor="form5">healthrestrictions</label>
                     <br />
-                    <input placeholder={item.healthrestrictions} type="text" />
+                    <input
+                      className="childhealthrestrictions"
+                      placeholder={item.healthrestrictions}
+                      type="text"
+                    />
                   </div>
                   <div className="pages11">
                     <label htmlFor="form5">diet</label>
                     <br />
-                    <input placeholder={item.diet} type="text" />
+                    <input
+                      className="childdiet"
+                      placeholder={item.diet}
+                      type="text"
+                    />
                   </div>
                   <div className="pages11">
                     <label htmlFor="form5">comment</label>
                     <br />
-                    <input placeholder={item.comment} type="text" />
+                    <input
+                      className="childcomment"
+                      placeholder={item.comment}
+                      type="text"
+                    />
                   </div>
                 </div>
 
@@ -1144,7 +1185,7 @@ export default class ChildAdmin extends Component {
                   <button
                     className="df_button2"
                     onClick={() => {
-                      this.postData1();
+                      this.closeModal1123(item);
                     }}
                   >
                     Сохранить
