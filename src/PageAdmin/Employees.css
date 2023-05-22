@@ -363,3 +363,14 @@
 .form-control {
   width: 260px !important;
 }
+
+.modal112 {
+  display: none;
+  margin-top: 100px;
+}
+
+.form-control {
+  background: #fff !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+}

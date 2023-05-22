@@ -333,15 +333,21 @@ export default class ChildAdmin extends Component {
   }
 
   deletechild(key) {
-
-    axios.delete(`${url}/child/${this.state.deleteData.childid}`).then((res) => {
+    axios
+      .delete(`${url}/child/${this.state.deleteData.childid}`)
+      .then((res) => {
         document.querySelector(".modal12").style = "display:none";
         document.querySelector(".modal12").style = "display:none";
         window.location.reload();
       });
   }
 
-  PutData() {}
+  Getperson(key) {
+    console.log(key);
+    axios.get(`${url}/child/${key}`).then((res) => {
+      console.log(res.data);
+    });
+  }
 
   render() {
     return (
@@ -979,6 +985,143 @@ export default class ChildAdmin extends Component {
             </div>
           </div>
         </div>
+        <div className="modal1122">
+          <div className="Apages1">
+            <div className="oyna101">
+              <div className="pages11">
+                <label htmlFor="child1">Фамилия*</label>
+                <br />
+                <input id="child1" type="text" />
+              </div>
+              <div className="pages11">
+                <label htmlFor="child2">Имя* </label>
+                <br />
+                <input id="child2" type="text" />
+              </div>
+              <div className="pages11">
+                <label htmlFor="form3">Отчество*</label>
+                <br />
+                <input id="form3" type="text" />
+              </div>
+
+              <div className="pages11">
+                <label htmlFor="child3"> Пол* </label>
+                <br />
+                <select name="child3" id="child3">
+                  <option value="м">м</option>
+                  <option value="ж">ж</option>
+                </select>
+              </div>
+              <div className="pages11">
+                <label htmlFor="child5">Дата рождения* </label>
+                <br />
+                <input id="child5" type="date" />
+              </div>
+              <div className="pages11">
+                <label htmlFor="child7"> Родители* </label>
+                <br />
+                <select name="child7" id="child7">
+                  <option>asd</option>
+                </select>
+              </div>
+              <div className="pages11">
+                <label htmlFor="child6">Свидетельство о рождении * </label>
+                <br />
+                <input id="child6" placeholder="III-КЕ 456789" type="text" />
+              </div>
+              <div className="pages11">
+                <br />
+                <label htmlFor="form4"> СНИЛС </label>
+                <br />
+                <input type="text" id="form4" />
+              </div>
+              <div className="pages11">
+                <label htmlFor="form5">Полис ОМС</label>
+                <br />
+                <input id="form5" type="text" />
+              </div>
+            </div>
+            <label
+              htmlFor="form12"
+              style={{
+                marginLeft: "10%",
+                marginTop: "50px",
+                marginBottom: "30px",
+              }}
+            >
+              Адрес регистрации*
+            </label>
+            <div className="oyna101">
+              <div className="pages11">
+                <input
+                  className="caform1"
+                  placeholder="Страна"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+              <div className="pages11">
+                <input
+                  className="caform2"
+                  placeholder="Город"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+              <div className="pages11">
+                <input
+                  className="caform3"
+                  placeholder="Улица"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+              <div className="pages11">
+                <input
+                  className="caform4"
+                  placeholder="Номер дома"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+              <div className="pages11">
+                <input
+                  className="caform5"
+                  placeholder="building"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+              <div className="pages11">
+                <input
+                  className="caform6"
+                  placeholder="Квартира"
+                  style={{ marginTop: "30px" }}
+                  type="text"
+                />
+              </div>
+            </div>
+
+            <div className="df_button">
+              <button
+                className="df_button1"
+                onClick={() => {
+                  this.closeModal();
+                }}
+              >
+                Назад
+              </button>
+              <button
+                className="df_button2"
+                onClick={() => {
+                  this.postData1();
+                }}
+              >
+                Сохранить
+              </button>
+            </div>
+          </div>
+        </div>
 
         <h1 className="bigah1">Список детей</h1>
         <div className="biga-pages">
@@ -1055,7 +1198,11 @@ export default class ChildAdmin extends Component {
                     <p>{item.gender}</p>
                     <p>{item.syscreatedatutc.slice(0, 10)}</p>
                     <div id="iconci">
-                      <img src={icon1} alt="" />
+                      <img
+                        onClick={() => this.Getperson(item.childid)}
+                        src={icon1}
+                        alt=""
+                      />
                       <img
                         src={icon2}
                         onClick={() => {
@@ -1081,7 +1228,11 @@ export default class ChildAdmin extends Component {
                     <p>{item.gender}</p>
                     <p>{item.syscreatedatutc.slice(0, 10)}</p>
                     <div id="iconci">
-                      <img src={icon1} alt="" onClick={() => this.PutData()} />
+                      <img
+                        src={icon1}
+                        alt=""
+                        onClick={() => this.Getperson(item.childid)}
+                      />
                       <img
                         onClick={() => {
                           document.querySelector(".modal12").style =

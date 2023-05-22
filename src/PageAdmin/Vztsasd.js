@@ -5,6 +5,8 @@ import "./css/Vztsasd.css";
 import Dropdown from "react-bootstrap/Dropdown";
 import url from "../host";
 import axios from "axios";
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
 
 export default function Vztsasd() {
   const [data, setData] = useState([]);
@@ -13,34 +15,40 @@ export default function Vztsasd() {
   const [state, setState] = useState([]);
   const [posted, setPosted] = useState([]);
   const [getted, setGetted] = useState([]);
+  const [finally2, setFinally] = useState(true);
 
   useEffect(() => {
     function getsOne() {
       const hallo = [];
-      axios.get(`${url}/attendance`).then((res) => {
-        axios.get(`${url}/child`).then((res2) => {
-          for (let i = 0; i < res.data.length; i++) {
-            for (let j = 0; j < res2.data.length; j++) {
-              if (res.data[i].childid == res2.data[j].childid) {
-                res.data[i].childlastname = res2.data[j].childlastname;
-                res.data[i].childfirstname = res2.data[j].childfirstname;
-              }
-            }
-          }
-          setData3(res.data);
-          axios.get(`${url}/excuse`).then((res3) => {
+      axios
+        .get(`${url}/attendance`)
+        .then((res) => {
+          axios.get(`${url}/child`).then((res2) => {
             for (let i = 0; i < res.data.length; i++) {
-              for (let j = 0; j < res3.data.length; j++) {
-                if (res.data[i].excuseid === res3.data[j].excuseid) {
-                  res.data[i].reason = res3.data[j].reason;
+              for (let j = 0; j < res2.data.length; j++) {
+                if (res.data[i].childid == res2.data[j].childid) {
+                  res.data[i].childlastname = res2.data[j].childlastname;
+                  res.data[i].childfirstname = res2.data[j].childfirstname;
                 }
               }
             }
-            setData2(res3.data);
-            setData(res.data);
+            setData3(res.data);
+            axios.get(`${url}/excuse`).then((res3) => {
+              for (let i = 0; i < res.data.length; i++) {
+                for (let j = 0; j < res3.data.length; j++) {
+                  if (res.data[i].excuseid === res3.data[j].excuseid) {
+                    res.data[i].reason = res3.data[j].reason;
+                  }
+                }
+              }
+              setData2(res3.data);
+              setData(res.data);
+            });
           });
+        })
+        .finally(() => {
+          setFinally(false);
         });
-      });
 
       // axios.get(`${url}/attendance`).then(res => {
       //    const abu = res.data
@@ -272,59 +280,82 @@ export default function Vztsasd() {
 
                               </td>
                            </tr> */}
+                  {finally2 === true ? (
+                    <div className="bigEgos">
+                      <Box className="bigEgos2" sx={{ width: 300 }}>
+                        <Skeleton />
+                        <Skeleton animation="wave" />
+                        <Skeleton animation={false} />
+                      </Box>
+                    </div>
+                  ) : (
+                    data.map((item, key) => {
+                      if (item.excuseid) {
+                        return (
+                          <tr className="btnadmp_tr1">
+                            <td className="btnadmp_td2">{key + 1}</td>
+                            <td className="btnadmp_td2">
+                              {item.childlastname} {item.childfirstname}
+                            </td>
+                            <td className="btnadmp_td2">{item.reason}</td>
+                            <td className="btnadmp_td2">
+                              {item.arrivaltime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
+                            <td className="btnadmp_td2">
+                              {item.leavingtime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
 
-                  {data.map((item,key) => {
-                    if (item.excuseid) {
-                      return (
-                        <tr className="btnadmp_tr1">
-                          <td className="btnadmp_td2">{key+1}</td>
-                          <td className="btnadmp_td2">
-                            {item.childlastname} {item.childfirstname}
-                          </td>
-                          <td className="btnadmp_td2">{item.reason}</td>
-                          <td className="btnadmp_td2">
-                            {((item.arrivaltime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
-                          </td>
-                          <td className="btnadmp_td2">
-                            {((item.leavingtime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
-                          </td>
+                            <td className="btnadmp_td2">
+                              <button className="butadmp1">+</button>
+                            </td>
+                          </tr>
+                        );
+                      } else {
+                        return (
+                          <tr className="btnadmp_tr1">
+                            <td className="btnadmp_td1">{key + 1}</td>
+                            <td className="btnadmp_td1">
+                              {item.childlastname}
+                            </td>
+                            <td className="btnadmp_td1"> Присутствует </td>
+                            <td className="btnadmp_td1">
+                              {item.arrivaltime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
+                            <td className="btnadmp_td1">
+                              {item.leavingtime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
 
-                          <td className="btnadmp_td2">
-                            <button className="butadmp1">+</button>
-                          </td>
-                        </tr>
-                      );
-                    } else {
-                      return (
-                        <tr className="btnadmp_tr1">
-                          <td className="btnadmp_td1">{key+1}</td>
-                          <td className="btnadmp_td1">{item.childlastname}</td>
-                          <td className="btnadmp_td1"> Присутствует </td>
-                          <td className="btnadmp_td1">
-                            {((item.arrivaltime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
-                          </td>
-                          <td className="btnadmp_td1">
-                            {((item.leavingtime.slice(5)).replaceAll("-","/")).replaceAll("T"," ")}
-                          </td>
-
-                          <td className="btnadmp_td1">
-                            <button
-                              className="butadmp1"
-                              onClick={() => OpenSRF2(item.attendanceid)}
-                            >
-                              <img src={ico2} alt="" />
-                            </button>
-                            <button
-                              onClick={() => deleteData(item.attendanceid)}
-                              className="butadmp2"
-                            >
-                              <img src={ico1} alt="" />
-                            </button>
-                          </td>
-                        </tr>
-                      );
-                    }
-                  })}
+                            <td className="btnadmp_td1">
+                              <button
+                                className="butadmp1"
+                                onClick={() => OpenSRF2(item.attendanceid)}
+                              >
+                                <img src={ico2} alt="" />
+                              </button>
+                              <button
+                                onClick={() => deleteData(item.attendanceid)}
+                                className="butadmp2"
+                              >
+                                <img src={ico1} alt="" />
+                              </button>
+                            </td>
+                          </tr>
+                        );
+                      }
+                    })
+                  )}
                 </table>
               </div>
             </div>

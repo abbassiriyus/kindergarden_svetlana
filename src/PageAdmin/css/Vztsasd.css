@@ -253,3 +253,11 @@
   background: #00000048;
   z-index: 99;
 }
+
+.bigEgos {
+  width: 150%;
+}
+
+.bigEgos2 {
+  width: 440% !important;
+}
