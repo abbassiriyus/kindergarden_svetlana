@@ -226,7 +226,7 @@ if (variant===javob) {
                   <div className="CardProfil-Page1">
                     <img src={Img1} alt="" />
                     <br />
-                    <h4>{item.childfirstname}</h4>
+                    <h4>{item.childfirstname} </h4>
                   </div>
                   <div className="Card-Page1">
                     <div className="Input-grup">
@@ -344,7 +344,7 @@ if (variant===javob) {
                     <img src={Img1} alt="" />
                     <div className="kid-prfl">
                       <div className="asd23">
-                        <h4 className="kakak">{item22.childlastname}</h4>
+                        <h4 className="kakak">{item22.childlastname} {item22.childfirstname}</h4>
                         <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
                       </div>
                       {group.map((item33) => {
