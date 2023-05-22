@@ -24,6 +24,8 @@ export default class ChildAdmin extends Component {
     subject: [],
     postGroup: [],
     legalrep: "",
+    Monro: [],
+    Getted: [],
   };
 
   openModal() {
@@ -343,17 +345,49 @@ export default class ChildAdmin extends Component {
   }
 
   Getperson(key) {
-    console.log(key);
+    // var childid = key.childid;
+    // var groupid = key.groupid;
+    // var addressid = key.addressid;
+    // console.log(groupid);
     axios.get(`${url}/child/${key}`).then((res) => {
-      console.log(res.data);
+      this.setState({ Monro: res.data });
     });
     document.querySelector(".modal1122").style = "display: block";
     document.querySelector(".mfhtrg").style = "display: none";
   }
 
-  closeModal1122() {
-    document.querySelector(".modal1122").style = "display: none";
-    document.querySelector(".mfhtrg").style = "display: block";
+  closeModal1122(key) {
+    var formData = new FormData();
+    formData.append("childlastname", document.querySelector(".itmChild").value);
+    formData.append(
+      "childfirstname",
+      document.querySelector(".itmChildfrst").value
+    );
+    formData.append(
+      "childmiddlename",
+      document.querySelector(".itmChilmdl").value
+    );
+    formData.append("gender", document.querySelector(".childGndr").value);
+    formData.append(
+      "certificateofbirth",
+      document.querySelector(".childCertifi").value
+    );
+    formData.append("health", document.querySelector(".childHealth").value);
+    formData.append(
+      "isregisteredwith",
+      document.querySelector(".childisregisteredwith").value
+    );
+    formData.append("allergy", document.querySelector(".childAll").value);
+    formData.append(
+      "deviations",
+      document.querySelector(".childdeviations").value
+    );
+    console.log(key);
+    axios.put(`${url}/child/${key.childid}`).then((res) => {
+      console.log("created");
+    });
+    // document.querySelector(".modal1122").style = "display: none";
+    // document.querySelector(".mfhtrg").style = "display: block";
   }
 
   render() {
@@ -993,101 +1027,132 @@ export default class ChildAdmin extends Component {
           </div>
         </div>
         <div className="modal1122">
-          <div className="Apages1">
-            <div className="oyna101">
-              <div className="pages11">
-                <label htmlFor="child1">childlastname*</label>
-                <br />
-                <input id="child1" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="child2">childfirstname* </label>
-                <br />
-                <input id="child2" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form3">childmiddlename*</label>
-                <br />
-                <input id="form3" type="text" />
-              </div>
+          {this.state.Monro.map((item) => {
+            return (
+              <div className="Apages1">
+                <div className="oyna101">
+                  <div className="pages11">
+                    <label htmlFor="child1">childlastname*</label>
+                    <br />
+                    <input
+                      className="itmChild"
+                      placeholder={item.childlastname}
+                      type="text"
+                    />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="child2">childfirstname* </label>
+                    <br />
+                    <input
+                      className="itmChildfrst"
+                      placeholder={item.childfirstname}
+                      type="text"
+                    />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form3">childmiddlename*</label>
+                    <br />
+                    <input
+                      className="itmChilmdl"
+                      placeholder={item.childmiddlename}
+                      type="text"
+                    />
+                  </div>
 
-              <div className="pages11">
-                <label htmlFor="child3"> gender* </label>
-                <br />
-                <select name="child3" id="child3">
-                  <option value="м">м</option>
-                  <option value="ж">ж</option>
-                </select>
-              </div>
-              <div className="pages11">
-                <label htmlFor="child5">certificateofbirth* </label>
-                <br />
-                <input id="child5" type="date" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="child7"> health* </label>
-                <br />
-                <select name="child7" id="child7">
-                  <option>asd</option>
-                </select>
-              </div>
-              <div className="pages11">
-                <label htmlFor="child6">isregisteredwith * </label>
-                <br />
-                <input id="child6" placeholder="III-КЕ 456789" type="date" />
-              </div>
-              <div className="pages11">
-                <br />
-                <label htmlFor="form4"> allergy </label>
-                <br />
-                <input type="number" id="form4" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">deviations</label>
-                <br />
-                <input id="form5" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">medicines</label>
-                <br />
-                <input id="form5" type="date" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">healthrestrictions</label>
-                <br />
-                <input id="form5" type="number" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">diet</label>
-                <br />
-                <input id="form5" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">comment</label>
-                <br />
-                <input id="form5" type="text" />
-              </div>
-            </div>
+                  <div className="pages11">
+                    <label htmlFor="child3"> gender* </label>
+                    <br />
+                    <select className="childGndr">
+                      <option value="м">м</option>
+                      <option value="ж">ж</option>
+                    </select>
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="child5">certificateofbirth* </label>
+                    <br />
+                    <input
+                      className="childCertifi"
+                      placeholder={item.certificateofbirth}
+                      type="date"
+                    />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="child7"> health* </label>
+                    <br />
+                    <select className="childHealth" value={item.health}>
+                      <option>asd</option>
+                    </select>
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="child6">isregisteredwith * </label>
+                    <br />
+                    <input
+                      className="childisregisteredwith"
+                      placeholder={item.isregisteredwith}
+                      type="date"
+                    />
+                  </div>
+                  <div className="pages11">
+                    <br />
+                    <label htmlFor="form4"> allergy </label>
+                    <br />
+                    <select className="childAll">
+                      <option value="м">да</option>
+                      <option value="ж">нет</option>
+                    </select>
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">deviations</label>
+                    <br />
+                    <input
+                      className="childdeviations"
+                      placeholder={item.deviations}
+                      type="text"
+                    />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">medicines</label>
+                    <br />
+                    <input placeholder={item.medicines} type="date" />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">healthrestrictions</label>
+                    <br />
+                    <input placeholder={item.healthrestrictions} type="text" />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">diet</label>
+                    <br />
+                    <input placeholder={item.diet} type="text" />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">comment</label>
+                    <br />
+                    <input placeholder={item.comment} type="text" />
+                  </div>
+                </div>
 
-            <div className="df_button">
-              <button
-                className="df_button1"
-                onClick={() => {
-                  this.closeModal1122();
-                }}
-              >
-                Назад
-              </button>
-              <button
-                className="df_button2"
-                onClick={() => {
-                  this.postData1();
-                }}
-              >
-                Сохранить
-              </button>
-            </div>
-          </div>
+                <div className="df_button">
+                  <button
+                    className="df_button1"
+                    onClick={() => {
+                      this.closeModal1122(item);
+                    }}
+                  >
+                    Назад
+                  </button>
+                  <button
+                    className="df_button2"
+                    onClick={() => {
+                      this.postData1();
+                    }}
+                  >
+                    Сохранить
+                  </button>
+                </div>
+              </div>
+            );
+          })}
         </div>
         <div className="mfhtrg">
           <h1 className="bigah1">Список детей</h1>
@@ -1166,7 +1231,7 @@ export default class ChildAdmin extends Component {
                       <p>{item.syscreatedatutc.slice(0, 10)}</p>
                       <div id="iconci">
                         <img
-                          onClick={() => this.Getperson(item.groupid)}
+                          onClick={() => this.Getperson(item.childid)}
                           src={icon1}
                           alt=""
                         />
@@ -1198,7 +1263,7 @@ export default class ChildAdmin extends Component {
                         <img
                           src={icon1}
                           alt=""
-                          onClick={() => this.Getperson(item.groupid)}
+                          onClick={() => this.Getperson(item.childid)}
                         />
                         <img
                           onClick={() => {
