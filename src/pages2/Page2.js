@@ -71,7 +71,7 @@ export default function Page2() {
             (child) =>
               child.personid === parseInt(localStorage.getItem("personid"))
           );
-          
+
           axios.get(`${url}/relation`).then((res22) => {
             const tempBolas = [];
             for (let i = 0; i < res22.data.length; i++) {
@@ -86,38 +86,36 @@ export default function Page2() {
             useBola(tempBolas);
             // useChild(filteredChildren);
           });
-
         })
         .catch((err) => {
           console.log(err);
         });
-        axios.get(`${url}/child`).then((res33) => {
-          useChild(res33.data);
-        });
-        axios.get(`${url}/group`).then((res44) => {
-          useGroup(res44.data);
-        });
-        axios.get(`${url}/relation`).then((res55) => {
-          setRelation(res55.data);
-        });
-        axios.get(`${url}/Legal_Rep`).then((res66) => {
-          setLegalrep(res66.data);
-        });
-        axios.get(`${url}/person`).then((res77) => {
-          setPerson(res77.data);
-        });
-        axios.get(`${url}/test`).then((res88) => {
-          setTest(res88.data);
-        });
-        axios.get(`${url}/question`).then((res99) => {
-          setQuestion(res99.data);
-        });
+      axios.get(`${url}/child`).then((res33) => {
+        useChild(res33.data);
+      });
+      axios.get(`${url}/group`).then((res44) => {
+        useGroup(res44.data);
+      });
+      axios.get(`${url}/relation`).then((res55) => {
+        setRelation(res55.data);
+      });
+      axios.get(`${url}/Legal_Rep`).then((res66) => {
+        setLegalrep(res66.data);
+      });
+      axios.get(`${url}/person`).then((res77) => {
+        setPerson(res77.data);
+      });
+      axios.get(`${url}/test`).then((res88) => {
+        setTest(res88.data);
+      });
+      axios.get(`${url}/question`).then((res99) => {
+        setQuestion(res99.data);
+      });
     };
     fetchData3();
   }, []);
 
-  useEffect(() => {
-  }, [
+  useEffect(() => {}, [
     bolas,
     child22,
     group,
@@ -139,73 +137,34 @@ export default function Page2() {
     document.querySelector(".kids-Page2").style = "display: none;";
   }
   function CHECK(id) {
-const variant=id[0]
-const javob=id[1]
-console.log(variant);
-console.log(javob);
-if (variant===javob) {
-  console.log("turi");
-  document.querySelector(".modall").style.display = "block";
-            setTimeout(() => {
-              document.querySelector(".modall").style.display = "none";
-            }, 2000);
-}else{
-  console.log("notori");
-  document.querySelector(".modall2").style.display = "block";
-          setTimeout(() => {
-            document.querySelector(".modall2").style.display = "none";
-          }, 2000);
-}
-
-    // axios.get(`${url}/test`).then((res) => {
-    //   const usa = [];
-    //   const uk = [];
-    //   for (let e = 0; e < res.data.length; e++) {
-    //     if (selectedKid.childid === res.data[e].childid) {
-    //       usa.push(res.data[e].questionid);
-    //       // console.log(usa);
-    //     }
-    //   }
-    //   axios.get(`${url}/question`).then((res2) => {
-    //     for (let j = 0; j < res2.data.length; j++) {
-    //       for (let i = 0; i < usa.length; i++) {
-    //         if (usa[i] === res2.data[j].questionid) {
-    //           uk.push(res2.data[j].answer);
-    //         }
-    //       }
-    //     }
-    //     // console.log(usa[0]);
-    //     // console.log(id);
-    //     console.log(uk);
-    //       if (uk.includes(id)) {
-    //         document.querySelector(".modall").style.display = "block";
-    //         setTimeout(() => {
-    //           document.querySelector(".modall").style.display = "none";
-    //         }, 2000);
-    //         console.log("turi");
-    //       } else {
-    //         document.querySelector(".modall2").style.display = "block";
-    //         setTimeout(() => {
-    //           document.querySelector(".modall2").style.display = "none";
-    //         }, 2000);
-    //       }
-          
-        
- 
-    //   });
-    // });
+    const variant = id[0];
+    const javob = id[1];
+    console.log(variant);
+    console.log(javob);
+    if (variant === javob) {
+      console.log("turi");
+      document.querySelector(".modall").style.display = "block";
+      setTimeout(() => {
+        document.querySelector(".modall").style.display = "none";
+      }, 2000);
+    } else {
+      console.log("notori");
+      document.querySelector(".modall2").style.display = "block";
+      setTimeout(() => {
+        document.querySelector(".modall2").style.display = "none";
+      }, 2000);
+    }
   }
 
   return (
     <div>
       <div className="modall">
-        <h1>Все верно! И эта звездочка тебе!</h1>
-        <img src={image} alt="" />
+
       </div>
 
       <div className="modall2">
-        <h1>Ошибочка! Попробуй еще раз!</h1>
-        <img src={imasd} alt="" />
+        {/* <h1>Ошибочка! Попробуй еще раз!</h1>
+        <img src={imasd} alt="" /> */}
       </div>
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -259,8 +218,11 @@ if (variant===javob) {
                         {relation.map((item3) => {
                           if (item.childid === item3.childid) {
                             return (
-                              <li> {item3.status} 
-                              {legalrep.map((item4) => {if (item3.legalrepid === item4.legalrepid) {
+                              <li>
+                                {" "}
+                                {item3.status}
+                                {legalrep.map((item4) => {
+                                  if (item3.legalrepid === item4.legalrepid) {
                                     return (
                                       <>
                                         {person.map((item5) => {
@@ -268,7 +230,12 @@ if (variant===javob) {
                                             item4.personid === item5.personid
                                           ) {
                                             return (
-                                              <span>  {item5.personlastname} {item5.personfirstname}  {item5.personmiddlename}   {item5.phone}
+                                              <span>
+                                                {" "}
+                                                {item5.personlastname}{" "}
+                                                {item5.personfirstname}{" "}
+                                                {item5.personmiddlename}{" "}
+                                                {item5.phone}
                                               </span>
                                             );
                                           }
@@ -301,33 +268,93 @@ if (variant===javob) {
                 return (
                   <>
                     {question.map((item2) => {
-                      if (item.questionid === item2.questionid) {
-                        // setKill(item2.answer)
+                      if (item.questionid === item2.questionid && "Какой из этих предметов не относится к живой природе?"===item2.question) {
                         return (
                           <div className="dvasew">
                             <p>{item2.question}</p>
                             <div className="fykjh">
                               {/* <img src={img} alt="" /> */}
-                              
-                               <img src={"./img/"+item2.question_img} alt={item2.question_img}/>
+
+                              <img
+                                src={"./img/" + item2.question_img}
+                                alt={item2.question_img}
+                              />
                               <div className="aysdu">
-                                <button onClick={() => CHECK([1,item2.answer])}>1</button>
+                                <button
+                                  onClick={() => CHECK([1, item2.answer])}
+                                >
+                                  1
+                                </button>
                                 <br />
-                                <button onClick={() => CHECK([2,item2.answer])}>2</button>
+                                <button
+                                  onClick={() => CHECK([2, item2.answer])}
+                                >
+                                  2
+                                </button>
                                 <br />
-                                <button onClick={() => CHECK([3,item2.answer])}>3</button>
+                                <button
+                                  onClick={() => CHECK([3, item2.answer])}
+                                >
+                                  3
+                                </button>
                                 <br />
-                                <button onClick={() => CHECK([4,item2.answer])}>4</button>
+                                <button
+                                  onClick={() => CHECK([4, item2.answer])}
+                                >
+                                  4
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      }  if(item.questionid === item2.questionid && "На какую букву начинаются названия этих предметов?"===item2.question){
+                        return (
+                          <div className="dvasew">
+                            <p>{item2.question}</p>
+                            <div className="fykjh">
+                              {/* <img src={img} alt="" /> */}
+
+                              <img
+                                src={"./img/" + item2.question_img}
+                                alt={item2.question_img}
+                              />
+                              <div className="aysdu">
+                                <button
+                                  onClick={() => CHECK([1, item2.answer])}
+                                >
+                                  Б
+                                </button>
+                                <br />
+                                <button
+                                  onClick={() => CHECK([2, item2.answer])}
+                                >
+                                  В
+                                </button>
+                                <br />
+                                <button
+                                  onClick={() => CHECK([3, item2.answer])}
+                                >
+                                  Г
+                                </button>
+                                <br />
+                                <button
+                                  onClick={() => CHECK([4, item2.answer])}
+                                >
+                                  Д
+                                </button>
                               </div>
                             </div>
                           </div>
                         );
                       }
+
+                      
+                  
                     })}
                   </>
                 );
-              }else{
-                return<div>NETU</div>
+              } else {
+                return <div>NETU</div>;
               }
             })}
           </div>
@@ -344,8 +371,10 @@ if (variant===javob) {
                     <img src={Img1} alt="" />
                     <div className="kid-prfl">
                       <div className="asd23">
-                        <h4 className="kakak">{item22.childlastname} {item22.childfirstname}</h4>
-                        <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
+                        <h4 className="kakak">
+                          {item22.childlastname} {item22.childfirstname}
+                        </h4>
+                        <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
                       </div>
                       {group.map((item33) => {
                         if (item22.groupid === item33.groupid) {
@@ -358,7 +387,9 @@ if (variant===javob) {
                         }
                       })}
                     </div>
-                    <button className="kkk" onClick={() => KidsBlock(item)}>Подробнее</button>
+                    <button className="kkk" onClick={() => KidsBlock(item)}>
+                      Подробнее
+                    </button>
                   </div>
                 );
               }

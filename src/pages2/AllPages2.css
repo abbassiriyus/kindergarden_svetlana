@@ -898,7 +898,10 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: #ffffffc7;
+  background-image: url(../img/Правильный\ ответ.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   align-items: center;
   padding-top: 100px;
@@ -912,7 +915,10 @@
   position: absolute;
   top: 0;
   right: 0;
-  background: #ffffffc7;
+  background-image: url(../img/Неправильный\ ответ.png);
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
   text-align: center;
   align-items: center;
   padding-top: 100px;
