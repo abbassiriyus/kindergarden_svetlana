@@ -347,6 +347,13 @@ export default class ChildAdmin extends Component {
     axios.get(`${url}/child/${key}`).then((res) => {
       console.log(res.data);
     });
+    document.querySelector(".modal1122").style = "display: block";
+    document.querySelector(".mfhtrg").style = "display: none";
+  }
+
+  closeModal1122() {
+    document.querySelector(".modal1122").style = "display: none";
+    document.querySelector(".mfhtrg").style = "display: block";
   }
 
   render() {
@@ -989,23 +996,23 @@ export default class ChildAdmin extends Component {
           <div className="Apages1">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="child1">Фамилия*</label>
+                <label htmlFor="child1">childlastname*</label>
                 <br />
                 <input id="child1" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="child2">Имя* </label>
+                <label htmlFor="child2">childfirstname* </label>
                 <br />
                 <input id="child2" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form3">Отчество*</label>
+                <label htmlFor="form3">childmiddlename*</label>
                 <br />
                 <input id="form3" type="text" />
               </div>
 
               <div className="pages11">
-                <label htmlFor="child3"> Пол* </label>
+                <label htmlFor="child3"> gender* </label>
                 <br />
                 <select name="child3" id="child3">
                   <option value="м">м</option>
@@ -1013,92 +1020,52 @@ export default class ChildAdmin extends Component {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="child5">Дата рождения* </label>
+                <label htmlFor="child5">certificateofbirth* </label>
                 <br />
                 <input id="child5" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="child7"> Родители* </label>
+                <label htmlFor="child7"> health* </label>
                 <br />
                 <select name="child7" id="child7">
                   <option>asd</option>
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="child6">Свидетельство о рождении * </label>
+                <label htmlFor="child6">isregisteredwith * </label>
                 <br />
-                <input id="child6" placeholder="III-КЕ 456789" type="text" />
+                <input id="child6" placeholder="III-КЕ 456789" type="date" />
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="form4"> СНИЛС </label>
+                <label htmlFor="form4"> allergy </label>
                 <br />
-                <input type="text" id="form4" />
+                <input type="number" id="form4" />
               </div>
               <div className="pages11">
-                <label htmlFor="form5">Полис ОМС</label>
+                <label htmlFor="form5">deviations</label>
                 <br />
                 <input id="form5" type="text" />
               </div>
-            </div>
-            <label
-              htmlFor="form12"
-              style={{
-                marginLeft: "10%",
-                marginTop: "50px",
-                marginBottom: "30px",
-              }}
-            >
-              Адрес регистрации*
-            </label>
-            <div className="oyna101">
               <div className="pages11">
-                <input
-                  className="caform1"
-                  placeholder="Страна"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
+                <label htmlFor="form5">medicines</label>
+                <br />
+                <input id="form5" type="date" />
               </div>
               <div className="pages11">
-                <input
-                  className="caform2"
-                  placeholder="Город"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
+                <label htmlFor="form5">healthrestrictions</label>
+                <br />
+                <input id="form5" type="number" />
               </div>
               <div className="pages11">
-                <input
-                  className="caform3"
-                  placeholder="Улица"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
+                <label htmlFor="form5">diet</label>
+                <br />
+                <input id="form5" type="text" />
               </div>
               <div className="pages11">
-                <input
-                  className="caform4"
-                  placeholder="Номер дома"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="caform5"
-                  placeholder="building"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="caform6"
-                  placeholder="Квартира"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
+                <label htmlFor="form5">comment</label>
+                <br />
+                <input id="form5" type="text" />
               </div>
             </div>
 
@@ -1106,7 +1073,7 @@ export default class ChildAdmin extends Component {
               <button
                 className="df_button1"
                 onClick={() => {
-                  this.closeModal();
+                  this.closeModal1122();
                 }}
               >
                 Назад
@@ -1122,135 +1089,136 @@ export default class ChildAdmin extends Component {
             </div>
           </div>
         </div>
+        <div className="mfhtrg">
+          <h1 className="bigah1">Список детей</h1>
+          <div className="biga-pages">
+            <Dropdown id="drop">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Должность
+              </Dropdown.Toggle>
 
-        <h1 className="bigah1">Список детей</h1>
-        <div className="biga-pages">
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Должность
-            </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+            <Dropdown id="drop">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Группа
+              </Dropdown.Toggle>
 
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Группа
-            </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+            <Dropdown id="drop">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Занятие
+              </Dropdown.Toggle>
 
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Занятие
-            </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
 
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <button
-            id="btnlar1"
-            onClick={() => {
-              this.openModal();
-            }}
-          >
-            + Добавить ребенка
-          </button>
-        </div>
-        <div id="tables">
-          <div id="names">
-            <p>ID</p>
-            <p>Фамилия</p>
-            <p>Имя</p>
-            <p>Отчество</p>
-            <p>
-              Дата <br /> рождения
-            </p>
-            <p>Пол</p>
-            <p>
-              Дата <br /> добавления
-            </p>
-            <p>Действие</p>
+            <button
+              id="btnlar1"
+              onClick={() => {
+                this.openModal();
+              }}
+            >
+              + Добавить ребенка
+            </button>
           </div>
-          {this.state.data.map((item, key) => {
-            if (key % 2 === 0) {
-              return (
-                <div id="inform2">
-                  <div id="inform-p">
-                    <p className="p-width">{item.childid}</p>
-                    <p>{item.childlastname}</p>
-                    <p>{item.childfirstname}</p>
-                    <p>{item.childmiddlename}</p>
-                    <p>{item.dateofbirth.slice(0, 10)}</p>
-                    <p>{item.gender}</p>
-                    <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                    <div id="iconci">
-                      <img
-                        onClick={() => this.Getperson(item.childid)}
-                        src={icon1}
-                        alt=""
-                      />
-                      <img
-                        src={icon2}
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        alt=""
-                      />
+          <div id="tables">
+            <div id="names">
+              <p>ID</p>
+              <p>Фамилия</p>
+              <p>Имя</p>
+              <p>Отчество</p>
+              <p>
+                Дата <br /> рождения
+              </p>
+              <p>Пол</p>
+              <p>
+                Дата <br /> добавления
+              </p>
+              <p>Действие</p>
+            </div>
+            {this.state.data.map((item, key) => {
+              if (key % 2 === 0) {
+                return (
+                  <div id="inform2">
+                    <div id="inform-p">
+                      <p className="p-width">{item.childid}</p>
+                      <p>{item.childlastname}</p>
+                      <p>{item.childfirstname}</p>
+                      <p>{item.childmiddlename}</p>
+                      <p>{item.dateofbirth.slice(0, 10)}</p>
+                      <p>{item.gender}</p>
+                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
+                      <div id="iconci">
+                        <img
+                          onClick={() => this.Getperson(item.groupid)}
+                          src={icon1}
+                          alt=""
+                        />
+                        <img
+                          src={icon2}
+                          onClick={() => {
+                            document.querySelector(".modal12").style =
+                              "display:flex";
+                            this.setState({ deleteData: item });
+                          }}
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            } else {
-              return (
-                <div id="inform1">
-                  <div id="inform-p">
-                    <p className="p-width">{item.childid}</p>
-                    <p>{item.childlastname}</p>
-                    <p>{item.childfirstname}</p>
-                    <p>{item.childmiddlename}</p>
-                    <p>{item.dateofbirth.slice(0, 10)}</p>
-                    <p>{item.gender}</p>
-                    <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                    <div id="iconci">
-                      <img
-                        src={icon1}
-                        alt=""
-                        onClick={() => this.Getperson(item.childid)}
-                      />
-                      <img
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        src={icon2}
-                        alt=""
-                      />
+                );
+              } else {
+                return (
+                  <div id="inform1">
+                    <div id="inform-p">
+                      <p className="p-width">{item.childid}</p>
+                      <p>{item.childlastname}</p>
+                      <p>{item.childfirstname}</p>
+                      <p>{item.childmiddlename}</p>
+                      <p>{item.dateofbirth.slice(0, 10)}</p>
+                      <p>{item.gender}</p>
+                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
+                      <div id="iconci">
+                        <img
+                          src={icon1}
+                          alt=""
+                          onClick={() => this.Getperson(item.groupid)}
+                        />
+                        <img
+                          onClick={() => {
+                            document.querySelector(".modal12").style =
+                              "display:flex";
+                            this.setState({ deleteData: item });
+                          }}
+                          src={icon2}
+                          alt=""
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            }
-          })}
+                );
+              }
+            })}
 
-          <div id="inform1">
-            <div id="inform-p"></div>
+            <div id="inform1">
+              <div id="inform-p"></div>
+            </div>
           </div>
         </div>
       </div>
