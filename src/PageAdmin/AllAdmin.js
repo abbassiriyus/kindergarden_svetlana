@@ -39,7 +39,7 @@ import ByGrupss from "./ByGrupss";
 import PageProfilr from "./PageProfilr";
 import Statics from "./Statics";
 import Zapissi from "./Zapissi";
-import PostEmployee from "./PostEmployee";
+import PostEmployee from "./PostEmployee/PostEmployee";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
