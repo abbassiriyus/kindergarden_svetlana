@@ -121,9 +121,9 @@ export default function GroupDti() {
       });
   }
 
-  function deleteGroup(groupid) {
-    axios.delete(`${url}/group/${groupid}`).then((res) => {
-      console.log(res.data);
+  function deleteGroup(key) {
+    axios.delete(`${url}/group/${key}`).then((res) => {
+      // console.log(res.data);
       window.location = " /groupdti";
       alert("delete");
     });
@@ -147,7 +147,7 @@ export default function GroupDti() {
       <div className="Dobav_Group">
         <h2>+ Добавить Группа</h2>
         <div className="sdfgdf">
-          <h4>Название *</h4>
+          <h4 className="kkkk">Название *</h4>
           <input className="textDobav2" type="text" />
           <h4>Учебный год</h4>
           <input className="ageidDobav2" type="number" />

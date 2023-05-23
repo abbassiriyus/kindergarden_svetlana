@@ -171,14 +171,15 @@ export default class Employees extends Component {
           axios.get(`${url}/person`).then((res) => {
             res.data.map((item) => {
               console.log(
-                item.passportseries == document.querySelector(".form7").value,
-                item.passportnumber == document.querySelector(".form8").value
+                item.passportseries , document.querySelector(".form7").value,
+                item.passportnumber, document.querySelector(".form8").value
               );
               if (
                 item.passportseries == document.querySelector(".form7").value &&
                 item.passportnumber == document.querySelector(".form8").value
               ) {
-                this.setState({ personid: item.personid });
+                this.setState({personid:item.personid });
+                console.log(item.personid,"personid");
               }
             });
           });
@@ -214,10 +215,11 @@ export default class Employees extends Component {
                 labor = res3.data[i].laborid;
               }
             }
-            var data12 = new FormData();
+            var data12 = new FormData(); 
+            data12.append("personid", this.state.personid);
             data12.append("laborid", labor);
             data12.append("positionid", positionid);
-            data12.append("personid", this.state.personid);
+            console.log(this.state.personid,"whay");
             data12.append("hiredate", document.querySelector(".dform3").value);
             data12.append(
               "dismissaldate",
