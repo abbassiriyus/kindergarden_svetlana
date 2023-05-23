@@ -12,7 +12,7 @@ export default class Employees extends Component {
   state = {
     data: [],
     deleteData: {},
-    PersonGet: {},
+    PersonGet: [],
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
@@ -22,8 +22,8 @@ export default class Employees extends Component {
   }
 
   openModal2(key) {
-    document.querySelector(".modal112").style = "display:block";
-    document.querySelector(".kgjl").style = "display:none";
+    document.querySelector(".modal112").style = "display: block !important";
+    document.querySelector(".kgjl").style = "display: none";
     console.log(key);
     axios.get(`${url}/person/${key}`).then((res) => {
       this.setState({ PersonGet: res.data });
@@ -31,8 +31,8 @@ export default class Employees extends Component {
     });
   }
   closeModal2() {
-    document.querySelector(".kgjl").style = "display:block";
-    document.querySelector(".modal112").style = "display:none";
+    document.querySelector(".kgjl").style = "display: block";
+    document.querySelector(".modal112").style = "display: none";
   }
 
   getPerson = () => {
@@ -222,6 +222,28 @@ export default class Employees extends Component {
     });
   }
 
+  PostPerson2(key) {
+    var addressid = key.addressid
+    var itemData = new FormData()
+    itemData.append("personlastname", document.querySelector('.formItm').value)
+    itemData.append("personfirstname", document.querySelector('.formItm2').value)
+    itemData.append("personmiddlename", document.querySelector('.formItm3').value)
+    itemData.append("dateofbirth", document.querySelector('.formItm5').value + 'T00:00:00.000Z')
+    itemData.append("gender", document.querySelector('.formItm4').value)
+    itemData.append("passportseries", document.querySelector('.formItm7').value)
+    itemData.append("passportnumber", document.querySelector('.formItm8').value)
+    itemData.append("passportdate", document.querySelector('.formItm9').value)
+    itemData.append("email", document.querySelector('.formItm6').value)
+    itemData.append("phone", document.querySelector('.form-control').value)
+    itemData.append("addressid", addressid)
+    //itemData.append("syscreatedatutc", key.syscreatedatutc)
+    //itemData.append("syschangedatutc", key.syschangedatutc)
+    axios.put(`${url}/person/${key.personid}`, itemData).then(res => {
+      alert('Updated')
+      window.location('/SpsRodtl')
+    })
+  }
+
   render() {
     return (
       <div className="body">
@@ -392,121 +414,98 @@ export default class Employees extends Component {
           </div>
         </div>
         <div className="modal112">
-          <div className="Apages1">
-            <div className="oyna101">
-              <div className="pages11">
-                <label htmlFor="form1">Фамилия*</label>
-                <br />
-                <input id="form1" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form2">Имя* </label>
-                <br />
-                <input id="form2" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFѯr="form3">Отчество*</label>
-                <br />
-                <input id="form3" type="text" />
-              </div>
-              <div className="pages11">
-                <br />
-                <label htmlFor="form4"> Пол* </label>
-                <br />
-                <select name="" id="form4">
-                  <option value="М">М</option>
-                  <option value="Ж">Ж</option>
-                </select>
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">Дата рождения*</label>
-                <br />
-                <input id="form5" type="date" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form51">Телефон*</label>
-                <br />
-                <PhoneInput
-                  id="userNumber2"
-                  className="userNumber2"
-                  country={"ru"}
-                />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form11">Эл.почта</label>
-                <br />
-                <input className="form11" type="email" />
-              </div>
+          {
+            this.state.PersonGet.map(item => {
+              return (
+                <div className="Apages1">
+                  <div className="oyna101">
+                    <div className="pages11">
+                      <label htmlFor="form1">Фамилия*</label>
+                      <br />
+                      <input className="formItm" placeholder={item.personmiddlename} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form2">Имя* </label>
+                      <br />
+                      <input className="formItm2" placeholder={item.personfirstname} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFѯr="form3">Отчество*</label>
+                      <br />
+                      <input className="formItm3" placeholder={item.personlastname} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <br />
+                      <label htmlFor="form4"> Пол* </label>
+                      <br />
+                      <select name="" className="formItm4">
+                        <option value="М">М</option>
+                        <option value="Ж">Ж</option>
+                      </select>
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form5">Дата рождения*</label>
+                      <br />
+                      <input className="formItm5" placeholder={item.databirthday} type="date" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form51">Телефон*</label>
+                      <br />
+                      <PhoneInput
+                        id="userNumber2"
+                        className="userNumber2"
+                        country={"ru"}
+                      // placeholder={item.phone}
+                      />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form11">Эл.почта</label>
+                      <br />
+                      <input className="formItm6" placeholder={item.email} type="email" />
+                    </div>
 
-              <div className="pages11">
-                <label htmlFor="form7">Серия паспорта* </label>
-                <br />
-                <input className="form7" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form8"> Номер паспорта* </label>
-                <br />
-                <input className="form8" type="number" />
-              </div>
-            </div>
-            <div className="df_button">
-              <button
-                className="df_button1"
-                onClick={() => {
-                  this.closeModal2();
-                }}
-              >
-                Назад
-              </button>
-              <button
-                className="df_button2"
-                onClick={() => {
-                  this.PostPerson();
-                }}
-              >
-                Сохранить
-              </button>
-            </div>
-          </div>
+                    <div className="pages11">
+                      <label htmlFor="form7">Серия паспорта* </label>
+                      <br />
+                      <input className="formItm7" placeholder={item.passportseries} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form8"> Номер паспорта* </label>
+                      <br />
+                      <input className="formItm8" placeholder={item.passportnumber} type="number" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form8"> passportdate* </label>
+                      <br />
+                      <input className="formItm9" placeholder={item.passportdate} type="date" />
+                    </div>
+                  </div>
+                  <div className="df_button">
+                    <button
+                      className="df_button1"
+                      onClick={() => {
+                        this.closeModal2();
+                      }}
+                    >
+                      Назад
+                    </button>
+                    <button
+                      className="df_button2"
+                      onClick={() => {
+                        this.PostPerson2(item);
+                      }}
+                    >
+                      Сохранить
+                    </button>
+                  </div>
+                </div>
+              )
+            })
+          }
         </div>
         <div className="kgjl">
           <h1 className="bigah1">Список Родитель</h1>
           <div className="biga-pages">
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Должность
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Группа
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Занятие
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
 
             <button
               id="btnlar1"
@@ -545,7 +544,7 @@ export default class Employees extends Component {
                       <div id="iconci">
                         <img
                           onClick={() => {
-                            this.openModal2();
+                            this.openModal2(item.personid);
                           }}
                           src={icon1}
                           alt=""
