@@ -597,7 +597,7 @@
 }
 
 .only_you .calendar-container {
-  width: 900px !important;
+  width: 1000px !important;
 }
 
 .only_you .react-calendar__tile--now {
@@ -623,20 +623,23 @@
 }
 
 .only_you .react-calendar__navigation {
-  width: 700px;
+  width: 1000px;
 }
 
 .only_you .react-calendar__viewContainer {
-  width: 700px !important;
+  width: 1000px !important;
 }
 
 .only_you .react-calendar__tile {
+  /* width: 600px !important; */
   padding: 10px;
-  background: #515d7058;
+  height: 100px;
+  background: #a8abae5c;
+  border: 0.3px solid white;
 }
 
 .only_you .react-calendar {
-  width: 700px;
+  width: 1000px;
   margin: auto;
 }
 
@@ -985,5 +988,5 @@ margin-left: 100px  !important
 }
 .kakak{
   color: #334155 !important;
-
 }
+

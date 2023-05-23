@@ -145,7 +145,7 @@ export default function Page6() {
                     return (
                       <>
                         <h4 className="ixk">
-                          Детали отсутствия {item3.datestart.slice(0, 10)}{" "}
+                          Детали отсутствия {item3.datestart.slice(0, 10)}
                           <span onClick={() => closeChildModal()}>X</span>
                         </h4>
                         <br />
@@ -153,13 +153,13 @@ export default function Page6() {
                         <div classname="childs">
                           <img src={img} alt="" />
                           <p>
-                            {" "}
+                            
                             {item2.childfirstname} {item2.childlastname}
                           </p>
                         </div>
                         <h4 className="uu">Дата</h4>
                         <div className="mchj">
-                          <h4 className="uu">2023/05/17</h4>{" "}
+                          <h4 className="uu">2023/05/17</h4>
                           <h4 className="uu">{item3.daypart}</h4>
                         </div>
                         <h4 className="uu">Причина </h4>
@@ -172,8 +172,8 @@ export default function Page6() {
                                 if (item4.personid === item5.personid) {
                                   return (
                                     <p>
-                                      Автор: {item5.personmiddlename}{" "}
-                                      {item5.personfirstname}{" "}
+                                      Автор: {item5.personmiddlename}
+                                      {item5.personfirstname}
                                       {item5.personlastname}
                                     </p>
                                   );
