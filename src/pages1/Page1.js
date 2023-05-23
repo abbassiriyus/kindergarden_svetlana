@@ -29,7 +29,7 @@ export default function Page1 () {
         <h2>{yozu1}</h2>
         <p>{yozup1}</p>
         <div className='btn-grup'>
-          <button  onClick={() => redakt()}>Редакторавать</button>
+          <button  onClick={() => redakt()}>Редактировать</button>
           <button className='Otmen1' onClick={() => closeModalNo1()}>
             Отмена
           </button>

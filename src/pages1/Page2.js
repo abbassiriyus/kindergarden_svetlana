@@ -63,33 +63,10 @@ export default class App extends Component {
     weekday: [],
     employee: [],
     subject: [],
-    group: [],
     room: [],
   };
 
-  openModal() {
-    document.querySelector(".bigAbbas").style = "display:flex";
-  }
-  closeModal() {
-    document.querySelector(".bigAbbas").style = "display:none";
-  }
-  postTimeTable() {
-    var data = new FormData();
-    data.append("weekday", document.querySelector("#select_1").value);
-    data.append("groupid", document.querySelector("#select_3").value);
-    data.append("subjectid", document.querySelector("#select_4").value);
-    data.append("begining", document.querySelector("#select_1s").value);
-    data.append("finishing", document.querySelector("#select_2").value);
-    data.append("employeeid", document.querySelector("#select_5").value);
-    data.append("roomid", document.querySelector("#select_6").value);
-    data.append("day", 2);
 
-    axios.post(`${url}/timetable`, data).then((res) => {
-      alert("data create");
-      this.closeModal();
-      this.getAll();
-    });
-  }
   testData(start, finish, day) {
     var kluch = true;
     var data12;
@@ -176,7 +153,12 @@ export default class App extends Component {
 
   getAll() {
     axios.get(`${url}/group`).then((res) => {
-      this.setState({ group: res.data });
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i]=== parseInt(localStorage.getItem("employ"))) {
+          this.setState({ group: res.data[i] });
+        }
+      }
+     
 
       var data = [];
       axios.get(`${url}/timetable`).then((res) => {
@@ -267,114 +249,16 @@ export default class App extends Component {
   render() {
     return (
       <div className="metgala">
-        <div className="bigAbbas">
-          <div className="modalAbbas">
-            <label htmlFor="">Дата</label>
-            <br />
-            <select name="" id="select_1">
-              {weekday.map((item) => {
-                return <option value={item.number}>{item.day}</option>;
-              })}{" "}
-            </select>
-            <br />
-            <label htmlFor="">Время с</label>
-            <br />
-            <select name="" id="select_1s">
-              {time.map((item) => {
-                return <option value={item.start}>{item.start}</option>;
-              })}
-            </select>
-            по
-            <select name="" id="select_2">
-              {time.map((item) => {
-                return <option value={item.finish}>{item.finish}</option>;
-              })}
-            </select>
-            <br />
-            <label htmlFor="">Группа</label>
-            <br />
-            <select name="" id="select_3">
-              {this.state.group.map((res) => {
-                return <option value={res.groupid}>{res.groupname}</option>;
-              })}
-            </select>
-            <br />
-            <label htmlFor="">Тема</label>
-            <br />
-            <select name="" id="select_4">
-              {this.state.subject.map((item) => {
-                return (
-                  <option value={item.subjectid}>{item.subjectname}</option>
-                );
-              })}
-            </select>
-            <br />
-            <label htmlFor="">Занятие</label>
-            <br />
-            <select name="" id="">
-              {this.state.subject.map((item) => {
-                return <option value={item.subjectid}>{item.topic}</option>;
-              })}
-            </select>
-            <br />
-            <label htmlFor="">Педагог</label>
-            <br />
-            <select name="" id="select_5">
-              {this.state.employee.map((res) => {
-                return (
-                  <option value={res.employeeid}>
-                    {res.personfirstname} {res.personlastname}{" "}
-                    {res.personmiddlename}{" "}
-                  </option>
-                );
-              })}
-            </select>
-            <br />
-            <label htmlFor="">Кабинет</label>
-            <br />
-            <select name="" id="select_6">
-              {this.state.room.map((item) => {
-                return <option value={item.roomid}>{item.roomnumber}</option>;
-              })}
-            </select>
-            <br />
-            <button
-              onClick={() => {
-                this.closeModal();
-              }}
-              className="first_button"
-            >
-              Назад
-            </button>
-            <button
-              className="second_button"
-              onClick={() => {
-                this.postTimeTable();
-              }}
-            >
-              Сохранить
-            </button>
-          </div>
-        </div>
         <div className="amygdala">
-          <select onClick={() => this.getTable()} id="select_12" name="">
+          <select onClick={() => this.getTable()} id="select_12" className="slect66">
             {this.state.group.map((item, key) => {
               return <option value={item.groupid}>{item.groupname}</option>;
             })}
           </select>
-          <button
-            id="btnlar1"
-            style={{ margin: "auto", marginRight: "30px" }}
-            onClick={() => {
-              this.openModal();
-            }}
-          >
-            + Добавить расписание
-          </button>
         </div>
 
         <div className="nood">
-          <p className="nod2"></p>
+
         </div>
         <div className=" bigbox">
           <div className="bodyadmpn">
@@ -390,7 +274,6 @@ export default class App extends Component {
                   <th className="btnadmp_th">СБ</th>
                   <th className="btnadmp_th2">ВС</th>
                 </tr>
-
                 {time.map((item) => {
                   return (
                     <tr className="btnadmp_tr1">
