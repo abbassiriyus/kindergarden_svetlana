@@ -21,7 +21,6 @@ export default class App extends Component {
           document.querySelector('.modal11').style = "display:none"
       }
   postData(){
-   
    var formdata2=new FormData()
    formdata2.append("skillname",document.querySelector('#test10').value)
    formdata2.append("skillgroupid",document.querySelector('#test3').value)
@@ -42,8 +41,10 @@ export default class App extends Component {
    formdata.append("answer",document.querySelector('#test5').value)
    formdata.append("author",document.querySelector('#test2').value) 
    axios.post(`${url}/question`,formdata).then(res=>{
-      window.location.reload()
-   })    
+      // window.location.reload()
+      console.log(res.data);
+   })   
+    
       })
 
    })
@@ -117,18 +118,18 @@ this.setState({data:abu2})
                       <div className="pages11"><br />
                       <label htmlFor="test1"> Месяц * </label><br />
                         <select name="" id="test1">
-                            <option value='yanvar'>январь</option>
-                            <option value='fevral'>февраль</option>
-                            <option value='mart'>марта</option>
-                            <option value='aprel'>апрель</option>
-                            <option value='may'>мая</option>
-                            <option value='iyun'>июнь</option>
-                            <option value='iyul'>июль</option>
-                            <option value='avgust'>Август</option>
-                            <option value='sentabr'>Сентябрь</option>
-                            <option value='octabr'>Октябрь</option>
-                            <option value='noyabr'>ноябрь</option>
-                            <option value='dekabr'>Декабрь</option>
+                            <option value='январь'>январь</option>
+                            <option value='февраль'>февраль</option>
+                            <option value='марта'>марта</option>
+                            <option value='апрель'>апрель</option>
+                            <option value='мая'>мая</option>
+                            <option value='июнь'>июнь</option>
+                            <option value='июль'>июль</option>
+                            <option value='Август'>Август</option>
+                            <option value='Сентябрь'>Сентябрь</option>
+                            <option value='Октябрь'>Октябрь</option>
+                            <option value='ноябрь'>ноябрь</option>
+                            <option value='Декабрь'>Декабрь</option>
                         </select>   
                         </div>
                              <div className="pages11"><br />
