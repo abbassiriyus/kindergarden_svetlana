@@ -163,8 +163,6 @@ export default function Page2() {
       </div>
 
       <div className="modall2">
-        {/* <h1>Ошибочка! Попробуй еще раз!</h1>
-        <img src={imasd} alt="" /> */}
       </div>
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -320,7 +318,7 @@ export default function Page2() {
                               />
                               <div className="aysdu">
                                 <button
-                                  onClick={() => CHECK([1, item2.answer])}
+                                  onClick={() => CHECK([3, item2.answer])}
                                 >
                                   Б
                                 </button>
@@ -332,7 +330,7 @@ export default function Page2() {
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([3, item2.answer])}
+                                  onClick={() => CHECK([1, item2.answer])}
                                 >
                                   Г
                                 </button>

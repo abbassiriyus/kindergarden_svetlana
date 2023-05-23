@@ -11,11 +11,17 @@ import url from '../host';
 
 function App() {
   const [state, setState] = useState([])
+  const [state2, setState2] = useState([])
+
   function openbypg4() {
     document.querySelector('.ModalByPage-4').style = 'opacity: 1;z-index: 99;'
   }
   function closebypg4() {
     document.querySelector('.ModalByPage-4').style = 'opacity: 0;z-index: -99;'
+  }
+  function group() {
+    let u =document.querySelector('#lect').value
+    setState2(u);
   }
 
 
@@ -25,6 +31,7 @@ function App() {
       setState(res.data)
     }
     )
+
   }, [])
 
 
@@ -44,11 +51,11 @@ function App() {
             </div>
           </div>
           <div className='data-group'>
-            <select>
+            <select onClick={() => group()} id='lect'>
               {
                 state.map(item => {
                   return (
-                    <option>Group: {item.groupname}</option>
+                    <option>{item.groupname}</option>
                   )
                 })
               }
@@ -56,7 +63,7 @@ function App() {
             <input type='date' />
           </div>
           <div className="dv-usr">
-            <h3>ВОЛШЕБНИК 1 УРОВНЯ</h3>
+                <h3>{state2}</h3>
             <div className="Ten"><img src={usr} alt="" /> 10</div>
             <p>2023/01/23 - 2023/01/29</p>
           </div>
