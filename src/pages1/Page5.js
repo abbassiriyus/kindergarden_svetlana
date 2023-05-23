@@ -71,7 +71,7 @@ export default function Page1() {
           <Pagination
             onClick={() => hello()}
             className="promry"
-            count={8 * 8}
+            count={30}
           />
         </div>
         <div className="divv">
