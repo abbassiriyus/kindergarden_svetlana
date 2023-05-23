@@ -196,9 +196,7 @@ export default class ChildAdmin extends Component {
     formData.append("gender", document.querySelector("#child3").value);
     formData.append("dateofbirth", document.querySelector("#child5").value);
     formData.append("personid", document.querySelector("#child7").value);
-    formData.append(
-      "certificateofbirth",
-      document.querySelector("#child6").value
+    formData.append("certificateofbirth", document.querySelector("#child6").value
     );
     var childAddress = new FormData();
     childAddress.append("region", document.querySelector(".caform1").value);
@@ -345,13 +343,14 @@ export default class ChildAdmin extends Component {
   }
 
   Getperson(key) {
-    // var childid = key.childid;
+    var childid = key.childid;
     // var groupid = key.groupid;
     // var addressid = key.addressid;
     // console.log(groupid);
-    axios.get(`${url}/child/${key}`).then((res) => {
+    axios.get(`${url}/child/${childid}`).then((res) => {
       this.setState({ Monro: res.data });
     });
+    console.log(this.state.Monro);
     document.querySelector(".modal1122").style = "display: block";
     document.querySelector(".mfhtrg").style = "display: none";
   }
@@ -368,48 +367,33 @@ export default class ChildAdmin extends Component {
     formData.append("addressid", addressid);
     formData.append("groupid", groupid);
     formData.append("childlastname", document.querySelector(".itmChild").value);
-    formData.append(
-      "childfirstname",
-      document.querySelector(".itmChildfrst").value
-    );
-    formData.append(
-      "childmiddlename",
-      document.querySelector(".itmChilmdl").value
-    );
+    formData.append("childfirstname", document.querySelector(".itmChildfrst").value);
+    formData.append("childmiddlename",document.querySelector(".itmChilmdl").value);
     formData.append("gender", document.querySelector(".childGndr").value);
-    formData.append(
-      "certificateofbirth",
-      document.querySelector(".childCertifi").value
-    );
+    formData.append("certificateofbirth",document.querySelector(".childCertifi").value);
     formData.append("health", document.querySelector(".childHealth").value);
-    formData.append(
-      "isregisteredwith",
-      document.querySelector(".childisregisteredwith").value
-    );
+    formData.append("isregisteredwith",document.querySelector(".childisregisteredwith").value+'T00:00:00.000Z');
     formData.append("allergy", document.querySelector(".childAll").value);
-    formData.append(
-      "deviations",
-      document.querySelector(".childdeviations").value
-    );
+    formData.append("deviations",document.querySelector(".childdeviations").value);
     formData.append(
       "medicines",
       document.querySelector(".childmedicines").value
     );
-    formData.append(
-      "healthrestrictions",
-      document.querySelector(".childhealthrestrictions").value
+    formData.append("dateofbirth", document.querySelector('.childdateofbirth').value+'T00:00:00.000Z')
+    formData.append("healthrestrictions",document.querySelector(".childhealthrestrictions").value
     );
     formData.append("diet", document.querySelector(".childdiet").value);
     formData.append("comment", document.querySelector(".childdiet").value);
-    formData.append("photo", 'hello');
+    formData.append("photo", document.querySelector('.fileChild').file);
     console.log(key);
     axios
       .put(`${url}/child/${key.childid}`, formData)
       .then((res) => {
-        console.log("created");
+        alert('updated')
+        window.location = '/spiskdti'
       })
       .catch((err) => {
-        console.log(err);
+        alert(err)
       });
   }
 
@@ -1103,9 +1087,9 @@ export default class ChildAdmin extends Component {
                     <label htmlFor="child7"> health* </label>
                     <br />
                     <select className="childHealth">
-                      <option>zor</option>
-                      <option>yomon</option>
-                      <option>ota gozal</option>
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
                     </select>
                   </div>
                   <div className="pages11">
@@ -1171,6 +1155,20 @@ export default class ChildAdmin extends Component {
                       type="text"
                     />
                   </div>
+                  <div className="pages11">
+                    <label htmlFor="form5">dateofbirth</label>
+                    <br />
+                    <input
+                      className="childdateofbirth"
+                      placeholder={item.dateofbirth}
+                      type="date"
+                    />
+                  </div>
+                </div>
+                <div className="fileUpload">
+                  <input className="fileChild" type='file' />
+                  <img src={image_file} alt='' />
+                  <p>(Перетащите или щелкните, чтобы вставить)</p>
                 </div>
 
                 <div className="df_button">
@@ -1272,7 +1270,7 @@ export default class ChildAdmin extends Component {
                       <p>{item.syscreatedatutc.slice(0, 10)}</p>
                       <div id="iconci">
                         <img
-                          onClick={() => this.Getperson(item.childid)}
+                          onClick={() => this.Getperson(item)}
                           src={icon1}
                           alt=""
                         />
@@ -1304,7 +1302,7 @@ export default class ChildAdmin extends Component {
                         <img
                           src={icon1}
                           alt=""
-                          onClick={() => this.Getperson(item.childid)}
+                          onClick={() => this.Getperson(item)}
                         />
                         <img
                           onClick={() => {
