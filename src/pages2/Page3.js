@@ -1,6 +1,6 @@
 import React from "react";
 import yangi from "../img/image 31.png";
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./AllPages2.css";
@@ -71,11 +71,6 @@ export default function Page6() {
     fetchData();
   }, []);
   useEffect(() => {
-    // console.log(rebenok2);
-    // console.log(rebenok3, "gkerkg");
-    // console.log(rebenok);
-    // console.log(rebenoki);
-    // console.log(excuse);
   }, [
     excuse,
     employ,
@@ -86,36 +81,67 @@ export default function Page6() {
     rebenok3,
     rebenoki,
   ]);
-  async function clickaday(date) {
-    const d = date;
-    const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+  // async function clickaday(date) {
+  //   const d = date;
+  //   const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
 
-    const index = excuse.indexOf(a);
-    if (index > -1) {
-      document.querySelector(".BigModalChild").style = "display: flex;";
-      setRebenok2(excuse[index]);
+  //   const index = excuse.indexOf(a);
+  //   if (index > -1) {
+  //     document.querySelector(".BigModalChild").style = "display: flex;";
+  //     setRebenok2(excuse[index]);
 
-      try {
-        const res = await axios.get(`${url}/excuse`);
-        const filteredData = res.data.filter((item) => {
-          return (
-            rebenok.includes(item.childid) &&
-            item.datestart.slice(0, 10) === excuse[index]
-          );
-        });
-        if (filteredData.length > 0) {
-          setRebenok3(filteredData[0].childid);
-        } else {
-          console.log("Данные не найдены!!");
+  //     try {
+  //       const res = await axios.get(`${url}/excuse`);
+  //       const filteredData = res.data.filter((item) => {
+  //         return (
+  //           rebenok.includes(item.childid) &&
+  //           item.datestart.slice(0, 10) === excuse[index]
+  //         );
+  //       });
+  //       if (filteredData.length > 0) {
+  //         setRebenok3(filteredData[0].childid);
+  //       } else {
+  //         console.log("Данные не найдены!!");
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   } else {
+  //     console.log("error");
+  //   }
+  // }
+  const handleClickDay = useCallback(
+    async (date) => {
+      const d = date;
+      const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+  
+      const index = excuse.indexOf(a);
+      if (index > -1) {
+        document.querySelector(".BigModalChild").style = "display: flex;";
+        setRebenok2(excuse[index]);
+  
+        try {
+          const res = await axios.get(`${url}/excuse`);
+          const filteredData = res.data.filter((item) => {
+            return (
+              rebenok.includes(item.childid) &&
+              item.datestart.slice(0, 10) === excuse[index]
+            );
+          });
+          if (filteredData.length > 0) {
+            setRebenok3(filteredData[0].childid);
+          } else {
+            console.log("Данные не найдены!!");
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
+      } else {
+        console.log("error");
       }
-    } else {
-      console.log("error");
-    }
-  }
-
+    },
+    [excuse, rebenok]
+  );
   const getTileContent = ({ date, view }) => {
     var d = date;
     var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
@@ -159,7 +185,7 @@ export default function Page6() {
                         </div>
                         <h4 className="uu">Дата</h4>
                         <div className="mchj">
-                          <h4 className="uu">2023/05/17</h4>
+                          <h4 className="uu">{item3.datestart.slice(0,10)}</h4>
                           <h4 className="uu">{item3.daypart}</h4>
                         </div>
                         <h4 className="uu">Причина </h4>
@@ -196,7 +222,7 @@ export default function Page6() {
 
       <div className="calendar-container">
         <Calendar
-          onClickDay={() => clickaday(date)}
+          onClickDay={handleClickDay}
           onChange={setDate}
           value={date}
           tileContent={getTileContent}
