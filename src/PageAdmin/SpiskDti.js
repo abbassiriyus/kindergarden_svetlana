@@ -401,7 +401,7 @@ export default class ChildAdmin extends Component {
     );
     formData.append("diet", document.querySelector(".childdiet").value);
     formData.append("comment", document.querySelector(".childdiet").value);
-    formData.append("photo");
+    formData.append("photo", 'hello');
     console.log(key);
     axios
       .put(`${url}/child/${key.childid}`, formData)
