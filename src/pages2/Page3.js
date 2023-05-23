@@ -11,10 +11,13 @@ import url from "../host";
 export default function Page6() {
   const [date, setDate] = useState(new Date());
   const [excuse, setExcuse] = useState([]);
+  const [allexcuse, setallExcuse] = useState([]);
   const [rebenok, setRebenok] = useState([]);
   const [rebenok2, setRebenok2] = useState([]);
   const [rebenok3, setRebenok3] = useState([]);
   const [rebenoki, setRebenoki] = useState([]);
+  const [employ, setEmploy] = useState([]);
+  const [person, setPerson] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,120 +29,98 @@ export default function Page6() {
               child.personid === parseInt(localStorage.getItem("personid"))
           );
 
-          axios
-          .get(`${url}/relation`)
-          .then((res22) => {
+          axios.get(`${url}/relation`).then((res22) => {
             const tempBolas = [];
-            const nol=[]
+            const nol = [];
             for (let i = 0; i < res22.data.length; i++) {
               for (let j = 0; j < filteredChildren.length; j++) {
                 if (
                   res22.data[i].legalrepid === filteredChildren[j].legalrepid
                 ) {
-                  axios
-                  .get(`${url}/excuse`)
-                  .then((res33)=>{
+                  axios.get(`${url}/excuse`).then((res33) => {
                     for (let e = 0; e < res33.data.length; e++) {
-                 
-                       if (res33.data[e].childid=== res22.data[i].childid) {
-                        tempBolas.push(res33.data[e].datestart.slice(0,10));
+                      if (res33.data[e].childid === res22.data[i].childid) {
+                        tempBolas.push(res33.data[e].datestart.slice(0, 10));
                         nol.push(res33.data[e].childid);
-                       }
+                      }
                     }
                     setExcuse(tempBolas);
-                    setRebenok(nol)
-                  })
-                  
+                    setRebenok(nol);
+                  });
                 }
               }
             }
           });
-
         })
         .catch((err) => {
           console.log(err);
         });
-        axios
-        .get(`${url}/child`)
-        .then((res99)=>{
-          setRebenoki(res99.data)
-        })
-
+      axios.get(`${url}/child`).then((res99) => {
+        setRebenoki(res99.data);
+      });
+      axios.get(`${url}/excuse`).then((res98) => {
+        setallExcuse(res98.data);
+      });
+      axios.get(`${url}/employee`).then((res97) => {
+        setEmploy(res97.data);
+      });
+      axios.get(`${url}/person`).then((res96) => {
+        setPerson(res96.data);
+      });
     };
     fetchData();
-    
   }, []);
   useEffect(() => {
-console.log(rebenok2);
-console.log(rebenok3, "gkerkg");
-console.log(rebenok);
-console.log(rebenoki);
-  }, [excuse, rebenok,rebenok2,rebenok3, rebenoki]);
-
-
-
-  // function clickaday(date) {
-  //   var d = date;
-  //   var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
-  //   for (let i = 0; i < excuse.length; i++) {
-  //     if (a===excuse[i]) {
-  //       document.querySelector(".BigModalChild").style = "display: flex;";  
-  //       setRebenok2(excuse[i])
-  //     } else {
-  //  console.log("error");
-  //     }
-  //   }
-  //   axios
-  //   .get(`${url}/excuse`)
-  //   .then((res) => {
-  //       for (let i = 0; i < res.data.length; i++) {
-  //         for (let j = 0; j < rebenok.length; j++) {
-  //           for (let e = 0; e < rebenok2.length; e++) {
-  //             if (res.data[i].childid===rebenok[j] && res.data[i].datestart.slice(0,10)===rebenok2[e]) {
-  //               console.log("CIERMDIOGJRSI;GJRIUHJUITHJEIUHJEIUTHJTIHJTHIJHIJDIHJDIHJ");
-  //             }else{
-  //               console.log("NONONONOONON");
-  //             }
-              
-  //           }
-  //         }
-  //       }
-  //   })
-  // }
-  function clickaday(date) {
+    // console.log(rebenok2);
+    // console.log(rebenok3, "gkerkg");
+    // console.log(rebenok);
+    // console.log(rebenoki);
+    // console.log(excuse);
+  }, [
+    excuse,
+    employ,
+    person,
+    allexcuse,
+    rebenok,
+    rebenok2,
+    rebenok3,
+    rebenoki,
+  ]);
+  async function clickaday(date) {
     const d = date;
     const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+
     const index = excuse.indexOf(a);
     if (index > -1) {
-        document.querySelector(".BigModalChild").style = "display: flex;";
-        setRebenok2(excuse[index]);
-        axios
-        .get(`${url}/excuse`)
-        .then((res) => {
-          for (let i = 0; i < res.data.length; i++) {
-            for (let j = 0; j < rebenok.length; j++) {
-              for (let e = 0; e < rebenok2.length; e++) {
-                if (res.data[i].childid === rebenok[j] && res.data[i].datestart.slice(0,10) === excuse[index]) {
-                  console.log("CIERMDIOGJRSI;GJRIUHJUITHJEIUHJEIUTHJTIHJTHIJHIJDIHJDIHJ");
-                  setRebenok3(res.data[i].childid)
-                } else {
-                  console.log("NONONONOONON");
-                }
-              }
-            }
-          }
+      document.querySelector(".BigModalChild").style = "display: flex;";
+      setRebenok2(excuse[index]);
+
+      try {
+        const res = await axios.get(`${url}/excuse`);
+        const filteredData = res.data.filter((item) => {
+          return (
+            rebenok.includes(item.childid) &&
+            item.datestart.slice(0, 10) === excuse[index]
+          );
         });
+        if (filteredData.length > 0) {
+          setRebenok3(filteredData[0].childid);
+        } else {
+          console.log("Данные не найдены!!");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-        console.log("error");
+      console.log("error");
     }
   }
-
 
   const getTileContent = ({ date, view }) => {
     var d = date;
     var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
     for (let i = 0; i < excuse.length; i++) {
-      if (a===excuse[i]) {
+      if (a === excuse[i]) {
         return <img src={img3} alt={img3} />;
       } else {
       }
@@ -151,38 +132,66 @@ console.log(rebenoki);
   return (
     <div className="only_you">
       <div className="BigModalChild">
-        <h1>{rebenok}</h1>
-          {rebenoki.map((item2)=>{
-            if (rebenok[0]===item2.childid) {
-              return<div className="ModalChilds">
-              <h4 className="ixk">
-                Детали отсутствия 2023/01/24{" "}
-                <span onClick={() => closeChildModal()}>X</span>
-              </h4>
-              <br />
-              <h4 className="uu">Ребенок </h4>
-              <div classname="childs">
-                <img src={img} alt="" />
-                <p>{item2.childlastname}</p>
+        <h1>Loading.....</h1>
+        {rebenoki.map((item2) => {
+          if (rebenok3 === item2.childid) {
+            return (
+              <div className="ModalChilds">
+                {allexcuse.map((item3) => {
+                  if (
+                    item2.childid === item3.childid &&
+                    rebenok2 === item3.datestart.slice(0, 10)
+                  ) {
+                    return (
+                      <>
+                        <h4 className="ixk">
+                          Детали отсутствия {item3.datestart.slice(0, 10)}{" "}
+                          <span onClick={() => closeChildModal()}>X</span>
+                        </h4>
+                        <br />
+                        <h4 className="uu">Ребенок </h4>
+                        <div classname="childs">
+                          <img src={img} alt="" />
+                          <p>
+                            {" "}
+                            {item2.childfirstname} {item2.childlastname}
+                          </p>
+                        </div>
+                        <h4 className="uu">Дата</h4>
+                        <div className="mchj">
+                          <h4 className="uu">2023/05/17</h4>{" "}
+                          <h4 className="uu">{item3.daypart}</h4>
+                        </div>
+                        <h4 className="uu">Причина </h4>
+                        <p className="uu">{item3.reason}</p>
+                        <br />
+                        <p>
+                          {employ.map((item4) => {
+                            if (item3.employeeid === item4.employeeid) {
+                              return person.map((item5) => {
+                                if (item4.personid === item5.personid) {
+                                  return (
+                                    <p>
+                                      Автор: {item5.personmiddlename}{" "}
+                                      {item5.personfirstname}{" "}
+                                      {item5.personlastname}
+                                    </p>
+                                  );
+                                }
+                              });
+                            }
+                          })}
+                          <br />
+                          Дата:{item3.syschangedatutc}
+                        </p>
+                      </>
+                    );
+                  }
+                })}
               </div>
-              <h4 className="uu">Дата</h4>
-              <div className="mchj">
-                <h4 className="uu">2023/05/17</h4> <h4 className="uu">Весь день</h4>
-              </div>
-              <h4 className="uu">Причина </h4>
-              <p className="uu">Болезнь</p>
-              <br />
-              <p>
-                Автор: Спицына Маргарита Николаевна
-                <br />
-                Дата: 2023/01/24 08:00
-              </p>
-            </div>
-            }
-            
-          })}
-
-
+            );
+          }
+        })}
       </div>
 
       <div className="calendar-container">
@@ -195,14 +204,13 @@ console.log(rebenoki);
       </div>
       <p className="text-center">
         <div>
-  {excuse.map((item)=>(
-    <div>
-      <p>frwgehgeh</p>
-    <h1>{item}</h1>
-    </div>
-
-  ))}
- </div>
+          {/* {excuse.map((item) => (
+            <div>
+              <p>frwgehgeh</p>
+              <h1>{item}</h1>
+            </div>
+          ))} */}
+        </div>
         <span className="bold">Selected Date:</span> {date.toDateString()}
       </p>
     </div>

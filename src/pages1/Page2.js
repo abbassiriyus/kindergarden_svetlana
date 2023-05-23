@@ -1,4 +1,4 @@
-import "./AllPages.css";
+import "../PageAdmin/css/ByGrupss.css";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 // import Tabe from '../pages/tabe.js'
 import React, { Component } from "react";
@@ -86,6 +86,8 @@ export default class App extends Component {
 
     axios.post(`${url}/timetable`, data).then((res) => {
       alert("data create");
+      this.closeModal();
+      this.getAll();
     });
   }
   testData(start, finish, day) {
@@ -96,7 +98,7 @@ export default class App extends Component {
       if (
         item.begining == start &&
         item.finishing == finish &&
-        item.day == day
+        item.weekday * 1 == day * 1
       ) {
         kluch = false;
         data12 = `${item.subjectname}\n\n\n${
@@ -113,7 +115,9 @@ export default class App extends Component {
       return data12;
     }
   }
-  getTable(value) {
+  getTable() {
+    var value = document.querySelector("#select_12").value * 1;
+    console.log(value);
     var data = [];
     axios.get(`${url}/timetable`).then((res) => {
       res.data.map((item) => {
@@ -170,10 +174,65 @@ export default class App extends Component {
     });
   }
 
-  componentDidMount() {
+  getAll() {
     axios.get(`${url}/group`).then((res) => {
       this.setState({ group: res.data });
-      this.getTable(res.data[0].groupid);
+
+      var data = [];
+      axios.get(`${url}/timetable`).then((res) => {
+        var value = res.data[0].groupid;
+        res.data.map((item) => {
+          if (item.groupid === value) {
+            data.push(item);
+          }
+        });
+
+        axios.get(`${url}/room`).then((res2) => {
+          for (let i = 0; i < data.length; i++) {
+            for (let j = 0; j < res2.data.length; j++) {
+              if (res2.data[j].roomid == data[i].roomid) {
+                data[i].roomnumber = res2.data[j].roomnumber;
+              }
+            }
+          }
+
+          axios.get(`${url}/employee`).then((res3) => {
+            for (let i = 0; i < data.length; i++) {
+              for (let j = 0; j < res3.data.length; j++) {
+                if (res3.data[j].employeeid == data[i].employeeid) {
+                  data[i].personid = res3.data[j].personid;
+                  data[i].positionid = res3.data[j].positionid;
+                }
+              }
+            }
+            axios.get(`${url}/person`).then((res4) => {
+              for (let i = 0; i < data.length; i++) {
+                for (let j = 0; j < res4.data.length; j++) {
+                  if (res4.data[j].personid == data[i].personid) {
+                    data[i].personlastname = res4.data[j].personlastname;
+                    data[i].personfirstname =
+                      res4.data[j].personfirstname.slice(0, 1).toUpperCase() +
+                      ".";
+                    data[i].personmiddlename =
+                      res4.data[j].personmiddlename.slice(0, 1).toUpperCase() +
+                      ".";
+                  }
+                }
+              }
+              axios.get(`${url}/subject`).then((res5) => {
+                for (let i = 0; i < data.length; i++) {
+                  for (let j = 0; j < res5.data.length; j++) {
+                    if (res5.data[j].subjectid == data[i].subjectid) {
+                      data[i].subjectname = res5.data[j].subjectname;
+                    }
+                  }
+                }
+                this.setState({ weekday: data });
+              });
+            });
+          });
+        });
+      });
       axios.get(`${url}/employee`).then((res3) => {
         axios.get(`${url}/person`).then((res2) => {
           for (let i = 0; i < res3.data.length; i++) {
@@ -200,6 +259,10 @@ export default class App extends Component {
         });
       });
     });
+  }
+
+  componentDidMount() {
+    this.getAll();
   }
   render() {
     return (
@@ -241,7 +304,7 @@ export default class App extends Component {
             <select name="" id="select_4">
               {this.state.subject.map((item) => {
                 return (
-                  <option value={item.subjsctid}>{item.subjectname}</option>
+                  <option value={item.subjectid}>{item.subjectname}</option>
                 );
               })}
             </select>
@@ -294,16 +357,9 @@ export default class App extends Component {
           </div>
         </div>
         <div className="amygdala">
-          <select className="bts" name="" id="">
+          <select onClick={() => this.getTable()} id="select_12" name="">
             {this.state.group.map((item, key) => {
-              return (
-                <option
-                  onClick={() => this.getTable(item.groupid)}
-                  value={item.groupid}
-                >
-                  {item.groupname}
-                </option>
-              );
+              return <option value={item.groupid}>{item.groupname}</option>;
             })}
           </select>
           <button
@@ -313,7 +369,7 @@ export default class App extends Component {
               this.openModal();
             }}
           >
-            + Добавить сотрудника
+            + Добавить расписание
           </button>
         </div>
 
@@ -363,3 +419,4 @@ export default class App extends Component {
     );
   }
 }
+

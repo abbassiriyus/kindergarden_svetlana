@@ -49,21 +49,6 @@ export default function Vztsasd() {
         .finally(() => {
           setFinally(false);
         });
-
-      // axios.get(`${url}/attendance`).then(res => {
-      //    const abu = res.data
-      //    const abu2 = []
-      //    axios.get(`${url}/excuse`).then(res1 => {
-      //    for (let i = 0; i < res1.data.length; i++) {
-      //       for (let j = 0; j < abu.length; j++) {
-      //          if (abu[j].childid === res1.data[i].childid) {
-      //             abu[j].childlastname = res1.data[i].childlastname
-      //             abu2.push(abu)
-      //          }
-      //       }
-      //    }
-      //    })
-      // })
     }
     console.log(state, "tiug1");
 
@@ -113,33 +98,15 @@ export default function Vztsasd() {
   }
 
   function postAtten() {
-    // setGetted
-    // axios.get(`${url}/child`).then((res) => {
-    //   var data1 = [];
-    //   res.data.map((data) => {
-    //     if (data.groupid == document.querySelector(".dddaa").value) {
-    //       data1.push(data);
-    //     }
-    //   });
-    //   setPosted(data1);
-    // });
-
-    // console.log(personname);
-
-    // axios.get(`${url}/child`).then((res) => {
-    //   res.data.map((item) => {
-    //     if (personname == item.childlastname) {
-    //     }
-    //   });
-    // });
-    var personname = document.querySelector(".itemChildname").value;
-
+    var personname = document.querySelector(".lox").value;
     var data = new FormData();
     data.append("date", document.querySelector(".datee1").value);
     data.append("childid", personname);
     data.append("arrivaltime", document.querySelector(".datee1").value);
     data.append("leavingtime", document.querySelector(".datee2").value);
     data.append("employeeid", 1);
+    data.append("excuseid", 1);
+    console.log(data);
     axios.post(`${url}/attendance`, data).then((res) => {
       console.log(res.data);
       window.location = "/Vztsasd";
@@ -179,7 +146,7 @@ export default function Vztsasd() {
               })}
             </select>
             <h4>Дети *</h4>
-            <select className="itemChildname">
+            <select className="lox">
               {posted.map((item) => {
                 return (
                   <option value={item.childid}>{item.childlastname}</option>
@@ -290,33 +257,7 @@ export default function Vztsasd() {
                     </div>
                   ) : (
                     data.map((item, key) => {
-                      if (item.excuseid) {
-                        return (
-                          <tr className="btnadmp_tr1">
-                            <td className="btnadmp_td2">{key + 1}</td>
-                            <td className="btnadmp_td2">
-                              {item.childlastname} {item.childfirstname}
-                            </td>
-                            <td className="btnadmp_td2">{item.reason}</td>
-                            <td className="btnadmp_td2">
-                              {item.arrivaltime
-                                .slice(5)
-                                .replaceAll("-", "/")
-                                .replaceAll("T", " ")}
-                            </td>
-                            <td className="btnadmp_td2">
-                              {item.leavingtime
-                                .slice(5)
-                                .replaceAll("-", "/")
-                                .replaceAll("T", " ")}
-                            </td>
-
-                            <td className="btnadmp_td2">
-                              <button className="butadmp1">+</button>
-                            </td>
-                          </tr>
-                        );
-                      } else {
+                  
                         return (
                           <tr className="btnadmp_tr1">
                             <td className="btnadmp_td1">{key + 1}</td>
@@ -353,7 +294,7 @@ export default function Vztsasd() {
                             </td>
                           </tr>
                         );
-                      }
+                      
                     })
                   )}
                 </table>
