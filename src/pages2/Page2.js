@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./AllPages2.css";
 import Img1 from "../img/free-icon-daughter-8229500.png";
+import Img12 from "../img/free-icon-child-5238428.png";
+import Img11 from "../img/Group 133.png";
 import Img2 from "../img/free-icon-kindergarden-5235725 1.png";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
@@ -139,8 +141,10 @@ export default function Page2() {
   function CHECK(id) {
     const variant = id[0];
     const javob = id[1];
+    const test =id[2]
     console.log(variant);
     console.log(javob);
+    console.log(test, "test");
     if (variant === javob) {
       console.log("turi");
       document.querySelector(".modall").style.display = "block";
@@ -178,84 +182,165 @@ export default function Page2() {
         <TabPanel value={value} index={0}>
           {child22.map((item) => {
             if (selectedKid.childid === item.childid) {
-              return (
-                <div className="Cards-Page1">
-                  <div className="CardProfil-Page1">
-                    <img src={Img1} alt="" />
-                    <br />
-                    <h4>{item.childfirstname} </h4>
-                  </div>
-                  <div className="Card-Page1">
-                    <div className="Input-grup">
-                      <h4>Фамилия</h4>
-                      <p>{item.childlastname}</p>
+              if (item.gender==="ж") {
+                return (
+                  <div className="Cards-Page1">
+                    <div className="CardProfil-Page1">
+                      <img src={Img1} alt="" />
+                      <br />
+                      <h4>{item.childfirstname} </h4>
                     </div>
-
-                    <div className="Input-grup">
-                      <h4>Имя</h4>
-                      <p>{item.childfirstname}</p>
-                    </div>
-
-                    <div className="Input-grup">
-                      <h4>Группа</h4>
-                      {group.map((item2) => {
-                        if (item.groupid === item2.groupid) {
-                          return <p>{item2.groupname}</p>;
-                        }
-                      })}
-                    </div>
-
-                    <div className="Input-grup">
-                      <h4>Дата рождения</h4>
-                      <p>{item.dateofbirth.slice(0, 10)}</p>
-                    </div>
-
-                    <div className="Input-grup">
-                      <h4>Представители</h4>
-                      <ul>
-                        {relation.map((item3) => {
-                          if (item.childid === item3.childid) {
-                            return (
-                              <li>
-                                {" "}
-                                {item3.status}
-                                {legalrep.map((item4) => {
-                                  if (item3.legalrepid === item4.legalrepid) {
-                                    return (
-                                      <>
-                                        {person.map((item5) => {
-                                          if (
-                                            item4.personid === item5.personid
-                                          ) {
-                                            return (
-                                              <span>
-                                                {" "}
-                                                {item5.personlastname}{" "}
-                                                {item5.personfirstname}{" "}
-                                                {item5.personmiddlename}{" "}
-                                                {item5.phone}
-                                              </span>
-                                            );
-                                          }
-                                        })}
-                                      </>
-                                    );
-                                  }
-                                })}
-                              </li>
-                            );
+                    <div className="Card-Page1">
+                      <div className="Input-grup">
+                        <h4>Фамилия</h4>
+                        <p>{item.childlastname}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Имя</h4>
+                        <p>{item.childfirstname}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Группа</h4>
+                        {group.map((item2) => {
+                          if (item.groupid === item2.groupid) {
+                            return <p>{item2.groupname}</p>;
                           }
                         })}
-                      </ul>
-                    </div>
-
-                    <div className="Input-grup">
-                      <h4>Дополнительно</h4>
-                      <p>{item.comment}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Дата рождения</h4>
+                        <p>{item.dateofbirth.slice(0, 10)}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Представители</h4>
+                        <ul>
+                          {relation.map((item3) => {
+                            if (item.childid === item3.childid) {
+                              return (
+                                <li>
+                                  {" "}
+                                  {item3.status}
+                                  {legalrep.map((item4) => {
+                                    if (item3.legalrepid === item4.legalrepid) {
+                                      return (
+                                        <>
+                                          {person.map((item5) => {
+                                            if (
+                                              item4.personid === item5.personid
+                                            ) {
+                                              return (
+                                                <span>
+                                                  {" "}
+                                                  {item5.personlastname}{" "}
+                                                  {item5.personfirstname}{" "}
+                                                  {item5.personmiddlename}{" "}
+                                                  {item5.phone}
+                                                </span>
+                                              );
+                                            }
+                                          })}
+                                        </>
+                                      );
+                                    }
+                                  })}
+                                </li>
+                              );
+                            }
+                          })}
+                        </ul>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Дополнительно</h4>
+                        <p>{item.comment}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
+                );         
+              }else{
+                return (
+                  <div className="Cards-Page1">
+                    <div className="CardProfil-Page1">
+                      <img src={Img12} alt="" />
+                      <br />
+                      <h4>{item.childfirstname} </h4>
+                    </div>
+                    <div className="Card-Page1">
+                      <div className="Input-grup">
+                        <h4>Фамилия</h4>
+                        <p>{item.childlastname}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Имя</h4>
+                        <p>{item.childfirstname}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Группа</h4>
+                        {group.map((item2) => {
+                          if (item.groupid === item2.groupid) {
+                            return <p>{item2.groupname}</p>;
+                          }
+                        })}
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Дата рождения</h4>
+                        <p>{item.dateofbirth.slice(0, 10)}</p>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Представители</h4>
+                        <ul>
+                          {relation.map((item3) => {
+                            if (item.childid === item3.childid) {
+                              return (
+                                <li>
+                                  {" "}
+                                  {item3.status}
+                                  {legalrep.map((item4) => {
+                                    if (item3.legalrepid === item4.legalrepid) {
+                                      return (
+                                        <>
+                                          {person.map((item5) => {
+                                            if (
+                                              item4.personid === item5.personid
+                                            ) {
+                                              return (
+                                                <span>
+                                                  {" "}
+                                                  {item5.personlastname}{" "}
+                                                  {item5.personfirstname}{" "}
+                                                  {item5.personmiddlename}{" "}
+                                                  {item5.phone}
+                                                </span>
+                                              );
+                                            }
+                                          })}
+                                        </>
+                                      );
+                                    }
+                                  })}
+                                </li>
+                              );
+                            }
+                          })}
+                        </ul>
+                      </div>
+  
+                      <div className="Input-grup">
+                        <h4>Дополнительно</h4>
+                        <p>{item.comment}</p>
+                      </div>
+                    </div>
+                  </div>
+                );   
+              }
             }
           })}
         </TabPanel>
@@ -279,25 +364,25 @@ export default function Page2() {
                               />
                               <div className="aysdu">
                                 <button
-                                  onClick={() => CHECK([1, item2.answer])}
+                                  onClick={() => CHECK([1, item2.answer,item.testid])}
                                 >
                                   1
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([2, item2.answer])}
+                                  onClick={() => CHECK([2, item2.answer,item.testid])}
                                 >
                                   2
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([3, item2.answer])}
+                                  onClick={() => CHECK([3, item2.answer,item.testid])}
                                 >
                                   3
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([4, item2.answer])}
+                                  onClick={() => CHECK([4, item2.answer,item.testid])}
                                 >
                                   4
                                 </button>
@@ -318,25 +403,25 @@ export default function Page2() {
                               />
                               <div className="aysdu">
                                 <button
-                                  onClick={() => CHECK([3, item2.answer])}
+                                  onClick={() => CHECK([3, item2.answer,item.testid])}
                                 >
                                   Б
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([2, item2.answer])}
+                                  onClick={() => CHECK([2, item2.answer,item.testid])}
                                 >
                                   В
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([1, item2.answer])}
+                                  onClick={() => CHECK([1, item2.answer,item.testid])}
                                 >
                                   Г
                                 </button>
                                 <br />
                                 <button
-                                  onClick={() => CHECK([4, item2.answer])}
+                                  onClick={() => CHECK([4, item2.answer,item.testid])}
                                 >
                                   Д
                                 </button>
@@ -362,32 +447,63 @@ export default function Page2() {
           <div className="kid-Page2">
             {child22.map((item22) => {
               if (item.childid === item22.childid) {
-                return (
-                  <div className="asd">
-                    <img src={Img1} alt="" />
-                    <div className="kid-prfl">
-                      <div className="asd23">
-                        <h4 className="kakak">
-                          {item22.childlastname} {item22.childfirstname}
-                        </h4>
-                        <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                if (item22.gender==="ж") {
+                  return (
+                    <div className="asd">
+                      <div className="ing55">
+                      <img src={Img11} alt="" />
                       </div>
-                      {group.map((item33) => {
-                        if (item22.groupid === item33.groupid) {
-                          return (
-                            <div className="volss">
-                              <img src={Img2} alt="" />
-                              <p>{item33.groupname}</p>
-                            </div>
-                          );
-                        }
-                      })}
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                      <button className="kkk" onClick={() => KidsBlock(item)}>
+                        Подробнее
+                      </button>
                     </div>
-                    <button className="kkk" onClick={() => KidsBlock(item)}>
-                      Подробнее
-                    </button>
-                  </div>
-                );
+                  );               
+                }else{
+                  return (
+                    <div className="asd">
+     <img src={Img12} alt="" />
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                      <button className="kkk" onClick={() => KidsBlock(item)}>
+                        Подробнее
+                      </button>
+                    </div>
+                  ); 
+                }
               }
             })}
           </div>

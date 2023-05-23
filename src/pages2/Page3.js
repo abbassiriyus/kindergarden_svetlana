@@ -64,58 +64,6 @@ export default function Page6() {
     };
     fetchData();
   }, []);
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     axios
-  //       .get(`${url}/Legal_Rep`)
-  //       .then((res) => {
-  //         const filteredChildren = res.data.filter(
-  //           (child) =>
-  //             child.personid === parseInt(localStorage.getItem("personid"))
-  //         );
-  //         axios.get(`${url}/relation`).then((res22) => {
-  //           const tempBolas = [];
-  //           const nol = [];
-  //           for (let i = 0; i < res22.data.length; i++) {
-  //             for (let j = 0; j < filteredChildren.length; j++) {
-  //               if (
-  //                 res22.data[i].legalrepid === filteredChildren[j].legalrepid
-  //               ) {
-  //                 axios.get(`${url}/excuse`).then((res33) => {
-  //                   for (let e = 0; e < res33.data.length; e++) {
-  //                     if (res33.data[e].childid === res22.data[i].childid) {
-  //                       tempBolas.push(res33.data[e].datestart.slice(0, 10));
-  //                       nol.push(res33.data[e].childid);
-  //                     }
-  //                   }
-  //                   console.log(nol);
-  //                   console.log(tempBolas);
-  //                   setExcuse(tempBolas);
-  //                   setRebenok(nol);
-  //                 });
-  //               }
-  //             }
-  //           }
-  //         });
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-  //       });
-  //     axios.get(`${url}/child`).then((res99) => {
-  //       setRebenoki(res99.data);
-  //     });
-  //     axios.get(`${url}/excuse`).then((res98) => {
-  //       setallExcuse(res98.data);
-  //     });
-  //     axios.get(`${url}/employee`).then((res97) => {
-  //       setEmploy(res97.data);
-  //     });
-  //     axios.get(`${url}/person`).then((res96) => {
-  //       setPerson(res96.data);
-  //     });
-  //   };
-  //   fetchData();
-  // }, []);
   useEffect(() => {
   }, [
     excuse,
@@ -127,35 +75,7 @@ export default function Page6() {
     rebenok3,
     rebenoki,
   ]);
-  // async function clickaday(date) {
-  //   const d = date;
-  //   const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
-
-  //   const index = excuse.indexOf(a);
-  //   if (index > -1) {
-  //     document.querySelector(".BigModalChild").style = "display: flex;";
-  //     setRebenok2(excuse[index]);
-
-  //     try {
-  //       const res = await axios.get(`${url}/excuse`);
-  //       const filteredData = res.data.filter((item) => {
-  //         return (
-  //           rebenok.includes(item.childid) &&
-  //           item.datestart.slice(0, 10) === excuse[index]
-  //         );
-  //       });
-  //       if (filteredData.length > 0) {
-  //         setRebenok3(filteredData[0].childid);
-  //       } else {
-  //         console.log("Данные не найдены!!");
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } else {
-  //     console.log("error");
-  //   }
-  // }
+ 
   const handleClickDay = useCallback(
     async (date) => {
       const d = date;
@@ -272,17 +192,6 @@ export default function Page6() {
           tileContent={getTileContent}
         />
       </div>
-      <p className="text-center">
-        <div>
-          {/* {excuse.map((item) => (
-            <div>
-              <p>frwgehgeh</p>
-              <h1>{item}</h1>
-            </div>
-          ))} */}
-        </div>
-        <span className="bold">Selected Date:</span> {date.toDateString()}
-      </p>
     </div>
   );
 }

@@ -989,4 +989,20 @@ margin-left: 100px  !important
 .kakak{
   color: #334155 !important;
 }
-
+.ing55{
+  width: 100px;
+height: 100px;
+background-image: url(../img/free-icon-daughter-8229500.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+/* display: flex;
+justify-content: end;
+align-items: flex-start; */
+position: relative;
+}
+.ing55 img{
+bottom: 70px;
+left: 60px;
+position: absolute;
+}
