@@ -18,58 +18,104 @@ export default function Page6() {
   const [rebenoki, setRebenoki] = useState([]);
   const [employ, setEmploy] = useState([]);
   const [person, setPerson] = useState([]);
+  
 
   useEffect(() => {
     const fetchData = async () => {
-      axios
-        .get(`${url}/Legal_Rep`)
-        .then((res) => {
-          const filteredChildren = res.data.filter(
-            (child) =>
-              child.personid === parseInt(localStorage.getItem("personid"))
-          );
-
-          axios.get(`${url}/relation`).then((res22) => {
-            const tempBolas = [];
-            const nol = [];
-            for (let i = 0; i < res22.data.length; i++) {
-              for (let j = 0; j < filteredChildren.length; j++) {
-                if (
-                  res22.data[i].legalrepid === filteredChildren[j].legalrepid
-                ) {
-                  axios.get(`${url}/excuse`).then((res33) => {
-                    for (let e = 0; e < res33.data.length; e++) {
-                      if (res33.data[e].childid === res22.data[i].childid) {
-                        tempBolas.push(res33.data[e].datestart.slice(0, 10));
-                        nol.push(res33.data[e].childid);
-                      }
-                    }
-                    setExcuse(tempBolas);
-                    setRebenok(nol);
-                  });
+      try {
+        const [legalRepRes, relationRes, childRes, excuseRes, employeeRes, personRes] = await Promise.all([
+          axios.get(`${url}/Legal_Rep`),
+          axios.get(`${url}/relation`),
+          axios.get(`${url}/child`),
+          axios.get(`${url}/excuse`),
+          axios.get(`${url}/employee`),
+          axios.get(`${url}/person`)
+        ]);
+  
+        const filteredChildren = legalRepRes.data.filter(
+          (child) => child.personid === parseInt(localStorage.getItem("personid"))
+        );
+        
+        const tempBolas = [];
+        const nol = [];
+        for (let i = 0; i < relationRes.data.length; i++) {
+          for (let j = 0; j < filteredChildren.length; j++) {
+            if (relationRes.data[i].legalrepid === filteredChildren[j].legalrepid) {
+              for (let e = 0; e < excuseRes.data.length; e++) {
+                if (excuseRes.data[e].childid === relationRes.data[i].childid) {
+                  tempBolas.push(excuseRes.data[e].datestart.slice(0, 10));
+                  nol.push(excuseRes.data[e].childid);
                 }
               }
             }
-          });
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      axios.get(`${url}/child`).then((res99) => {
-        setRebenoki(res99.data);
-      });
-      axios.get(`${url}/excuse`).then((res98) => {
-        setallExcuse(res98.data);
-      });
-      axios.get(`${url}/employee`).then((res97) => {
-        setEmploy(res97.data);
-      });
-      axios.get(`${url}/person`).then((res96) => {
-        setPerson(res96.data);
-      });
+          }
+        }
+        console.log(nol);
+        console.log(tempBolas);
+        setExcuse(tempBolas);
+        setRebenok(nol);
+        setRebenoki(childRes.data);
+        setallExcuse(excuseRes.data);
+        setEmploy(employeeRes.data);
+        setPerson(personRes.data);
+      } catch (err) {
+        console.log(err);
+      }
     };
     fetchData();
   }, []);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     axios
+  //       .get(`${url}/Legal_Rep`)
+  //       .then((res) => {
+  //         const filteredChildren = res.data.filter(
+  //           (child) =>
+  //             child.personid === parseInt(localStorage.getItem("personid"))
+  //         );
+  //         axios.get(`${url}/relation`).then((res22) => {
+  //           const tempBolas = [];
+  //           const nol = [];
+  //           for (let i = 0; i < res22.data.length; i++) {
+  //             for (let j = 0; j < filteredChildren.length; j++) {
+  //               if (
+  //                 res22.data[i].legalrepid === filteredChildren[j].legalrepid
+  //               ) {
+  //                 axios.get(`${url}/excuse`).then((res33) => {
+  //                   for (let e = 0; e < res33.data.length; e++) {
+  //                     if (res33.data[e].childid === res22.data[i].childid) {
+  //                       tempBolas.push(res33.data[e].datestart.slice(0, 10));
+  //                       nol.push(res33.data[e].childid);
+  //                     }
+  //                   }
+  //                   console.log(nol);
+  //                   console.log(tempBolas);
+  //                   setExcuse(tempBolas);
+  //                   setRebenok(nol);
+  //                 });
+  //               }
+  //             }
+  //           }
+  //         });
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //     axios.get(`${url}/child`).then((res99) => {
+  //       setRebenoki(res99.data);
+  //     });
+  //     axios.get(`${url}/excuse`).then((res98) => {
+  //       setallExcuse(res98.data);
+  //     });
+  //     axios.get(`${url}/employee`).then((res97) => {
+  //       setEmploy(res97.data);
+  //     });
+  //     axios.get(`${url}/person`).then((res96) => {
+  //       setPerson(res96.data);
+  //     });
+  //   };
+  //   fetchData();
+  // }, []);
   useEffect(() => {
   }, [
     excuse,
@@ -198,9 +244,7 @@ export default function Page6() {
                                 if (item4.personid === item5.personid) {
                                   return (
                                     <p>
-                                      Автор: {item5.personmiddlename}
-                                      {item5.personfirstname}
-                                      {item5.personlastname}
+                                      Автор: {item5.personmiddlename} {item5.personfirstname} {item5.personlastname}
                                     </p>
                                   );
                                 }
