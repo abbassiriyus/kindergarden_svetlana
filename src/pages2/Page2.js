@@ -353,9 +353,7 @@ export default function Page2() {
                     })}
                   </>
                 );
-              } else {
-                return <div>NETU</div>;
-              }
+              } 
             })}
           </div>
         </TabPanel>
