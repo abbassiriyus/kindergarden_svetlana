@@ -164,7 +164,7 @@ export default function Page6() {
                                 if (item4.personid === item5.personid) {
                                   return (
                                     <p>
-                                      Автор: {item5.personmiddlename} {item5.personfirstname} {item5.personlastname}
+                                      Автор:{item5.personlastname}  {item5.personfirstname} {item5.personmiddlename}
                                     </p>
                                   );
                                 }
