@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Img1 from '../img/free-icon-daughter-8229500.png'
-import Img2 from '../img/free-icon-kindergarden-5235725 1.png'
+import Img1 from "../img/free-icon-daughter-8229500.png";
+import Img12 from "../img/free-icon-child-5238428.png";
+import Img11 from "../img/Group 133.png";
+import Img2 from "../img/free-icon-kindergarden-5235725 1.png";
 import './AllPages2.css'
 import url from "../host";
 
@@ -59,65 +61,69 @@ export default function Page5() {
   ]);
   return (
     <div className='Page5niki'>
-                <div className="kids-Page2">
+
+<div className="kids-Page2">
         {bolas22.map((item) => (
           <div className="kid-Page2">
             {child22.map((item22) => {
               if (item.childid === item22.childid) {
-                return (
-                  <div className="asd">
-                    <img src={Img1} alt="" />
-                    <div className="kid-prfl">
-                      <div className="asd23">
-                        <h4 className="kakak">{item22.childlastname} {item22.childfirstname}</h4>
-                        <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
+                if (item22.gender==="ж") {
+                  return (
+                    <div className="asd">
+                      <div className="ing55">
+                      <img src={Img11} alt="" />
                       </div>
-                      {group2.map((item33) => {
-                        if (item22.groupid === item33.groupid) {
-                          return (
-                            <div className="volss">
-                              <img src={Img2} alt="" />
-                              <p>{item33.groupname}</p>
-                            </div>
-                          );
-                        }
-                      })}
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group2.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+  
                     </div>
-                
-                  </div>
-                  
-                );
+                  );               
+                }else{
+                  return (
+                    <div className="asd">
+     <img src={Img12} alt="" />
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group2.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                    </div>
+                  ); 
+                }
               }
             })}
-              
           </div>
         ))}
       </div>
-      {/* <div className="sxdcfvgbiuhn">
-        <div className="rftgyh">
-          <img src={Img1} alt="" />
-          <div className="fghjn">
-            <h4 className="uu">Маринина Наташа</h4>
-            <p>4 года</p>
-            <p><img src={Img2} alt="" /> Волшебник 2 уровня</p>
-          </div>
-        </div>
-      </div> */}
-       {/* <div className='kids-Page2'>
-        <div className='kid-Page2'>
-          <div className='asd'>
-            <img src={Img1} alt='' />
-            <div className='kid-prfl'>
-              <h4>Маринина Наташа</h4>
-              <p>4 года</p>
-              <h3 className='volss'>
-                <img src={Img2} alt='' />
-                Волшебник 2 уровня
-              </h3>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </div>
   )
 }

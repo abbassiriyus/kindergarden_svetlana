@@ -188,7 +188,7 @@ export default class PageProfil extends Component {
               <button
                 onClick={() => this.putPerson(this.state.person1[0].personid,)}
               >
-                Сохранит
+                Сохранить
               </button>
             </div>
           </div>
