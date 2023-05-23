@@ -171,15 +171,15 @@ export default class Employees extends Component {
           axios.get(`${url}/person`).then((res) => {
             res.data.map((item) => {
               console.log(
-                item.passportseries , document.querySelector(".form7").value,
+                item.passportseries, document.querySelector(".form7").value,
                 item.passportnumber, document.querySelector(".form8").value
               );
               if (
                 item.passportseries == document.querySelector(".form7").value &&
                 item.passportnumber == document.querySelector(".form8").value
               ) {
-                this.setState({personid:item.personid });
-                console.log(item.personid,"personid");
+                this.setState({ personid: item.personid });
+                console.log(item.personid, "personid");
               }
             });
           });
@@ -215,11 +215,11 @@ export default class Employees extends Component {
                 labor = res3.data[i].laborid;
               }
             }
-            var data12 = new FormData(); 
+            var data12 = new FormData();
             data12.append("personid", this.state.personid);
             data12.append("laborid", labor);
             data12.append("positionid", positionid);
-            console.log(this.state.personid,"whay");
+            console.log(this.state.personid, "whay");
             data12.append("hiredate", document.querySelector(".dform3").value);
             data12.append(
               "dismissaldate",
@@ -281,6 +281,9 @@ export default class Employees extends Component {
 
   putdata(key) {
     window.location.reload();
+  }
+  closededd() {
+    document.querySelector('#dd2').style = 'display: none'
   }
 
   render() {
@@ -577,22 +580,20 @@ export default class Employees extends Component {
                 <label htmlFor="form1">Фамилия*</label>
                 <br />
                 <input
-                  placeholder={this.state.putData.personid}
+                  placeholder={this.state.perosndata.personmiddlename}
                   id="form1"
                   type="text"
                 />
-
-                <p>{this.state.perosndata.personlastname}</p>
               </div>
               <div className="pages11">
                 <label htmlFor="form2">Имя* </label>
                 <br />
-                <input id="form2" type="text" />
+                <input id="form2" placeholder={this.state.perosndata.personlastname} type="text" />
               </div>
               <div className="pages11">
                 <label htmlFor="form3">Отчество*</label>
                 <br />
-                <input id="form3" type="text" />
+                <input id="form3" placeholder={this.state.perosndata.personfirstname} type="text" />
               </div>
               <div className="pages11">
                 <br />
@@ -646,107 +647,11 @@ export default class Employees extends Component {
                 />
               </div>
             </div>
-            <label
-              htmlFor="form12"
-              style={{
-                marginLeft: "10%",
-                marginTop: "50px",
-                marginBottom: "30px",
-              }}
-            >
-              Адрес регистрации*
-            </label>
-            <div className="oyna101">
-              <div className="pages11">
-                <input
-                  className="aform1"
-                  placeholder="Страна"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="aform2"
-                  placeholder="Город"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="aform3"
-                  placeholder="Улица"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="aform4"
-                  placeholder="Номер дома"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="aform5"
-                  placeholder="building"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <input
-                  className="aform6"
-                  placeholder="Квартира"
-                  style={{ marginTop: "30px" }}
-                  type="text"
-                />
-              </div>
-            </div>
-          </div>
-
-          <div className="Apages3">
-            <div className="oyna101">
-              <div className="pages11">
-                <label htmlFor="">Должность *</label>
-                <br />
-                <input className="dform1" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor=""> Образование *</label>
-                <br />
-                <input className="dform2" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="">Дата приема * </label>
-                <br />
-                <input className="dform3" type="date" />
-              </div>
-              <div className="pages11">
-                <br />
-                <label htmlFor=""> Дата увольнения *</label>
-                <br />
-                <input className="dform4" type="date" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="">Дата выдачи мед.справки * </label>
-                <br />
-                <input className="dform5" type="date" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="">Курсы/ Сертификаты*</label>
-                <br />
-                <input className="dform6" type="text" />
-              </div>
-            </div>
             <div className="df_button">
               <button
                 className="df_button1"
                 onClick={() => {
-                  this.openPageNumber(2);
+                  this.closededd();
                 }}
               >
                 Назад
@@ -758,7 +663,7 @@ export default class Employees extends Component {
                   this.putdata();
                 }}
               >
-                Сохранить
+                Сохранить0
               </button>
             </div>
           </div>
@@ -766,41 +671,6 @@ export default class Employees extends Component {
 
         <h1 className="bigah1">Список сотрудников</h1>
         <div className="biga-pages">
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Должность
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Группа
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-
-          <Dropdown id="drop">
-            <Dropdown.Toggle variant="light" id="dropdown-basic">
-              Занятие
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
 
           <button
             id="btnlar1"
@@ -882,7 +752,12 @@ export default class Employees extends Component {
                     </p>
                     <div id="iconci">
                       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                      <img src={icon1} alt="" />
+                      <img
+                        onClick={() => {
+                          this.openModal2();
+                          this.getInfa(item.personid);
+                        }}
+                        src={icon1} alt="" />
                       <img
                         onClick={() => {
                           document.querySelector(".modal12").style =
