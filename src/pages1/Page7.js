@@ -14,6 +14,7 @@ export default function Page7() {
   }
   return (
     <div>
+      
       <div className="GroupsBtn">
         <div className="groupp">
           <button onClick={() => openTest()}>ЯНВАРЬ</button>

@@ -4,6 +4,7 @@ import "../PageAdmin/css/ByGrupss.css";
 import React, { Component } from "react";
 import axios from "axios";
 import url from "../host";
+import { logDOM } from "@testing-library/react";
 const weekday = [
   {
     number: 1,
@@ -64,6 +65,7 @@ export default class App extends Component {
     employee: [],
     subject: [],
     room: [],
+    namegroup:[]
   };
 
 
@@ -152,6 +154,25 @@ export default class App extends Component {
   }
 
   getAll() {
+    let empId = parseInt(localStorage.getItem("employ"));
+    let groups = [];
+    axios.get(`${url}/group_emp`)
+      .then((res) => {
+        for (let i = 0; i < res.data.length; i++) {
+          if (res.data[i].employeeid === empId) {
+            groups.push(res.data[i].groupid);
+          }
+        }
+        return axios.get(`${url}/group`);
+      })
+      .then((res2) => {
+        let nameGroups = res2.data.filter(group => groups.includes(group.groupid));
+        this.setState({ namegroup: nameGroups });
+  
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
     axios.get(`${url}/group`).then((res) => {
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i]=== parseInt(localStorage.getItem("employ"))) {
@@ -251,7 +272,7 @@ export default class App extends Component {
       <div className="metgala">
         <div className="amygdala">
           <select onClick={() => this.getTable()} id="select_12" className="slect66">
-            {this.state.group.map((item, key) => {
+            {this.state.namegroup.map((item, key) => {
               return <option value={item.groupid}>{item.groupname}</option>;
             })}
           </select>

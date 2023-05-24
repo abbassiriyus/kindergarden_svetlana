@@ -83,9 +83,7 @@ useEffect(() => {
   function functionName2 () {
     let uu=(document.querySelector("#dd").value);
     set2(uu.slice(8,10))
-    console.log(stat2e);
     setuu(uu.slice(8,10)*1+7)
-    console.log(uut);
     
   }
   return (

@@ -12,7 +12,10 @@ export default function Page1() {
   const [up, setup] = useState([]);
   const [child, setChild] = useState([]);
   const [selectedKid, setSelectedKid] = useState([]);
-
+   const [deti, setdeti] = useState([]);
+   const [relation, setRelation] = useState([]);
+   const [legalrep, setLegalrep] = useState([]);
+   const [person, setPerson] = useState([]);
   const handleKidClick = (chilid) => {
     setSelectedKid(chilid);
     var nn = document.querySelector(".Cards-Page1-1");
@@ -37,11 +40,22 @@ export default function Page1() {
                 }
               }
             }
+            setdeti(res2.data)
             setup(filteredGroup);
           });
           axios.get(`${url}/child`).then((res3) => {
             setChild(res3.data);
           });
+          axios.get(`${url}/relation`).then((res55) => {
+            setRelation(res55.data);
+          });
+          axios.get(`${url}/Legal_Rep`).then((res66) => {
+            setLegalrep(res66.data);
+          });
+          axios.get(`${url}/person`).then((res77) => {
+            setPerson(res77.data);
+          });
+
         })
         .catch((err) => {
           console.log(err);
@@ -93,7 +107,7 @@ export default function Page1() {
       {selectedKid && (
         <div className="Cards-Page1">
           <div className="CardProfil-Page1">
-            <img src={selectedKid.photo} alt="" />
+            <img src={Img001} alt="" />
             <br />
             <h4>{selectedKid.name}</h4>
           </div>
@@ -108,7 +122,12 @@ export default function Page1() {
             </div>
             <div className="Input-grup">
               <h4>Группа</h4>
-              <p>{selectedKid.groupid}</p>
+              {deti.map((item)=>{
+                if (selectedKid.groupid===item.groupid) {
+                  return<p>{item.groupname}</p>
+                }
+              })}
+             
             </div>
             <div className="Input-grup">
               <h4>Дата рождения</h4>
@@ -117,13 +136,45 @@ export default function Page1() {
             <div className="Input-grup">
               <h4>Представители</h4>
               <ul>
-                {/* {selectedKid.representatives.map((rep, index) => (
-                  <li key={index}>
-                    {rep.name} {rep.phone}
-                  </li>
-                ))} */}
+              {relation.map((item3) => {
+                            if (selectedKid.childid === item3.childid) {
+                              return (
+                                <li>
+                                  {" "}
+                                  {item3.status}
+                                  {legalrep.map((item4) => {
+                                    if (item3.legalrepid === item4.legalrepid) {
+                                      return (
+                                        <>
+                                          {person.map((item5) => {
+                                            if (
+                                              item4.personid === item5.personid
+                                            ) {
+                                              return (
+                                                <span>
+                                                  {" "}
+                                                  {item5.personlastname}{" "}
+                                                  {item5.personfirstname}{" "}
+                                                  {item5.personmiddlename}{" "}
+                                                  {item5.phone}
+                                                </span>
+                                              );
+                                            }
+                                          })}
+                                        </>
+                                      );
+                                    }
+                                  })}
+                                </li>
+                              );
+                            }
+                          })}
               </ul>
             </div>
+            <div className="Input-grup">
+                        <h4>Дополнительно</h4>
+                        <p>{selectedKid.comment}</p>
+                      </div>
           </div>
         </div>
       )}

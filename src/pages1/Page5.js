@@ -17,6 +17,8 @@ export default function Page1() {
   const [up, setup] = useState([]);
   const [child, setChild] = useState([]);
   const [selectedKid, setSelectedKid] = useState([]);
+  const [oo, setOo]=useState([]);
+  const [oo22, setOo22]=useState('18');
 
   const handleKidClick = (chilid) => {
     setSelectedKid(chilid);
@@ -47,6 +49,9 @@ export default function Page1() {
           axios.get(`${url}/child`).then((res3) => {
             setChild(res3.data);
           });
+          axios.get(`${url}/excuse`).then((res4) => {
+            setOo(res4.data);
+          });
         })
         .catch((err) => {
           console.log(err);
@@ -55,23 +60,24 @@ export default function Page1() {
     fetchData();
   }, []);
   useEffect(() => {
-    console.log(up);
-    console.log(child);
   }, [child, up]);
 
-  function hello() {
-    var asd = document.querySelector(".MuiSvgIcon-root").innerHTML;
-    console.log(asd);
-  }
-
+    const handlePageChange = (event, value) => {
+      console.log(value); 
+      console.log(oo22);
+      const oo =[]
+      oo.push(value)
+       setOo22(oo[0])// Вывод выбранной страницы в консоль
+    };
   return (
     <div className="The-Big" id="useirud">
+              <h1> МАЙ 2023 </h1>
       <div className="Stackk">
         <div className="divv">
           <Pagination
-            onClick={() => hello()}
             className="promry"
-            count={30}
+            onChange={handlePageChange}
+            count={31}
           />
         </div>
         <div className="divv">
@@ -89,7 +95,23 @@ export default function Page1() {
             >
               <Typography className="ush">
                 <img src={Img002} alt="" />
-                <h1>{element.groupname}</h1>
+                <h1>{element.groupname}   </h1>
+                {child.map((thing) => {
+        if (element.groupid === thing.groupid) {
+          const filteredThings2 = oo.filter(thing2 => thing.childid === thing2.childid);
+          const data = filteredThings2.length > 0 ? filteredThings2[0].datestart.slice(8, 10) : null;
+          return (
+            <>
+              {data === oo22 && filteredThings2.length > 0 && (
+                <p className="oooo">
+                  {filteredThings2.length} отсутствует
+                </p>
+              )}
+            </>
+          )
+        }
+      })}
+                  
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
