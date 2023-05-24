@@ -16,7 +16,7 @@ export default function GroupDti() {
   const [Deti, setDeti] = useState([]);
   const [labor, setLabor] = useState([]);
   const [position, setposition] = useState([]);
-
+  const [selectedValue, setSelectedValue] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -140,20 +140,98 @@ export default function GroupDti() {
     });
   }
 
+  // function postData2() {
+  //   const jok = selectedValue
+  //   const jok2 = Deti
+  //   var datts = new FormData();
+  //   datts.append("groupname", document.querySelector(".hthgnhdnd").value);
+  //   datts.append("ageid", document.querySelector(".ageidDobav2").value);
+  //   axios
+  //     .post(`${url}/group`, datts)
+  //     .then((res) => {
+  //       alert("connfirm!");
+  //       axios.get(`${url}/group`)
+  //         .then((res2) => {
+  //           for (let i = 0; i < res2.data.length; i++) {
+  //             if (res2.data[i].groupname === document.querySelector(".hthgnhdnd").value) {
+  //               setDeti(res2.data[i].groupid)
+  //             }
+  //           }
+  //           var datta = new FormData();
+  //           datta.append("employeeid", jok);
+  //           datta.append("groupid", Deti);
+  //           axios
+  //             .post(`${url}/group_emp`, datta)
+  //             .then((res3) => {
+  //             })
+  //         })
+
+  //     })
+  //     .catch(alert("Повторите попытку!"));
+
+  // }
   function postData2() {
-    var datts = new FormData();
-    datts.append("groupname", document.querySelector(".hthgnhdnd").value);
-    datts.append("ageid", document.querySelector(".ageidDobav2").value);
+    const datta = new FormData();
+    const groupnameInput = document.querySelector('.hthgnhdnd');
+    const ageidInput = document.querySelector('.ageidDobav2');
+
+    // проверяем, заполнены ли необходимые поля
+    if (!groupnameInput.value || !ageidInput.value) {
+      console.log('Заполните необходимые поля');
+      return;
+    }
+
+    const jok = selectedValue;
+    const jok2 = Deti;
+    datta.append('employeeid', jok);
+    datta.append('groupid', jok2);
+
+    // проверяем, объявлены ли переменные selectedValue и Deti
+    if (!jok && !jok2) {
+      console.log('Переменные selectedValue и Deti не объявлены');
+      return;
+    }
+
+    const groupData = new FormData();
+    groupData.append('groupname', groupnameInput.value);
+    groupData.append('ageid', ageidInput.value);
+
     axios
-      .post(`${url}/group`, datts)
+      .post(`${url}/group`, groupData)
       .then((res) => {
-        alert("Создано!");
-        window.location = " /groupdti";
+        alert('Сохранено!');
+
+        axios.get(`${url}/group`)
+          .then((res2) => {
+            for (let i = 0; i < res2.data.length; i++) {
+              if (res2.data[i].groupname === groupnameInput.value) {
+                setDeti(res2.data[i].groupid);
+                break;
+              }
+            }
+
+            // проверяем, получены ли значения selectedValue и Deti
+            if (!selectedValue || !Deti) {
+              console.log('Не удалось получить значения selectedValue и Deti');
+              return;
+            }
+
+            axios.post(`${url}/group_emp`, datta)
+              .then((res3) => {
+                console.log(res3.data);
+              })
+              .catch(() => {
+                console.log('Ошибка при отправке запроса group_emp');
+              })
+          })
+          .catch(() => {
+            console.log('Ошибка при отправке запроса на получение группы');
+          })
       })
-      .catch(alert("Создано!"));
-
+      .catch(() => {
+        console.log('Ошибка при отправке запроса на сохранение группы');
+      });
   }
-
   return (
     <div className="nodir5">
       <div className="Dobav_Group">
@@ -164,11 +242,11 @@ export default function GroupDti() {
           <h4>Учебный год</h4>
           <input className="ageidDobav2" type="number" />
           <h4>Воспитатели</h4>
-          <select className="hthgnhdnd">
+          <select value={selectedValue} onChange={(event) => setSelectedValue(event.target.value)} className="hthgnhdnd">
             {state2.map((item) => {
               return <>{state3.map((item2) => {
                 if (item.personid === item2.personid) {
-                  return <option>{item2.personlastname}</option>;
+                  return <option value={item.employeeid}>{item2.personlastname}</option>;
                 }
               })}</>
 
@@ -179,8 +257,8 @@ export default function GroupDti() {
             <option>Да</option>
             <option>Нет</option>
           </select>
-          <h4>Дети</h4>
-          <select>
+          {/* <h4>Дети</h4> */}
+          {/* <select>
             <option></option>
             {Deti.map((item) => {
               return (
@@ -190,7 +268,7 @@ export default function GroupDti() {
                 </option>
               );
             })}
-          </select>
+          </select> */}
         </div>
         <div className="grp_btn">
           <button onClick={() => closesModal()}>Назад</button>
