@@ -134,7 +134,7 @@ export default class Employees extends Component {
         formPerson.append("phone", document.querySelector("#form51").value);
         formPerson.append("email", document.querySelector(".form11").value);
 
-        axios.post(`${url}/person`).then((res) => {
+        axios.post(`${url}/person`, formPerson).then((res) => {
           Window.location.reload();
         });
       });
@@ -240,7 +240,7 @@ export default class Employees extends Component {
     //itemData.append("syschangedatutc", key.syschangedatutc)
     axios.put(`${url}/person/${key.personid}`, itemData).then(res => {
       alert('Updated')
-      window.location('/SpsRodtl')
+      window.location.reload()
     })
   }
 

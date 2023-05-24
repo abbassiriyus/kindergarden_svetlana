@@ -10,10 +10,13 @@ import { data } from "jquery";
 
 export default function GroupDti() {
   const [state, setState] = useState([]);
+  const [state2, setState2] = useState([]);
+  const [state3, setState3] = useState([]);
   const [non, setnon] = useState([]);
   const [Deti, setDeti] = useState([]);
   const [labor, setLabor] = useState([]);
   const [position, setposition] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,6 +56,14 @@ export default function GroupDti() {
                   setLabor(res5.data);
                   axios.get(`${url}/position`).then((res5) => {
                     setposition(res5.data);
+                  });
+                  axios.get(`${url}/employee`).then((res56) => {
+                    setState2(res56.data)
+
+                  });
+                  axios.get(`${url}/person`).then((res50) => {
+                    setState3(res50.data)
+
                   });
                 });
               });
@@ -140,6 +151,7 @@ export default function GroupDti() {
         window.location = " /groupdti";
       })
       .catch(alert("Создано!"));
+
   }
 
   return (
@@ -153,8 +165,13 @@ export default function GroupDti() {
           <input className="ageidDobav2" type="number" />
           <h4>Воспитатели</h4>
           <select className="hthgnhdnd">
-            {labor.map((item) => {
-              return <option>{item.laborname}</option>;
+            {state2.map((item) => {
+              return <>{state3.map((item2) => {
+                if (item.personid === item2.personid) {
+                  return <option>{item2.personlastname}</option>;
+                }
+              })}</>
+
             })}
           </select>
           <h4>Активность</h4>

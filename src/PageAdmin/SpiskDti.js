@@ -4,9 +4,14 @@ import Dropdown from "react-bootstrap/Dropdown";
 import icon1 from "../img/icon1.svg";
 import icon2 from "../img/icon21.svg";
 import "./Employees.css";
+import PhoneInput from 'react-phone-input-2'
 import axios from "axios";
 import url from "../host";
 import image_file from "../img/free-icon-cloud-upload-7838250 1.png";
+
+
+
+
 export default class ChildAdmin extends Component {
   state = {
     data: [],
@@ -33,6 +38,7 @@ export default class ChildAdmin extends Component {
   }
   closeModal() {
     document.querySelector(".modal11").style = "display:none";
+    window.location.reload()
   }
   handleChange = (event) => {
     let { value, min, max } = event.target;
@@ -293,6 +299,7 @@ export default class ChildAdmin extends Component {
         });
       });
     });
+    window.location.reload()
   }
 
   getGroupVaditel(groupid) {
@@ -368,19 +375,19 @@ export default class ChildAdmin extends Component {
     formData.append("groupid", groupid);
     formData.append("childlastname", document.querySelector(".itmChild").value);
     formData.append("childfirstname", document.querySelector(".itmChildfrst").value);
-    formData.append("childmiddlename",document.querySelector(".itmChilmdl").value);
+    formData.append("childmiddlename", document.querySelector(".itmChilmdl").value);
     formData.append("gender", document.querySelector(".childGndr").value);
-    formData.append("certificateofbirth",document.querySelector(".childCertifi").value);
+    formData.append("certificateofbirth", document.querySelector(".childCertifi").value);
     formData.append("health", document.querySelector(".childHealth").value);
-    formData.append("isregisteredwith",document.querySelector(".childisregisteredwith").value+'T00:00:00.000Z');
+    formData.append("isregisteredwith", document.querySelector(".childisregisteredwith").value + 'T00:00:00.000Z');
     formData.append("allergy", document.querySelector(".childAll").value);
-    formData.append("deviations",document.querySelector(".childdeviations").value);
+    formData.append("deviations", document.querySelector(".childdeviations").value);
     formData.append(
       "medicines",
       document.querySelector(".childmedicines").value
     );
-    formData.append("dateofbirth", document.querySelector('.childdateofbirth').value+'T00:00:00.000Z')
-    formData.append("healthrestrictions",document.querySelector(".childhealthrestrictions").value
+    formData.append("dateofbirth", document.querySelector('.childdateofbirth').value + 'T00:00:00.000Z')
+    formData.append("healthrestrictions", document.querySelector(".childhealthrestrictions").value
     );
     formData.append("diet", document.querySelector(".childdiet").value);
     formData.append("comment", document.querySelector(".childdiet").value);
@@ -664,10 +671,10 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="form11">Телефон</label>
                 <br />
-                <input
+                <PhoneInput
                   className="form11"
                   value={this.state.oneperson.phone}
-                  type="number"
+
                 />
               </div>
             </div>
@@ -786,7 +793,7 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="group2">Номер контракта</label>
                 <br />
-                <input className="group2" type="number" />
+                <input className="group2" type="date" />
               </div>
 
               <div className="pages11">

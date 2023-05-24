@@ -4,6 +4,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import icon1 from "../img/free-icon-edit-6488637 (2).png";
 import icon2 from "../img/free-icon-delete-5396993.png";
 import "./Employees.css";
+import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import url from "../host";
 
@@ -17,6 +18,7 @@ export default class Employees extends Component {
     deleteData: {},
     putData: [],
     perosndata: {},
+    getPutPerson: []
   };
 
   openModal() {
@@ -66,17 +68,22 @@ export default class Employees extends Component {
     });
   }
   getInfa(key) {
-    axios.get(`${url}/person`).then((res) => {
-      const zb2 = [];
-      for (let i = 0; i < res.data.length; i++) {
-        if (res.data[i].personid === key) {
-          zb2.push(res.data[i]);
-          this.setState({ perosndata: res.data[i] });
-        }
-      }
-      console.log(zb2);
-      console.log(key);
-    });
+    axios.get(`${url}/person/${key}`).then(res => {
+      this.setState({ getPutPerson: res.data })
+    })
+
+
+    // axios.get(`${url}/person`).then((res) => {
+    //   const zb2 = [];
+    //   for (let i = 0; i < res.data.length; i++) {
+    //     if (res.data[i].personid === key) {
+    //       zb2.push(res.data[i]);
+    //       this.setState({ perosndata: res.data[i] });
+    //     }
+    //   }
+    //   console.log(zb2);
+    //   console.log(key);
+    // });
   }
   openPageNumber(key) {
     this.setState({ formpages: key });
@@ -280,7 +287,24 @@ export default class Employees extends Component {
   }
 
   putdata(key) {
-    window.location.reload();
+    var addressidPerson = key.addressid
+    var PutedPerson = new FormData()
+    PutedPerson.append("personlastname", document.querySelector('.personlastname').value)
+    PutedPerson.append("personfirstname", document.querySelector('.personfirstname').value)
+    PutedPerson.append("personmiddlename", document.querySelector('.personmiddlename').value)
+    PutedPerson.append("dateofbirth", document.querySelector('.birthDay').value + 'T00:00:00.000Z')
+    PutedPerson.append("gender", document.querySelector('.jinsi').value)
+    PutedPerson.append("passportseries", document.querySelector('.passportseries').value)
+    PutedPerson.append("passportnumber", document.querySelector('.passportnumber').value)
+    PutedPerson.append("passportdate", document.querySelector('.vidachiData').value + 'T00:00:00.000Z')
+    PutedPerson.append("phone", document.querySelector('.form-control').value)
+    PutedPerson.append("email", document.querySelector('.emailPerson').value)
+    PutedPerson.append("addressid", addressidPerson)
+    axios.put(`${url}/person/${key.personid}`, PutedPerson).then(res => {
+      console.log(res.data);
+    })
+    console.log(document.querySelector('.form-control').value);
+    window.location.reload()
   }
   closededd() {
     document.querySelector('#dd2').style = 'display: none'
@@ -574,99 +598,116 @@ export default class Employees extends Component {
           </div>
         </div>
         <div id="dd2" className="modal11">
-          <div className="Apages1">
-            <div className="oyna101">
-              <div className="pages11">
-                <label htmlFor="form1">Фамилия*</label>
-                <br />
-                <input
-                  placeholder={this.state.perosndata.personmiddlename}
-                  id="form1"
-                  type="text"
-                />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form2">Имя* </label>
-                <br />
-                <input id="form2" placeholder={this.state.perosndata.personlastname} type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form3">Отчество*</label>
-                <br />
-                <input id="form3" placeholder={this.state.perosndata.personfirstname} type="text" />
-              </div>
-              <div className="pages11">
-                <br />
-                <label htmlFor="form4"> Пол* </label>
-                <br />
-                <select name="" id="form4">
-                  <option value="М">М</option>
-                  <option value="Ж">Ж</option>
-                </select>
-              </div>
-              <div className="pages11">
-                <label htmlFor="form5">Дата рождения* </label>
-                <br />
+          {
+            this.state.getPutPerson.map(item => {
+              return (
+                <div className="Apages1">
+                  <div className="oyna101">
+                    <div className="pages11">
+                      <label htmlFor="form1">Фамилия*</label>
+                      <br />
+                      <input
+                        placeholder={item.personmiddlename}
+                        className="personmiddlename"
+                        type="text"
+                      />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form2">Имя* </label>
+                      <br />
+                      <input className="personlastname" placeholder={item.personlastname} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form3">Отчество*</label>
+                      <br />
+                      <input className="personfirstname" placeholder={item.personfirstname} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <br />
+                      <label htmlFor="form4"> Пол* </label>
+                      <br />
+                      <select name="" className="jinsi">
+                        <option value="М">М</option>
+                        <option value="Ж">Ж</option>
+                      </select>
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form5">Дата рождения* </label>
+                      <br />
 
-                <input id="form5" type="date" />
-              </div>
-            </div>
-          </div>
+                      <input className="birthDay" type="date" />
+                    </div>
+                  </div>
+                </div>
 
-          <div className="Apages2">
-            <div className="oyna101">
-              <div className="pages11">
-                <label htmlFor="form7">Серия паспорта* </label>
-                <br />
-                <input className="form7" placeholder="0000" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form8"> Номер паспорта* </label>
-                <br />
-                <input className="form8" placeholder="000000" type="text" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form9"> Дата выдачи*</label>
-                <br />
-                <input className="form9" type="date" />
-              </div>
-              <div className="pages11">
-                <br />
-                <label htmlFor="form10"> Телефон * </label>
-                <br />
+              )
+            })
+          }
+          {
+            this.state.getPutPerson.map(item => {
+              return (
+                <div className="Apages2">
+                  <div className="oyna101">
+                    <div className="pages11">
+                      <label htmlFor="form7">Серия паспорта* </label>
+                      <br />
+                      <input className="passportseries" placeholder={item.passportseries} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form8"> Номер паспорта* </label>
+                      <br />
+                      <input className="passportnumber" placeholder={item.passportnumber} type="text" />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form9"> Дата выдачи*</label>
+                      <br />
+                      <input className="vidachiData" type="date" />
+                    </div>
+                    <div className="pages11">
+                      <br />
+                      <label htmlFor="form10"> Телефон * </label>
+                      <br />
 
-                <input className="form10" type="tel" />
-              </div>
-              <div className="pages11">
-                <label htmlFor="form11">Эл.почта</label>
-                <br />
-                <input
-                  className="form11"
-                  placeholder="info@gmail.com"
-                  type="email"
-                />
-              </div>
-            </div>
-            <div className="df_button">
-              <button
-                className="df_button1"
-                onClick={() => {
-                  this.closededd();
-                }}
-              >
-                Назад
-              </button>
+                      <PhoneInput
+                        id="userNumber2"
+                        className="userNumber2"
+                        country={"ru"}
+                      />
+                    </div>
+                    <div className="pages11">
+                      <label htmlFor="form11">Эл.почта</label>
+                      <br />
+                      <input
+                        className="emailPerson"
+                        placeholder={item.email}
+                        type="email"
+                      />
+                    </div>
+                  </div>
+                  <div className="df_button">
+                    <button
+                      className="df_button1"
+                      onClick={() => {
+                        this.closededd();
+                      }}
+                    >
+                      Назад
+                    </button>
 
-              <button
-                className="df_button2"
-                onClick={() => {
-                  this.putdata();
-                }}
-              >
-                Сохранить0
-              </button>
-            </div>
-          </div>
+                    <button
+                      className="df_button2"
+                      onClick={() => {
+                        this.putdata(item);
+                      }}
+                    >
+                      Сохранить0
+                    </button>
+                  </div>
+                </div>
+
+              )
+            }
+            )}
         </div>
 
         <h1 className="bigah1">Список сотрудников</h1>

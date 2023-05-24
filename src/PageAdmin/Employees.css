@@ -361,7 +361,17 @@
 }
 
 .form-control {
+  width: 100% !important;
+  background: #fff !important;
+  height: 40px !important;
+  font-weight: 600 !important;
+}
+
+.userNumber2{
   width: 260px !important;
+  border: 1px solid black !important;
+  background: #000 !important;
+  border-radius: 30px;
 }
 
 .modal112 {
@@ -369,11 +379,6 @@
   margin-top: 100px;
 }
 
-.form-control {
-  background: #fff !important;
-  height: 40px !important;
-  font-weight: 600 !important;
-}
 
 .modal1122{
   display: none;
@@ -411,3 +416,7 @@
   margin-top: 120px;
   text-align: center;
 } 
+
+#dd2{
+  overflow-y: hidden;
+}
