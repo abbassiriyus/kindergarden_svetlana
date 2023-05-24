@@ -1,6 +1,6 @@
 import React from "react";
 import "./AllPages.css";
-import img from "../img/301-3011314_pe-success-icon-task-done-removebg-preview.png";
+import img from "../img/image 37.png";
 import axios from "axios";
 
 export default function Page7() {
