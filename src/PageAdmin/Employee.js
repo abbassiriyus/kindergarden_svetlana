@@ -304,7 +304,7 @@ export default class Employees extends Component {
       console.log(res.data);
     })
     console.log(document.querySelector('.form-control').value);
-    window.location.reload()
+
   }
   closededd() {
     document.querySelector('#dd2').style = 'display: none'
