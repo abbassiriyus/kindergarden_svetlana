@@ -1202,52 +1202,19 @@ export default class ChildAdmin extends Component {
         </div>
         <div className="mfhtrg">
           <h1 className="bigah1">Список детей</h1>
-          <div className="biga-pages">
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Должность
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Группа
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Занятие
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-
-            <button
-              id="btnlar1"
-              onClick={() => {
-                this.openModal();
-              }}
-            >
-              + Добавить ребенка
-            </button>
-          </div>
+          <div className='headTools'>
+        <div>
+          <select>
+            <option>Группа</option>
+          </select>
+        </div>
+        <div>
+          <input type='date' />
+        </div>
+        <div>
+          <button>+Добавить пропуск</button>
+        </div>
+      </div>
           <div id="tables">
             <div id="names">
               <p>ID</p>

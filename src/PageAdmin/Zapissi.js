@@ -39,6 +39,24 @@ export default function Zapissi() {
 
   return (
     <div className='asdasdasdasdasd'>
+      <div className='headTools'>
+        <div>
+          <select>
+            <option>Группа</option>
+          </select>
+        </div>
+        <div>
+          <select>
+            <option>Ребенок</option>
+          </select>
+        </div>
+        <div>
+          <input type='date' />
+        </div>
+        <div>
+          <button>+Добавить пропуск</button>
+        </div>
+      </div>
       <div className="tablle">
         <div className="numbersss">
           <p>ID</p>
