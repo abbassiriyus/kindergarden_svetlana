@@ -38,7 +38,7 @@ export default class App extends Component {
                 {this.state.data.map((item, key) => {
                   return (
                     <tr className="btnadmp_tr1">
-                      <td className="btnadmp_td2"> {key}</td>
+                      <td className="btnadmp_td2"> {key+1}</td>
                       <td className="btnadmp_td2">{item.fullname}</td>
                       <td className="btnadmp_td2">{item.email}</td>
                       <td className="btnadmp_td2">{item.phone} </td>
