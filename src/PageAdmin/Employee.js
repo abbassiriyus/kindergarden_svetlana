@@ -239,7 +239,7 @@ export default class Employees extends Component {
             data12.append("education", document.querySelector(".dform6").value);
 
             axios.post(`${url}/employee`, data12).then((res5) => {
-              alert("created");
+              alert("Добавлено");
               window.location.reload();
             });
           });
@@ -261,7 +261,7 @@ export default class Employees extends Component {
                   .delete(`${url}/address/${this.state.deleteData.addressid}`)
                   .then((res) => {
                     axios.delete(`${url}/labor/${item.laborid}`).then((res) => {
-                      alert("delete");
+                      alert("Удалено");
                       window.location.reload();
                     });
                   });
@@ -284,6 +284,7 @@ export default class Employees extends Component {
           });
       }
     });
+
   }
 
   putdata(key) {
@@ -344,25 +345,25 @@ export default class Employees extends Component {
           <ul className="tabs11">
             <li
               className="lipage1"
-              onClick={() => {
-                this.openPageNumber(1);
-              }}
+              // onClick={() => {
+              //   this.openPageNumber(1);
+              // }}
             >
               Основная информация
             </li>
             <li
               className="lipage2"
-              onClick={() => {
-                this.openPageNumber(2);
-              }}
+              // onClick={() => {
+              //   this.openPageNumber(2);
+              // }}
             >
               Контакты
             </li>
             <li
               className="lipage3"
-              onClick={() => {
-                this.openPageNumber(3);
-              }}
+              // onClick={() => {
+              //   this.openPageNumber(3);
+              // }}
             >
               Информация о работе
             </li>
@@ -524,14 +525,14 @@ export default class Employees extends Component {
               </div>
             </div>
             <div className="df_button">
-              <button
+              {/* <button
                 className="df_button1"
-                onClick={() => {
-                  this.openPageNumber(1);
-                }}
+                // onClick={() => {
+                //   this.openPageNumber(1);
+                // }}
               >
                 Назад
-              </button>
+              </button> */}
               <button
                 className="df_button2"
                 onClick={() => {
@@ -578,14 +579,14 @@ export default class Employees extends Component {
               </div>
             </div>
             <div className="df_button">
-              <button
+              {/* <button
                 className="df_button1"
-                onClick={() => {
-                  this.openPageNumber(2);
-                }}
+                // onClick={() => {
+                //   this.openPageNumber(2);
+                // }}
               >
                 Назад
-              </button>
+              </button> */}
               <button
                 className="df_button2"
                 onClick={() => {
@@ -709,11 +710,7 @@ export default class Employees extends Component {
             }
             )}
         </div>
-
         <h1 className="bigah1">Список сотрудников</h1>
-
-
-
           <button
             id="btnlar1"
             onClick={() => {
