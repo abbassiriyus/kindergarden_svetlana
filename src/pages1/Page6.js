@@ -17,6 +17,7 @@ export default function Page6() {
   const [rebenoki, setRebenoki] = useState([]);
   const [employ, setEmploy] = useState([]);
   const [person, setPerson] = useState([]);
+  const [deti, setDeti] = useState([]);
   function open() {
     document.querySelector('.modalSozdat').style = 'display: block'
     document.querySelector('.ybuyi').style = 'display: none;'
@@ -58,14 +59,15 @@ export default function Page6() {
             }
           }
         }
-        console.log(nol);
-        console.log(tempBolas);
+        // console.log(nol);
+        // console.log(tempBolas);
         setExcuse(tempBolas);
         setRebenok(nol);
         setRebenoki(childRes.data);
         setallExcuse(excuseRes.data);
         setEmploy(employeeRes.data);
         setPerson(personRes.data);
+        setDeti(childRes.data)
       } catch (err) {
         console.log(err);
       }
@@ -130,7 +132,25 @@ export default function Page6() {
     document.querySelector(".BigModalChild").style = "display: none;";
   }
   function postdad (parameters) {
+    console.log((localStorage.getItem("employ")),"employ");
+    console.log(document.querySelector("#uudeti").value,"deti");
+    console.log(document.querySelector("#uunachaolo").value,"start");
+    console.log(document.querySelector("#konec").value,"end");
+    console.log(document.querySelector("#chast").value,"partday");
+    console.log(document.querySelector("#prichina").value,"prichina");
     var formData = new FormData();
+    formData.append("datestart", document.querySelector("#uunachaolo").value);
+    formData.append("dateend", document.querySelector("#konec").value);
+    formData.append("childid", document.querySelector("#uudeti").value);
+    formData.append("daypart", document.querySelector("#chast").value);
+    formData.append("reason", document.querySelector("#prichina").value);
+    formData.append("employeeid",(localStorage.getItem("employ")));
+    axios
+    .post(`${url}/excuse`,formData)
+    .then((res)=>{
+      console.log("worked");
+      window.location.reload()
+    })
   }
 
 
@@ -141,37 +161,35 @@ export default function Page6() {
         <h4>Создать запись о пропуске занятий</h4>
         <br />
         <h4>Ребенок *</h4>
-        <select className="selectDeti">
-          <option>Маринин Миша</option>
-          <option>Маринина Наташа</option>
+        <select id="uudeti" className="selectDeti">
+          {rebenok.map((item)=>{
+            return<>{deti.map((item2)=>{
+              if (item===item2.childid) {
+                return<option value={item2.childid}>{item2.childlastname}  {item2.childfirstname}</option>
+              }
+            })}</>
+          })}
         </select>
         <div className="datanachl">
           <div className="hashla">
             <h4>Дата начала *</h4>
-            <input type='date' />
+            <input id="uunachaolo" type='date' />
           </div>
           <div className="hashla">
             <h4>Дата окончания *</h4>
-            <input type='date' />
+            <input id="konec" type='date' />
           </div>
         </div>
         <h4>Часть дня *</h4>
         <div className="checkboxForm">
-          <div className="chekked">
-            <input type='checkbox' />
-            <h5>Утро</h5>
-          </div>
-          <div className="chekked">
-            <input type='checkbox' />
-            <h5>После обеда</h5>
-          </div>
-          <div className="chekked">
-            <input type='checkbox' />
-            <h5>Весь день</h5>
-          </div>
+          <select id="chast" className="selectDeti">
+            <option>Утро</option>
+            <option>Весь день</option>
+            <option>После обеда</option>
+          </select>
         </div>
         <h4>Причина *</h4>
-        <select className="boleznS">
+        <select id="prichina" className="boleznS">
           <option>Болезнь</option>
           <option>Посещение врача</option>
           <option>Отпуск</option>

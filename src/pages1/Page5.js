@@ -102,7 +102,7 @@ export default function Page1() {
           const data = filteredThings2.length > 0 ? filteredThings2[0].datestart.slice(8, 10) : null;
           return (
             <>
-              {data === oo22 && filteredThings2.length > 0 && (
+              {filteredThings2.length > 0 && (
                 <p className="oooo">
                   {filteredThings2.length} отсутствует
                 </p>
