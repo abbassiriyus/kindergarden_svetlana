@@ -36,23 +36,25 @@ export default class App extends Component {
                   <th className="btnadmp_th2">Примечание </th>
                 </tr>
                 {this.state.data.map((item, key) => {
-                  return (
-                    <tr className="btnadmp_tr1">
-                      <td className="btnadmp_td2"> {key+1}</td>
-                      <td className="btnadmp_td2">{item.fullname}</td>
-                      <td className="btnadmp_td2">{item.email}</td>
-                      <td className="btnadmp_td2">{item.phone} </td>
-                      <td className="btnadmp_td2">
-                        {item.syscreatedatutc.slice(0, 10)}
-                      </td>
-
-                      <td className="btnadmp_td2">
-                        <button className="butadmp2">
-                          <img src={icon1} alt="" />
-                        </button>
-                      </td>
-                    </tr>
-                  );
+                  if (item.contractid>25) {
+                    return (
+                      <tr className="btnadmp_tr1">
+                        <td className="btnadmp_td2"> {key+1}</td>
+                        <td className="btnadmp_td2">{item.fullname}</td>
+                        <td className="btnadmp_td2">{item.email}</td>
+                        <td className="btnadmp_td2">{item.phone} </td>
+                        <td className="btnadmp_td2">
+                          {item.syscreatedatutc.slice(0, 10)}
+                        </td>
+  
+                        <td className="btnadmp_td2">
+                          <button className="butadmp2">
+                            <img src={icon1} alt="" />
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  }
                 })}
               </table>
             </div>
