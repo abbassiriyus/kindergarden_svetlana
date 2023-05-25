@@ -715,7 +715,7 @@ export default class Employees extends Component {
 
 
           <button
-            id="btnlar12"
+            id="btnlar1"
             onClick={() => {
               this.openModal();
             }}

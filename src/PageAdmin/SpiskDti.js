@@ -1212,7 +1212,7 @@ export default class ChildAdmin extends Component {
           <input type='date' />
         </div>
         <div>
-          <button>+Добавить пропуск</button>
+          <button>Добавить ребенка</button>
         </div>
       </div>
           <div id="tables">

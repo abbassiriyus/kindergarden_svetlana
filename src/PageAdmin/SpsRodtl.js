@@ -505,7 +505,7 @@ export default class Employees extends Component {
         </div>
         <div className="kgjl">
           <h1 className="bigah1">Список Родитель</h1>
-          <div className="biga-pages">
+          <div className="biga-page">
 
             <button
               id="btnlar1"

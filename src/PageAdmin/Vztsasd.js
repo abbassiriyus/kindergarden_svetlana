@@ -208,7 +208,7 @@ export default function Vztsasd() {
                 </Dropdown.Menu>
               </Dropdown> */}
               <button id="btnlar1" onClick={() => OpenSRF()}>
-                + Добавить посещение
+                Добавить посещение
               </button>
             </div>
             <ul className="ustoz">
