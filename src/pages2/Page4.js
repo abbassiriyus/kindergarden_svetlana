@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Img1 from '../img/free-icon-daughter-8229500.png'
+import Img12 from "../img/free-icon-child-5238428.png";
+import Img11 from "../img/Group 133.png";
 import Img2 from '../img/free-icon-kindergarden-5235725 1.png'
 import image from '../img/free-icon-information-932010.png'
 import imgg from '../img/free-icon-group-5942363 1.png'
@@ -88,41 +89,73 @@ useEffect(() => {
   }
   return (
     <div>
-           <div className="kids-Page2">
+      <div className="kids-Page2">
         {bolas22.map((item) => (
           <div className="kid-Page2">
             {child22.map((item22) => {
               if (item.childid === item22.childid) {
-                return (
-                  <div className="asd">
-                    <img src={Img1} alt="" />
-                    <div className="kid-prfl">
-                      <div className="asd23">
-                        <h4 className="kakak">{item22.childlastname} {item22.childfirstname}</h4>
-                        <h5>{2023-item22.dateofbirth.slice(0, 4)} года</h5>
+                if (item22.gender==="ж") {
+                  return (
+                    <div className="asd">
+                      <div className="ing55">
+                      <img src={Img11} alt="" />
                       </div>
-                      {group2.map((item33) => {
-                        if (item22.groupid === item33.groupid) {
-                          return (
-                            <div className="volss">
-                              <img src={Img2} alt="" />
-                              <p>{item33.groupname}</p>
-                            </div>
-                          );
-                        }
-                      })}
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group2.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                      <button className="kkk" onClick={() => openBodychild(item)}>
+                        Подробнее
+                      </button>
                     </div>
-                    <button className="kkk" onClick={() => openBodychild()}>Подробнее</button>
-                  </div>
-                  
-                );
+                  );               
+                }else{
+                  return (
+                    <div className="asd">
+     <img src={Img12} alt="" />
+                      <div className="kid-prfl">
+                        <div className="asd23">
+                          <h4 className="kakak">
+                            {item22.childlastname} {item22.childfirstname}
+                          </h4>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                        </div>
+                        {group2.map((item33) => {
+                          if (item22.groupid === item33.groupid) {
+                            return (
+                              <div className="volss">
+                                <img src={Img2} alt="" />
+                                <p>{item33.groupname}</p>
+                              </div>
+                            );
+                          }
+                        })}
+                      </div>
+                      <button className="kkk" onClick={() => openBodychild(item)}>
+                        Подробнее
+                      </button>
+                    </div>
+                  ); 
+                }
               }
             })}
-              
           </div>
         ))}
       </div>
-
       <div className='bodychil2'>
         <div className='textchil_box'>
           <div className='bodyAcc'>

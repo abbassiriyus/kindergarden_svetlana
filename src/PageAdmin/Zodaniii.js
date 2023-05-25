@@ -141,7 +141,7 @@ this.setState({data:abu2})
                             <div className="pages11"><br />
                             <label htmlFor="test3">Группа * </label><br />
                         <select name="" id="test3">
-                        {this.state.group.map(item=>{return <option value={item.skillgroupid}>{item.skillgroupname}</option>})} 
+                        <option value={1}>Окружающий мир</option>
                         </select>   
                         </div> 
                         <div className="pages11">

@@ -113,63 +113,26 @@ export default function GroupDti() {
     // data.append('syscreatedatutc', '2023-05-07T15:25:25.361Z')
     // data.append('syschangedatutc', '2023-05-10T17:55:57.943Z')
     axios.put(`${url}/group/${groupid}`, data).then((res) => {
-      alert("yangilandi");
+      alert("Изменено");
       window.location = "/groupdti";
     });
   }
 
-  function putDataS(groupid) {
-    const data2 = new FormData();
-    data2.append("groupname", document.querySelector(".testPut").value);
-    data2.append("ageid", document.querySelector(".testPut2").value);
-    axios
-      .put(`${url}/group/${groupid}`, data2)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
-  function deleteGroup(key) {
-    axios.delete(`${url}/group/${key}`).then((res) => {
+
+  function deleteGroup(ll) {
+    alert(ll)
+    axios.delete(`${url}/group/${ll}`).then((res) => {
       // console.log(res.data);
       window.location = " /groupdti";
-      alert("delete");
+      alert("Удалено");
+    }).catch((err)=>{
+     alert(err);
     });
   }
 
-  // function postData2() {
-  //   const jok = selectedValue
-  //   const jok2 = Deti
-  //   var datts = new FormData();
-  //   datts.append("groupname", document.querySelector(".hthgnhdnd").value);
-  //   datts.append("ageid", document.querySelector(".ageidDobav2").value);
-  //   axios
-  //     .post(`${url}/group`, datts)
-  //     .then((res) => {
-  //       alert("connfirm!");
-  //       axios.get(`${url}/group`)
-  //         .then((res2) => {
-  //           for (let i = 0; i < res2.data.length; i++) {
-  //             if (res2.data[i].groupname === document.querySelector(".hthgnhdnd").value) {
-  //               setDeti(res2.data[i].groupid)
-  //             }
-  //           }
-  //           var datta = new FormData();
-  //           datta.append("employeeid", jok);
-  //           datta.append("groupid", Deti);
-  //           axios
-  //             .post(`${url}/group_emp`, datta)
-  //             .then((res3) => {
-  //             })
-  //         })
 
-  //     })
-  //     .catch(alert("Повторите попытку!"));
 
-  // }
   function postData2() {
     const datta = new FormData();
     const groupnameInput = document.querySelector('.hthgnhdnd');
@@ -275,12 +238,33 @@ export default function GroupDti() {
           <button onClick={() => postData2()}>Сохранить</button>
         </div>
       </div>
+      <div className="modal12">
+          <div className="form12">
+            <h3>Удалить</h3>
+            <button
+              className="df_button1"
+              onClick={() => {
+                document.querySelector(".modal12").style = "display:none";
+              }}
+            >
+              Назад
+            </button>
+            <button
+              className="df_button2"
+              onClick={() => {
+                this.deletePerson(this.state.deleteData.personid);
+              }}
+            >
+              Удалить
+            </button>
+          </div>
+        </div>
 
       <div className="Dobav_Group2">
         {non.map((item) => {
           return (
             <div>
-              <h2>+ Изменит Группа</h2>
+              <h2>Изменит Группа</h2>
               <div className="sdfgdf2">
                 <h4>Название *</h4>
                 <div>
