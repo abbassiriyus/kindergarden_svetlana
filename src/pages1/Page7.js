@@ -39,7 +39,7 @@ export default function Page7() {
       </div>
       <div className="divTest">
         <h2 className="ixx">
-          hello<span onClick={() => closeTest()}>X</span>
+        Какой из этих предметов не относится к живой природе?<span onClick={() => closeTest()}>X</span>
         </h2>
         <div className="Test_09">
           <img src={img} alt="" />
