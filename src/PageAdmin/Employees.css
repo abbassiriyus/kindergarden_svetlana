@@ -36,7 +36,7 @@
   color: #334155;
 }
 
-#btnlar1 {
+#btnlar12 {
   width: 243px;
   height: 43px;
   font-family: "Montserrat";
@@ -45,9 +45,10 @@
   font-size: 16px;
   line-height: 20px;
   color: #ffffff;
-  background: #334155;
+  background: #334155 !important;
   border-radius: 30px;
   border: none;
+  margin-left: 1000px;
 }
 
 #btnlar1:hover {

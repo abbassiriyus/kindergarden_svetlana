@@ -711,17 +711,18 @@ export default class Employees extends Component {
         </div>
 
         <h1 className="bigah1">Список сотрудников</h1>
-        <div className="biga-pages">
+
+
 
           <button
-            id="btnlar1"
+            id="btnlar12"
             onClick={() => {
               this.openModal();
             }}
           >
             + Добавить сотрудника
           </button>
-        </div>
+  
         <div id="tables">
           <div id="names">
             <p>ID</p>
