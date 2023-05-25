@@ -35,6 +35,7 @@ export default class ChildAdmin extends Component {
 
   openModal() {
     document.querySelector(".modal11").style = "display:block";
+    console.log("kfkjfjfjf");
   }
   closeModal() {
     document.querySelector(".modal11").style = "display:none";
@@ -1212,7 +1213,7 @@ export default class ChildAdmin extends Component {
           <input type='date' />
         </div>
         <div>
-          <button>Добавить ребенка</button>
+          <button onClick={() => this.openModal()}>Добавить ребенка</button>
         </div>
       </div>
           <div id="tables">
