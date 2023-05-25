@@ -14,6 +14,13 @@ export default class App extends Component {
       this.setState({ data: res.data });
     });
   }
+  openModal(key) {
+    axios.delete(`${url}/contact/${key}`).then(res => {
+      console.log(res.data);
+      alert('Удалено')
+      window.location.reload()
+    })
+  }
 
   render() {
     return (
@@ -36,7 +43,6 @@ export default class App extends Component {
                   <th className="btnadmp_th2">Примечание </th>
                 </tr>
                 {this.state.data.map((item, key) => {
-                  if (item.contractid>25) {
                     return (
                       <tr className="btnadmp_tr1">
                         <td className="btnadmp_td2"> {key+1}</td>
@@ -48,13 +54,13 @@ export default class App extends Component {
                         </td>
   
                         <td className="btnadmp_td2">
-                          <button className="butadmp2">
-                            <img src={icon1} alt="" />
-                          </button>
+                        <button className="butadmp2">
+                          <img onClick={() => this.openModal(item.contractid)} src={icon2} alt="" />
+                        </button>
                         </td>
                       </tr>
                     )
-                  }
+                  
                 })}
               </table>
             </div>
