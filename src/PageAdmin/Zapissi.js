@@ -23,7 +23,9 @@ export default function Zapissi() {
       })
     })
   }
-
+ function openmodal () {
+  document.querySelector(".headTools").style = "display: block !important";
+ }
   useEffect(() => {
     getExcuse()
   }, [])

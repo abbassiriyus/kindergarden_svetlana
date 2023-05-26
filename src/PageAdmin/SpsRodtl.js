@@ -502,7 +502,7 @@ setTimeout(() => {
                       <input className="formItm8" placeholder={item.passportnumber} type="number" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form8"> passportdate* </label>
+                      <label htmlFor="form8"> Дата выдачи паспорта* </label>
                       <br />
                       <input className="formItm9" placeholder={item.passportdate} type="date" />
                     </div>

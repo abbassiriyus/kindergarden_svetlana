@@ -302,7 +302,7 @@ export default function GroupDti() {
               <option value="">2023/12/15</option>
             </select>
             <button className="nodiruca" onClick={() => opensModal()}>
-              + Добавить Группа
+              + Добавить Группу
             </button>
           </div>
         </div>

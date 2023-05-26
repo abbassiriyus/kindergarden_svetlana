@@ -31,6 +31,7 @@ export default class ChildAdmin extends Component {
     legalrep: "",
     Monro: [],
     Getted: [],
+    nomi:[]
   };
 
   openModal() {
@@ -58,15 +59,19 @@ export default class ChildAdmin extends Component {
         console.log(err);
       });
   }
-  getSubject(subjectid) {
+  getSubject=(event)=>{
+    console.log("ishlavoti");
+    const uu = event.target.value;
+    const uu2 = parseInt(uu);
     axios.get(`${url}/subject`).then((res) => {
       var dataA = [];
       res.data.map((item) => {
-        if (item.subject_groupid == subjectid) {
+        if (item.subjectgroupid ===uu2) {
           dataA.push(item);
         }
       });
       this.setState({ subject: dataA });
+      console.log(dataA, "fgjaeigjmergjmerwiog");
     });
   }
 
@@ -104,9 +109,18 @@ export default class ChildAdmin extends Component {
                   kluch.house = res.data[i].house;
                   kluch.building = res.data[i].building;
                   kluch.flat = res.data[i].flat;
-                  this.setState({ oneperson: kluch });
+                  
                 }
               }
+              axios.get(`${url}/Legal_Rep`).then((ress)=>{
+                for (let i = 0; i < ress.data.length; i++) {
+                  if (item.personid===ress.data[i].personid) {
+                    kluch.legalrep=ress.data[i].legalrepid
+                    kluch.company=ress.data[i].company;
+                    this.setState({ oneperson: kluch });
+                  }
+                }
+              })
             });
           }
         });
@@ -189,7 +203,7 @@ export default class ChildAdmin extends Component {
           for (let i = 0; i < res2.data.length; i++) {
            for (let e = 0; e < legal.length; e++) {
            if (legal[e].personid===res2.data[i].personid) {
-            console.log(res2.data[i]);
+            // console.log(res2.data[i]);
             perent.push(res2.data[i])
            }
             
@@ -199,20 +213,7 @@ export default class ChildAdmin extends Component {
           this.setState({ parent: perent });
          })
     })
-//     axios.get(`${url}/person`).then((res) => {
-//       var dataw=res.data
-//       axios.get(`${url}/Legal_Rep`).then((res2) => {
-// for (let i = 0; i < dataw.length; i++) {
-//   for (let j = 0; j < res2.data.length; j++) {
-//     if (dataw[i].personid===res2.data[j].personid) {
-//       console.log(res2.data[j]);
-//     }
-//   }
-  
-// }
-//       })
-//       this.setState({ parent: res.data });
-//     });
+
     axios.get(`${url}/group`).then((res) => {
       this.setState({ group: res.data });
     });
@@ -260,26 +261,31 @@ export default class ChildAdmin extends Component {
     });
   }
   postData2() {
-    var legal_rep = new FormData();
-    legal_rep.append("personid", this.state.oneperson.personid);
-    legal_rep.append("company", document.querySelector(".companyperson").value);
+    // var legal_rep = new FormData();
+    // legal_rep.append("personid", this.state.oneperson.personid);
+    // legal_rep.append("company", document.querySelector(".companyperson").value);
     var relation = new FormData();
     relation.append("status", document.querySelector(".childstateus").value);
-    axios.post(`${url}/legal_rep`, legal_rep).then((res) => {
-      axios.get(`${url}/legal_rep`).then((res1) => {
-        res1.data.map((item) => {
-          if (
-            item.personid == this.state.oneperson.personid &&
-            item.company == document.querySelector(".companyperson").value
-          ) {
-            relation.append("legalrepid", item.legalrepid);
-            this.setState({ legalrep: item.legalrepid });
-            this.setState({ relation: relation });
-            this.openPageNumber(3);
-          }
-        });
-      });
-    });
+    relation.append("legalrepid",this.state.oneperson.legalrep);
+    this.setState({ relation: relation });
+    this.openPageNumber(3);
+    // axios.post(`${url}/legal_rep`, legal_rep).then((res) => {
+    //   axios.get(`${url}/legal_rep`).then((res1) => {
+    //     res1.data.map((item) => {
+    //       if (
+    //         item.personid == this.state.oneperson.personid &&
+    //         item.company == document.querySelector(".companyperson").value
+    //       ) {
+    //         relation.append("legalrepid", item.legalrepid);
+    //         this.setState({ legalrep: item.legalrepid });
+    //         this.setState({ relation: relation });
+    //         this.openPageNumber(3);
+    //       }
+    //     });
+    //   });
+    // });
+    console.log(this.state.oneperson.legalrep);
+    console.log(relation);
   }
 
   postData3() {
@@ -288,7 +294,7 @@ export default class ChildAdmin extends Component {
     postGroup.append("number", document.querySelector("#group3").value);
     postGroup.append("date", document.querySelector(".group2").value);
     postGroup.append("legalrepid", this.state.legalrep);
-    this.setState({ postGroup: postGroup });
+    // this.setState({ postGroup: postGroup });
     postchild.append("groupid", document.querySelector("#group0").value);
     this.setState({ postchild: postchild });
     this.openPageNumber(4);
@@ -317,54 +323,81 @@ export default class ChildAdmin extends Component {
             postchild.get("childmiddlename") == item.childmiddlename &&
             postchild.get("addressid") == item.addressid
           ) {
-            var postGroup1 = this.state.postGroup;
-            postGroup1.append("childid", item.childid);
-            postGroup1.append("legalrepid", this.state.legalrep);
-            axios.post(`${url}/contract`, postGroup1).then((res) => {
+
+            var relation = this.state.relation;
+            relation.append("childid", item.childid);
+            axios.post(`${url}/relation`, relation).then((res) => {
               this.openPageNumber(5);
-              window.location.reload();
+              // window.location.reload();
             });
           }
         });
       });
     });
-    window.location.reload()
+    // window.location.reload()
   }
 
-  getGroupVaditel(groupid) {
+  // getGroupVaditel(event) {
+  //   var uu =event.target.value
+  //   var uu2 =parseInt(uu)
+  //   // this.setState({ namef: event.target.value });
+  //   // console.log(this.state.namef,"ddd");
+  //   var uu3 =[]
+  //   axios.get(`${url}/group_emp`).then((res)=>{
+  //       for (let i = 0; i < res.data.length; i++) {
+  //        if (res.data[i].groupid===uu2) {
+  //         console.log(res.data[i],"jjjjjjjjj");
+  //         axios.get(`${url}/employee`).then((res2)=>{
+  //          for (let w = 0; w < res2.data.length; w++) {
+  //           if (res2.data[w].employeeid===res.data[i].employeeid) {
+  //             axios.get(`${url}/person`).then((res3)=>{
+  //               for (let e = 0; e < res3.data.length; e++) {
+  //                if (res3.data[e].personid===res2.data[w].personid) {
+  //                 console.log(res3.data[e],"fff");
+  //                 uu3.push(res3.data[e])
+                  
+  //                }
+  //               }
+  //             })
+  //           }
+  //          }
+  //         })
+  //        }
+  //       }
+  //   })
+  //   // console.log(event.target.value,"kfgkgkgkgkgkgkgkgkgk");
+  //   // console.log(uu2, "rabotate");
+  //   // console.log( document.querySelector("#group0").value,"ejarijgesughhwurg");
+  //   this.setState({nomi:uu3})
+  // }
+  getGroupVaditel=(event)=>{
+    const uu = event.target.value;
+    const uu2 = parseInt(uu);
+    const uu3 = [];
+  
     axios.get(`${url}/group_emp`).then((res) => {
-      var dataA = [];
-
-      res.data.map((item) => {
-        if (item.groupid == groupid) {
-          dataA.push(item);
-        }
-      });
-      console.log(dataA);
-      axios.get(`${url}/employee`).then((res2) => {
-        var dataE = [];
-
-        for (let i = 0; i < res2.data.length; i++) {
-          for (let j = 0; j < dataA.length; j++) {
-            if (dataA[j].employeeid == res2.data[i].employeeid) {
-              dataE.push(res2.data[i]);
-            }
-          }
-        }
-        console.log(dataE);
-        axios.get(`${url}/labor`).then((res3) => {
-          var dataL = [];
-          for (let i = 0; i < res3.data.length; i++) {
-            for (let j = 0; j < dataE.length; j++) {
-              if (res3.data[i].laborid == dataE[j].laborid) {
-                dataL.push(res3.data[i]);
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].groupid === uu2) {
+          console.log(res.data[i], "jjjjjjjjj");
+          axios.get(`${url}/employee`).then((res2) => {
+            for (let w = 0; w < res2.data.length; w++) {
+              if (res2.data[w].employeeid === res.data[i].employeeid) {
+                axios.get(`${url}/person`).then((res3) => {
+                  for (let e = 0; e < res3.data.length; e++) {
+                    if (res3.data[e].personid === res2.data[w].personid) {
+                      console.log(res3.data[e], "fff");
+                      uu3.push(res3.data[e]);
+                    }
+                  }
+                  this.setState({ nomi: uu3 }, () => {
+                    console.log(this.state.nomi);
+                  });
+                });
               }
             }
-          }
-          console.log(dataL);
-          this.setState({ voditelGroup: dataL });
-        });
-      });
+          });
+        }
+      }
     });
   }
 
@@ -695,7 +728,7 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="form11">Место работы </label>
                 <br />
-                <input className="companyperson" type="text" />
+                <input value={this.state.oneperson.company} className="companyperson" type="text" />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Телефон</label>
@@ -799,13 +832,11 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="group0"> Группа *</label>
                 <br />
-                <select name="group0" id="group0">
+                <select onChange={this.getGroupVaditel}  name="group0" id="group0">
+                  <option>Выберите группу</option>
                   {this.state.group.map((item) => {
                     return (
                       <option
-                        onClick={() => {
-                          this.getGroupVaditel(item.groupid);
-                        }}
                         value={item.groupid}
                       >
                         {item.groupname}
@@ -822,19 +853,20 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="group2">Номер контракта</label>
                 <br />
-                <input className="group2" type="date" />
+                <input className="group2" type="text" />
               </div>
 
               <div className="pages11">
                 <label htmlFor="group3">Программа обучения </label>
                 <br />
-                <select name="group3" id="group3">
+                <select onChange={this.getSubject}  name="group3" id="group3">
+                  <option>Выберите программу обучения</option>
                   {this.state.subject_group.map((item) => {
                     return (
                       <option
-                        onClick={() => {
-                          this.getSubject(item.subject_groupid);
-                        }}
+                        // onClick={() => {
+                        //   this.getSubject(item.subject_groupid);
+                        // }}
                         value={item.subject_groupid}
                       >
                         {item.subjectgroupname}
@@ -847,21 +879,17 @@ export default class ChildAdmin extends Component {
                 <label htmlFor="group4">Доп.занятия</label>
                 <br />
                 <select name="group4" id="group4">
-                  {this.state.subject.map((item) => {
-                    return (
-                      <option value={item.subjectid}>{item.subjectname}</option>
-                    );
+                  {this.state.subject.length > 0 &&this.state.subject.map((item) => {
+                    return <option value={item.subjectid}>{item.subjectname}</option>
                   })}
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="group5">Воспитатель</label>
+                <label htmlFor="group5">Воспитатель </label>
                 <br />
                 <select name="group5" id="group5">
-                  {this.state.voditelGroup.map((item) => {
-                    return (
-                      <option value={item.laborid}>{item.laborname}</option>
-                    );
+                  {this.state.nomi.length > 0 &&this.state.nomi.map((item)=>{
+                    return<option value=''><p>{item.personfirstname}</p></option>
                   })}
                 </select>
               </div>
