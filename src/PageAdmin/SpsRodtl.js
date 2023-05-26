@@ -139,14 +139,21 @@ export default class Employees extends Component {
           // window.location.reload();
           axios.get(`${url}/person`, formPerson).then((res) => {
            for (let i = 0; i < res.data.length; i++) {
-            if ( res.data[i].personlastname=== document.querySelector("#form1").value&&
-              res.data[i].personfirstname===document.querySelector("#form2").value&&
-              res.data[i].personmiddlename===document.querySelector("#form3").value&&
-              res.data[i].dateofbirth===document.querySelector("#form5").value
+            if ( res.data[i].personlastname== document.querySelector("#form1").value&&
+              res.data[i].personfirstname==document.querySelector("#form2").value&&
+              res.data[i].personmiddlename==document.querySelector("#form3").value
               ) {
                 formLegalrep.append("personid", res.data[i].personid )
                 formLegalrep.append("company", document.querySelector(".form99").value )
+                axios.post(`${url}/Legal_Rep`,formLegalrep).then((red)=>{
+console.log("worked");
+setTimeout(() => {
+  window.location.reload()
+}, 5000);
+                })
                 // form99
+            }else{
+              console.log("xatto");
             }
             
            }
