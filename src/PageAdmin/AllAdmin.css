@@ -68,3 +68,8 @@ body{
 h5{
     cursor: pointer;
 }
+
+.headTools{
+    margin-bottom: 20px;
+    margin-left: 10%;
+}

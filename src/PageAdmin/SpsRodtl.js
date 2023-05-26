@@ -80,6 +80,7 @@ export default class Employees extends Component {
   PostPerson() {
     var formPerson = new FormData();
     var formAdress = new FormData();
+    var formLegalrep = new FormData();
     formAdress.append("region", document.querySelector(".aform1").value);
     formAdress.append("city", document.querySelector(".aform2").value);
     formAdress.append("street", document.querySelector(".aform3").value);
@@ -135,7 +136,21 @@ export default class Employees extends Component {
         formPerson.append("email", document.querySelector(".form11").value);
 
         axios.post(`${url}/person`, formPerson).then((res) => {
-          Window.location.reload();
+          // window.location.reload();
+          axios.get(`${url}/person`, formPerson).then((res) => {
+           for (let i = 0; i < res.data.length; i++) {
+            if ( res.data[i].personlastname=== document.querySelector("#form1").value&&
+              res.data[i].personfirstname===document.querySelector("#form2").value&&
+              res.data[i].personmiddlename===document.querySelector("#form3").value&&
+              res.data[i].dateofbirth===document.querySelector("#form5").value
+              ) {
+                formLegalrep.append("personid", res.data[i].personid )
+                formLegalrep.append("company", document.querySelector(".form99").value )
+                // form99
+            }
+            
+           }
+          })
         });
       });
     });
@@ -331,6 +346,11 @@ export default class Employees extends Component {
                 <label htmlFor="form9"> Дата выдачи*</label>
                 <br />
                 <input className="form9" type="date" />
+              </div>
+              <div className="pages11">
+                <label htmlFor="form99"> Место работы*</label>
+                <br />
+                <input className="form99" type="text" />
               </div>
             </div>
             <label

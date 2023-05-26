@@ -11,14 +11,14 @@ import url from '../host';
 
 
 export default class App extends Component {
-   // state = {
-   //    person: [],
-   // }
+   state = {
+      group: [],
+   }
 
 
 
 
-   // componentDidMount = () => {
+   componentDidMount = () => {
    //    axios.get(`${url}/person`).then(res => {
    //       // console.log(res.data);
    //       this.setState({
@@ -28,8 +28,13 @@ export default class App extends Component {
    //    }).finally(() => {
    //       // document.querySelector('.hallo_as').style = 'display: block'
    //    });
+      axios.get(`${url}/group`).then(res => {
+         this.setState({ group: res.data })
+      })
+   
+   console.log('dvfnumi');
 
-   // }
+   }
 
 
    DobavNovs = () => {
@@ -66,10 +71,13 @@ export default class App extends Component {
                <div className="cake">
                   <div className="cake1">
                      <select className='mad' name="" id="">
-                        <option value="">Группа</option>
-                        <option value="">Группа</option>
-                        <option value="">Группа</option>
-                        <option value="">Группа</option>
+                        {
+                           this.state.group.map(item => {
+                              return(
+                                 <option value="">{item.groupname}</option>
+                              )
+                           })
+                        }
                      </select>
                      <input className='mad' type="date" placeholder='Дата добавления' />
                      <button className="nodiruca" onClick={() => this.DobavNovs()}>

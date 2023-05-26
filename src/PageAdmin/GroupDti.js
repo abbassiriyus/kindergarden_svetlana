@@ -295,10 +295,11 @@ export default function GroupDti() {
         <div className="cake">
           <div className="cake1">
             <select className="mad" name="" id="">
-              <option value="">Группа</option>
-              <option value="">Группа</option>
-              <option value="">Группа</option>
-              <option value="">Группа</option>
+              <option value="">Учебный год</option>
+              <option value="">2023/12/12</option>
+              <option value="">2023/12/13</option>
+              <option value="">2023/12/14</option>
+              <option value="">2023/12/15</option>
             </select>
             <button className="nodiruca" onClick={() => opensModal()}>
               + Добавить Группа

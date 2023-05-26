@@ -182,9 +182,37 @@ export default class ChildAdmin extends Component {
     }
   }
   componentDidMount() {
-    axios.get(`${url}/person`).then((res) => {
-      this.setState({ parent: res.data });
-    });
+    axios.get(`${url}/Legal_Rep`).then((res) => {
+         var perent =[]
+         var legal =res.data
+         axios.get(`${url}/person`).then((res2) => {
+          for (let i = 0; i < res2.data.length; i++) {
+           for (let e = 0; e < legal.length; e++) {
+           if (legal[e].personid===res2.data[i].personid) {
+            console.log(res2.data[i]);
+            perent.push(res2.data[i])
+           }
+            
+           }  
+          }
+          console.log(perent,"kook");
+          this.setState({ parent: perent });
+         })
+    })
+//     axios.get(`${url}/person`).then((res) => {
+//       var dataw=res.data
+//       axios.get(`${url}/Legal_Rep`).then((res2) => {
+// for (let i = 0; i < dataw.length; i++) {
+//   for (let j = 0; j < res2.data.length; j++) {
+//     if (dataw[i].personid===res2.data[j].personid) {
+//       console.log(res2.data[j]);
+//     }
+//   }
+  
+// }
+//       })
+//       this.setState({ parent: res.data });
+//     });
     axios.get(`${url}/group`).then((res) => {
       this.setState({ group: res.data });
     });
@@ -587,7 +615,7 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <input
                   className="caform5"
-                  placeholder="building"
+                  placeholder="Строение"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -964,8 +992,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>Копия свидетельства о рождении</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -974,8 +1002,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>Медицинский полис</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -984,8 +1012,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>СНИЛС</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -994,8 +1022,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>Справка о регистрации по месту жительства</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -1004,8 +1032,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>Паспорт родителя</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -1014,8 +1042,8 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  </h1>
                   <p>Согласие на обработку персональных данных</p>
+                  </h1>
                 </div>
                 <input className="form6" type="file" />
               </div>
@@ -1047,7 +1075,7 @@ export default class ChildAdmin extends Component {
               <div className="Apages1">
                 <div className="oyna101">
                   <div className="pages11">
-                    <label htmlFor="child1">childlastname*</label>
+                    <label htmlFor="child1">Фамилия * </label>
                     <br />
                     <input
                       className="itmChild"
@@ -1056,7 +1084,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child2">childfirstname* </label>
+                    <label htmlFor="child2">Имя* </label>
                     <br />
                     <input
                       className="itmChildfrst"
@@ -1065,7 +1093,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form3">childmiddlename*</label>
+                    <label htmlFor="form3">Отчество*</label>
                     <br />
                     <input
                       className="itmChilmdl"
@@ -1075,7 +1103,7 @@ export default class ChildAdmin extends Component {
                   </div>
 
                   <div className="pages11">
-                    <label htmlFor="child3"> gender* </label>
+                    <label htmlFor="child3">пол * </label>
                     <br />
                     <select className="childGndr">
                       <option value="м">м</option>
@@ -1083,7 +1111,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child5">certificateofbirth* </label>
+                    <label htmlFor="child5"> Свидетельство о рождении *</label>
                     <br />
                     <input
                       className="childCertifi"
@@ -1092,7 +1120,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child7"> health* </label>
+                    <label htmlFor="child7"> Здаровия* </label>
                     <br />
                     <select className="childHealth">
                       <option>1</option>
@@ -1101,7 +1129,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child6">isregisteredwith * </label>
+                    <label htmlFor="child6">Дата выдачи* </label>
                     <br />
                     <input
                       className="childisregisteredwith"
@@ -1111,7 +1139,7 @@ export default class ChildAdmin extends Component {
                   </div>
                   <div className="pages11">
                     <br />
-                    <label htmlFor="form4"> allergy </label>
+                    <label htmlFor="form4"> Аллергия </label>
                     <br />
                     <select className="childAll">
                       <option value="м">да</option>
@@ -1119,7 +1147,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">deviations</label>
+                    <label htmlFor="form5">Отклонения *</label>
                     <br />
                     <input
                       className="childdeviations"
@@ -1128,7 +1156,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">medicines</label>
+                    <label htmlFor="form5">Медицинское заключение *</label>
                     <br />
                     <input
                       className="childmedicines"
@@ -1137,7 +1165,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">healthrestrictions</label>
+                    <label htmlFor="form5">Необходимость интеграции по ограничению здоровья</label>
                     <br />
                     <input
                       className="childhealthrestrictions"
@@ -1146,7 +1174,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">diet</label>
+                    <label htmlFor="form5">Пожелания по питанию</label>
                     <br />
                     <input
                       className="childdiet"
@@ -1155,7 +1183,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">comment</label>
+                    <label htmlFor="form5">Дополнителъно</label>
                     <br />
                     <input
                       className="childcomment"
@@ -1164,7 +1192,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">dateofbirth</label>
+                    <label htmlFor="form5">Дата рождении</label>
                     <br />
                     <input
                       className="childdateofbirth"
@@ -1206,7 +1234,13 @@ export default class ChildAdmin extends Component {
           <div className='headTools'>
         <div>
           <select>
-            <option>Группа</option>
+            {
+              this.state.group.map(item => {
+                return(
+                  <option>{item.groupname}</option>
+                )
+              })
+            }
           </select>
         </div>
         <div>

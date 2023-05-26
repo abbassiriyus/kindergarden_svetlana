@@ -265,3 +265,10 @@
 .modal1122 {
   display: none;
 }
+
+#btnlar1{
+  position: absolute;
+  right: 200px;
+  margin-bottom: 30px;
+  margin-top: -23px;
+}
