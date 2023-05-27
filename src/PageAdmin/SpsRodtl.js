@@ -138,6 +138,7 @@ export default class Employees extends Component {
         axios.post(`${url}/person`, formPerson).then((res) => {
           // window.location.reload();
           axios.get(`${url}/person`, formPerson).then((res) => {
+<<<<<<< HEAD
             for (let i = 0; i < res.data.length; i++) {
               if (res.data[i].personlastname === document.querySelector("#form1").value &&
                 res.data[i].personfirstname === document.querySelector("#form2").value &&
@@ -149,6 +150,24 @@ export default class Employees extends Component {
                 // form99
               }
 
+=======
+           for (let i = 0; i < res.data.length; i++) {
+            if ( res.data[i].personlastname== document.querySelector("#form1").value&&
+              res.data[i].personfirstname==document.querySelector("#form2").value&&
+              res.data[i].personmiddlename==document.querySelector("#form3").value
+              ) {
+                formLegalrep.append("personid", res.data[i].personid )
+                formLegalrep.append("company", document.querySelector(".form99").value )
+                axios.post(`${url}/Legal_Rep`,formLegalrep).then((red)=>{
+console.log("worked");
+setTimeout(() => {
+  window.location.reload()
+}, 5000);
+                })
+                // form99
+            }else{
+              console.log("xatto");
+>>>>>>> beb2821c5bad299aa7360b23c044f73adeaec816
             }
           })
         });
@@ -495,7 +514,7 @@ export default class Employees extends Component {
                       <input className="formItm8" placeholder={item.passportnumber} type="number" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form8"> passportdate* </label>
+                      <label htmlFor="form8"> Дата выдачи паспорта* </label>
                       <br />
                       <input className="formItm9" placeholder={item.passportdate} type="date" />
                     </div>
