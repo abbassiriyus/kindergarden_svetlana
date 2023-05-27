@@ -177,13 +177,14 @@ export default function GroupDti() {
           if (res2.data[i].groupname === zb1 && res2.data[i].ageid === 2023) {
             setGoid(res2.data[i].groupid);
             setTimeout(() => {
-              alert("1");
+              alert("Ждите");
               console.log("kgjgjgjgjgj");
               var formData2 = new FormData();
               formData2.append("employeeid", kak1);
               formData2.append("groupid", res2.data[i].groupid);
               axios.post(`${url}/group_emp`, formData2).then((res) => {
-                alert("ishladi");
+                alert("Добавлено");
+                window.location.reload()
               });
             }, 5000);
    
