@@ -138,7 +138,6 @@ export default class Employees extends Component {
         axios.post(`${url}/person`, formPerson).then((res) => {
           // window.location.reload();
           axios.get(`${url}/person`, formPerson).then((res) => {
-<<<<<<< HEAD
             for (let i = 0; i < res.data.length; i++) {
               if (res.data[i].personlastname === document.querySelector("#form1").value &&
                 res.data[i].personfirstname === document.querySelector("#form2").value &&
@@ -148,9 +147,8 @@ export default class Employees extends Component {
                 formLegalrep.append("personid", res.data[i].personid)
                 formLegalrep.append("company", document.querySelector(".form99").value)
                 // form99
-              }
+              }}
 
-=======
            for (let i = 0; i < res.data.length; i++) {
             if ( res.data[i].personlastname== document.querySelector("#form1").value&&
               res.data[i].personfirstname==document.querySelector("#form2").value&&
@@ -167,12 +165,11 @@ setTimeout(() => {
                 // form99
             }else{
               console.log("xatto");
->>>>>>> beb2821c5bad299aa7360b23c044f73adeaec816
             }
-          })
+          }
         });
       });
-    });
+    });}
 
     // formPerson.append("personlastname", document.querySelector("#form1").value)
     // formPerson.append("personfirstname", document.querySelector("#form2").value)
@@ -184,7 +181,7 @@ setTimeout(() => {
     // formPerson.append("passportdate", document.querySelector(".form9").value)
     // formPerson.append("phone", document.querySelector("#form51").value)
     // formPerson.append("email", document.querySelector(".form11").value)
-  }
+    )}
 
   deletePerson() {
     axios.get(`${url}/employee`).then((res4) => {
@@ -555,6 +552,14 @@ setTimeout(() => {
                 <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
+            <button
+              id="btnlar1"
+              onClick={() => {
+                this.openModal();
+              }}
+            >
+              + Добавить Родитель
+            </button>
           </div>
           <div id="tables">
             <div id="names">
