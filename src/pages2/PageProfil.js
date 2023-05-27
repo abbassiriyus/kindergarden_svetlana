@@ -63,7 +63,7 @@ export default class PageProfil extends Component {
     post.append('phone', hlo)
     post.append('email', document.querySelector('.emailInput').value)
 
-    axios.put(`${url}/person/${id}`, post).then(res => alert('ozgardi'))
+    axios.put(`${url}/person/${id}`, post).then(res => alert('Изменено'))
 
 
    /*  var hlo = document.querySelector('.form-control').value

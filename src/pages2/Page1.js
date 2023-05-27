@@ -65,7 +65,7 @@ export default function Page1() {
             <img src={ImgTeacher} alt='' />
             <div className='Hashs'>
               <h4>Малинина Виктория Петровна</h4>
-              <span>2023/13/13</span>
+              <span>2023/05/13</span>
             </div>
           </div>
           <h2>{yozu1}</h2>
@@ -77,7 +77,7 @@ export default function Page1() {
             <img src={ImgTeacher} alt='' />
             <div className='Hashs'>
               <h4>Малинина Виктория Петровна</h4>
-              <span>2023/13/13</span>
+              <span>2023/12/13</span>
             </div>
           </div>
           <h2>Экскурсия в музей</h2>
@@ -95,7 +95,7 @@ export default function Page1() {
             <img src={ImgTeacher} alt='' />
             <div className='Hashs'>
               <h4>Малинина Виктория Петровна</h4>
-              <span>2023/13/13</span>
+              <span>2023/12/13</span>
             </div>
           </div>
           <h2>Экскурсия в музей</h2>
