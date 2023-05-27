@@ -15,7 +15,7 @@
 
 .biga-pages {
   width: 100%;
-  display: flex;
+  display: flex !important;
   flex-wrap: wrap;
   padding-top: 15px;
   justify-content: space-around;
@@ -430,3 +430,41 @@
   overflow-y: hidden;
 }
 
+
+
+
+
+
+/* id="btnlar1"
+onClick={() => {
+ this.openModal();
+}} */
+
+
+
+
+/* 
+<div>
+
+<Dropdown id="drop">
+  <Dropdown.Toggle variant="light" id="dropdown-basic">
+    Должность
+  </Dropdown.Toggle>
+  <Dropdown.Menu>
+    <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+    <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+    <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+</div>
+<input type='date' />
+<div>
+<button
+  id="btnlar1"
+  onClick={() => {
+    this.openModal();
+  }}
+>
+  + Добавить Родитель
+</button>
+</div> */

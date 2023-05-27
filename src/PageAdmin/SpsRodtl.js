@@ -138,18 +138,18 @@ export default class Employees extends Component {
         axios.post(`${url}/person`, formPerson).then((res) => {
           // window.location.reload();
           axios.get(`${url}/person`, formPerson).then((res) => {
-           for (let i = 0; i < res.data.length; i++) {
-            if ( res.data[i].personlastname=== document.querySelector("#form1").value&&
-              res.data[i].personfirstname===document.querySelector("#form2").value&&
-              res.data[i].personmiddlename===document.querySelector("#form3").value&&
-              res.data[i].dateofbirth===document.querySelector("#form5").value
+            for (let i = 0; i < res.data.length; i++) {
+              if (res.data[i].personlastname === document.querySelector("#form1").value &&
+                res.data[i].personfirstname === document.querySelector("#form2").value &&
+                res.data[i].personmiddlename === document.querySelector("#form3").value &&
+                res.data[i].dateofbirth === document.querySelector("#form5").value
               ) {
-                formLegalrep.append("personid", res.data[i].personid )
-                formLegalrep.append("company", document.querySelector(".form99").value )
+                formLegalrep.append("personid", res.data[i].personid)
+                formLegalrep.append("company", document.querySelector(".form99").value)
                 // form99
+              }
+
             }
-            
-           }
           })
         });
       });
@@ -526,15 +526,16 @@ export default class Employees extends Component {
         <div className="kgjl">
           <h1 className="bigah1">Список Родитель</h1>
           <div className="biga-page">
-
-            <button
-              id="btnlar1"
-              onClick={() => {
-                this.openModal();
-              }}
-            >
-              + Добавить Родитель
-            </button>
+            <Dropdown id="drop">
+              <Dropdown.Toggle variant="light" id="dropdown-basic">
+                Должность
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           <div id="tables">
             <div id="names">

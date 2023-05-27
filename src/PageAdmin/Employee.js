@@ -608,7 +608,7 @@ export default class Employees extends Component {
                       <label htmlFor="form1">Фамилия*</label>
                       <br />
                       <input
-                        placeholder={item.personmiddlename}
+                        placeholder={item.personlastname}
                         className="personmiddlename"
                         type="text"
                       />
@@ -616,12 +616,12 @@ export default class Employees extends Component {
                     <div className="pages11">
                       <label htmlFor="form2">Имя* </label>
                       <br />
-                      <input className="personlastname" placeholder={item.personlastname} type="text" />
+                      <input className="personlastname" placeholder={item.personfirstname} type="text" />
                     </div>
                     <div className="pages11">
                       <label htmlFor="form3">Отчество*</label>
                       <br />
-                      <input className="personfirstname" placeholder={item.personfirstname} type="text" />
+                      <input className="personfirstname" placeholder={item.personmiddlename} type="text" />
                     </div>
                     <div className="pages11">
                       <br />
@@ -711,14 +711,51 @@ export default class Employees extends Component {
             )}
         </div>
         <h1 className="bigah1">Список сотрудников</h1>
+            {/* <div>
           <button
             id="btnlar1"
             onClick={() => {
               this.openModal();
             }}
-          >
+            >
             + Добавить сотрудника
           </button>
+            </div> */}
+            <div className="dropw">
+              <Dropdown id="drop">
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  Должность
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown id="drop">
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  sss
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <Dropdown id="drop">
+                <Dropdown.Toggle variant="light" id="dropdown-basic">
+                  Должность
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
+                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+              <button id="btnlar1" onClick={() => this.openModal()}>
+                Добавить сотрудника
+              </button>
+            </div>
   
         <div id="tables">
           <div id="names">

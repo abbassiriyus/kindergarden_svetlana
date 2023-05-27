@@ -185,28 +185,17 @@ export default function Vztsasd() {
         <div className="nodir3">
           <div className="abbas">
             <div className="dropw">
-              {/* <Dropdown id="drop">
+              <Dropdown id="drop">
                 <Dropdown.Toggle variant="light" id="dropdown-basic">
                   Должность
                 </Dropdown.Toggle>
-
                 <Dropdown.Menu>
                   <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
                   <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
                   <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <Dropdown id="drop">
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  Группа
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown> */}
+              <input type='date' className="inputDate" />
               <button id="btnlar1" onClick={() => OpenSRF()}>
                 Добавить посещение
               </button>
