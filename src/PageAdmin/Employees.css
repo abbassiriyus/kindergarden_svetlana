@@ -21,14 +21,14 @@
   justify-content: space-around;
 }
 
-.biga-pages .selectgrupp{
+.biga-pages .selectgrupp {
   width: 100%;
   height: 40px;
   border-radius: 30px;
 }
 
 #drop {
-  width: 217px;
+  width: 800px;
   height: 60px;
   border-radius: 20px;
 }
@@ -54,7 +54,7 @@
   background: #334155 !important;
   border-radius: 30px;
   border: none;
-  margin-left: 1000px;
+  margin-left: 10px !important;
 }
 
 #btnlar1:hover {
@@ -159,6 +159,7 @@
     width: 1000px;
   }
 }
+
 .modal11 {
   width: 100%;
   height: 100vh;
@@ -171,6 +172,7 @@
   display: none;
   padding: 10%;
 }
+
 .modal11 label {
   font-family: "Montserrat";
   font-style: normal;
@@ -180,6 +182,7 @@
   color: #334155;
   margin-top: 20px;
 }
+
 .tabs11 {
   display: flex;
   font-size: 1.4vw;
@@ -193,16 +196,19 @@
 
   text-align: center;
 }
+
 .tabs11 li {
   width: 33.3%;
   padding-bottom: 20px;
   cursor: pointer;
   border-bottom: 5px solid white;
 }
+
 .pages11 {
   width: 60%;
   margin-left: 10%;
 }
+
 .pages11 input {
   width: 256px;
   height: 43px;
@@ -211,6 +217,7 @@
   border: 1px solid rgba(51, 65, 85, 0.5);
   border-radius: 10px;
 }
+
 .pages11 select {
   width: 256px;
   height: 43px;
@@ -219,6 +226,7 @@
   border: 1px solid rgba(51, 65, 85, 0.5);
   border-radius: 10px;
 }
+
 .pages12 {
   margin: auto;
   margin-top: 20px;
@@ -229,6 +237,7 @@
   left: 2%;
   border-radius: 20px;
 }
+
 .pages12 input {
   width: 100%;
   height: 194px;
@@ -255,6 +264,7 @@
   margin: auto;
   padding-bottom: 20px;
 }
+
 .upload_file p {
   font-family: "Montserrat";
   font-style: normal;
@@ -265,6 +275,7 @@
   text-align: center;
   margin-top: 30px;
 }
+
 .oyna101 {
   display: grid;
   grid-template-columns: auto auto auto;
@@ -272,6 +283,7 @@
   position: relative;
   left: 8%;
 }
+
 .df_button1 {
   width: 163.5px;
   height: 51px;
@@ -288,6 +300,7 @@
   color: #ffffff;
   border: none;
 }
+
 .df_button2 {
   width: 163.5px;
   height: 51px;
@@ -304,6 +317,7 @@
   color: #ffffff;
   border: none;
 }
+
 .df_button {
   display: flex;
   justify-content: space-around;
@@ -314,6 +328,7 @@
   margin-right: 0px;
   margin-top: 30px;
 }
+
 .modal12 {
   display: none;
   justify-content: center;
@@ -328,6 +343,7 @@
   background-color: rgba(5, 0, 0, 0.339);
   backdrop-filter: blur(20px);
 }
+
 .form12 {
   padding: 10px;
   background-color: white;
@@ -335,6 +351,7 @@
   min-width: 300px;
   text-align: center;
 }
+
 .fileUpload {
   display: flex;
   align-items: center;
@@ -342,6 +359,7 @@
   justify-content: space-around;
   min-height: 700px;
 }
+
 .fileUpload .pages_files {
   margin-top: 10px;
   background: #ffffff;
@@ -352,6 +370,7 @@
   min-height: 200px;
   box-shadow: 0px 0px 10px gray;
 }
+
 .fileUpload .pages_files input {
   width: 100%;
   height: 100%;
@@ -360,6 +379,7 @@
   left: 0px;
   opacity: 0;
 }
+
 .sss22 {
   font-family: "Montserrat";
   font-style: normal;
@@ -376,7 +396,7 @@
   font-weight: 600 !important;
 }
 
-.userNumber2{
+.userNumber2 {
   width: 260px !important;
   border: 1px solid black !important;
   background: #000 !important;
@@ -389,12 +409,12 @@
 }
 
 
-.modal1122{
+.modal1122 {
   display: none;
   margin-top: 40px;
 }
 
-.fileUpload{
+.fileUpload {
   width: 85%;
   height: 300px;
   background: #fff;
@@ -405,13 +425,13 @@
   position: relative;
 }
 
-.fileUpload input{
+.fileUpload input {
   width: 100%;
   height: 300px;
   opacity: 0;
 }
 
-.fileUpload img{
+.fileUpload img {
   position: absolute;
   width: 70px;
   display: flex;
@@ -419,18 +439,24 @@
   text-align: center;
 }
 
-.fileUpload p{
+.fileUpload p {
   position: absolute;
   display: flex;
   margin-top: 120px;
   text-align: center;
-} 
+}
 
-#dd2{
+#dd2 {
   overflow-y: hidden;
 }
 
-
+.selectRgroup {
+  width: 30%;
+  height: 35px;
+  border-radius: 30px;
+  padding: 5px;
+  outline: none;
+}
 
 
 

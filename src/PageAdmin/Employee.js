@@ -18,7 +18,8 @@ export default class Employees extends Component {
     deleteData: {},
     putData: [],
     perosndata: {},
-    getPutPerson: []
+    getPutPerson: [],
+    getGroup: []
   };
 
   openModal() {
@@ -128,6 +129,9 @@ export default class Employees extends Component {
   componentDidMount() {
     this.openPageNumber(1);
     this.getData11();
+    axios.get(`${url}/group`).then(res => {
+      this.setState({ getGroup: res.data })
+    })
   }
 
   postData1() {
@@ -345,25 +349,25 @@ export default class Employees extends Component {
           <ul className="tabs11">
             <li
               className="lipage1"
-              // onClick={() => {
-              //   this.openPageNumber(1);
-              // }}
+            // onClick={() => {
+            //   this.openPageNumber(1);
+            // }}
             >
               Основная информация
             </li>
             <li
               className="lipage2"
-              // onClick={() => {
-              //   this.openPageNumber(2);
-              // }}
+            // onClick={() => {
+            //   this.openPageNumber(2);
+            // }}
             >
               Контакты
             </li>
             <li
               className="lipage3"
-              // onClick={() => {
-              //   this.openPageNumber(3);
-              // }}
+            // onClick={() => {
+            //   this.openPageNumber(3);
+            // }}
             >
               Информация о работе
             </li>
@@ -711,7 +715,7 @@ export default class Employees extends Component {
             )}
         </div>
         <h1 className="bigah1">Список сотрудников</h1>
-            {/* <div>
+        {/* <div>
           <button
             id="btnlar1"
             onClick={() => {
@@ -721,42 +725,39 @@ export default class Employees extends Component {
             + Добавить сотрудника
           </button>
             </div> */}
-            <div className="dropw">
-              <Dropdown id="drop">
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  Должность
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown id="drop">
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  sss
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <Dropdown id="drop">
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  Должность
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <button id="btnlar1" onClick={() => this.openModal()}>
-                Добавить сотрудника
-              </button>
-            </div>
-  
+        <div className="dropw">
+        <select className="selectRgroup">
+            {
+              this.state.getGroup.map(item => {
+                return(
+                  <option>{item.groupname}</option>
+                )
+              })
+            }
+          </select>
+          <select className="selectRgroup">
+            {
+              this.state.getGroup.map(item => {
+                return(
+                  <option>{item.groupname}</option>
+                )
+              })
+            }
+          </select>
+          <select className="selectRgroup">
+            {
+              this.state.getGroup.map(item => {
+                return(
+                  <option>{item.groupname}</option>
+                )
+              })
+            }
+          </select>
+          <button id="btnlar1" onClick={() => this.openModal()}>
+            Добавить сотрудника
+          </button>
+        </div>
+
         <div id="tables">
           <div id="names">
             <p>ID</p>
