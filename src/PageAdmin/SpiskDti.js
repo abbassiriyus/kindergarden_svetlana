@@ -1148,7 +1148,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child7"> Здаровия* </label>
+                    <label htmlFor="child7"> Здоровья* </label>
                     <br />
                     <select className="childHealth">
                       <option>1</option>
