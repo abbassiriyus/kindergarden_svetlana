@@ -727,13 +727,7 @@ export default class Employees extends Component {
             </div> */}
         <div className="dropw">
         <select className="selectRgroup">
-            {
-              this.state.getGroup.map(item => {
-                return(
-                  <option>{item.groupname}</option>
-                )
-              })
-            }
+          <option>Должность</option>
           </select>
           <select className="selectRgroup">
             {
@@ -745,13 +739,7 @@ export default class Employees extends Component {
             }
           </select>
           <select className="selectRgroup">
-            {
-              this.state.getGroup.map(item => {
-                return(
-                  <option>{item.groupname}</option>
-                )
-              })
-            }
+            <option>Занятие</option>
           </select>
           <button id="btnlar1" onClick={() => this.openModal()}>
             Добавить сотрудника

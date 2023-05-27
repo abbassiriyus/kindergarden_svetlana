@@ -101,12 +101,11 @@ export default class App extends Component {
         item.weekday * 1 == day * 1
       ) {
         kluch = false;
-        data12 = `${item.subjectname}\n\n\n${
-          item.personlastname +
+        data12 = `${item.subjectname}\n\n\n${item.personlastname +
           " " +
           item.personfirstname +
           item.personmiddlename
-        }\n${item.roomnumber}`;
+          }\n${item.roomnumber}`;
       }
     });
     if (kluch) {
@@ -362,6 +361,7 @@ export default class App extends Component {
               return <option value={item.groupid}>{item.groupname}</option>;
             })}
           </select>
+          <input type='date' />
           <button
             id="btnlar1"
             style={{ margin: "auto", marginRight: "30px" }}
