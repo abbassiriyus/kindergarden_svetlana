@@ -514,7 +514,7 @@ export default class Employees extends Component {
               <div className="pages11">
                 <input
                   className="aform5"
-                  placeholder="building"
+                  placeholder="Строение"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
