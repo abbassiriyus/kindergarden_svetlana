@@ -13,26 +13,30 @@ import url from '../host';
 export default class App extends Component {
    state = {
       group: [],
+      region: []
    }
 
 
 
 
    componentDidMount = () => {
-   //    axios.get(`${url}/person`).then(res => {
-   //       // console.log(res.data);
-   //       this.setState({
-   //          person: res.data
-   //       })
+      //    axios.get(`${url}/person`).then(res => {
+      //       // console.log(res.data);
+      //       this.setState({
+      //          person: res.data
+      //       })
 
-   //    }).finally(() => {
-   //       // document.querySelector('.hallo_as').style = 'display: block'
-   //    });
+      //    }).finally(() => {
+      //       // document.querySelector('.hallo_as').style = 'display: block'
+      //    });
       axios.get(`${url}/group`).then(res => {
          this.setState({ group: res.data })
       })
-   
-   console.log('dvfnumi');
+
+      console.log('dvfnumi');
+      axios.get(`${url}/address`).then(res => {
+         this.setState({ region: res.data })
+      })
 
    }
 
@@ -40,6 +44,12 @@ export default class App extends Component {
    DobavNovs = () => {
       document.querySelector('.SozdatNovs').style = 'display: block'
       document.querySelector('.asdsad').style = 'display: none'
+   }
+
+
+   CloseNovs = () => {
+      document.querySelector('.SozdatNovs').style = 'display: none'
+      document.querySelector('.asdsad').style = 'display: block'
    }
 
 
@@ -61,9 +71,18 @@ export default class App extends Component {
 
                   <h4>Выбрать адресата</h4>
                   <select>
-                     <option>hello_As</option>
-                     <option>hello_As</option>
+                     {
+                        this.state.region.map(item => {
+                           return (
+                              <option>{item.region}</option>
+                           )
+                        })
+                     }
                   </select>
+               </div>
+               <div className='btn-group'>
+                  <button onClick={() => this.CloseNovs()}>Отменит</button>
+                  <button>Сохранит</button>
                </div>
             </div>
             <div className="asdsad">
@@ -73,7 +92,7 @@ export default class App extends Component {
                      <select className='mad' name="" id="">
                         {
                            this.state.group.map(item => {
-                              return(
+                              return (
                                  <option value="">{item.groupname}</option>
                               )
                            })

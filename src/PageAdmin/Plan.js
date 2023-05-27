@@ -78,7 +78,7 @@ export default function Plan() {
             <div id="inform1">
               <div id="inform-p">
                 <p>{item.subjectname}</p>
-                <p>{item.subjectid}</p>
+                {/* <p>{item.subjectid}</p> */}
                 <p>{item.winterparty}</p>
                 <p>{item.winterles}</p>
                 <p>{item.mountain}</p>
