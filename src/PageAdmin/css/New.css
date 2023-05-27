@@ -329,9 +329,9 @@
 }
 
 .SozdatNovs {
-  width: 100%;
+  width: 70%;
   padding-bottom: 30px;
-  background: #fff;
+  /* background: #fff; */
   display: none;
 }
 
@@ -347,7 +347,7 @@
 }
 
 .Anket input {
-  width: 80%;
+  width: 100%;
   height: 40px;
   border-radius: 30px;
   border: none;
@@ -356,13 +356,16 @@
 
 .Anket h4 {
   margin-top: 20px;
+  color: black !important;
 }
 
 .Anket textarea {
-  width: 80%;
+  width: 100%;
   height: 300px;
   border: none;
   padding-left: 20px;
+  border: 1px solid black;
+  padding-top: 5px;
 }
 
 .Anket select {
@@ -481,4 +484,19 @@ color: #334155;
 .sdfgdf h4{
   font-size: 20px;
   color: #334155 !important;
+}
+
+.btn-group{
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 40%;
+}
+
+.btn-group button{
+  width: 40%;
+  height: 40px;
+  border-radius: 30px;
+  background: #334155;
+  color: white;
 }

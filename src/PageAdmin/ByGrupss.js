@@ -283,7 +283,7 @@ export default class App extends Component {
                 return <option value={item.start}>{item.start}</option>;
               })}
             </select>
-            по
+            по 
             <select name="" id="select_2">
               {time.map((item) => {
                 return <option value={item.finish}>{item.finish}</option>;
