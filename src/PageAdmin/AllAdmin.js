@@ -342,41 +342,22 @@ export default function AllAdmin() {
                 ЛЕНТА НОВОСТЕЙ
               </p>
             </a>
-            <Accordion
-              className="Accor-Divs"
-              expanded={expanded === "panel1"}
-              onChange={handleChange("panel1")}
+            <a
+              href="/page2"
+              onClick={() => {
+                sessionStorage.setItem("page12", 1);
+              }}
             >
-              <AccordionSummary
-                aria-controls="panel1d-content"
-                id="panel1d-header"
+              <p
+                style={
+                  page12 == 2 ? { background: "white" } : { background: "none" }
+                }
+                className="scrl-h4"
               >
-                <Typography>
-                  <img src={ImgScrol} alt="" />
-                  СОТРУДНИКИ
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography>
-                  <a
-                    href="/page2"
-                    onClick={() => {
-                      sessionStorage.setItem("page12", 2);
-                    }}
-                  >
-                    <h5
-                      style={
-                        page12 == 2
-                          ? { background: "white" }
-                          : { background: "none" }
-                      }
-                    >
-                      СОТРУДНИКИ
-                    </h5>
-                  </a>
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
+                <img src={ImgScrol} alt="" />
+                СОТРУДНИКИ
+              </p>
+            </a>
             <Accordion
               className="Accor-Divs"
               expanded={expanded === "panel2"}
@@ -585,6 +566,22 @@ export default function AllAdmin() {
                 </Typography>
               </AccordionDetails>
             </Accordion>
+            <a
+              href="/Statics"
+              onClick={() => {
+                sessionStorage.setItem("page12", 1);
+              }}
+            >
+              <p
+                style={
+                  page12 == 3 ? { background: "white" } : { background: "none" }
+                }
+                className="scrl-h4"
+              >
+                <img src={ImgScrol} alt="" />
+                СТАТИСТИКА
+              </p>
+            </a>
           </div>
           <div className="routerDiv">
             <Routes>
@@ -602,6 +599,7 @@ export default function AllAdmin() {
               <Route path="/PageProfilr" element={<PageProfilr />} />
               <Route path="/Zapissi" element={<Zapissi />} />
               <Route path="/PostEmployee" element={<PostEmployee />} />
+              <Route path="/Statics" element={<Statics />} />
             </Routes>
           </div>
         </div>

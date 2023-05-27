@@ -100,7 +100,7 @@ export default class App extends Component {
                      </select>
                      <input className='mad' type="date" placeholder='Дата добавления' />
                      <button className="nodiruca" onClick={() => this.DobavNovs()}>
-                        + Добавить новость
+                        Добавить новость
                      </button>
                   </div>
                </div>

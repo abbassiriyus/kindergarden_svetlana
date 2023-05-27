@@ -376,23 +376,23 @@ export default class Employees extends Component {
           <div className="Apages1">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="form1">Фамилия*</label>
+                <label htmlFor="form1">Фамилия</label>
                 <br />
                 <input id="form1" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form2">Имя* </label>
+                <label htmlFor="form2">Имя</label>
                 <br />
                 <input id="form2" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form3">Отчество*</label>
+                <label htmlFor="form3">Отчество</label>
                 <br />
                 <input id="form3" type="text" />
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="form4"> Пол* </label>
+                <label htmlFor="form4"> Пол</label>
                 <br />
                 <select name="" id="form4">
                   <option value="М">М</option>
@@ -400,7 +400,7 @@ export default class Employees extends Component {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="form5">Дата рождения* </label>
+                <label htmlFor="form5">Дата рождения</label>
                 <br />
 
                 <input id="form5" type="date" />
@@ -437,23 +437,23 @@ export default class Employees extends Component {
           <div className="Apages2">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="form7">Серия паспорта* </label>
+                <label htmlFor="form7">Серия паспорта</label>
                 <br />
                 <input className="form7" placeholder="0000" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form8"> Номер паспорта* </label>
+                <label htmlFor="form8"> Номер паспорта</label>
                 <br />
                 <input className="form8" placeholder="000000" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form9"> Дата выдачи*</label>
+                <label htmlFor="form9"> Дата выдачи</label>
                 <br />
                 <input className="form9" type="date" />
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="form10"> Телефон * </label>
+                <label htmlFor="form10"> Телефон</label>
                 <br />
 
                 <input className="form10" type="tel" />
@@ -476,7 +476,7 @@ export default class Employees extends Component {
                 marginBottom: "30px",
               }}
             >
-              Адрес регистрации*
+              Адрес регистрации
             </label>
             <div className="oyna101">
               <div className="pages11">
@@ -551,33 +551,33 @@ export default class Employees extends Component {
           <div className="Apages3">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="">Должность *</label>
+                <label htmlFor="">Должность</label>
                 <br />
                 <input className="dform1" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor=""> Образование *</label>
+                <label htmlFor=""> Образование</label>
                 <br />
                 <input className="dform2" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="">Дата приема * </label>
+                <label htmlFor="">Дата приема</label>
                 <br />
                 <input className="dform3" type="date" />
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor=""> Дата увольнения *</label>
+                <label htmlFor=""> Дата увольнения</label>
                 <br />
                 <input className="dform4" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="">Дата выдачи мед.справки * </label>
+                <label htmlFor="">Дата выдачи мед.справки</label>
                 <br />
                 <input className="dform5" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="">Курсы/ Сертификаты*</label>
+                <label htmlFor="">Курсы/ Сертификаты</label>
                 <br />
                 <input className="dform6" type="text" />
               </div>
@@ -609,7 +609,7 @@ export default class Employees extends Component {
                 <div className="Apages1">
                   <div className="oyna101">
                     <div className="pages11">
-                      <label htmlFor="form1">Фамилия*</label>
+                      <label htmlFor="form1">Фамилия</label>
                       <br />
                       <input
                         placeholder={item.personlastname}
@@ -618,18 +618,18 @@ export default class Employees extends Component {
                       />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form2">Имя* </label>
+                      <label htmlFor="form2">Имя</label>
                       <br />
                       <input className="personlastname" placeholder={item.personfirstname} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form3">Отчество*</label>
+                      <label htmlFor="form3">Отчество</label>
                       <br />
                       <input className="personfirstname" placeholder={item.personmiddlename} type="text" />
                     </div>
                     <div className="pages11">
                       <br />
-                      <label htmlFor="form4"> Пол* </label>
+                      <label htmlFor="form4"> Пол</label>
                       <br />
                       <select name="" className="jinsi">
                         <option value="М">М</option>
@@ -637,7 +637,7 @@ export default class Employees extends Component {
                       </select>
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form5">Дата рождения* </label>
+                      <label htmlFor="form5">Дата рождения</label>
                       <br />
 
                       <input className="birthDay" type="date" />
@@ -654,23 +654,23 @@ export default class Employees extends Component {
                 <div className="Apages2">
                   <div className="oyna101">
                     <div className="pages11">
-                      <label htmlFor="form7">Серия паспорта* </label>
+                      <label htmlFor="form7">Серия паспорта</label>
                       <br />
                       <input className="passportseries" placeholder={item.passportseries} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form8"> Номер паспорта* </label>
+                      <label htmlFor="form8"> Номер паспорта</label>
                       <br />
                       <input className="passportnumber" placeholder={item.passportnumber} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form9"> Дата выдачи*</label>
+                      <label htmlFor="form9"> Дата выдачи</label>
                       <br />
                       <input className="vidachiData" type="date" />
                     </div>
                     <div className="pages11">
                       <br />
-                      <label htmlFor="form10"> Телефон * </label>
+                      <label htmlFor="form10"> Телефон</label>
                       <br />
 
                       <PhoneInput

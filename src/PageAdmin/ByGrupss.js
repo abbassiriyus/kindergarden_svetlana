@@ -369,7 +369,7 @@ export default class App extends Component {
               this.openModal();
             }}
           >
-            + Добавить расписание
+            Добавить расписание
           </button>
         </div>
 

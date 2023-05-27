@@ -16,6 +16,7 @@ export default function Vztsasd() {
   const [posted, setPosted] = useState([]);
   const [getted, setGetted] = useState([]);
   const [finally2, setFinally] = useState(true);
+  const [gettedGroup, setGroup] = useState([]);
 
   useEffect(() => {
     function getsOne() {
@@ -51,6 +52,9 @@ export default function Vztsasd() {
         });
     }
     console.log(state, "tiug1");
+    axios.get(`${url}/group`).then((res) => {
+      setGroup(res.data);
+    });
 
     getsOne();
   }, []);
@@ -185,17 +189,14 @@ export default function Vztsasd() {
         <div className="nodir3">
           <div className="abbas">
             <div className="dropw">
-              <Dropdown id="drop">
-                <Dropdown.Toggle variant="light" id="dropdown-basic">
-                  Должность
-                </Dropdown.Toggle>
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                  <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              <input type='date' className="inputDate" />
+              <select className="selectGrpp">
+                {gettedGroup.map((item) => {
+                  return(
+                     <option>{item.groupname}</option>
+                    )
+                })}
+              </select>
+              <input type="date" className="inputDate" />
               <button id="btnlar1" onClick={() => OpenSRF()}>
                 Добавить посещение
               </button>
@@ -246,44 +247,40 @@ export default function Vztsasd() {
                     </div>
                   ) : (
                     data.map((item, key) => {
-                  
-                        return (
-                          <tr className="btnadmp_tr1">
-                            <td className="btnadmp_td1">{key + 1}</td>
-                            <td className="btnadmp_td1">
-                              {item.childlastname}
-                            </td>
-                            <td className="btnadmp_td1"> Присутствует </td>
-                            <td className="btnadmp_td1">
-                              {item.arrivaltime
-                                .slice(5)
-                                .replaceAll("-", "/")
-                                .replaceAll("T", " ")}
-                            </td>
-                            <td className="btnadmp_td1">
-                              {item.leavingtime
-                                .slice(5)
-                                .replaceAll("-", "/")
-                                .replaceAll("T", " ")}
-                            </td>
+                      return (
+                        <tr className="btnadmp_tr1">
+                          <td className="btnadmp_td1">{key + 1}</td>
+                          <td className="btnadmp_td1">{item.childlastname}</td>
+                          <td className="btnadmp_td1"> Присутствует </td>
+                          <td className="btnadmp_td1">
+                            {item.arrivaltime
+                              .slice(5)
+                              .replaceAll("-", "/")
+                              .replaceAll("T", " ")}
+                          </td>
+                          <td className="btnadmp_td1">
+                            {item.leavingtime
+                              .slice(5)
+                              .replaceAll("-", "/")
+                              .replaceAll("T", " ")}
+                          </td>
 
-                            <td className="btnadmp_td1">
-                              <button
-                                className="butadmp1"
-                                onClick={() => OpenSRF2(item.attendanceid)}
-                              >
-                                <img src={ico2} alt="" />
-                              </button>
-                              <button
-                                onClick={() => deleteData(item.attendanceid)}
-                                className="butadmp2"
-                              >
-                                <img src={ico1} alt="" />
-                              </button>
-                            </td>
-                          </tr>
-                        );
-                      
+                          <td className="btnadmp_td1">
+                            <button
+                              className="butadmp1"
+                              onClick={() => OpenSRF2(item.attendanceid)}
+                            >
+                              <img src={ico2} alt="" />
+                            </button>
+                            <button
+                              onClick={() => deleteData(item.attendanceid)}
+                              className="butadmp2"
+                            >
+                              <img src={ico1} alt="" />
+                            </button>
+                          </td>
+                        </tr>
+                      );
                     })
                   )}
                 </table>

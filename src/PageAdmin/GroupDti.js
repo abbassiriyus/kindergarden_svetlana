@@ -200,7 +200,7 @@ export default function GroupDti() {
   return (
     <div className="nodir5">
       <div className="Dobav_Group">
-        <h2>+ Добавить Группа</h2>
+        <h2>Добавить Группа</h2>
         <div className="sdfgdf">
           <h4 className="kkkk">Название *</h4>
           <input className="textDobav2" type="text" />
@@ -299,13 +299,13 @@ export default function GroupDti() {
           <div className="cake1">
             <select className="mad" name="" id="">
               <option value="">Учебный год</option>
-              <option value="">2023/12/12</option>
-              <option value="">2023/12/13</option>
-              <option value="">2023/12/14</option>
-              <option value="">2023/12/15</option>
+              <option value="">2023</option>
+              <option value="">2024</option>
+              <option value="">2025</option>
+              <option value="">2026</option>
             </select>
             <button className="nodiruca" onClick={() => opensModal()}>
-              + Добавить Группа
+              Добавить Группа
             </button>
           </div>
         </div>

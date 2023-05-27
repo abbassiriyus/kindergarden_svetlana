@@ -4,13 +4,10 @@ import Dropdown from "react-bootstrap/Dropdown";
 import icon1 from "../img/icon1.svg";
 import icon2 from "../img/icon21.svg";
 import "./Employees.css";
-import PhoneInput from 'react-phone-input-2'
+import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import url from "../host";
 import image_file from "../img/free-icon-cloud-upload-7838250 1.png";
-
-
-
 
 export default class ChildAdmin extends Component {
   state = {
@@ -31,7 +28,7 @@ export default class ChildAdmin extends Component {
     legalrep: "",
     Monro: [],
     Getted: [],
-    nomi:[]
+    nomi: [],
   };
 
   openModal() {
@@ -40,7 +37,7 @@ export default class ChildAdmin extends Component {
   }
   closeModal() {
     document.querySelector(".modal11").style = "display:none";
-    window.location.reload()
+    window.location.reload();
   }
   handleChange = (event) => {
     let { value, min, max } = event.target;
@@ -59,21 +56,21 @@ export default class ChildAdmin extends Component {
         console.log(err);
       });
   }
-  getSubject=(event)=>{
+  getSubject = (event) => {
     console.log("ishlavoti");
     const uu = event.target.value;
     const uu2 = parseInt(uu);
     axios.get(`${url}/subject`).then((res) => {
       var dataA = [];
       res.data.map((item) => {
-        if (item.subjectgroupid ===uu2) {
+        if (item.subjectgroupid === uu2) {
           dataA.push(item);
         }
       });
       this.setState({ subject: dataA });
       console.log(dataA, "fgjaeigjmergjmerwiog");
     });
-  }
+  };
 
   openPageNumber(key) {
     this.setState({ formpages: key });
@@ -109,18 +106,17 @@ export default class ChildAdmin extends Component {
                   kluch.house = res.data[i].house;
                   kluch.building = res.data[i].building;
                   kluch.flat = res.data[i].flat;
-                  
                 }
               }
-              axios.get(`${url}/Legal_Rep`).then((ress)=>{
+              axios.get(`${url}/Legal_Rep`).then((ress) => {
                 for (let i = 0; i < ress.data.length; i++) {
-                  if (item.personid===ress.data[i].personid) {
-                    kluch.legalrep=ress.data[i].legalrepid
-                    kluch.company=ress.data[i].company;
+                  if (item.personid === ress.data[i].personid) {
+                    kluch.legalrep = ress.data[i].legalrepid;
+                    kluch.company = ress.data[i].company;
                     this.setState({ oneperson: kluch });
                   }
                 }
-              })
+              });
             });
           }
         });
@@ -197,22 +193,21 @@ export default class ChildAdmin extends Component {
   }
   componentDidMount() {
     axios.get(`${url}/Legal_Rep`).then((res) => {
-         var perent =[]
-         var legal =res.data
-         axios.get(`${url}/person`).then((res2) => {
-          for (let i = 0; i < res2.data.length; i++) {
-           for (let e = 0; e < legal.length; e++) {
-           if (legal[e].personid===res2.data[i].personid) {
-            // console.log(res2.data[i]);
-            perent.push(res2.data[i])
-           }
-            
-           }  
+      var perent = [];
+      var legal = res.data;
+      axios.get(`${url}/person`).then((res2) => {
+        for (let i = 0; i < res2.data.length; i++) {
+          for (let e = 0; e < legal.length; e++) {
+            if (legal[e].personid === res2.data[i].personid) {
+              // console.log(res2.data[i]);
+              perent.push(res2.data[i]);
+            }
           }
-          console.log(perent,"kook");
-          this.setState({ parent: perent });
-         })
-    })
+        }
+        console.log(perent, "kook");
+        this.setState({ parent: perent });
+      });
+    });
 
     axios.get(`${url}/group`).then((res) => {
       this.setState({ group: res.data });
@@ -232,7 +227,9 @@ export default class ChildAdmin extends Component {
     formData.append("gender", document.querySelector("#child3").value);
     formData.append("dateofbirth", document.querySelector("#child5").value);
     formData.append("personid", document.querySelector("#child7").value);
-    formData.append("certificateofbirth", document.querySelector("#child6").value
+    formData.append(
+      "certificateofbirth",
+      document.querySelector("#child6").value
     );
     var childAddress = new FormData();
     childAddress.append("region", document.querySelector(".caform1").value);
@@ -266,7 +263,7 @@ export default class ChildAdmin extends Component {
     // legal_rep.append("company", document.querySelector(".companyperson").value);
     var relation = new FormData();
     relation.append("status", document.querySelector(".childstateus").value);
-    relation.append("legalrepid",this.state.oneperson.legalrep);
+    relation.append("legalrepid", this.state.oneperson.legalrep);
     this.setState({ relation: relation });
     this.openPageNumber(3);
     // axios.post(`${url}/legal_rep`, legal_rep).then((res) => {
@@ -323,7 +320,6 @@ export default class ChildAdmin extends Component {
             postchild.get("childmiddlename") == item.childmiddlename &&
             postchild.get("addressid") == item.addressid
           ) {
-
             var relation = this.state.relation;
             relation.append("childid", item.childid);
             axios.post(`${url}/relation`, relation).then((res) => {
@@ -355,7 +351,7 @@ export default class ChildAdmin extends Component {
   //                if (res3.data[e].personid===res2.data[w].personid) {
   //                 console.log(res3.data[e],"fff");
   //                 uu3.push(res3.data[e])
-                  
+
   //                }
   //               }
   //             })
@@ -370,11 +366,11 @@ export default class ChildAdmin extends Component {
   //   // console.log( document.querySelector("#group0").value,"ejarijgesughhwurg");
   //   this.setState({nomi:uu3})
   // }
-  getGroupVaditel=(event)=>{
+  getGroupVaditel = (event) => {
     const uu = event.target.value;
     const uu2 = parseInt(uu);
     const uu3 = [];
-  
+
     axios.get(`${url}/group_emp`).then((res) => {
       for (let i = 0; i < res.data.length; i++) {
         if (res.data[i].groupid === uu2) {
@@ -399,7 +395,7 @@ export default class ChildAdmin extends Component {
         }
       }
     });
-  }
+  };
 
   deletechild(key) {
     axios
@@ -436,33 +432,53 @@ export default class ChildAdmin extends Component {
     formData.append("addressid", addressid);
     formData.append("groupid", groupid);
     formData.append("childlastname", document.querySelector(".itmChild").value);
-    formData.append("childfirstname", document.querySelector(".itmChildfrst").value);
-    formData.append("childmiddlename", document.querySelector(".itmChilmdl").value);
+    formData.append(
+      "childfirstname",
+      document.querySelector(".itmChildfrst").value
+    );
+    formData.append(
+      "childmiddlename",
+      document.querySelector(".itmChilmdl").value
+    );
     formData.append("gender", document.querySelector(".childGndr").value);
-    formData.append("certificateofbirth", document.querySelector(".childCertifi").value);
+    formData.append(
+      "certificateofbirth",
+      document.querySelector(".childCertifi").value
+    );
     formData.append("health", document.querySelector(".childHealth").value);
-    formData.append("isregisteredwith", document.querySelector(".childisregisteredwith").value + 'T00:00:00.000Z');
+    formData.append(
+      "isregisteredwith",
+      document.querySelector(".childisregisteredwith").value + "T00:00:00.000Z"
+    );
     formData.append("allergy", document.querySelector(".childAll").value);
-    formData.append("deviations", document.querySelector(".childdeviations").value);
+    formData.append(
+      "deviations",
+      document.querySelector(".childdeviations").value
+    );
     formData.append(
       "medicines",
       document.querySelector(".childmedicines").value
     );
-    formData.append("dateofbirth", document.querySelector('.childdateofbirth').value + 'T00:00:00.000Z')
-    formData.append("healthrestrictions", document.querySelector(".childhealthrestrictions").value
+    formData.append(
+      "dateofbirth",
+      document.querySelector(".childdateofbirth").value + "T00:00:00.000Z"
+    );
+    formData.append(
+      "healthrestrictions",
+      document.querySelector(".childhealthrestrictions").value
     );
     formData.append("diet", document.querySelector(".childdiet").value);
     formData.append("comment", document.querySelector(".childdiet").value);
-    formData.append("photo", document.querySelector('.fileChild').file);
+    formData.append("photo", document.querySelector(".fileChild").file);
     console.log(key);
     axios
       .put(`${url}/child/${key.childid}`, formData)
       .then((res) => {
-        alert('updated')
-        window.location = '/spiskdti'
+        alert("updated");
+        window.location = "/spiskdti";
       })
       .catch((err) => {
-        alert(err)
+        alert(err);
       });
   }
 
@@ -543,23 +559,23 @@ export default class ChildAdmin extends Component {
           <div className="Apages1">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="child1">Фамилия*</label>
+                <label htmlFor="child1">Фамилия</label>
                 <br />
                 <input id="child1" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="child2">Имя* </label>
+                <label htmlFor="child2">Имя </label>
                 <br />
                 <input id="child2" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form3">Отчество*</label>
+                <label htmlFor="form3">Отчество</label>
                 <br />
                 <input id="form3" type="text" />
               </div>
 
               <div className="pages11">
-                <label htmlFor="child3"> Пол* </label>
+                <label htmlFor="child3"> Пол </label>
                 <br />
                 <select name="child3" id="child3">
                   <option value="м">м</option>
@@ -567,12 +583,12 @@ export default class ChildAdmin extends Component {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="child5">Дата рождения* </label>
+                <label htmlFor="child5">Дата рождения </label>
                 <br />
                 <input id="child5" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="child7"> Родители* </label>
+                <label htmlFor="child7"> Родители </label>
                 <br />
                 <select name="child7" id="child7">
                   {this.state.parent.map((item) => {
@@ -586,7 +602,7 @@ export default class ChildAdmin extends Component {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="child6">Свидетельство о рождении * </label>
+                <label htmlFor="child6">Свидетельство о рождении </label>
                 <br />
                 <input id="child6" placeholder="III-КЕ 456789" type="text" />
               </div>
@@ -610,7 +626,7 @@ export default class ChildAdmin extends Component {
                 marginBottom: "30px",
               }}
             >
-              Адрес регистрации*
+              Адрес регистрации
             </label>
             <div className="oyna101">
               <div className="pages11">
@@ -728,7 +744,11 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="form11">Место работы </label>
                 <br />
-                <input value={this.state.oneperson.company} className="companyperson" type="text" />
+                <input
+                  value={this.state.oneperson.company}
+                  className="companyperson"
+                  type="text"
+                />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Телефон</label>
@@ -736,7 +756,6 @@ export default class ChildAdmin extends Component {
                 <PhoneInput
                   className="form11"
                   value={this.state.oneperson.phone}
-
                 />
               </div>
             </div>
@@ -749,7 +768,7 @@ export default class ChildAdmin extends Component {
                 marginBottom: "30px",
               }}
             >
-              Адрес регистрации*
+              Адрес регистрации
             </label>
             <div className="oyna101">
               <div className="pages11">
@@ -830,23 +849,23 @@ export default class ChildAdmin extends Component {
           <div className="Apages3">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="group0"> Группа *</label>
+                <label htmlFor="group0"> Группа </label>
                 <br />
-                <select onChange={this.getGroupVaditel}  name="group0" id="group0">
+                <select
+                  onChange={this.getGroupVaditel}
+                  name="group0"
+                  id="group0"
+                >
                   <option>Выберите группу</option>
                   {this.state.group.map((item) => {
                     return (
-                      <option
-                        value={item.groupid}
-                      >
-                        {item.groupname}
-                      </option>
+                      <option value={item.groupid}>{item.groupname}</option>
                     );
                   })}
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor=""> Дата зачисления * </label>
+                <label htmlFor=""> Дата зачисления </label>
                 <br />
                 <input className="group1" type="date" />
               </div>
@@ -859,7 +878,7 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <label htmlFor="group3">Программа обучения </label>
                 <br />
-                <select onChange={this.getSubject}  name="group3" id="group3">
+                <select onChange={this.getSubject} name="group3" id="group3">
                   <option>Выберите программу обучения</option>
                   {this.state.subject_group.map((item) => {
                     return (
@@ -879,18 +898,28 @@ export default class ChildAdmin extends Component {
                 <label htmlFor="group4">Доп.занятия</label>
                 <br />
                 <select name="group4" id="group4">
-                  {this.state.subject.length > 0 &&this.state.subject.map((item) => {
-                    return <option value={item.subjectid}>{item.subjectname}</option>
-                  })}
+                  {this.state.subject.length > 0 &&
+                    this.state.subject.map((item) => {
+                      return (
+                        <option value={item.subjectid}>
+                          {item.subjectname}
+                        </option>
+                      );
+                    })}
                 </select>
               </div>
               <div className="pages11">
                 <label htmlFor="group5">Воспитатель </label>
                 <br />
                 <select name="group5" id="group5">
-                  {this.state.nomi.length > 0 &&this.state.nomi.map((item)=>{
-                    return<option value=''><p>{item.personfirstname}</p></option>
-                  })}
+                  {this.state.nomi.length > 0 &&
+                    this.state.nomi.map((item) => {
+                      return (
+                        <option value="">
+                          <p>{item.personfirstname}</p>
+                        </option>
+                      );
+                    })}
                 </select>
               </div>
             </div>
@@ -916,7 +945,7 @@ export default class ChildAdmin extends Component {
 
           <div className="Apages4">
             <div className="pages11">
-              <label htmlFor="med1"> группа здоровья *</label>
+              <label htmlFor="med1"> группа здоровья </label>
               <br />
               <select name="med1" id="med1">
                 <option value="1">1</option>
@@ -1020,7 +1049,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>Копия свидетельства о рождении</p>
+                    <p>Копия свидетельства о рождении</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1030,7 +1059,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>Медицинский полис</p>
+                    <p>Медицинский полис</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1040,7 +1069,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>СНИЛС</p>
+                    <p>СНИЛС</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1050,7 +1079,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>Справка о регистрации по месту жительства</p>
+                    <p>Справка о регистрации по месту жительства</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1060,7 +1089,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>Паспорт родителя</p>
+                    <p>Паспорт родителя</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1070,7 +1099,7 @@ export default class ChildAdmin extends Component {
                 <div className="upload_file">
                   <h1>
                     <img src={image_file} alt="" />
-                  <p>Согласие на обработку персональных данных</p>
+                    <p>Согласие на обработку персональных данных</p>
                   </h1>
                 </div>
                 <input className="form6" type="file" />
@@ -1103,7 +1132,7 @@ export default class ChildAdmin extends Component {
               <div className="Apages1">
                 <div className="oyna101">
                   <div className="pages11">
-                    <label htmlFor="child1">Фамилия * </label>
+                    <label htmlFor="child1">Фамилия </label>
                     <br />
                     <input
                       className="itmChild"
@@ -1112,7 +1141,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child2">Имя* </label>
+                    <label htmlFor="child2">Имя </label>
                     <br />
                     <input
                       className="itmChildfrst"
@@ -1121,7 +1150,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form3">Отчество*</label>
+                    <label htmlFor="form3">Отчество</label>
                     <br />
                     <input
                       className="itmChilmdl"
@@ -1131,7 +1160,7 @@ export default class ChildAdmin extends Component {
                   </div>
 
                   <div className="pages11">
-                    <label htmlFor="child3">пол * </label>
+                    <label htmlFor="child3">пол </label>
                     <br />
                     <select className="childGndr">
                       <option value="м">м</option>
@@ -1139,7 +1168,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child5"> Свидетельство о рождении *</label>
+                    <label htmlFor="child5"> Свидетельство о рождении </label>
                     <br />
                     <input
                       className="childCertifi"
@@ -1148,7 +1177,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child7"> Здоровья* </label>
+                    <label htmlFor="child7"> Здоровья </label>
                     <br />
                     <select className="childHealth">
                       <option>1</option>
@@ -1157,7 +1186,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="child6">Дата выдачи* </label>
+                    <label htmlFor="child6">Дата выдачи </label>
                     <br />
                     <input
                       className="childisregisteredwith"
@@ -1175,7 +1204,7 @@ export default class ChildAdmin extends Component {
                     </select>
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">Отклонения *</label>
+                    <label htmlFor="form5">Отклонения </label>
                     <br />
                     <input
                       className="childdeviations"
@@ -1184,7 +1213,7 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">Медицинское заключение *</label>
+                    <label htmlFor="form5">Медицинское заключение </label>
                     <br />
                     <input
                       className="childmedicines"
@@ -1193,7 +1222,9 @@ export default class ChildAdmin extends Component {
                     />
                   </div>
                   <div className="pages11">
-                    <label htmlFor="form5">Необходимость интеграции по ограничению здоровья</label>
+                    <label htmlFor="form5">
+                      Необходимость интеграции по ограничению здоровья
+                    </label>
                     <br />
                     <input
                       className="childhealthrestrictions"
@@ -1230,8 +1261,8 @@ export default class ChildAdmin extends Component {
                   </div>
                 </div>
                 <div className="fileUpload">
-                  <input className="fileChild" type='file' />
-                  <img src={image_file} alt='' />
+                  <input className="fileChild" type="file" />
+                  <img src={image_file} alt="" />
                   <p>(Перетащите или щелкните, чтобы вставить)</p>
                 </div>
 
@@ -1259,25 +1290,21 @@ export default class ChildAdmin extends Component {
         </div>
         <div className="mfhtrg">
           <h1 className="bigah1">Список детей</h1>
-          <div className='headTools'>
-        <div>
-          <select>
-            {
-              this.state.group.map(item => {
-                return(
-                  <option>{item.groupname}</option>
-                )
-              })
-            }
-          </select>
-        </div>
-        <div>
-          <input type='date' />
-        </div>
-        <div>
-          <button onClick={() => this.openModal()}>Добавить ребенка</button>
-        </div>
-      </div>
+          <div className="headTools">
+            <div>
+              <select>
+                {this.state.group.map((item) => {
+                  return <option>{item.groupname}</option>;
+                })}
+              </select>
+            </div>
+            <div>
+              <input type="date" />
+            </div>
+            <div>
+              <button onClick={() => this.openModal()}>Добавить ребенка</button>
+            </div>
+          </div>
           <div id="tables">
             <div id="names">
               <p>ID</p>
@@ -1366,3 +1393,38 @@ export default class ChildAdmin extends Component {
     );
   }
 }
+
+// <div className="dvasew">
+//   <p>{item2.question}</p>
+//   <div className="fykjh">
+//     <img
+//       src={"./img/" + item2.question_img}
+//       alt={item2.question_img}
+//     />
+//     <div className="aysdu">
+//       <button
+//         onClick={() => CHECK([1, item2.answer,item.testid])}
+//       >
+//         1
+//       </button>
+//       <br />
+//       <button
+//         onClick={() => CHECK([2, item2.answer,item.testid])}
+//       >
+//         2
+//       </button>
+//       <br />
+//       <button
+//         onClick={() => CHECK([3, item2.answer,item.testid])}
+//       >
+//         3
+//       </button>
+//       <br />
+//       <button
+//         onClick={() => CHECK([4, item2.answer,item.testid])}
+//       >
+//         4
+//       </button>
+//     </div>
+//   </div>
+// </div>

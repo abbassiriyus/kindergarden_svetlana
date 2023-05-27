@@ -13,6 +13,7 @@ export default class Employees extends Component {
     data: [],
     deleteData: {},
     PersonGet: [],
+    gorupGet: []
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
@@ -75,6 +76,9 @@ export default class Employees extends Component {
 
   componentDidMount() {
     this.getPerson();
+    axios.get(`${url}/group`).then(res => {
+      this.setState({ gorupGet: res.data })
+    })
   }
 
   PostPerson() {
@@ -309,23 +313,23 @@ setTimeout(() => {
           <div className="Apages1">
             <div className="oyna101">
               <div className="pages11">
-                <label htmlFor="form1">Фамилия*</label>
+                <label htmlFor="form1">Фамилия</label>
                 <br />
                 <input id="form1" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form2">Имя* </label>
+                <label htmlFor="form2">Имя</label>
                 <br />
                 <input id="form2" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFѯr="form3">Отчество*</label>
+                <label htmlFѯr="form3">Отчество</label>
                 <br />
                 <input id="form3" type="text" />
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="form4"> Пол* </label>
+                <label htmlFor="form4"> Пол</label>
                 <br />
                 <select name="" id="form4">
                   <option value="М">М</option>
@@ -333,12 +337,12 @@ setTimeout(() => {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="form5">Дата рождения*</label>
+                <label htmlFor="form5">Дата рождения</label>
                 <br />
                 <input id="form5" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="form51">Телефон*</label>
+                <label htmlFor="form51">Телефон</label>
                 <br />
                 <input id="form51" type="tel" />
               </div>
@@ -349,22 +353,22 @@ setTimeout(() => {
               </div>
 
               <div className="pages11">
-                <label htmlFor="form7">Серия паспорта* </label>
+                <label htmlFor="form7">Серия паспорта</label>
                 <br />
                 <input className="form7" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="form8"> Номер паспорта* </label>
+                <label htmlFor="form8"> Номер паспорта</label>
                 <br />
                 <input className="form8" type="number" />
               </div>
               <div className="pages11">
-                <label htmlFor="form9"> Дата выдачи*</label>
+                <label htmlFor="form9"> Дата выдачи</label>
                 <br />
                 <input className="form9" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="form99"> Место работы*</label>
+                <label htmlFor="form99"> Место работы</label>
                 <br />
                 <input className="form99" type="text" />
               </div>
@@ -377,7 +381,7 @@ setTimeout(() => {
                 marginBottom: "30px",
               }}
             >
-              Адрес регистрации*
+              Адрес регистрации
             </label>
             <div className="oyna101">
               <div className="pages11">
@@ -456,23 +460,23 @@ setTimeout(() => {
                 <div className="Apages1">
                   <div className="oyna101">
                     <div className="pages11">
-                      <label htmlFor="form1">Фамилия*</label>
+                      <label htmlFor="form1">Фамилия</label>
                       <br />
                       <input className="formItm" placeholder={item.personmiddlename} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form2">Имя* </label>
+                      <label htmlFor="form2">Имя</label>
                       <br />
                       <input className="formItm2" placeholder={item.personfirstname} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFѯr="form3">Отчество*</label>
+                      <label htmlFѯr="form3">Отчество</label>
                       <br />
                       <input className="formItm3" placeholder={item.personlastname} type="text" />
                     </div>
                     <div className="pages11">
                       <br />
-                      <label htmlFor="form4"> Пол* </label>
+                      <label htmlFor="form4"> Пол</label>
                       <br />
                       <select name="" className="formItm4">
                         <option value="М">М</option>
@@ -480,12 +484,12 @@ setTimeout(() => {
                       </select>
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form5">Дата рождения*</label>
+                      <label htmlFor="form5">Дата рождения</label>
                       <br />
                       <input className="formItm5" placeholder={item.databirthday} type="date" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form51">Телефон*</label>
+                      <label htmlFor="form51">Телефон</label>
                       <br />
                       <PhoneInput
                         id="userNumber2"
@@ -501,17 +505,17 @@ setTimeout(() => {
                     </div>
 
                     <div className="pages11">
-                      <label htmlFor="form7">Серия паспорта* </label>
+                      <label htmlFor="form7">Серия паспорта</label>
                       <br />
                       <input className="formItm7" placeholder={item.passportseries} type="text" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form8"> Номер паспорта* </label>
+                      <label htmlFor="form8"> Номер паспорта</label>
                       <br />
                       <input className="formItm8" placeholder={item.passportnumber} type="number" />
                     </div>
                     <div className="pages11">
-                      <label htmlFor="form8"> Дата выдачи паспорта* </label>
+                      <label htmlFor="form8"> Дата выдачи паспорта</label>
                       <br />
                       <input className="formItm9" placeholder={item.passportdate} type="date" />
                     </div>
@@ -541,17 +545,34 @@ setTimeout(() => {
         </div>
         <div className="kgjl">
           <h1 className="bigah1">Список Родитель</h1>
-          <div className="biga-page">
-            <Dropdown id="drop">
-              <Dropdown.Toggle variant="light" id="dropdown-basic">
-                Должность
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#/action-1">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Добавите</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Добавите</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+     
+     
+          <div className="cake">
+          <div className="cake1">
+            <select className="mad" name="" id="">
+              <option value="">Учебный год</option>
+              <option value="">2023</option>
+              <option value="">2024</option>
+              <option value="">2025</option>
+              <option value="">2026</option>
+            </select>
+            <input type='date' />
+            <button className="nodiruca" onClick={() => {
+                this.openModal();
+              }}>
+              Добавить Родитель
+            </button>
+          </div>
+        </div>
+     
+     
+     
+     
+          {/* <div className="biga-page">
+          <select>
+            <option></option>
+          </select>
+          <input type='date' />
             <button
               id="btnlar1"
               onClick={() => {
@@ -560,7 +581,7 @@ setTimeout(() => {
             >
               + Добавить Родитель
             </button>
-          </div>
+          </div> */}
           <div id="tables">
             <div id="names">
               <p>ID</p>

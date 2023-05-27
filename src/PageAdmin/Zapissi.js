@@ -56,18 +56,18 @@ export default function Zapissi() {
           <input type='date' />
         </div>
         <div>
-          <button>+Добавить пропуск</button>
+          <button>Добавить пропуск</button>
         </div>
       </div>
       <div className="tablle">
         <div className="numbersss">
           <p>ID</p>
-          <p>Data <br />dobavlena</p>
-          <p>Data</p>
-          <p>Rebonek</p>
-          <p>Prichina</p>
-          <p>Avtor</p>
-          <p>Deystve</p>
+          <p>Дата  <br />добавления</p>
+          <p>Дата</p>
+          <p>Ребенок</p>
+          <p>Причина</p>
+          <p>Автор</p>
+          <p>Действие</p>
         </div>
         {
           state.map(item => {

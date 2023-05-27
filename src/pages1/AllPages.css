@@ -1061,7 +1061,8 @@ flex-direction: row;
 #useirud .MuiTypography-root {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  margin: 10px;
+  /* justify-content: center; */
 }
 
 #useirud .kids-baby {
@@ -1136,7 +1137,7 @@ flex-direction: row;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  background: #334155;
+  background: #334155d7;
   padding: 15px;
   height: 70px;
   border-top-right-radius: 30px;
@@ -1152,7 +1153,7 @@ flex-direction: row;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  background: #fff;
+  background: #ffffff95;
   padding: 15px;
 }
 
@@ -1638,9 +1639,24 @@ border-radius: 6px;
 .biga-pages{
   display: none !important;
 }
+.MuiCollapse-root {
+  position: relative;
+  overflow: hidden;
+}
+.groppas{
+  width: 35%;
+  height: 50px;
+  border-radius: 30px;
+  border: 1px solid #334155;
+  margin-left: 35%;
+  align-items: center;
+}
 .oooo{
   color: red;
-  margin-left: 30px;
+  position: absolute;
+  top: 0;
+  left: 100px;
+  /* margin-left: 30px; */
 }
 .btnu{
   width: 163.5px;

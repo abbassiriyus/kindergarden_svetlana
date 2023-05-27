@@ -55,6 +55,7 @@
   border-radius: 30px;
   border: none;
   margin-left: 10px !important;
+  margin-top: 0 !important;
 }
 
 #btnlar1:hover {
@@ -457,6 +458,18 @@
   padding: 5px;
   outline: none;
 }
+
+.dropw{
+  margin-left: 10%;
+}
+
+.cake1 input{
+  width: 20%;
+  height: 40px;
+  border-radius: 30px;
+  padding: 5px;
+}
+
 
 
 

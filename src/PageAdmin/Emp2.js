@@ -50,7 +50,7 @@ export default class Employees extends Component {
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <a href='/people'><button id="btnlar1">  + Добавить сотрудника </button></a>
+                    <a href='/people'><button id="btnlar1">  Добавить сотрудника </button></a>
                 </div>
                 <div id='tables'>
                     <div id='names'>

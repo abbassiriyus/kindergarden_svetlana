@@ -12,7 +12,7 @@ export default class App extends Component {
     person: [],
     data: [],
     group: [],
-    gruppa: []
+    gruppa: [],
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
@@ -71,9 +71,9 @@ export default class App extends Component {
     axios.get(`${url}/skill_group`).then((res) => {
       this.setState({ group: res.data });
     });
-    axios.get(`${url}/group`).then(res => {
-      this.setState({ gruppa: res.data })
-    })
+    axios.get(`${url}/group`).then((res) => {
+      this.setState({ gruppa: res.data });
+    });
     this.getData11();
   };
 
@@ -119,26 +119,26 @@ export default class App extends Component {
             <div className="oyna101">
               <div className="pages11">
                 <br />
-                <label htmlFor="test1"> Месяц * </label>
+                <label htmlFor="test1"> Месяц </label>
                 <br />
                 <select name="" id="test1">
                   <option value="январь">январь</option>
                   <option value="февраль">февраль</option>
-                  <option value="марта">марта</option>
+                  <option value="марта">март</option>
                   <option value="апрель">апрель</option>
-                  <option value="мая">мая</option>
+                  <option value="мая">май</option>
                   <option value="июнь">июнь</option>
                   <option value="июль">июль</option>
-                  <option value="Август">Август</option>
-                  <option value="Сентябрь">Сентябрь</option>
-                  <option value="Октябрь">Октябрь</option>
+                  <option value="Август">август</option>
+                  <option value="Сентябрь">сентябрь</option>
+                  <option value="Октябрь">октябрь</option>
                   <option value="ноябрь">ноябрь</option>
-                  <option value="Декабрь">Декабрь</option>
+                  <option value="Декабрь">декабрь</option>
                 </select>
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="test2"> Автор * </label>
+                <label htmlFor="test2"> Автор</label>
                 <br />
                 <select name="" id="test2">
                   {this.state.data.map((item) => {
@@ -161,24 +161,24 @@ export default class App extends Component {
               </div>
               <div className="pages11">
                 <br />
-                <label htmlFor="test3">Группа * </label>
+                <label htmlFor="test3">Группа</label>
                 <br />
                 <select name="" id="test3">
                   <option value={1}>Окружающий мир</option>
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="test10">Область развития *</label>
+                <label htmlFor="test10">Область развития</label>
                 <br />
                 <input id="test10" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="test4">Вопрос *</label>
+                <label htmlFor="test4">Вопрос</label>
                 <br />
                 <input id="test4" type="text" />
               </div>
               <div className="pages11">
-                <label htmlFor="test5">Ответ *</label>
+                <label htmlFor="test5">Ответ</label>
                 <br />
                 <input id="test5" type="text" />
               </div>
@@ -215,23 +215,32 @@ export default class App extends Component {
         <h1 className="sss22">Задания</h1>
         <div className="cake">
           <div className="cake1">
+          <select className="mad" name="" id="test1">
+                  <option value="январь">январь</option>
+                  <option value="февраль">февраль</option>
+                  <option value="марта">март</option>
+                  <option value="апрель">ацпрель</option>
+                  <option value="мая">май</option>
+                  <option value="июнь">июнь</option>
+                  <option value="июль">июль</option>
+                  <option value="Август">август</option>
+                  <option value="Сентябрь">сентябрь</option>
+                  <option value="Октябрь">октябрь</option>
+                  <option value="ноябрь">ноябрь</option>
+                  <option value="Декабрь">Декабрь</option>
+                </select>
             <select className="mad" name="" id="">
-               {
-                  this.state.gruppa.map(item => {
-                  return(
-                     <option value="">{item.groupname}</option>
-                  )
-                  })
-               }
+              {this.state.gruppa.map((item) => {
+                return <option value="">{item.groupname}</option>;
+              })}
             </select>
-            <input className="mad" type="date" placeholder="Дата добавления" />
             <button
               onClick={() => {
                 this.openModal();
               }}
               className="nodiruca"
             >
-              + Добавить тест
+              Добавить тест
             </button>
           </div>
         </div>

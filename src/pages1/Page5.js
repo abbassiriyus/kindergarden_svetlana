@@ -12,13 +12,14 @@ import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
 import ImgAcc from "../img/free-icon-calendar-1258262 1.png";
 import Imgcca from "../img/free-icon-file-968545 1.png";
+import "./AllPages.css";
 
 export default function Page1() {
   const [up, setup] = useState([]);
   const [child, setChild] = useState([]);
   const [selectedKid, setSelectedKid] = useState([]);
-  const [oo, setOo]=useState([]);
-  const [oo22, setOo22]=useState('18');
+  const [oo, setOo] = useState([]);
+  const [oo22, setOo22] = useState("18");
 
   const handleKidClick = (chilid) => {
     setSelectedKid(chilid);
@@ -59,19 +60,18 @@ export default function Page1() {
     };
     fetchData();
   }, []);
-  useEffect(() => {
-  }, [child, up]);
+  useEffect(() => {}, [child, up]);
 
-    const handlePageChange = (event, value) => {
-      console.log(value); 
-      console.log(oo22);
-      const oo =[]
-      oo.push(value)
-       setOo22(oo[0])// Вывод выбранной страницы в консоль
-    };
+  const handlePageChange = (event, value) => {
+    console.log(value);
+    console.log(oo22);
+    const oo = [];
+    oo.push(value);
+    setOo22(oo[0]); // Вывод выбранной страницы в консоль
+  };
   return (
     <div className="The-Big" id="useirud">
-              <h1> МАЙ 2023 </h1>
+      <h1> МАЙ 2023 </h1>
       <div className="Stackk">
         <div className="divv">
           <Pagination
@@ -95,23 +95,7 @@ export default function Page1() {
             >
               <Typography className="ush">
                 <img src={Img002} alt="" />
-                <h1>{element.groupname}   </h1>
-                {child.map((thing) => {
-        if (element.groupid === thing.groupid) {
-          const filteredThings2 = oo.filter(thing2 => thing.childid === thing2.childid);
-          const data = filteredThings2.length > 0 ? filteredThings2[0].datestart.slice(8, 10) : null;
-          return (
-            <>
-              {filteredThings2.length > 0 && (
-                <p className="oooo">
-                  {filteredThings2.length} отсутствует
-                </p>
-              )}
-            </>
-          )
-        }
-      })}
-                  
+                <h1>{element.groupname} </h1>
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
@@ -123,6 +107,26 @@ export default function Page1() {
                         onClick={() => handleKidClick(item)}
                         className="kids-baby"
                       >
+                        {child.map((thing) => {
+                          if (element.groupid === thing.groupid) {
+                            const filteredThings2 = oo.filter(
+                              (thing2) => thing.childid === thing2.childid
+                            );
+                            const data =
+                              filteredThings2.length > 0
+                                ? filteredThings2[0].datestart.slice(8, 10)
+                                : null;
+                            return (
+                              <>
+                                {filteredThings2.length > 0 && (
+                                  <p className="oooo">
+                                    {filteredThings2.length} отсутствует
+                                  </p>
+                                )}
+                              </>
+                            );
+                          }
+                        })}
                         <div className="baby">
                           <img src={Img001} alt="" />
                           <h2>{item.childfirstname}</h2>
@@ -132,6 +136,9 @@ export default function Page1() {
                   }
                 })}
               </Typography>
+              <a href='/page6'>
+                <button className="groppas"><img src={Imgcca} /> ЗАПИСИ О ПРОПУСКАХ</button>
+              </a>
             </AccordionDetails>
           </Accordion>
         ))}
