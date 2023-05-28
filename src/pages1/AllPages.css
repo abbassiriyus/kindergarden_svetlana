@@ -1686,3 +1686,83 @@ align-items: center;
   background: #fff;
   margin-top: 60px;
 }
+
+.btn_Groupo{
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-left: 20%;
+}
+
+.btn_Groupo button{
+  width: 40%;
+  height: 40px;
+  border-radius: 30px;
+  background: #334155;
+  color: white;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.modalls2{
+  width: 100%;
+  min-height: 100vh;
+  background: #0000003b;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none !important;
+}
+.modalSozdat2{
+  background: #fff;
+  width: 40%;
+  margin: auto;
+  display: none;
+  margin-top: 200px;
+  padding: 10px;
+}
+
+.modalSozdat2 input{
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+.modalSozdat2 h4{
+  color: black !important;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.tanlovDiv{
+  width: 100%;
+  min-height: 100vh;
+  background: #00000090;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.tanlov{
+  background: #fff;
+  width: 25%;
+  height: 200px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: auto;
+  /* margin-top: 200px; */
+  align-items: center;
+  border-radius: 30px;
+}
+
+.tanlov button{
+  width: 46%;
+  background: #334155;
+  height: 50px;
+  border-radius: 30px;
+  color: white;
+  font-weight: 600;
+}

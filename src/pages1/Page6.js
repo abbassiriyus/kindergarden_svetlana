@@ -1,6 +1,5 @@
-
 import axios from "axios";
-import React, { useState, useEffect,useCallback } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import img3 from "../img/free-icon-thermometer-1165508 1.png";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
@@ -19,37 +18,46 @@ export default function Page6() {
   const [person, setPerson] = useState([]);
   const [deti, setDeti] = useState([]);
   function open() {
-    document.querySelector('.modalSozdat').style = 'display: block'
-    document.querySelector('.ybuyi').style = 'display: none;'
-    document.querySelector('.text-center').style = 'display: none'
+    document.querySelector(".modalSozdat").style = "display: block";
+    document.querySelector(".ybuyi").style = "display: none;";
+    document.querySelector(".text-center").style = "display: none";
   }
   function close() {
-    document.querySelector('.modalSozdat').style = 'display: none'
-    document.querySelector('.ybuyi').style = 'display: block'
-    document.querySelector('.text-center').style = 'display: block'
+    document.querySelector(".modalSozdat").style = "display: none";
+    document.querySelector(".ybuyi").style = "display: block";
+    document.querySelector(".text-center").style = "display: block";
   }
- 
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [legalRepRes, relationRes, childRes, excuseRes, employeeRes, personRes] = await Promise.all([
+        const [
+          legalRepRes,
+          relationRes,
+          childRes,
+          excuseRes,
+          employeeRes,
+          personRes,
+        ] = await Promise.all([
           axios.get(`${url}/Legal_Rep`),
           axios.get(`${url}/relation`),
           axios.get(`${url}/child`),
           axios.get(`${url}/excuse`),
           axios.get(`${url}/employee`),
-          axios.get(`${url}/person`)
+          axios.get(`${url}/person`),
         ]);
-  
+
         const filteredChildren = legalRepRes.data.filter(
           (child) => child.personid === 6
         );
-        
+
         const tempBolas = [];
         const nol = [];
         for (let i = 0; i < relationRes.data.length; i++) {
           for (let j = 0; j < filteredChildren.length; j++) {
-            if (relationRes.data[i].legalrepid === filteredChildren[j].legalrepid) {
+            if (
+              relationRes.data[i].legalrepid === filteredChildren[j].legalrepid
+            ) {
               for (let e = 0; e < excuseRes.data.length; e++) {
                 if (excuseRes.data[e].childid === relationRes.data[i].childid) {
                   tempBolas.push(excuseRes.data[e].datestart.slice(0, 10));
@@ -67,15 +75,14 @@ export default function Page6() {
         setallExcuse(excuseRes.data);
         setEmploy(employeeRes.data);
         setPerson(personRes.data);
-        setDeti(childRes.data)
+        setDeti(childRes.data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
   }, []);
-  useEffect(() => {
-  }, [
+  useEffect(() => {}, [
     excuse,
     employ,
     person,
@@ -85,17 +92,17 @@ export default function Page6() {
     rebenok3,
     rebenoki,
   ]);
- 
+
   const handleClickDay = useCallback(
     async (date) => {
       const d = date;
       const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
-  
+
       const index = excuse.indexOf(a);
       if (index > -1) {
         document.querySelector(".BigModalChild").style = "display: flex;";
         setRebenok2(excuse[index]);
-  
+
         try {
           const res = await axios.get(`${url}/excuse`);
           const filteredData = res.data.filter((item) => {
@@ -131,94 +138,89 @@ export default function Page6() {
   function closeChildModal() {
     document.querySelector(".BigModalChild").style = "display: none;";
   }
-  function postdad (parameters) {
-    console.log((localStorage.getItem("employ")),"employ");
-    console.log(document.querySelector("#uudeti").value,"deti");
-    console.log(document.querySelector("#uunachaolo").value,"start");
-    console.log(document.querySelector("#konec").value,"end");
-    console.log(document.querySelector("#chast").value,"partday");
-    console.log(document.querySelector("#prichina").value,"prichina");
+  function postdad(parameters) {
+    console.log(localStorage.getItem("employ"), "employ");
+    console.log(document.querySelector("#uudeti").value, "deti");
+    console.log(document.querySelector("#uunachaolo").value, "start");
+    console.log(document.querySelector("#konec").value, "end");
+    console.log(document.querySelector("#chast").value, "partday");
+    console.log(document.querySelector("#prichina").value, "prichina");
     var formData = new FormData();
     formData.append("datestart", document.querySelector("#uunachaolo").value);
     formData.append("dateend", document.querySelector("#konec").value);
     formData.append("childid", document.querySelector("#uudeti").value);
     formData.append("daypart", document.querySelector("#chast").value);
     formData.append("reason", document.querySelector("#prichina").value);
-    formData.append("employeeid",(localStorage.getItem("employ")));
-    axios
-    .post(`${url}/excuse`,formData)
-    .then((res)=>{
+    formData.append("employeeid", localStorage.getItem("employ"));
+    axios.post(`${url}/excuse`, formData).then((res) => {
       console.log("worked");
-      window.location.reload()
-    })
+      window.location.reload();
+    });
+  }
+  function openModal2 () {
+    document.querySelector('.modalls2').style = 'display: block !important'
+    document.querySelector('.modalSozdat2').style = 'display: block !important'
+    document.querySelector('.BigModalChild').style = 'display: none'
   }
 
+  function close2 () {
+    document.querySelector('.modalls2').style = 'display: none !important'
+    document.querySelector('.modalSozdat2').style = 'display: none !important'
+    document.querySelector('.BigModalChild').style = 'display: block'
+  }
+
+  function otmenOpen () {
+    document.querySelector('.tanlovDiv').style = 'display: flex;'
+  }
+  function otmenClose () {
+    document.querySelector('.tanlovDiv').style = 'display: none;'
+  }
+
+  function otmenClosed () {
+    alert('udalena')
+    window.location.reload()
+  }
 
   return (
     <div className="The-Big">
-      <div className="modalSozdat">
-        <span className="clossedModal" onClick={() => close()}>X</span>
-        <h4>Создать запись о пропуске занятий</h4>
-        <br />
-        <h4>Ребенок *</h4>
-        <select id="uudeti" className="selectDeti">
-          {rebenok.map((item)=>{
-            return<>{deti.map((item2)=>{
-              if (item===item2.childid) {
-                return<option value={item2.childid}>{item2.childlastname}  {item2.childfirstname}</option>
-              }
-            })}</>
-          })}
-        </select>
-        <div className="datanachl">
-          <div className="hashla">
-            <h4>Дата начала *</h4>
-            <input id="uunachaolo" type='date' />
-          </div>
-          <div className="hashla">
-            <h4>Дата окончания *</h4>
-            <input id="konec" type='date' />
-          </div>
-        </div>
-        <h4>Часть дня *</h4>
-        <div className="checkboxForm">
-          <select id="chast" className="selectDeti">
-            <option>Утро</option>
-            <option>Весь день</option>
-            <option>После обеда</option>
-          </select>
-        </div>
-        <h4>Причина *</h4>
-        <select id="prichina" className="boleznS">
-          <option>Болезнь</option>
-          <option>Посещение врача</option>
-          <option>Отпуск</option>
-          <option>Семейные об-ва</option>
-        </select>
-        <button onClick={() => postdad()} className="btnu"><p>Создать</p></button>
+      <div className="tanlovDiv">
+      <div className="tanlov">
+        <button onClick={() => otmenClose()}>Отмена</button>
+        <button onClick={() => otmenClosed()}>Удалить</button>
+      </div>
       </div>
       <div className="modalSozdat">
-        <span className="clossedModal" onClick={() => close()}>X</span>
+        <span className="clossedModal" onClick={() => close()}>
+          X
+        </span>
         <h4>Создать запись о пропуске занятий</h4>
         <br />
         <h4>Ребенок *</h4>
         <select id="uudeti" className="selectDeti">
-          {rebenok.map((item)=>{
-            return<>{deti.map((item2)=>{
-              if (item===item2.childid) {
-                return<option value={item2.childid}>{item2.childlastname}  {item2.childfirstname}</option>
-              }
-            })}</>
+          {rebenok.map((item) => {
+            return (
+              <>
+                {deti.map((item2) => {
+                  if (item === item2.childid) {
+                    return (
+                      <option value={item2.childid}>
+                        {item2.childlastname} {item2.childfirstname}
+                      </option>
+                    );
+                  }
+                })}
+              </>
+            );
           })}
         </select>
         <div className="datanachl">
           <div className="hashla">
             <h4>Дата начала *</h4>
-            <input id="uunachaolo" type='date' />
+            <input id="uunachaolo" type="date" />
           </div>
           <div className="hashla">
             <h4>Дата окончания *</h4>
-            <input id="konec" type='date' />
+            <input id="konec" type="date" />
           </div>
         </div>
         <h4>Часть дня *</h4>
@@ -236,7 +238,65 @@ export default function Page6() {
           <option>Отпуск</option>
           <option>Семейные об-ва</option>
         </select>
-        <button onClick={() => postdad()} className="btnu"><p>Создать</p></button>
+        <button onClick={() => postdad()} className="btnu">
+          <p>Создать</p>
+        </button>
+      </div>
+      <div className="modalls2">
+      <div className="modalSozdat2">
+        <span className="clossedModal" onClick={() => close2()}>
+          X
+        </span>
+        <h4>Создать запись о пропуске занятий</h4>
+        <br />
+        <h4>Ребенок *</h4>
+        <select id="uudeti" className="selectDeti">
+          {rebenok.map((item) => {
+            return (
+              <>
+                {deti.map((item2) => {
+                  if (item === item2.childid) {
+                    return (
+                      <option value={item2.childid}>
+                        {item2.childlastname} {item2.childfirstname}
+                      </option>
+                    );
+                  }
+                })}
+              </>
+            );
+          })}
+        </select>
+        <div className="datanachl">
+          <div className="hashla">
+            <h4>Дата начала *</h4>
+            <input id="uunachaolo" type="date" />
+          </div>
+          <div className="hashla">
+            <h4>Дата окончания *</h4>
+            <input id="konec" type="date" />
+          </div>
+        </div>
+        <h4>Часть дня *</h4>
+        <div className="checkboxForm">
+          <select id="chast" className="selectDeti">
+            <option>Утро</option>
+            <option>Весь день</option>
+            <option>После обеда</option>
+          </select>
+        </div>
+        <h4>Причина *</h4>
+        <select id="prichina" className="boleznS">
+          <option>Болезнь</option>
+          <option>Посещение врача</option>
+          <option>Отпуск</option>
+          <option>Семейные об-ва</option>
+        </select>
+        <div className="btn_Groupo">
+        <button>Создать</button>
+        <button>Отмена</button>
+        </div>
+      </div>
       </div>
       <div className="BigModalChild">
         <h1>Loading.....</h1>
@@ -260,13 +320,12 @@ export default function Page6() {
                         <div classname="childs">
                           <img src={img} alt="" />
                           <p>
-                            
                             {item2.childfirstname} {item2.childlastname}
                           </p>
                         </div>
                         <h4 className="uu">Дата</h4>
                         <div className="mchj">
-                          <h4 className="uu">{item3.datestart.slice(0,10)}</h4>
+                          <h4 className="uu">{item3.datestart.slice(0, 10)}</h4>
                           <h4 className="uu">{item3.daypart}</h4>
                         </div>
                         <h4 className="uu">Причина </h4>
@@ -279,7 +338,9 @@ export default function Page6() {
                                 if (item4.personid === item5.personid) {
                                   return (
                                     <p>
-                                      Автор:{item5.personlastname}  {item5.personfirstname} {item5.personmiddlename}
+                                      Автор:{item5.personlastname}{" "}
+                                      {item5.personfirstname}{" "}
+                                      {item5.personmiddlename}
                                     </p>
                                   );
                                 }
@@ -290,8 +351,8 @@ export default function Page6() {
                           Дата:{item3.syschangedatutc}
                         </p>
                         <div className="btn_Groupo">
-                          <button>Отмена</button>
-                          <button>Сохранит</button>
+                          <button onClick={() => openModal2()}>Редактировать</button>
+                          <button onClick={() => otmenOpen()}>Удалить</button>
                         </div>
                       </>
                     );
@@ -305,12 +366,12 @@ export default function Page6() {
       <div className="ybuyi">
         <h1 className="text-center">React Calendar</h1>
         <div className="calendar-container">
-        <Calendar
-          onClickDay={handleClickDay}
-          onChange={setDate}
-          value={date}
-          tileContent={getTileContent}
-        />
+          <Calendar
+            onClickDay={handleClickDay}
+            onChange={setDate}
+            value={date}
+            tileContent={getTileContent}
+          />
         </div>
         <div className="pulsDiv" onClick={() => open()}>
           <span>+</span>

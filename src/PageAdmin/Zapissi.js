@@ -7,6 +7,9 @@ import url from '../host'
 
 export default function Zapissi() {
   const [state, setState] = useState([])
+  const [group, setGroup] = useState([])
+  const [person, setPerson] = useState([])
+
 
 
   function getExcuse() {
@@ -27,6 +30,12 @@ export default function Zapissi() {
   document.querySelector(".headTools").style = "display: block !important";
  }
   useEffect(() => {
+    axios.get(`${url}/group`).then(res => {
+      setGroup( res.data )
+    })
+    axios.get(`${url}/child`).then(res => {
+      setPerson( res.data )
+    })
     getExcuse()
   }, [])
 
@@ -37,26 +46,88 @@ export default function Zapissi() {
       window.location = '/zapissi'
     })
   }
+  function modalSozdat () {
+    document.querySelector('.modallses').style = 'display: flex'
+  }
+
+  function modalSozdat2 () {
+    document.querySelector('.modallses').style = 'display: none'
+  }
 
 
   return (
     <div className='asdasdasdasdasd'>
+      <div className='modallses'>
+       <div className="modalSozdat">
+        <span className="clossedModal" onClick={() => modalSozdat2()}>
+          X
+        </span>
+        <h4>Создать запись о пропуске занятий</h4>
+        <br />
+        <h4>Ребенок *</h4>
+        <select id="uudeti" className="selectDeti">
+                      <option>
+                        halo
+                      </option>
+        </select>
+        <div className="datanachl">
+          <div className="hashla">
+            <h4>Дата начала *</h4>
+            <input id="uunachaolo" type="date" />
+          </div>
+          <div className="hashla">
+            <h4>Дата окончания *</h4>
+            <input id="konec" type="date" />
+          </div>
+        </div>
+        <h4>Часть дня *</h4>
+        <div className="checkboxForm">
+          <select id="chast" className="selectDeti">
+            <option>Утро</option>
+            <option>Весь день</option>
+            <option>После обеда</option>
+          </select>
+        </div>
+        <h4>Причина *</h4>
+        <select id="prichina" className="boleznS">
+          <option>Болезнь</option>
+          <option>Посещение врача</option>
+          <option>Отпуск</option>
+          <option>Семейные об-ва</option>
+        </select>
+        <button className="btnu">
+        Создать
+        </button>
+      </div>
+      </div>
       <div className='headTools'>
         <div>
           <select>
-            <option>Группа</option>
+            {
+              group.map(item => {
+                return(
+                  <option>{item.groupname}</option>
+                )
+              })
+            }
           </select>
         </div>
         <div>
           <select>
-            <option>Ребенок</option>
+            {
+              person.map(item => {
+                return(
+                  <option>{item.childfirstname}</option>
+                )
+              })
+            }
           </select>
         </div>
         <div>
           <input type='date' />
         </div>
         <div>
-          <button>Добавить пропуск</button>
+          <button onClick={() => modalSozdat()}>Добавить пропуск</button>
         </div>
       </div>
       <div className="tablle">
