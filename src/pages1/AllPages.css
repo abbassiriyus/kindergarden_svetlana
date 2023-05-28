@@ -287,6 +287,10 @@
   color: #334155;
 }
 
+.The-Big .Cards-forPage h4 {
+  color: #334155 !important;
+}
+
 .The-Big .Cards-forPage p {
   font-size: 20px;
 }
@@ -1416,8 +1420,7 @@ flex-direction: row;
 
 .divTest {
   display: none;
-  width: 80%;
-  height: 600px;
+  width: 90%;
   background: #fff;
   padding: 20px;
   border-radius: 30px;
@@ -1425,6 +1428,7 @@ flex-direction: row;
 }
 
 .Test_09 {
+  width: 70%;
   display: flex;
   align-items: center;
 }
@@ -1670,4 +1674,15 @@ align-items: center;
 }
 .btnu p{
   color: white;
+}
+
+.Test_09 img{
+  width: 50%;
+  margin-top: 40px;
+}
+
+.divTest2{
+  width: 100%;
+  background: #fff;
+  margin-top: 60px;
 }

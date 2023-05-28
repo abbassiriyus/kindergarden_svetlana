@@ -2,10 +2,13 @@ import React from "react";
 import "./AllPages.css";
 import img from "../img/image 37.png";
 import axios from "axios";
+import img2 from '../img/image 38.png'
+import img3 from '../img/image 39.png'
+import img4 from '../img/image 40.png'
 
 export default function Page7() {
   function openTest() {
-    document.querySelector(".divTest").style = "display: flex";
+    document.querySelector(".divTest").style = "display: block";
     document.querySelector(".GroupsBtn").style = "display: none";
   }
   function closeTest() {
@@ -50,6 +53,51 @@ export default function Page7() {
             <h1>4</h1>
           </div>
         </div>
+        <div className="divTest2">
+
+        <h2 className="ixx">
+        Какой из этих предметов не относится к живой природе?
+        </h2>
+        <div className="Test_09">
+          <img src={img2} alt="" />
+          <div className="hashla">
+            <h1>1</h1>
+            <h1>2</h1>
+            <h1>3</h1>
+            <h1>4</h1>
+          </div>
+        </div>
+        </div>
+        <div className="divTest2">
+
+<h2 className="ixx">
+Какой из этих предметов не относится к живой природе?
+</h2>
+<div className="Test_09">
+  <img src={img3} alt="" />
+  <div className="hashla">
+    <h1>1</h1>
+    <h1>2</h1>
+    <h1>3</h1>
+    <h1>4</h1>
+  </div>
+</div>
+</div>
+<div className="divTest2">
+
+<h2 className="ixx">
+Какой из этих предметов не относится к живой природе?
+</h2>
+<div className="Test_09">
+  <img src={img4} alt="" />
+  <div className="hashla">
+    <h1>1</h1>
+    <h1>2</h1>
+    <h1>3</h1>
+    <h1>4</h1>
+  </div>
+</div>
+</div>
       </div>
     </div>
   );
