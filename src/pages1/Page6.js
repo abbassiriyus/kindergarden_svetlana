@@ -197,6 +197,47 @@ export default function Page6() {
         </select>
         <button onClick={() => postdad()} className="btnu"><p>Создать</p></button>
       </div>
+      <div className="modalSozdat">
+        <span className="clossedModal" onClick={() => close()}>X</span>
+        <h4>Создать запись о пропуске занятий</h4>
+        <br />
+        <h4>Ребенок *</h4>
+        <select id="uudeti" className="selectDeti">
+          {rebenok.map((item)=>{
+            return<>{deti.map((item2)=>{
+              if (item===item2.childid) {
+                return<option value={item2.childid}>{item2.childlastname}  {item2.childfirstname}</option>
+              }
+            })}</>
+          })}
+        </select>
+        <div className="datanachl">
+          <div className="hashla">
+            <h4>Дата начала *</h4>
+            <input id="uunachaolo" type='date' />
+          </div>
+          <div className="hashla">
+            <h4>Дата окончания *</h4>
+            <input id="konec" type='date' />
+          </div>
+        </div>
+        <h4>Часть дня *</h4>
+        <div className="checkboxForm">
+          <select id="chast" className="selectDeti">
+            <option>Утро</option>
+            <option>Весь день</option>
+            <option>После обеда</option>
+          </select>
+        </div>
+        <h4>Причина *</h4>
+        <select id="prichina" className="boleznS">
+          <option>Болезнь</option>
+          <option>Посещение врача</option>
+          <option>Отпуск</option>
+          <option>Семейные об-ва</option>
+        </select>
+        <button onClick={() => postdad()} className="btnu"><p>Создать</p></button>
+      </div>
       <div className="BigModalChild">
         <h1>Loading.....</h1>
         {rebenoki.map((item2) => {
@@ -248,6 +289,10 @@ export default function Page6() {
                           <br />
                           Дата:{item3.syschangedatutc}
                         </p>
+                        <div className="btn_Groupo">
+                          <button>Отмена</button>
+                          <button>Сохранит</button>
+                        </div>
                       </>
                     );
                   }
