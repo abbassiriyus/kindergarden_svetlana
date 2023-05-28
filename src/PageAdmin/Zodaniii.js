@@ -47,6 +47,15 @@ export default class App extends Component {
         formdata.append("answer", document.querySelector("#test5").value);
         formdata.append("author", document.querySelector("#test2").value);
         axios.post(`${url}/question`, formdata).then((res) => {
+          axios.get(`${url}/question`).then((res2) => {
+            for (let i = 0; i < res2.data.length; i++) {
+              if (res2.data[i].question===document.querySelector("#test4").value&&res2.data[i].month=== document.querySelector("#test1").value&&res2.data[i].answer=== document.querySelector("#test5").value&&res2.data[i].author===document.querySelector("#test2").value) {
+                axios.post(`${url}/test`).then((res6)=>{
+
+                })
+              }
+            }
+          })
           // window.location.reload()
           console.log(res.data);
         });
