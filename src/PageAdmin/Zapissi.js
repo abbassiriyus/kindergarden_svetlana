@@ -9,9 +9,12 @@ export default function Zapissi() {
   const [state, setState] = useState([])
   const [group, setGroup] = useState([])
   const [person, setPerson] = useState([])
-
-
-
+  const [person2, setPerson2] = useState([])
+  const [person3, setPerson3] = useState([])
+  const [selectedValue, setSelectedValue] = useState("");
+  const [selectedValue2, setSelectedValue2] = useState("");
+  const [selectedValue3, setSelectedValue3] = useState("");
+  const [selectedValue4, setSelectedValue4] = useState("");
   function getExcuse() {
     axios.get(`${url}/excuse`).then(res => {
       axios.get(`${url}/child`).then(res2 => {
@@ -36,6 +39,12 @@ export default function Zapissi() {
     axios.get(`${url}/child`).then(res => {
       setPerson( res.data )
     })
+    axios.get(`${url}/employee`).then(res => {
+      setPerson2( res.data )
+    })
+    axios.get(`${url}/person`).then(res => {
+      setPerson3( res.data )
+    })
     getExcuse()
   }, [])
 
@@ -53,6 +62,24 @@ export default function Zapissi() {
   function modalSozdat2 () {
     document.querySelector('.modallses').style = 'display: none'
   }
+  function postExcuse () {
+    console.log(selectedValue,"DETI");
+    console.log(selectedValue2,"CHASTDNYAA");
+    console.log(document.querySelector('#uunachaolo').value,"NACHALO");
+    console.log(document.querySelector('#konec').value,"konec");
+    console.log(selectedValue3,"PRICHINA");
+    var formData = new FormData();
+    formData.append("datestart",document.querySelector('#uunachaolo').value);
+    formData.append("dateend", document.querySelector('#konec').value);
+    formData.append("childid", selectedValue);
+    formData.append("daypart", selectedValue2);
+    formData.append("reason",selectedValue3);
+    formData.append("employeeid",selectedValue4 );
+    axios.post(`${url}/excuse`,formData).then((res)=>{
+      console.log("ishldi");
+      window.location.reload()
+    })
+  }
 
 
   return (
@@ -64,15 +91,16 @@ export default function Zapissi() {
         </span>
         <h4>Создать запись о пропуске занятий</h4>
         <br />
-        <h4>Ребенок *</h4>
-        <select id="uudeti" className="selectDeti">
-                      <option>
-                        halo
-                      </option>
+        <h4>Ребенок </h4>
+        <select value={selectedValue} onChange={(event) => setSelectedValue(event.target.value)} id="uudeti" className="selectDeti">
+        <option>Выберите</option>
+           {person.map((item)=>{
+            return<option value={item.childid}>{item.childfirstname}</option>
+           })}
         </select>
         <div className="datanachl">
           <div className="hashla">
-            <h4>Дата начала *</h4>
+            <h4>Дата начала </h4>
             <input id="uunachaolo" type="date" />
           </div>
           <div className="hashla">
@@ -80,22 +108,36 @@ export default function Zapissi() {
             <input id="konec" type="date" />
           </div>
         </div>
-        <h4>Часть дня *</h4>
+        <h4>Часть дня </h4>
         <div className="checkboxForm">
-          <select id="chast" className="selectDeti">
-            <option>Утро</option>
-            <option>Весь день</option>
-            <option>После обеда</option>
+          <select value={selectedValue2} onChange={(event) => setSelectedValue2(event.target.value)} id="chast" className="selectDeti">
+          <option>Выберите</option>
+            <option value={"Утро"}>Утро</option>
+            <option value={"Весь день"}>Весь день</option>
+            <option value={"После обеда"}>После обеда</option>
           </select>
         </div>
-        <h4>Причина *</h4>
-        <select id="prichina" className="boleznS">
-          <option>Болезнь</option>
-          <option>Посещение врача</option>
-          <option>Отпуск</option>
-          <option>Семейные об-ва</option>
+        <h4>Причина </h4>
+        <select value={selectedValue3} onChange={(event) => setSelectedValue3(event.target.value)} id="prichina" className="boleznS">
+          <option>Выберите</option>
+          <option value={"Болезнь"}>Болезнь</option>
+          <option value={"Посещение врача"}>Посещение врача</option>
+          <option value={"Отпуск"}>Отпуск</option>
+          <option value={"Семейные об-ва"}>Семейные об-ва</option>
         </select>
-        <button className="btnu">
+        <h4>Воспитатель </h4>
+        <select value={selectedValue4} onChange={(event) => setSelectedValue4(event.target.value)} id="uudeti" className="selectDeti">
+        <option>Выберите</option>
+           {person2.map((item)=>{
+            return<>{person3.map((item2)=>{
+              if (item.personid===item2.personid) {
+                return<option value={item.employeeid}>{item2.personlastname}  {item2.personfirstname} </option>
+              }
+            })}</>
+  
+           })}
+        </select>
+        <button onClick={() => postExcuse()} className="btnu">
         Создать
         </button>
       </div>
