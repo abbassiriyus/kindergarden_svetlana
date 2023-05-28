@@ -52,6 +52,7 @@ export default function HomePage() {
   const [phone, usePhone] = useState();
   const [phone2, usePhone2] = useState();
   const [agreement, setAgreement] = useState();
+  const [agreed, setAgreed] = useState(false);
   if (window.innerWidth < 576) {
     var cards = document.getElementsByClassName("card"),
       transforms = [
@@ -122,7 +123,9 @@ export default function HomePage() {
     }
     transforms.push(transforms.shift());
   }
-
+  const handleAgreeChange = (event) => {
+    setAgreed(event.target.checked);
+  };
   setTimeout(() => {
     document.getElementById("carousel").onclick = function () {
       next();
@@ -137,12 +140,12 @@ export default function HomePage() {
     data.append("email", document.querySelector(".gmailPost").value);
     if (
       document.querySelector(".gmailPost").value.includes("@gmail") &&
-      k === 1
+      agreed
     ) {
       document.querySelector(".modalZyav").style = "display: flex";
       setTimeout(() => {
         document.querySelector(".modalZyav").style = "display: none";
-      }, 10000);
+      }, 4000);
       window.location = "/";
       axios
         .post(`${url}/contact`, data)
@@ -258,15 +261,21 @@ export default function HomePage() {
                 />
               </div>
             </div>
+
             <div className="agreeRadio">
-              <div onClick={() => agree(1)} className="radioHeader">
+              {/* <div onClick={() => agree(1)} className="radioHeader">
                 <div>
                   <span
                     onClick={() => agree(0)}
                     className="radioHeader1 "
                   ></span>
                 </div>
-              </div>
+              </div> */}
+                <input
+        type="checkbox"
+        checked={agreed}
+        onChange={handleAgreeChange}
+      />
               <p>Я принимаю условия пользовательского соглашения</p>
             </div>
             <label className="errorr">
