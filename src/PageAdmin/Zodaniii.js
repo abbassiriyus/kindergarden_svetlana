@@ -13,6 +13,10 @@ export default class App extends Component {
     data: [],
     group: [],
     gruppa: [],
+    child:[],
+    baza:[],
+    selectedValue: "январь",
+    selectedValue2: 2
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
@@ -49,10 +53,20 @@ export default class App extends Component {
         axios.post(`${url}/question`, formdata).then((res) => {
           axios.get(`${url}/question`).then((res2) => {
             for (let i = 0; i < res2.data.length; i++) {
-              if (res2.data[i].question===document.querySelector("#test4").value&&res2.data[i].month=== document.querySelector("#test1").value&&res2.data[i].answer=== document.querySelector("#test5").value&&res2.data[i].author===document.querySelector("#test2").value) {
-                axios.post(`${url}/test`).then((res6)=>{
-
+              if (res2.data[i].question===document.querySelector("#test4").value&&res2.data[i].month===document.querySelector("#test1").value) {
+                  var a="ss"
+                  var b=5
+                  var formdata5 = new FormData();
+                  formdata5.append("testtitle", a);
+                  formdata5.append("childid", document.querySelector("#test33").value);
+                  formdata5.append("questionid", res2.data[i].questionid);
+                  formdata5.append("date", "2023-05-30");
+                  formdata5.append("score", b);
+                  axios.post(`${url}/test`,formdata5).then((res6)=>{
+                    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                 })
+              }else{
+                console.log('TUPOY');
               }
             }
           })
@@ -62,19 +76,68 @@ export default class App extends Component {
       });
     });
   }
-
+  handleChange = (event) => {
+    this.setState({ selectedValue: event.target.value });
+    console.log( event.target.value);
+}
+handleChange2 = (event) => {
+  const selectedValue2 = parseInt(event.target.value, 10);
+  this.setState({ selectedValue2 });
+  console.log(selectedValue2, "fffffffff");
+}
   componentDidMount = () => {
-    axios.get(`${url}/question`).then((res) => {
-      axios.get(`${url}/skill`).then((res1) => {
+    // axios.get(`${url}/question`).then((res) => {
+    //   axios.get(`${url}/skill`).then((res1) => {
+    //     for (let i = 0; i < res.data.length; i++) {
+    //       for (let j = 0; j < res1.data.length; j++) {
+    //         if (res.data[i].skillid == res1.data[j].skillid) {
+    //           res.data[i].skillname = res1.data[j].skillname;
+    //         }
+    //       }
+    //     }
+    //     console.log(res.data);
+    //     this.setState({ person: res.data });
+    //   });
+    // });
+    // axios.get(`${url}/test`).then((res) => {
+    //   axios.get(`${url}/question`).then((res1) => {
+    //     for (let i = 0; i < res.data.length; i++) {
+    //       for (let j = 0; j < res1.data.length; j++) {
+    //         if (res.data[i].questionid === res1.data[j].questionid) {
+    //           res.data[i].question = res1.data[j].question;
+    //           res.data[i].question_img = res1.data[j].question_img;
+    //           res.data[i].month = res1.data[j].month;
+    //           res.data[i].author = res1.data[j].author;
+    //           console.log( res.data[i].childid,"ddddd");
+    //         }
+    //       }
+    //     }
+    //     console.log(res.data);
+    //     this.setState({ person: res.data });
+    //   });
+    // });
+    axios.get(`${url}/test`).then((res) => {
+      axios.get(`${url}/question`).then((res1) => {
+        axios.get(`${url}/child`).then((res2) => {
         for (let i = 0; i < res.data.length; i++) {
           for (let j = 0; j < res1.data.length; j++) {
-            if (res.data[i].skillid == res1.data[j].skillid) {
-              res.data[i].skillname = res1.data[j].skillname;
+            for (let b = 0; b < res2.data.length; b++) {
+              if (res.data[i].questionid === res1.data[j].questionid) {
+              res.data[i].question = res1.data[j].question;
+              res.data[i].question_img = res1.data[j].question_img;
+              res.data[i].month = res1.data[j].month;
+              res.data[i].author = res1.data[j].author;
+              console.log( res.data[i].childid,"ddddd");
+              if (res.data[i].childid=== res2.data[b].childid) {
+                res.data[i].groupid=res2.data[b].groupid
+              } 
+            }
             }
           }
         }
         console.log(res.data);
         this.setState({ person: res.data });
+        })
       });
     });
     axios.get(`${url}/skill_group`).then((res) => {
@@ -83,7 +146,11 @@ export default class App extends Component {
     axios.get(`${url}/group`).then((res) => {
       this.setState({ gruppa: res.data });
     });
+    axios.get(`${url}/child`).then((res4) => {
+      this.setState({ child: res4.data });
+    });
     this.getData11();
+    // this.handleChange()
   };
 
   deleteData(key) {
@@ -177,6 +244,18 @@ export default class App extends Component {
                 </select>
               </div>
               <div className="pages11">
+                <br />
+                <label htmlFor="test3">Ребенок</label>
+                <br />
+
+                <select name="" id="test33">
+                {this.state.child.map(iten=>{
+                                    return<option value={iten.childid}>{iten.childlastname}</option>
+                })}
+
+                </select>
+              </div>
+              <div className="pages11">
                 <label htmlFor="test10">Область развития</label>
                 <br />
                 <input id="test10" type="text" />
@@ -224,7 +303,7 @@ export default class App extends Component {
         <h1 className="sss22">Задания</h1>
         <div className="cake">
           <div className="cake1">
-          <select className="mad" name="" id="test1">
+          <select value={this.state.selectedValue} onChange={this.handleChange} className="mad" name="" id="test100">
                   <option value="январь">январь</option>
                   <option value="февраль">февраль</option>
                   <option value="марта">март</option>
@@ -238,9 +317,9 @@ export default class App extends Component {
                   <option value="ноябрь">ноябрь</option>
                   <option value="Декабрь">Декабрь</option>
                 </select>
-            <select className="mad" name="" id="">
+            <select value={this.state.selectedValue2} onChange={this.handleChange2} className="mad" name="" id="">
               {this.state.gruppa.map((item) => {
-                return <option value="">{item.groupname}</option>;
+                return <option value={item.groupid}>{item.groupname}</option>;
               })}
             </select>
             <button
@@ -262,7 +341,7 @@ export default class App extends Component {
                   <th className="btnadmp_th1">ID</th>
                   <th className="btnadmp_th">img</th>
                   <th className="btnadmp_th"> Месяц </th>
-                  <th className="btnadmp_th">Группа</th>
+                  <th className="btnadmp_th">Ребенок</th>
                   <th className="btnadmp_th">Дата отправки </th>
                   <th className="btnadmp_th">Автор</th>
                   <th className="btnadmp_th" id="borDr">
@@ -270,38 +349,47 @@ export default class App extends Component {
                   </th>
                 </tr>
                 {this.state.person.map((item) => {
-                  return (
-                    <tr className="btnadmp_tr1">
-                      <td className="btnadmp_td1">{item.questionid}</td>
-                      <td className="btnadmp_td1">
-                        <img
-                          width="100px"
-                          src={`${url}/` + item.question_img}
-                          alt={`${url}/` + item.question_img}
-                        />
-                      </td>
-
-                      <td className="btnadmp_td1">{item.month}</td>
-                      <td className="btnadmp_td1"> {item.skillname}</td>
-                      <td className="btnadmp_td1">
-                        {" "}
-                        {item.syscreatedatutc.slice(0, 10)}
-                      </td>
-                      <td className="btnadmp_td1"> {item.author}</td>
-                      <td className="btnadmp_td1">
-                        <button className="butadmp1">
-                          <img src={ico2} alt="" />
-                        </button>
-                        <button className="butadmp2">
+                  if (item.month === this.state.selectedValue&&item.groupid===this.state.selectedValue2) {
+                    return (
+                      <tr className="btnadmp_tr1">
+                        <td className="btnadmp_td1">{item.questionid}</td>
+                        <td className="btnadmp_td1">
                           <img
-                            onClick={() => this.deleteData(item)}
-                            src={ico1}
-                            alt=""
+                            width="100px"
+                            src={`${url}/` + item.question_img}
+                            alt={`${url}/` + item.question_img}
                           />
-                        </button>
-                      </td>
-                    </tr>
-                  );
+                        </td>
+  
+                        <td className="btnadmp_td1">{item.month}</td>
+                        {this.state.child.map(item2=>{
+                          if (item.childid===item2.childid) {
+                            return <td className="btnadmp_td1"> {item2.childlastname}   {item2.childfirstname}</td>
+                          }
+                         
+                        })}
+                        
+                        <td className="btnadmp_td1">
+                          {" "}
+                          {item.syscreatedatutc.slice(0, 10)}
+                        </td>
+                        <td className="btnadmp_td1"> {item.author}</td>
+                        <td className="btnadmp_td1">
+                          <button className="butadmp1">
+                            <img src={ico2} alt="" />
+                          </button>
+                          <button className="butadmp2">
+                            <img
+                              onClick={() => this.deleteData(item)}
+                              src={ico1}
+                              alt=""
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  }
+
                 })}
               </table>
             </div>
