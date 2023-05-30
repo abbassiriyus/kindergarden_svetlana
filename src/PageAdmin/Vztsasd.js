@@ -204,7 +204,7 @@ export default function Vztsasd() {
             <ul className="ustoz">
               <li className="madin">Отсутствующих: {data2.length}</li>
               <li className="madin1">
-                Присутствующих: {data3.length - data2.length}
+                Присутствующих: {data3.length}
               </li>
             </ul>
           </div>

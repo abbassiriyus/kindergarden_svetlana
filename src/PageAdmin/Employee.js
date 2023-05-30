@@ -1,10 +1,10 @@
 import React, { Component, useState } from "react";
+import PhoneInput from 'react-phone-input-2';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 import Dropdown from "react-bootstrap/Dropdown";
 import icon1 from "../img/free-icon-edit-6488637 (2).png";
 import icon2 from "../img/free-icon-delete-5396993.png";
 import "./Employees.css";
-import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import url from "../host";
 
@@ -150,7 +150,7 @@ export default class Employees extends Component {
     formData1.append("passportseries", document.querySelector(".form7").value);
     formData1.append("passportnumber", document.querySelector(".form8").value);
     formData1.append("passportdate", document.querySelector(".form9").value);
-    formData1.append("phone", document.querySelector(".form10").value);
+    formData1.append("phone", document.querySelector(".form-control").value);
     formData1.append("email", document.querySelector(".form11").value);
     var formAdress = new FormData();
     formAdress.append("region", document.querySelector(".aform1").value);
@@ -456,7 +456,7 @@ export default class Employees extends Component {
                 <label htmlFor="form10"> Телефон</label>
                 <br />
 
-                <input className="form10" type="tel" />
+                <PhoneInput className="form10" type="tel" />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Эл.почта</label>
@@ -727,7 +727,10 @@ export default class Employees extends Component {
             </div> */}
         <div className="dropw">
         <select className="selectRgroup">
-          <option>Должность</option>
+          <option>Воспитатель
+</option>
+<option>Педагог
+</option>
           </select>
           <select className="selectRgroup">
             {

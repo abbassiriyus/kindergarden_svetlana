@@ -67,6 +67,7 @@ axios
 .post(`${url}/syllabu`,formData2)
 .then((res4)=>{
   console.log("ishladi22");
+  window.location.reload()
 })
         }
       }

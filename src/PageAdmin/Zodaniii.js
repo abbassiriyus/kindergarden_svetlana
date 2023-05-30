@@ -64,6 +64,7 @@ export default class App extends Component {
                   formdata5.append("score", b);
                   axios.post(`${url}/test`,formdata5).then((res6)=>{
                     console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                    window.location.reload()
                 })
               }else{
                 console.log('TUPOY');
@@ -339,7 +340,7 @@ handleChange2 = (event) => {
               <table className="btnchil_table">
                 <tr className="btnadmp_tr">
                   <th className="btnadmp_th1">ID</th>
-                  <th className="btnadmp_th">img</th>
+                  <th className="btnadmp_th">Рисунок</th>
                   <th className="btnadmp_th"> Месяц </th>
                   <th className="btnadmp_th">Ребенок</th>
                   <th className="btnadmp_th">Дата отправки </th>

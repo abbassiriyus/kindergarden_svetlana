@@ -298,7 +298,7 @@ export default class App extends Component {
               })}
             </select>
             <br />
-            <label htmlFor="">Тема</label>
+            <label htmlFor="">Занятие</label>
             <br />
             <select name="" id="select_4">
               {this.state.subject.map((item) => {
@@ -308,7 +308,7 @@ export default class App extends Component {
               })}
             </select>
             <br />
-            <label htmlFor="">Занятие</label>
+            <label htmlFor="">tema</label>
             <br />
             <select name="" id="">
               {this.state.subject.map((item) => {
