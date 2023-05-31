@@ -17,65 +17,45 @@ export default function Page6() {
   const [employ, setEmploy] = useState([]);
   const [person, setPerson] = useState([]);
   const [deti, setDeti] = useState([]);
-  // function open() {
-  //   document.querySelector(".modalSozdat").style = "display: block";
-  //   document.querySelector(".ybuyi").style = "display: none;";
-  //   document.querySelector(".text-center").style = "display: none";
-  // }
-  // function close() {
-  //   document.querySelector(".modalSozdat").style = "display: none";
-  //   document.querySelector(".ybuyi").style = "display: block";
-  //   document.querySelector(".text-center").style = "display: block";
-  // }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [
-          legalRepRes,
-          relationRes,
+          GroupEmp,
+          Group,
           childRes,
           excuseRes,
           employeeRes,
           personRes,
         ] = await Promise.all([
-          axios.get(`${url}/Legal_Rep`),
-          axios.get(`${url}/relation`),
+          axios.get(`${url}/group_emp`),
+          axios.get(`${url}/group`),
           axios.get(`${url}/child`),
           axios.get(`${url}/excuse`),
           axios.get(`${url}/employee`),
           axios.get(`${url}/person`),
         ]);
-
-        const filteredChildren = legalRepRes.data.filter(
-          (child) => child.personid === 2
-        );
-
-        const tempBolas = [];
-        const nol = [];
-        for (let i = 0; i < relationRes.data.length; i++) {
-          for (let j = 0; j < filteredChildren.length; j++) {
-            if (
-              relationRes.data[i].legalrepid === filteredChildren[j].legalrepid
-            ) {
-              for (let e = 0; e < excuseRes.data.length; e++) {
-                if (excuseRes.data[e].childid === relationRes.data[i].childid) {
-                  tempBolas.push(excuseRes.data[e].datestart.slice(0, 10));
-                  nol.push(excuseRes.data[e].childid);
-                }
-              }
-            }
-          }
-        }
-        // console.log(nol);
-        // console.log(tempBolas);
-        setExcuse(tempBolas);
-        setRebenok(nol);
-        setRebenoki(childRes.data);
+        
+        const employeeId = parseInt(localStorage.getItem("employ"));
+  
+        const groupEmpData = GroupEmp.data.filter((item) => item.employeeid === employeeId);
+        const groupIds = groupEmpData.map((item) => item.groupid);
+  
+        const childData = childRes.data.filter((item) => groupIds.includes(item.groupid));
+        const childIds = childData.map((item) => item.childid);
+  
+        const excuseData = excuseRes.data.filter((item) => childIds.includes(item.childid));
+        const excuseDates = excuseData.map((item) => item.datestart.slice(0, 10));
+  
+        setExcuse(excuseDates);
+        setRebenok(childIds);
+        setRebenoki(childData);
         setallExcuse(excuseRes.data);
         setEmploy(employeeRes.data);
         setPerson(personRes.data);
-        setDeti(childRes.data);
+        setDeti(childData);
+  
       } catch (err) {
         console.log(err);
       }
@@ -120,11 +100,15 @@ export default function Page6() {
               item.datestart.slice(0, 10) === excuse[index]
             );
           });
-          if (filteredData.length > 0) {
-            setRebenok3(filteredData[0].childid);
-          } else {
-            console.log("Данные не найдены!!");
+          for (let k = 0; k < filteredData.length; k++) {
+            setRebenok3(filteredData[k].childid)
+  
           }
+          // if (filteredData.length > 0) {
+          //   setRebenok3(filteredData[1].childid);
+          // } else {
+          //   console.log("Данные не найдены!!");
+          // }
         } catch (error) {
           console.log(error);
         }
@@ -170,7 +154,13 @@ export default function Page6() {
             <div className="zafik_child_div">
               <h1 className="zafik_child_h1">Ребенок </h1>
               <select className="zafik_child_select">
-                <option>example</option>
+                {rebenok.map(item=>{
+                  return<>{rebenoki.map(item2=>{
+                    if (item===item2.childid) {
+                      return<option value={item}>{item2.childlastname}    {item2.childfirstname} </option>
+                    }
+                  })}</>
+                })}
               </select>
             </div>
             <div className="zafik_data_div">
@@ -188,14 +178,16 @@ export default function Page6() {
               <h4>
                 Часть дня *
               </h4>
-              <select>
-                <option>asd</option>
+              <select className="zafik_child_select">
+                <option>Утро</option>
+                <option>После обеда</option>
+                <option>Весь день</option>
               </select>
             <h4>Причина *</h4>
-            <select>
-              <option>asd</option>
-              <option>asd</option>
-              <option>asd</option>
+            <select className="zafik_child_select">
+              <option value="Болезнь">Болезнь</option>
+              <option value="Посещение врача">Посещение врача</option>
+              <option value="Отпуск">Отпуск</option>
             </select>
             </div>
             <div className="btnnS">
@@ -313,7 +305,7 @@ export default function Page6() {
                             }
                           })}
                           <br />
-                          Дата:{item3.syschangedatutc}
+                          Дата:{item3.syschangedatutc.slice(0, 10)}
                         </p>
                         <div className="btn_Groupo">
                           <button onClick={() => simSim()}>Редактировать</button>
