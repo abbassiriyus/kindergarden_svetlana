@@ -92,7 +92,7 @@ function App() {
               }
             </select>
             <input  id='kkk' type='date' />
-            <button onClick={() => data()} className='btnk'><p>Сохранить</p></button>
+            <button onClick={() => data()} className='btnk'>Сохранить</button>
           </div>
           <div className="biga-pages">
           <div className="dv-usr">

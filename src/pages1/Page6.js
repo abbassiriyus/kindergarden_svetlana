@@ -82,7 +82,7 @@ export default function Page6() {
     };
     fetchData();
   }, []);
-  useEffect(() => {}, [
+  useEffect(() => { }, [
     excuse,
     employ,
     person,
@@ -94,11 +94,11 @@ export default function Page6() {
   ]);
 
 
-function openPostExcuse () {
-  document.querySelector(".zafik_bigdiv").style = "display: block;";
-  document.querySelector(".ybuyi").style = "display: none;";
-  console.log("fjrifi");
-}
+  function openPostExcuse() {
+    document.querySelector(".zafik_bigdiv").style = "display: block;";
+    document.querySelector(".ybuyi").style = "display: none;";
+    console.log("fjrifi");
+  }
 
 
 
@@ -148,32 +148,122 @@ function openPostExcuse () {
     document.querySelector(".BigModalChild").style = "display: none;";
   }
 
+  function closedChildModal() {
+    document.querySelector(".zafik_bigdiv").style = "display: none;";
+    document.querySelector(".ybuyi").style = "display: block;";
+    document.querySelector(".zafik_bigdiv2").style = "display: none;";
+  }
+
+  function simSim() {
+    document.querySelector('.zafik_bigdiv2').style = 'display: block !important;'
+    document.querySelector('.BigModalChild').style = 'display: none !important;'
+    document.querySelector(".ybuyi").style = "display: none;";
+    document.querySelector(".ModalChilds").style = "display: none;";
+  }
+
   return (
     <div className="The-Big">
-<div className="zafik_bigdiv">
-  <div className="zafik_div">
-    <div className="zafik_minidiv">
-      <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
-      <div className="zafik_child_div">
-        <h1 className="zafik_child_h1">Ребенок </h1>
-        <select className="zafik_child_select">
-          <option>example</option>
-        </select>
-      </div>
-      <div className="zafik_data_div">
-        <div className="zafik_data_minidiv1">
-          <h1 className="zafik_data_h1">Дата начала</h1>
-          <input className="zafik_data_input" type="date"/>
-        </div>
-        <div className="zafik_data_minidiv1">
-        <h1 className="zafik_data_h1">Дата окончания</h1>
-        <input className="zafik_data_input" type="date"/>
-        </div>
+      <div className="zafik_bigdiv">
+        <div className="zafik_div">
+          <div className="zafik_minidiv">
+            <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
+            <div className="zafik_child_div">
+              <h1 className="zafik_child_h1">Ребенок </h1>
+              <select className="zafik_child_select">
+                <option>example</option>
+              </select>
+            </div>
+            <div className="zafik_data_div">
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата начала</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата окончания</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+            </div>
 
+            <div className="zafik_naff">
+              <h4>
+                Часть дня *
+              </h4>
+              <select>
+                <option>asd</option>
+              </select>
+            <h4>Причина *</h4>
+            <select>
+              <option>asd</option>
+              <option>asd</option>
+              <option>asd</option>
+            </select>
+            </div>
+            <div className="btnnS">
+              <button>Создать</button>
+              <button onClick={() => closedChildModal()}>Отмена</button>
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+
+
+
+
+
+      <div className="zafik_bigdiv2">
+        <div className="zafik_div">
+          <div className="zafik_minidiv">
+            <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
+            <div className="zafik_child_div">
+              <h1 className="zafik_child_h1">Ребенок </h1>
+              <select className="zafik_child_select">
+                <option>example</option>
+              </select>
+            </div>
+            <div className="zafik_data_div">
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата начала</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата окончания</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+            </div>
+
+            <div className="zafik_naff">
+              <h4>
+                Часть дня *
+              </h4>
+              <select>
+                <option>asd</option>
+              </select>
+            <h4>Причина *</h4>
+            <select>
+              <option>asd</option>
+              <option>asd</option>
+              <option>asd</option>
+            </select>
+            </div>
+            <div className="btnnS">
+              <button>Создать</button>
+              <button onClick={() => closedChildModal()}>Отмена</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
       <div className="BigModalChild">
         {rebenoki.map((item2) => {
           if (rebenok3 === item2.childid) {
@@ -226,7 +316,7 @@ function openPostExcuse () {
                           Дата:{item3.syschangedatutc}
                         </p>
                         <div className="btn_Groupo">
-                          <button >Редактировать</button>
+                          <button onClick={() => simSim()}>Редактировать</button>
                           <button >Удалить</button>
                         </div>
                       </>
@@ -246,9 +336,9 @@ function openPostExcuse () {
             value={date}
             tileContent={getTileContent}
           />
-                  <div onClick={() => openPostExcuse()} className="pulsDiv" >
-          <span>+</span>
-        </div>
+          <div onClick={() => openPostExcuse()} className="pulsDiv" >
+            <span>+</span>
+          </div>
         </div>
 
       </div>
