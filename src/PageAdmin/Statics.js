@@ -98,9 +98,9 @@ export default function BasicTabs() {
                   <option value="Декабрь">декабрь</option>
                 </select>
               <select>
-                {group.map((item) => {
+                {/* {group.map((item) => {
                   return <option>{item.groupname}</option>;
-                })}
+                })} */}
               </select>
             </div>
           </div>
@@ -123,9 +123,9 @@ export default function BasicTabs() {
                   <option value="Декабрь">декабрь</option>
                 </select>
               <select>
-                {group.map((item) => {
+                {/* {group.map((item) => {
                   return <option>{item.groupname}</option>;
-                })}
+                })} */}
               </select>
             </div>
           </div>
@@ -153,9 +153,9 @@ export default function BasicTabs() {
                   <option value="Декабрь">декабрь</option>
                 </select>
               <select>
-                {group.map((item) => {
+                {/* {group.map((item) => {
                   return <option>{item.groupname}</option>;
-                })}
+                })} */}
               </select>
             </div>
           </div>

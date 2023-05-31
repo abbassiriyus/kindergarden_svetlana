@@ -632,7 +632,7 @@ export default class ChildAdmin extends Component {
               <div className="pages11">
                 <input
                   className="caform1"
-                  placeholder="Страна"
+                  placeholder="Регион"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -775,7 +775,7 @@ export default class ChildAdmin extends Component {
                 <input
                   value={this.state.oneperson.region}
                   className="aform1"
-                  placeholder="Страна"
+                  placeholder="Регион"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -811,7 +811,7 @@ export default class ChildAdmin extends Component {
                 <input
                   className="aform5"
                   value={this.state.oneperson.building}
-                  placeholder="Building"
+                  placeholder="Строение"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -916,7 +916,7 @@ export default class ChildAdmin extends Component {
                     this.state.nomi.map((item) => {
                       return (
                         <option value="">
-                          <p>{item.personfirstname}</p>
+                          <p>{item.personlastname}{" "}{item.personfirstname}{" "}{item.personmiddlename}</p>
                         </option>
                       );
                     })}

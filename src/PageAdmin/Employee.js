@@ -482,7 +482,7 @@ export default class Employees extends Component {
               <div className="pages11">
                 <input
                   className="aform1"
-                  placeholder="Страна"
+                  placeholder="Регион"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -613,19 +613,19 @@ export default class Employees extends Component {
                       <br />
                       <input
                         placeholder={item.personlastname}
-                        className="personmiddlename"
+                        className="personlastname"
                         type="text"
                       />
                     </div>
                     <div className="pages11">
                       <label htmlFor="form2">Имя</label>
                       <br />
-                      <input className="personlastname" placeholder={item.personfirstname} type="text" />
+                      <input className="personfirstname" placeholder={item.personfirstname} type="text" />
                     </div>
                     <div className="pages11">
                       <label htmlFor="form3">Отчество</label>
                       <br />
-                      <input className="personfirstname" placeholder={item.personmiddlename} type="text" />
+                      <input className="personmiddlename" placeholder={item.personmiddlename} type="text" />
                     </div>
                     <div className="pages11">
                       <br />
@@ -705,7 +705,7 @@ export default class Employees extends Component {
                         this.putdata(item);
                       }}
                     >
-                      Сохранить0
+                      Сохранить
                     </button>
                   </div>
                 </div>

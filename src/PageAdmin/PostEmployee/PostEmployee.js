@@ -511,7 +511,7 @@ export default class PostEmployee extends Component {
                 <input className="dform5" type="date" />
               </div>
               <div className="pages11">
-                <label htmlFor="">Курсы/ Сертификаты*</label>
+                <label htmlFor="">Курсы/ Сертификаты</label>
                 <br />
                 <input className="dform6" type="text" />
               </div>
@@ -626,7 +626,7 @@ export default class PostEmployee extends Component {
               <div className="pages11">
                 <input
                   className="aform1"
-                  placeholder="Страна"
+                  placeholder="Регион"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -658,7 +658,7 @@ export default class PostEmployee extends Component {
               <div className="pages11">
                 <input
                   className="aform5"
-                  placeholder="building"
+                  placeholder="Строение"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />

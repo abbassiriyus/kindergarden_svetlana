@@ -36,12 +36,12 @@ export default function Page1 () {
         </div>
       </div>
       <div className='Modal-Redat2'>
-        <h4>Редакторавать</h4>
+        <h4>Редактировать</h4>
         <input type='text' className='Input-Text' id='' />
         <br />
         <textarea className='Textarea-1'></textarea>
         <div className='btn-grup'>
-          <button>Сохранит</button>
+          <button>Сохранить</button>
           <button className='Otmen2' onClick={() => closse()}>
             Отмена
           </button>
@@ -65,7 +65,7 @@ export default function Page1 () {
             <img src={ImgTeacher} alt='' />
             <div className='Hashs'>
               <h4>Малинина Виктория Петровна</h4>
-              <span>2023/13/13</span>
+              <span>2023/05/13</span>
             </div>
           </div>
           <h2>Экскурсия в музей</h2>
@@ -82,7 +82,7 @@ export default function Page1 () {
             <img src={ImgTeacher} alt='' />
             <div className='Hashs'>
               <h4>Малинина Виктория Петровна</h4>
-              <span>2023/13/13</span>
+              <span>2023/12/13</span>
             </div>
           </div>
           <h2>Экскурсия в музей</h2>

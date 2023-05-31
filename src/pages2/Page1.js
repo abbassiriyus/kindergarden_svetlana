@@ -46,12 +46,12 @@ export default function Page1() {
         </div>
       </div>
       <div className='Modal-Redat2'>
-        <h4>Редакторавать</h4>
+        <h4>Редактировать</h4>
         <input type='text' className='Input-Text' id='' />
         <br />
         <textarea className='Textarea-1'></textarea>
         <div className='btn-grup'>
-          <button>Сохранит</button>
+          <button>Сохранить</button>
           <button className='Otmen2' onClick={() => closse()}>
             Отмена
           </button>

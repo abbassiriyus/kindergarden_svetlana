@@ -200,7 +200,7 @@ export default function GroupDti() {
   return (
     <div className="nodir5">
       <div className="Dobav_Group">
-        <h2>Добавить Группа</h2>
+        <h2>Добавить Группу</h2>
         <div className="sdfgdf">
           <h4 className="kkkk">Название *</h4>
           <input className="textDobav2" type="text" />
@@ -267,7 +267,7 @@ export default function GroupDti() {
         {non.map((item) => {
           return (
             <div>
-              <h2>Изменит Группа</h2>
+              <h2>Изменить Группу</h2>
               <div className="sdfgdf2">
                 <h4>Название *</h4>
                 <div>
@@ -305,7 +305,7 @@ export default function GroupDti() {
               <option value="">2026</option>
             </select>
             <button className="nodiruca" onClick={() => opensModal()}>
-              Добавить Группа
+              Добавить Группу
             </button>
           </div>
         </div>

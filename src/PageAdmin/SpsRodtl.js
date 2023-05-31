@@ -387,7 +387,7 @@ setTimeout(() => {
               <div className="pages11">
                 <input
                   className="aform1"
-                  placeholder="Страна"
+                  placeholder="Регион"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -419,7 +419,7 @@ setTimeout(() => {
               <div className="pages11">
                 <input
                   className="aform5"
-                  placeholder="Улица"
+                  placeholder="Строение"
                   style={{ marginTop: "30px" }}
                   type="text"
                 />
@@ -544,7 +544,7 @@ setTimeout(() => {
           }
         </div>
         <div className="kgjl">
-          <h1 className="bigah1">Список Родитель</h1>
+          <h1 className="bigah1">Список Родители</h1>
      
      
           <div className="cake">
@@ -560,7 +560,7 @@ setTimeout(() => {
             <button className="nodiruca" onClick={() => {
                 this.openModal();
               }}>
-              Добавить Родитель
+              Добавить Родителя
             </button>
           </div>
         </div>

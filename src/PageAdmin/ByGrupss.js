@@ -303,7 +303,7 @@ export default class App extends Component {
             <select name="" id="select_4">
               {this.state.subject.map((item) => {
                 return (
-                  <option value={item.subjectid}>{item.subjectname}</option>
+                  <option value={item.subjectid}>{item.topic}</option>
                 );
               })}
             </select>
@@ -312,7 +312,7 @@ export default class App extends Component {
             <br />
             <select name="" id="">
               {this.state.subject.map((item) => {
-                return <option value={item.subjectid}>{item.topic}</option>;
+                return <option value={item.subjectid}>{item.subjectname}</option>;
               })}
             </select>
             <br />

@@ -72,17 +72,17 @@ export default class App extends Component {
                   <h4>Выбрать адресата</h4>
                   <select>
                      {
-                        this.state.region.map(item => {
+                        this.state.group.map(item => {
                            return (
-                              <option>{item.region}</option>
+                              <option>{item.groupname}</option>
                            )
                         })
                      }
                   </select>
                </div>
                <div className='btn-group'>
-                  <button onClick={() => this.CloseNovs()}>Отменит</button>
-                  <button>Сохранит</button>
+                  <button onClick={() => this.CloseNovs()}>Отменить</button>
+                  <button>Сохранить</button>
                </div>
             </div>
             <div className="asdsad">

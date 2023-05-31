@@ -137,7 +137,7 @@ axios
           <input type="date" />
         </div>
         <div>
-          <button onClick={() => openModal()}>Добавить Статистика</button>
+          <button onClick={() => openModal()}>Добавить Занятие</button>
         </div>
       </div>
       {/* <h1 className='bigah1'></h1> */}
