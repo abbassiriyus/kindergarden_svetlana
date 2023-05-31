@@ -44,7 +44,7 @@ function a11yProps(index) {
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const [group, setGroup] = useState();
+  const [group, setGroup] = useState([]);
   useEffect(() => {
     axios.get(`${url}/group`).then((res) => {
       setGroup(res.data);

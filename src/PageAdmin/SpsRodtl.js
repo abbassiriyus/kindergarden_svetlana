@@ -136,7 +136,7 @@ export default class Employees extends Component {
           "passportdate",
           document.querySelector(".form9").value
         );
-        formPerson.append("phone", document.querySelector("#form51").value);
+        formPerson.append("phone", document.querySelector(".form-control").value);
         formPerson.append("email", document.querySelector(".form11").value);
 
         axios.post(`${url}/person`, formPerson).then((res) => {
@@ -344,7 +344,7 @@ setTimeout(() => {
               <div className="pages11">
                 <label htmlFor="form51">Телефон</label>
                 <br />
-                <input id="form51" type="tel" />
+                <PhoneInput id="form51" type="tel" />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Эл.почта</label>

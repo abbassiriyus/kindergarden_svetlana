@@ -105,7 +105,7 @@ export default class App extends Component {
           " " +
           item.personfirstname +
           item.personmiddlename
-          }\n${item.roomnumber}`;
+          }\n${item.roomid}-room`;
       }
     });
     if (kluch) {
@@ -298,7 +298,7 @@ export default class App extends Component {
               })}
             </select>
             <br />
-            <label htmlFor="">Тема</label>
+            <label htmlFor="">Занятие</label>
             <br />
             <select name="" id="select_4">
               {this.state.subject.map((item) => {
@@ -308,7 +308,7 @@ export default class App extends Component {
               })}
             </select>
             <br />
-            <label htmlFor="">Занятие</label>
+            <label htmlFor="">tema</label>
             <br />
             <select name="" id="">
               {this.state.subject.map((item) => {
@@ -331,11 +331,11 @@ export default class App extends Component {
             <br />
             <label htmlFor="">Кабинет</label>
             <br />
-            <select name="" id="select_6">
-              {this.state.room.map((item) => {
+            <input name="" id="select_6"/>
+              {/* {this.state.room.map((item) => {
                 return <option value={item.roomid}>{item.roomnumber}</option>;
               })}
-            </select>
+            </select> */}
             <br />
             <button
               onClick={() => {

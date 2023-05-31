@@ -17,72 +17,52 @@ export default function Page6() {
   const [employ, setEmploy] = useState([]);
   const [person, setPerson] = useState([]);
   const [deti, setDeti] = useState([]);
-  function open() {
-    document.querySelector(".modalSozdat").style = "display: block";
-    document.querySelector(".ybuyi").style = "display: none;";
-    document.querySelector(".text-center").style = "display: none";
-  }
-  function close() {
-    document.querySelector(".modalSozdat").style = "display: none";
-    document.querySelector(".ybuyi").style = "display: block";
-    document.querySelector(".text-center").style = "display: block";
-  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const [
-          legalRepRes,
-          relationRes,
+          GroupEmp,
+          Group,
           childRes,
           excuseRes,
           employeeRes,
           personRes,
         ] = await Promise.all([
-          axios.get(`${url}/Legal_Rep`),
-          axios.get(`${url}/relation`),
+          axios.get(`${url}/group_emp`),
+          axios.get(`${url}/group`),
           axios.get(`${url}/child`),
           axios.get(`${url}/excuse`),
           axios.get(`${url}/employee`),
           axios.get(`${url}/person`),
         ]);
-
-        const filteredChildren = legalRepRes.data.filter(
-          (child) => child.personid === 6
-        );
-
-        const tempBolas = [];
-        const nol = [];
-        for (let i = 0; i < relationRes.data.length; i++) {
-          for (let j = 0; j < filteredChildren.length; j++) {
-            if (
-              relationRes.data[i].legalrepid === filteredChildren[j].legalrepid
-            ) {
-              for (let e = 0; e < excuseRes.data.length; e++) {
-                if (excuseRes.data[e].childid === relationRes.data[i].childid) {
-                  tempBolas.push(excuseRes.data[e].datestart.slice(0, 10));
-                  nol.push(excuseRes.data[e].childid);
-                }
-              }
-            }
-          }
-        }
-        // console.log(nol);
-        // console.log(tempBolas);
-        setExcuse(tempBolas);
-        setRebenok(nol);
-        setRebenoki(childRes.data);
+        
+        const employeeId = parseInt(localStorage.getItem("employ"));
+  
+        const groupEmpData = GroupEmp.data.filter((item) => item.employeeid === employeeId);
+        const groupIds = groupEmpData.map((item) => item.groupid);
+  
+        const childData = childRes.data.filter((item) => groupIds.includes(item.groupid));
+        const childIds = childData.map((item) => item.childid);
+  
+        const excuseData = excuseRes.data.filter((item) => childIds.includes(item.childid));
+        const excuseDates = excuseData.map((item) => item.datestart.slice(0, 10));
+  
+        setExcuse(excuseDates);
+        setRebenok(childIds);
+        setRebenoki(childData);
         setallExcuse(excuseRes.data);
         setEmploy(employeeRes.data);
         setPerson(personRes.data);
-        setDeti(childRes.data);
+        setDeti(childData);
+  
       } catch (err) {
         console.log(err);
       }
     };
     fetchData();
   }, []);
-  useEffect(() => {}, [
+  useEffect(() => { }, [
     excuse,
     employ,
     person,
@@ -93,6 +73,15 @@ export default function Page6() {
     rebenoki,
   ]);
 
+
+  function openPostExcuse() {
+    document.querySelector(".zafik_bigdiv").style = "display: block;";
+    document.querySelector(".ybuyi").style = "display: none;";
+    console.log("fjrifi");
+  }
+
+
+
   const handleClickDay = useCallback(
     async (date) => {
       const d = date;
@@ -100,7 +89,7 @@ export default function Page6() {
 
       const index = excuse.indexOf(a);
       if (index > -1) {
-        document.querySelector(".BigModalChild").style = "display: flex;";
+        document.querySelector(".BigModalChild").style = "display: flex;  z-index: 20000;";
         setRebenok2(excuse[index]);
 
         try {
@@ -111,11 +100,15 @@ export default function Page6() {
               item.datestart.slice(0, 10) === excuse[index]
             );
           });
-          if (filteredData.length > 0) {
-            setRebenok3(filteredData[0].childid);
-          } else {
-            console.log("Данные не найдены!!");
+          for (let k = 0; k < filteredData.length; k++) {
+            setRebenok3(filteredData[k].childid)
+  
           }
+          // if (filteredData.length > 0) {
+          //   setRebenok3(filteredData[1].childid);
+          // } else {
+          //   console.log("Данные не найдены!!");
+          // }
         } catch (error) {
           console.log(error);
         }
@@ -138,168 +131,132 @@ export default function Page6() {
   function closeChildModal() {
     document.querySelector(".BigModalChild").style = "display: none;";
   }
-  function postdad(parameters) {
-    console.log(localStorage.getItem("employ"), "employ");
-    console.log(document.querySelector("#uudeti").value, "deti");
-    console.log(document.querySelector("#uunachaolo").value, "start");
-    console.log(document.querySelector("#konec").value, "end");
-    console.log(document.querySelector("#chast").value, "partday");
-    console.log(document.querySelector("#prichina").value, "prichina");
-    var formData = new FormData();
-    formData.append("datestart", document.querySelector("#uunachaolo").value);
-    formData.append("dateend", document.querySelector("#konec").value);
-    formData.append("childid", document.querySelector("#uudeti").value);
-    formData.append("daypart", document.querySelector("#chast").value);
-    formData.append("reason", document.querySelector("#prichina").value);
-    formData.append("employeeid", localStorage.getItem("employ"));
-    axios.post(`${url}/excuse`, formData).then((res) => {
-      console.log("worked");
-      window.location.reload();
-    });
-  }
-  function openModal2 () {
-    document.querySelector('.modalls2').style = 'display: block !important'
-    document.querySelector('.modalSozdat2').style = 'display: block !important'
-    document.querySelector('.BigModalChild').style = 'display: none'
+
+  function closedChildModal() {
+    document.querySelector(".zafik_bigdiv").style = "display: none;";
+    document.querySelector(".ybuyi").style = "display: block;";
+    document.querySelector(".zafik_bigdiv2").style = "display: none;";
   }
 
-  function close2 () {
-    document.querySelector('.modalls2').style = 'display: none !important'
-    document.querySelector('.modalSozdat2').style = 'display: none !important'
-    document.querySelector('.BigModalChild').style = 'display: block'
-  }
-
-  function otmenOpen () {
-    document.querySelector('.tanlovDiv').style = 'display: flex;'
-  }
-  function otmenClose () {
-    document.querySelector('.tanlovDiv').style = 'display: none;'
-  }
-
-  function otmenClosed () {
-    alert('udalena')
-    window.location.reload()
+  function simSim() {
+    document.querySelector('.zafik_bigdiv2').style = 'display: block !important;'
+    document.querySelector('.BigModalChild').style = 'display: none !important;'
+    document.querySelector(".ybuyi").style = "display: none;";
+    document.querySelector(".ModalChilds").style = "display: none;";
   }
 
   return (
     <div className="The-Big">
-      <div className="tanlovDiv">
-      <div className="tanlov">
-        <button onClick={() => otmenClose()}>Отмена</button>
-        <button onClick={() => otmenClosed()}>Удалить</button>
-      </div>
-      </div>
-      <div className="modalSozdat">
-        <span className="clossedModal" onClick={() => close()}>
-          X
-        </span>
-        <h4>Создать запись о пропуске занятий</h4>
-        <br />
-        <h4>Ребенок *</h4>
-        <select id="uudeti" className="selectDeti">
-          {rebenok.map((item) => {
-            return (
-              <>
-                {deti.map((item2) => {
-                  if (item === item2.childid) {
-                    return (
-                      <option value={item2.childid}>
-                        {item2.childlastname} {item2.childfirstname}
-                      </option>
-                    );
-                  }
+      <div className="zafik_bigdiv">
+        <div className="zafik_div">
+          <div className="zafik_minidiv">
+            <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
+            <div className="zafik_child_div">
+              <h1 className="zafik_child_h1">Ребенок </h1>
+              <select className="zafik_child_select">
+                {rebenok.map(item=>{
+                  return<>{rebenoki.map(item2=>{
+                    if (item===item2.childid) {
+                      return<option value={item}>{item2.childlastname}    {item2.childfirstname} </option>
+                    }
+                  })}</>
                 })}
-              </>
-            );
-          })}
-        </select>
-        <div className="datanachl">
-          <div className="hashla">
-            <h4>Дата начала *</h4>
-            <input id="uunachaolo" type="date" />
+              </select>
+            </div>
+            <div className="zafik_data_div">
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата начала</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата окончания</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+            </div>
+
+            <div className="zafik_naff">
+              <h4>
+                Часть дня *
+              </h4>
+              <select className="zafik_child_select">
+                <option>Утро</option>
+                <option>После обеда</option>
+                <option>Весь день</option>
+              </select>
+            <h4>Причина *</h4>
+            <select className="zafik_child_select">
+              <option value="Болезнь">Болезнь</option>
+              <option value="Посещение врача">Посещение врача</option>
+              <option value="Отпуск">Отпуск</option>
+            </select>
+            </div>
+            <div className="btnnS">
+              <button>Создать</button>
+              <button onClick={() => closedChildModal()}>Отмена</button>
+            </div>
+
           </div>
-          <div className="hashla">
-            <h4>Дата окончания *</h4>
-            <input id="konec" type="date" />
-          </div>
-        </div>
-        <h4>Часть дня *</h4>
-        <div className="checkboxForm">
-          <select id="chast" className="selectDeti">
-            <option>Утро</option>
-            <option>Весь день</option>
-            <option>После обеда</option>
-          </select>
-        </div>
-        <h4>Причина *</h4>
-        <select id="prichina" className="boleznS">
-          <option>Болезнь</option>
-          <option>Посещение врача</option>
-          <option>Отпуск</option>
-          <option>Семейные об-ва</option>
-        </select>
-        <button onClick={() => postdad()} className="btnu">
-          <p>Создать</p>
-        </button>
-      </div>
-      <div className="modalls2">
-      <div className="modalSozdat2">
-        <span className="clossedModal" onClick={() => close2()}>
-          X
-        </span>
-        <h4>Создать запись о пропуске занятий</h4>
-        <br />
-        <h4>Ребенок *</h4>
-        <select id="uudeti" className="selectDeti">
-          {rebenok.map((item) => {
-            return (
-              <>
-                {deti.map((item2) => {
-                  if (item === item2.childid) {
-                    return (
-                      <option value={item2.childid}>
-                        {item2.childlastname} {item2.childfirstname}
-                      </option>
-                    );
-                  }
-                })}
-              </>
-            );
-          })}
-        </select>
-        <div className="datanachl">
-          <div className="hashla">
-            <h4>Дата начала *</h4>
-            <input id="uunachaolo" type="date" />
-          </div>
-          <div className="hashla">
-            <h4>Дата окончания *</h4>
-            <input id="konec" type="date" />
-          </div>
-        </div>
-        <h4>Часть дня *</h4>
-        <div className="checkboxForm">
-          <select id="chast" className="selectDeti">
-            <option>Утро</option>
-            <option>Весь день</option>
-            <option>После обеда</option>
-          </select>
-        </div>
-        <h4>Причина *</h4>
-        <select id="prichina" className="boleznS">
-          <option>Болезнь</option>
-          <option>Посещение врача</option>
-          <option>Отпуск</option>
-          <option>Семейные об-ва</option>
-        </select>
-        <div className="btn_Groupo">
-        <button>Создать</button>
-        <button>Отмена</button>
         </div>
       </div>
+
+
+
+
+
+      <div className="zafik_bigdiv2">
+        <div className="zafik_div">
+          <div className="zafik_minidiv">
+            <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
+            <div className="zafik_child_div">
+              <h1 className="zafik_child_h1">Ребенок </h1>
+              <select className="zafik_child_select">
+                <option>example</option>
+              </select>
+            </div>
+            <div className="zafik_data_div">
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата начала</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+              <div className="zafik_data_minidiv1">
+                <h1 className="zafik_data_h1">Дата окончания</h1>
+                <input className="zafik_data_input" type="date" />
+              </div>
+            </div>
+
+            <div className="zafik_naff">
+              <h4>
+                Часть дня *
+              </h4>
+              <select>
+                <option>asd</option>
+              </select>
+            <h4>Причина *</h4>
+            <select>
+              <option>asd</option>
+              <option>asd</option>
+              <option>asd</option>
+            </select>
+            </div>
+            <div className="btnnS">
+              <button>Создать</button>
+              <button onClick={() => closedChildModal()}>Отмена</button>
+            </div>
+
+          </div>
+        </div>
       </div>
+
+
+
+
+
+
+
+
+
+
       <div className="BigModalChild">
-        <h1>Loading.....</h1>
         {rebenoki.map((item2) => {
           if (rebenok3 === item2.childid) {
             return (
@@ -348,11 +305,11 @@ export default function Page6() {
                             }
                           })}
                           <br />
-                          Дата:{item3.syschangedatutc}
+                          Дата:{item3.syschangedatutc.slice(0, 10)}
                         </p>
                         <div className="btn_Groupo">
-                          <button onClick={() => openModal2()}>Редактировать</button>
-                          <button onClick={() => otmenOpen()}>Удалить</button>
+                          <button onClick={() => simSim()}>Редактировать</button>
+                          <button >Удалить</button>
                         </div>
                       </>
                     );
@@ -364,7 +321,6 @@ export default function Page6() {
         })}
       </div>
       <div className="ybuyi">
-        <h1 className="text-center">React Calendar</h1>
         <div className="calendar-container">
           <Calendar
             onClickDay={handleClickDay}
@@ -372,15 +328,12 @@ export default function Page6() {
             value={date}
             tileContent={getTileContent}
           />
+          <div onClick={() => openPostExcuse()} className="pulsDiv" >
+            <span>+</span>
+          </div>
         </div>
-        <div className="pulsDiv" onClick={() => open()}>
-          <span>+</span>
-        </div>
+
       </div>
-      <p className="text-center">
-        <span className="bold">Selected Date:</span>
-        {date.toDateString()}
-      </p>
     </div>
   );
 }
