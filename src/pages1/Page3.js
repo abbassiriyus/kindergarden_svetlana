@@ -176,7 +176,7 @@ export default function Page1() {
                         <p>{selectedKid.comment}</p>
                       </div>
                       <div>
-                        <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках></h1></a>
+                        <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
                         </div>
                         <div>
                           <h1 className="zafik_h2">Карта индивидуального развития </h1>

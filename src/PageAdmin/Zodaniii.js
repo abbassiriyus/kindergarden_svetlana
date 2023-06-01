@@ -389,6 +389,45 @@ handleChange2 = (event) => {
                         </td>
                       </tr>
                     );
+                  }else{
+                    return (
+                      <tr className="btnadmp_tr1">
+                        <td className="btnadmp_td1">{item.questionid}</td>
+                        <td className="btnadmp_td1">
+                          <img
+                            width="100px"
+                            src={`${url}/` + item.question_img}
+                            alt={`${url}/` + item.question_img}
+                          />
+                        </td>
+  
+                        <td className="btnadmp_td1">{item.month}</td>
+                        {this.state.child.map(item2=>{
+                          if (item.childid===item2.childid) {
+                            return <td className="btnadmp_td1"> {item2.childlastname}   {item2.childfirstname}</td>
+                          }
+                         
+                        })}
+                        
+                        <td className="btnadmp_td1">
+                          {" "}
+                          {item.syscreatedatutc.slice(0, 10)}
+                        </td>
+                        <td className="btnadmp_td1"> {item.author}</td>
+                        <td className="btnadmp_td1">
+                          <button className="butadmp1">
+                            <img src={ico2} alt="" />
+                          </button>
+                          <button className="butadmp2">
+                            <img
+                              onClick={() => this.deleteData(item)}
+                              src={ico1}
+                              alt=""
+                            />
+                          </button>
+                        </td>
+                      </tr>
+                    );
                   }
 
                 })}
