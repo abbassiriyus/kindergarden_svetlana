@@ -268,8 +268,9 @@ export default class App extends Component {
       <div className="metgala">
         <div className="bigAbbas">
           <div className="modalAbbas">
-            <label htmlFor="">Дата</label>
-            <br />
+            <label htmlFor="">Дата</label><br />
+            <input type='date' /><br />
+            <label htmlFor="">День недели</label><br />
             <select name="" id="select_1">
               {weekday.map((item) => {
                 return <option value={item.number}>{item.day}</option>;
@@ -308,7 +309,7 @@ export default class App extends Component {
               })}
             </select>
             <br />
-            <label htmlFor="">tema</label>
+            <label htmlFor="">Тема</label>
             <br />
             <select name="" id="">
               {this.state.subject.map((item) => {
@@ -322,8 +323,8 @@ export default class App extends Component {
               {this.state.employee.map((res) => {
                 return (
                   <option value={res.employeeid}>
-                    {res.personfirstname} {res.personlastname}{" "}
-                    {res.personmiddlename}{" "}
+                    {res.personfirstname} {res.personmiddlename}{res.personlastname}{" "}
+                    {" "}
                   </option>
                 );
               })}
