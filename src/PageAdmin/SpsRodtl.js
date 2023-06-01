@@ -344,7 +344,7 @@ setTimeout(() => {
               <div className="pages11">
                 <label htmlFor="form51">Телефон</label>
                 <br />
-                <PhoneInput id="form51" type="tel" />
+                <PhoneInput id="form51" type="tel" placeholder="+" />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Эл.почта</label>
@@ -462,7 +462,7 @@ setTimeout(() => {
                     <div className="pages11">
                       <label htmlFor="form1">Фамилия</label>
                       <br />
-                      <input className="formItm" placeholder={item.personmiddlename} type="text" />
+                      <input className="formItm" placeholder={item.personlastname} type="text" />
                     </div>
                     <div className="pages11">
                       <label htmlFor="form2">Имя</label>
@@ -472,7 +472,7 @@ setTimeout(() => {
                     <div className="pages11">
                       <label htmlFѯr="form3">Отчество</label>
                       <br />
-                      <input className="formItm3" placeholder={item.personlastname} type="text" />
+                      <input className="formItm3" placeholder={item.personmiddlename} type="text" />
                     </div>
                     <div className="pages11">
                       <br />

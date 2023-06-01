@@ -239,7 +239,7 @@ export default class Employees extends Component {
             data12.append("hiredate", document.querySelector(".dform3").value);
             data12.append(
               "dismissaldate",
-              document.querySelector(".dform4").value
+              document.querySelector(".dform3").value
             );
             data12.append(
               "medical_cert",
@@ -480,7 +480,7 @@ export default class Employees extends Component {
                 <label htmlFor="form10"> Телефон</label>
                 <br />
 
-                <PhoneInput className="form10" type="tel" />
+                <PhoneInput className="form10" type="tel" placeholder="_ " />
               </div>
               <div className="pages11">
                 <label htmlFor="form11">Эл.почта</label>
