@@ -550,11 +550,13 @@ setTimeout(() => {
           <div className="cake">
           <div className="cake1">
             <select className="mad" name="" id="">
-              <option value="">Учебный год</option>
-              <option value="">2023</option>
-              <option value="">2024</option>
-              <option value="">2025</option>
-              <option value="">2026</option>
+              {
+                this.state.gorupGet.map(item => {
+                  return(
+                    <option value="">{item.groupname}</option>
+                  )
+                })
+              }
             </select>
             <input type='date' />
             <button className="nodiruca" onClick={() => {

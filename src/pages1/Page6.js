@@ -17,7 +17,7 @@ export default function Page6() {
   const [employ, setEmploy] = useState([]);
   const [person, setPerson] = useState([]);
   const [deti, setDeti] = useState([]);
-
+  const [putExcuse45, setPutExcuse] = useState({});
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,6 +49,8 @@ export default function Page6() {
         const excuseDates = excuseData.map((item) => item.datestart.slice(0, 10));
   
         setExcuse(excuseDates);
+        console.log(childIds,"xz2");
+        console.log(excuseDates,"xz");
         setRebenok(childIds);
         setRebenoki(childData);
         setallExcuse(excuseRes.data);
@@ -79,13 +81,57 @@ export default function Page6() {
     document.querySelector(".ybuyi").style = "display: none;";
     console.log("fjrifi");
   }
-
-
+  function postExcuse () {
+    var excuseData = new FormData()
+    excuseData.append("datestart", document.querySelector('#data_start').value)//datastart
+    excuseData.append("dateend", document.querySelector('#data_end').value)//dataend
+    excuseData.append("childid", document.querySelector('#child').value)//child
+    excuseData.append("daypart", document.querySelector('#day_part').value)//daypart
+    excuseData.append("reason", document.querySelector('#reason').value)//reason
+    excuseData.append("employeeid", parseInt(localStorage.getItem("employ")))//employ
+    axios
+    .post(`${url}/excuse`,excuseData)
+    .then((res)=>{
+      alert("worked")
+      window.location.reload()
+    }).catch((res)=>{
+      alert("error")
+    })
+  }
+function functionDeleteExcuse (id) {
+  axios
+  .delete(`${url}/excuse/${id}`,)
+  .then((res)=>{
+    alert("worked")
+    window.location.reload()
+  }).catch((res)=>{
+    alert("error")
+  })
+}
+ function functioPutExcuse (id) {
+  console.log(id[0],"llllllllll");
+  var excuseData = new FormData()
+  excuseData.append("datestart", document.querySelector('#put_data_start').value)//datastart
+  excuseData.append("dateend", document.querySelector('#put_data_end').value)//dataend
+  excuseData.append("childid", id[1])//child
+  excuseData.append("daypart", document.querySelector('#put_day_part').value)//daypart
+  excuseData.append("reason", document.querySelector('#put_reason').value)//reason
+  excuseData.append("employeeid", parseInt(localStorage.getItem("employ")))//employ
+  axios
+  .put(`${url}/excuse/${id[0]}`,excuseData)
+  .then((res)=>{
+    alert("worked")
+    window.location.reload()
+  }).catch((res)=>{
+    alert("error")
+  })
+ }
 
   const handleClickDay = useCallback(
     async (date) => {
       const d = date;
-      const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+      var b =`${d.getDate()}`
+      var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${b.padStart(2, '0')}`;
 
       const index = excuse.indexOf(a);
       if (index > -1) {
@@ -120,7 +166,8 @@ export default function Page6() {
   );
   const getTileContent = ({ date, view }) => {
     var d = date;
-    var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+    var b =`${d.getDate()}`
+    var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${b.padStart(2, '0')}`;
     for (let i = 0; i < excuse.length; i++) {
       if (a === excuse[i]) {
         return <img src={img3} alt={img3} />;
@@ -138,11 +185,22 @@ export default function Page6() {
     document.querySelector(".zafik_bigdiv2").style = "display: none;";
   }
 
-  function simSim() {
+  function simSim(id) {
     document.querySelector('.zafik_bigdiv2').style = 'display: block !important;'
     document.querySelector('.BigModalChild').style = 'display: none !important;'
     document.querySelector(".ybuyi").style = "display: none;";
     document.querySelector(".ModalChilds").style = "display: none;";
+    console.log(id,"ID");
+    axios.get(`${url}/excuse`).then((res)=>{
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].excuseid===id) {
+          setPutExcuse(res.data[i])
+          console.log(res.data[i],"data");
+          console.log(id,"ID");
+        }
+      }
+    })
+
   }
 
   return (
@@ -153,7 +211,7 @@ export default function Page6() {
             <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
             <div className="zafik_child_div">
               <h1 className="zafik_child_h1">Ребенок </h1>
-              <select className="zafik_child_select">
+              <select className="zafik_child_select" id="child">
                 {rebenok.map(item=>{
                   return<>{rebenoki.map(item2=>{
                     if (item===item2.childid) {
@@ -166,11 +224,11 @@ export default function Page6() {
             <div className="zafik_data_div">
               <div className="zafik_data_minidiv1">
                 <h1 className="zafik_data_h1">Дата начала</h1>
-                <input className="zafik_data_input" type="date" />
+                <input className="zafik_data_input" id="data_start" type="date" />
               </div>
               <div className="zafik_data_minidiv1">
                 <h1 className="zafik_data_h1">Дата окончания</h1>
-                <input className="zafik_data_input" type="date" />
+                <input className="zafik_data_input" id="data_end" type="date" />
               </div>
             </div>
 
@@ -178,20 +236,20 @@ export default function Page6() {
               <h4>
                 Часть дня *
               </h4>
-              <select className="zafik_child_select">
-                <option>Утро</option>
-                <option>После обеда</option>
-                <option>Весь день</option>
+              <select className="zafik_child_select" id="day_part">
+                <option value="Утро">Утро</option>
+                <option value="После обеда">После обеда</option>
+                <option value="Весь день">Весь день</option>
               </select>
             <h4>Причина *</h4>
-            <select className="zafik_child_select">
+            <select className="zafik_child_select" id="reason">
               <option value="Болезнь">Болезнь</option>
               <option value="Посещение врача">Посещение врача</option>
               <option value="Отпуск">Отпуск</option>
             </select>
             </div>
             <div className="btnnS">
-              <button>Создать</button>
+              <button onClick={() => postExcuse()}>Создать</button>
               <button onClick={() => closedChildModal()}>Отмена</button>
             </div>
 
@@ -205,45 +263,56 @@ export default function Page6() {
 
       <div className="zafik_bigdiv2">
         <div className="zafik_div">
+         
           <div className="zafik_minidiv">
-            <h1 className="zafik_excuse_h1">Создать запись о пропуске занятий</h1>
-            <div className="zafik_child_div">
-              <h1 className="zafik_child_h1">Ребенок </h1>
-              <select className="zafik_child_select">
-                <option>example</option>
-              </select>
-            </div>
-            <div className="zafik_data_div">
-              <div className="zafik_data_minidiv1">
-                <h1 className="zafik_data_h1">Дата начала</h1>
-                <input className="zafik_data_input" type="date" />
-              </div>
-              <div className="zafik_data_minidiv1">
-                <h1 className="zafik_data_h1">Дата окончания</h1>
-                <input className="zafik_data_input" type="date" />
-              </div>
-            </div>
-
-            <div className="zafik_naff">
-              <h4>
-                Часть дня *
-              </h4>
-              <select>
-                <option>asd</option>
-              </select>
-            <h4>Причина *</h4>
-            <select>
-              <option>asd</option>
-              <option>asd</option>
-              <option>asd</option>
-            </select>
-            </div>
-            <div className="btnnS">
-              <button>Создать</button>
-              <button onClick={() => closedChildModal()}>Отмена</button>
-            </div>
-
+          <h1 className="zafik_excuse_h1">Редактировать запись о пропуска ребенка</h1>
+          <div className="zafik_child_div">
+            <h1 className="zafik_child_h1">Ребенок</h1>
+            {rebenoki.map((item2)=>{
+              if (putExcuse45.childid===item2.childid) {
+                return<h2 className="zafik_child_h1">{item2.childlastname}  {item2.childfirstname}</h2>
+              }
+            })}
           </div>
+          <div className="zafik_data_div">
+            <div className="zafik_data_minidiv1">
+              <h1 className="zafik_data_h1">Дата начала</h1>
+              <h2 className="zafik_child_h1">{putExcuse45.datestart}</h2>
+              <input className="zafik_data_input" id="put_data_start" type="date" />
+            </div>
+            <div className="zafik_data_minidiv1">
+              <h1 className="zafik_data_h1">Дата окончания</h1>
+              <h2 className="zafik_child_h1">{putExcuse45.dateend}</h2>
+              <input className="zafik_data_input" id="put_data_end" type="date" />
+            </div>
+          </div>
+
+          <div className="zafik_naff">
+            <h4>
+              Часть дня 
+            </h4>
+            <h2 className="zafik_child_h1">{putExcuse45.daypart}</h2>
+            <select className="zafik_child_select" id="put_day_part">
+              <option value="Утро">Утро</option>
+              <option value="После обеда">После обеда</option>
+              <option value="Весь день">Весь день</option>
+            </select>
+          <h4>Причина </h4>
+          <h2 className="zafik_child_h1">{putExcuse45.reason}</h2>
+          <select className="zafik_child_select" id="put_reason">
+            <option value="Болезнь">Болезнь</option>
+            <option value="Посещение врача">Посещение врача</option>
+            <option value="Отпуск">Отпуск</option>
+          </select>
+          </div>
+          <div className="btnnS">
+            <button onClick={() => functioPutExcuse([putExcuse45.excuseid,putExcuse45.childid])}>Редактировать</button>
+            <button onClick={() => closedChildModal()}>Отмена</button>
+          </div>
+
+        </div>
+
+
         </div>
       </div>
 
@@ -308,8 +377,8 @@ export default function Page6() {
                           Дата:{item3.syschangedatutc.slice(0, 10)}
                         </p>
                         <div className="btn_Groupo">
-                          <button onClick={() => simSim()}>Редактировать</button>
-                          <button >Удалить</button>
+                          <button onClick={() => simSim(item3.excuseid)}>Редактировать</button>
+                          <button onClick={() => functionDeleteExcuse(item3.excuseid)} >Удалить</button>
                         </div>
                       </>
                     );

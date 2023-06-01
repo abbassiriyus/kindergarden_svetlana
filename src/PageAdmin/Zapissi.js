@@ -159,7 +159,7 @@ export default function Zapissi() {
             {
               person.map(item => {
                 return(
-                  <option>{item.childfirstname}</option>
+                  <option>{item.childfirstname}&nbsp;&nbsp;{item.childmiddlename}</option>
                 )
               })
             }

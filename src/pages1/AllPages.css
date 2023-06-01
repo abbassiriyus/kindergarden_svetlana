@@ -21,7 +21,6 @@
 .The-Big .helloasd {
   display: flex !important;
   width: 100% !important;
-
 }
 
 .The-Big .Navbar11 .my-lg-0 {
@@ -586,21 +585,21 @@
 }
 
 .The-Big .data-group {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
 .The-Big .data-group select {
-  width: 45%;
+  width: 30%;
   /* height: 40px; */
   border-radius: 20px;
   padding: 10px;
 }
 
 .The-Big .data-group input {
-  width: 45%;
+  width: 30%;
   height: 40px;
   border-radius: 20px;
   padding: 10px;
@@ -663,7 +662,15 @@
 }
 
 .The-Big #inform-p p {
-  width: 100%;
+  width: 100% !important;
+  display: flex;
+  justify-content: space-evenly;
+  /* margin-left: 7%; */
+}
+
+.The-Big #inform-p p img {
+  width: 20px;
+  height: 20px;
 }
 
 .The-Big #inform2 {
@@ -1546,7 +1553,8 @@
   color: white;
 }
 
-.ybuyi {}
+.ybuyi {
+}
 
 .modalSozdat {
   display: none;
@@ -1613,7 +1621,8 @@
 
 .clossedModal {
   font-size: 30px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   color: black;
   margin-left: 95%;
   height: 7px;
@@ -1804,7 +1813,7 @@
 }
 
 .zafik_h1 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -1813,7 +1822,7 @@
 }
 
 .zafik_h2 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -1852,7 +1861,7 @@
 .zafik_child_select {
   width: 485px;
   height: 37px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 0.2px solid #334155;
   box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
   border-radius: 20px;
@@ -1860,8 +1869,7 @@
 }
 
 .zafik_excuse_h1 {
-
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -1873,7 +1881,7 @@
 }
 
 .zafik_child_h1 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -1892,7 +1900,7 @@
 }
 
 .zafik_data_h1 {
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -1905,38 +1913,38 @@
 .zafik_data_input {
   width: 217px;
   height: 37px;
-  background: #FFFFFF;
+  background: #ffffff;
   border: 0.5px solid #334155;
   box-shadow: 0px 0px 10px rgba(111, 111, 111, 0.25);
   border-radius: 10px;
   margin-top: 10px;
 }
 
-.zafik_naff h4{
+.zafik_naff h4 {
   color: black !important;
   font-size: 20px;
   margin-top: 10px;
 }
 
-.zafik_naff select{
+.zafik_naff select {
   width: 40%;
   height: 40px;
   border: none;
   border-radius: 10px;
 }
 
-.zafik_bigdiv2{
+.zafik_bigdiv2 {
   display: none !important;
 }
 
-.btnnS{
+.btnnS {
   width: 60%;
   display: flex;
   justify-content: space-evenly;
   margin-top: 20px;
 }
 
-.btnnS button{
+.btnnS button {
   width: 40%;
   height: 40px;
   border: none;
@@ -1944,4 +1952,103 @@
   border-radius: 30px;
   color: white;
   font-weight: 600;
+}
+
+.tables2 {
+  display: none;
+}
+
+.tble2Btn {
+  font-size: 20px;
+}
+
+.tble2Btn span {
+  font-weight: 600;
+}
+
+.f-dlex {
+  display: flex;
+  width: 25%;
+  justify-content: space-evenly;
+}
+
+.f-dlex h1 {
+  font-size: 20px;
+}
+
+.f-dlex h1 span {
+  font-weight: 600;
+}
+
+.belgi {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  padding: 5px;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Btn-Send {
+  width: 25%;
+  height: 45px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  background: #334155;
+  margin-left: 70%;
+}
+
+.getGrup {
+  width: 100%;
+  background: #00000088;
+  width: 100%;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+  position: fixed;
+  display: none;
+}
+
+.groupGet {
+  width: 50%;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  align-items: center;
+  min-height: 200px;
+  display: flex;
+  /* justify-content: center; */
+  margin-top: 20px;
+  border-radius: 60px;
+}
+
+.groupGet img {
+  width: 150px;
+  height: 200px;
+}
+
+.groupGet h1 {
+  margin-left: 10%;
+}
+
+.successfull {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: #000000b1;
+  display: none;
+  text-align: center;
+  font-size: 40px;
+  color: white;
+}
+
+.successfull img{
+  width: 60%;
+  min-height: 40vh;
 }

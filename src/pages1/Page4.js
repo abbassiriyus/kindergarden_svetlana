@@ -6,6 +6,8 @@ import usr from '../img/free-icon-group-5942363 1.png'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import url from '../host';
+import imgOpn from '../img/free-icon-information-932010.png'
+import { AiOutlineArrowLeft } from 'react-icons/ai'
 
 
 
@@ -65,6 +67,19 @@ function App() {
       });
   }, []);
 
+  function openTable2 () {
+    document.querySelector('.tables2').style = 'display: block'
+    document.querySelector('.biga-pages').style = 'display: none !important'
+    document.querySelector('.data-group').style = 'display: none !important'
+  }
+
+  function closeTable2 () {
+    document.querySelector('.tables2').style = 'display: none'
+    document.querySelector('.biga-pages').style = 'display: block !important'
+    document.querySelector('.data-group').style = 'display: block !important'
+  }
+
+
 
   return (
     <div className='The-Big'>
@@ -101,6 +116,79 @@ function App() {
             <p>2023/05/{state3} - 2023/05/{state4}</p>
           </div>
           <div id='tables'>
+            <div id='names'>
+              <p>День</p>
+              <p>Отсутствующие</p>
+              <p>Тема</p>
+              <p>Примечание</p>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>ПН 05/{state3}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/9/1</p>
+                <p>Лес</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>ВТ 05/{stateday1}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/8/2</p>
+                <p>Горы</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>СР 05/{stateday2}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/10/0</p>
+                <p>Реки и моря</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>ЧТ 05/{stateday3}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/5/5</p>
+                <p>Космос</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>ПТ 05/{stateday4}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/2/8</p>
+                <p>Я люблю природу</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>СБ 01/{stateday5}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/1/9</p>
+                <p>Лес</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1'>
+              <div id='inform-p'>
+                <p>ВС 01/{stateday6}<img src={imgOpn} onClick={() => openTable2()} /></p>
+                <p>10/7/3</p>
+                <p>Космос</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+          </div>
+          </div>
+
+
+          <div className='tables2'>
+            <span className='belgi' onClick={() => closeTable2()}><AiOutlineArrowLeft /></span>
+            <h1 className='tble2Btn'><span>ГРУППА </span>ВОЛШЕБНИК 1 УРОВНЯ</h1>
+              <div className='f-dlex'>
+            <h1><span>День </span><br /> ПН 01/23</h1>
+            <h1><span>Отсутствующие </span><br /> 10/9/1</h1>
+              </div>
             <div id='names'>
               <p>День</p>
               <p>Отсутствующие</p>
@@ -163,7 +251,6 @@ function App() {
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div></div>

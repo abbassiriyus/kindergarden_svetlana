@@ -40,6 +40,13 @@ import PageProfilr from "./PageProfilr";
 import Statics from "./Statics";
 import Zapissi from "./Zapissi";
 import PostEmployee from "./PostEmployee/PostEmployee";
+import imgScrol from '../img/free-icon-stakeholder-7767362 1.png'
+import imgScrol2 from '../img/free-icon-family-3597788 1 (1).png'
+import imgScrol3 from '../img/free-icon-family-7541766 1.png'
+import imgScrol4 from '../img/free-icon-homework-3290148 1.png'
+import imgScrol5 from '../img/free-icon-magazine-4621852 1.png'
+import imgScrol6 from '../img/free-icon-stats-1274370 1 (1).png'
+
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -345,7 +352,7 @@ export default function AllAdmin() {
             <a
               href="/page2"
               onClick={() => {
-                sessionStorage.setItem("page12", 1);
+                sessionStorage.setItem("page12", 2);
               }}
             >
               <p
@@ -354,7 +361,7 @@ export default function AllAdmin() {
                 }
                 className="scrl-h4"
               >
-                <img src={ImgScrol} alt="" />
+                <img src={imgScrol} alt="" />
                 СОТРУДНИКИ
               </p>
             </a>
@@ -368,7 +375,7 @@ export default function AllAdmin() {
                 id="panel2d-header"
               >
                 <Typography>
-                  <img src={ImgScrol} alt="" />
+                  <img src={imgScrol2} alt="" />
                   ДЕТИ
                 </Typography>
               </AccordionSummary>
@@ -419,7 +426,7 @@ export default function AllAdmin() {
                 id="panel3d-header"
               >
                 <Typography>
-                  <img src={ImgScrol} alt="" />
+                  <img src={imgScrol3} alt="" />
                   РОДИТЕЛИ
                 </Typography>
               </AccordionSummary>
@@ -471,7 +478,7 @@ export default function AllAdmin() {
                 id="panel2d-header"
               >
                 <Typography>
-                  <img src={ImgScrol} alt="" />
+                  <img src={imgScrol4} alt="" />
                   ЖУРНАЛ
                 </Typography>
               </AccordionSummary>
@@ -525,7 +532,7 @@ export default function AllAdmin() {
                 id="panel3d-header"
               >
                 <Typography>
-                  <img src={ImgScrol} alt="" />
+                  <img src={imgScrol5} alt="" />
                   УЧЕБНЫЙ ПЛАН
                 </Typography>
               </AccordionSummary>
@@ -569,16 +576,16 @@ export default function AllAdmin() {
             <a
               href="/Statics"
               onClick={() => {
-                sessionStorage.setItem("page12", 1);
+                sessionStorage.setItem("page12", 11);
               }}
             >
               <p
                 style={
-                  page12 == 3 ? { background: "white" } : { background: "none" }
+                  page12 == 11 ? { background: "white" } : { background: "none" }
                 }
                 className="scrl-h4"
               >
-                <img src={ImgScrol} alt="" />
+                <img src={imgScrol6} alt="" />
                 СТАТИСТИКА
               </p>
             </a>
