@@ -1524,6 +1524,13 @@
   cursor: pointer;
 }
 
+.divTest span{
+  font-size: 40px;
+  margin-left: 90%;
+  color: black;
+  cursor: pointer;
+}
+
 .slect66 {
   width: 317px;
   height: 43px;
