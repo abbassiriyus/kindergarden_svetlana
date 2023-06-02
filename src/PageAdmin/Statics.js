@@ -49,6 +49,7 @@ export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
   const [group, setGroup] = useState([]);
   const [data, setData] = useState([]);
+  const [child, setChild] = useState([]);
   useEffect(() => {
     axios.get(`${url}/group`).then((res) => {
       setGroup(res.data);
@@ -62,13 +63,25 @@ export default function BasicTabs() {
     setValue(newValue);
   };
 
-  function modalOpen() {
-    document.querySelector('.Cards-Pagesstatic').style = 'display: flex;'
+  function modalOpen(key) {
+    axios.get(`${url}/child/${key}`).then(res => {
+      axios.get(`${url}/group`).then(res2 => {
+        for (let i = 0; i < res.data.length; i++) {
+          for (let j = 0; j < res2.data.length; j++) {
+            if (res.data[i].groupid === res2.data[j].groupid) {
+              res.data[i].groupname = res2.data[j].groupname
+            }
+          }
+        }
+        setChild(res.data)
+      })
+    })
+    document.querySelector('.Cards-Pagesstatic2').style = 'display: flex;'
   }
 
 
   function modalClose() {
-    document.querySelector('.Cards-Pagesstatic').style = 'display: none;'
+    document.querySelector('.Cards-Pagesstatic2').style = 'display: none;'
   }
 
   return (
@@ -116,7 +129,7 @@ export default function BasicTabs() {
               <select>
                 {group.map((item) => {
                   return <option>{item.groupname}</option>;
-                })} 
+                })}
               </select>
             </div>
             <div id='tables'>
@@ -139,10 +152,10 @@ export default function BasicTabs() {
                         <p>{item.childlastname}</p>
                         <p>{item.childfirstname}</p>
                         <p>{item.childmiddlename}</p>
-                        <p>{item.dateofbirth.slice(0,10)}</p>
+                        <p>{item.dateofbirth.slice(0, 10)}</p>
                         <p>{item.gender}</p>
-                        <p>{item.syscreatedatutc.slice(0,10)}</p>
-                        <div id='iconci' onClick={() => modalOpen()}>
+                        <p>{item.syscreatedatutc.slice(0, 10)}</p>
+                        <div id='iconci' onClick={() => modalOpen(item.childid)}>
                           <img src={icon2} alt='' />
                         </div>
                       </div>
@@ -165,56 +178,55 @@ export default function BasicTabs() {
                             </div>
                         </div>
                     </div> */}
-              <div className="Cards-Pagesstatic">
-                <span className="ikx" onClick={() => modalClose()}>X</span>
-                <div className="Cards-Page1">
-                  <div className="CardProfil-Page1">
-                    {/* <img src={Img001} alt="" /> */}
-                    <br />
-                    <h4>selectedKid.name</h4>
-                  </div>
-                  <div className="Card-Page1">
-                    <div className="Input-grup">
-                      <h4>Фамилия</h4>
-                      <p>selectedKid.childlastname</p>
+              <div className="Cards-Pagesstatic2">
+
+                {child.map(item => {
+                  return (
+                    <div className="Cards-Pagesstatic">
+                      <span className="ikx" onClick={() => modalClose()}>X</span>
+
+                      <div className="Cards-Page1">
+                        <div className="CardProfil-Page1">
+                          {/* <img src={Img001} alt="" /> */}
+                          <br />
+                          <h4>{item.childlastname}</h4>
+                        </div>
+                        <div className="Card-Page1">
+                          <div className="Input-grup">
+                            <h4>Фамилия</h4>
+                            <p>{item.childlastname}</p>
+                          </div>
+                          <div className="Input-grup">
+                            <h4>Имя</h4>
+                            <p>{item.childfirstname}</p>
+                          </div>
+                          <div className="Input-grup">
+                            <h4>Группа</h4>
+                            <p>{item.groupname}</p>
+                          </div>
+                          <div className="Input-grup">
+                            <h4>Дата рождения</h4>
+                            <p>{item.dateofbirth}</p>
+                          </div>
+                          <div className="Input-grup">
+                            <h4>Представители</h4>
+                          </div>
+                          <div className="Input-grup">
+                            <h4>Дополнительно</h4>
+                            <p>asd</p>
+                          </div>
+                          <div>
+                            <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
+                          </div>
+                          <div>
+                            <h1 className="zafik_h2">Карта индивидуального развития </h1>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="Input-grup">
-                      <h4>Имя</h4>
-                      <p>selectedKid.childfirstname</p>
-                    </div>
-                    <div className="Input-grup">
-                      <h4>Группа</h4>
-                      <p>item.groupname</p>
-                    </div>
-                    <div className="Input-grup">
-                      <h4>Дата рождения</h4>
-                      <p>selectedKid.dateofbirth</p>
-                    </div>
-                    <div className="Input-grup">
-                      <h4>Представители</h4>
-                      {/* <ul> */}
-                      {/* <li> */}
-                      {/* <span> */}
-                      {/* {item5.personlastname} */}
-                      {/* {item5.personfirstname} */}
-                      {/* asd */}
-                      {/* {item5.phone} */}
-                      {/* </span> */}
-                      {/* </li> */}
-                      {/* </ul> */}
-                    </div>
-                    <div className="Input-grup">
-                      <h4>Дополнительно</h4>
-                      <p>asd</p>
-                    </div>
-                    <div>
-                      <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
-                    </div>
-                    <div>
-                      <h1 className="zafik_h2">Карта индивидуального развития </h1>
-                    </div>
-                  </div>
-                </div>
+                  )
+                })
+                }
               </div>
             </div>
           </div>

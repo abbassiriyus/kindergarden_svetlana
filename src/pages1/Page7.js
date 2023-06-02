@@ -9,6 +9,12 @@ import url from "../host";
 import { useState } from "react";
 import imgUstz from '../img/image 34.png'
 import imgTst from '../img/301-3011314_pe-success-icon-task-done-removebg-preview.png'
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+
+
 
 export default function Page7() {
   const [data, setData] = useState([]);
@@ -62,22 +68,13 @@ export default function Page7() {
         </div>
       </div>
       <div className="divTest">
-        <h2 className="ixx">
-          Какой из этих предметов не относится к живой природе?
-          <span onClick={() => closeTest()}>X</span>
-        </h2>
-        <div className="Test_09">
-          <img src={img} alt="" />
-          <div className="hashla">
-            <h1>1</h1>
-            <h1>2</h1>
-            <h1>3</h1>
-            <h1>4</h1>
-          </div>
-        </div>
+      <span  onClick={() => closeTest()}>X</span>
+      <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <SwiperSlide>
+          
         <div className="divTest2">
           <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?
+            Какой из этих предметов не относится к живой природе?2
           </h2>
           <div className="Test_09">
             <img src={img2} alt="" />
@@ -89,12 +86,15 @@ export default function Page7() {
             </div>
           </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          
         <div className="divTest2">
           <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?
+            Какой из этих предметов не относится к живой природе?2
           </h2>
           <div className="Test_09">
-            <img src={img3} alt="" />
+            <img src={img2} alt="" />
             <div className="hashla">
               <h1>1</h1>
               <h1>2</h1>
@@ -103,12 +103,15 @@ export default function Page7() {
             </div>
           </div>
         </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          
         <div className="divTest2">
           <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?
+            Какой из этих предметов не относится к живой природе?2
           </h2>
           <div className="Test_09">
-            <img src={img4} alt="" />
+            <img src={img2} alt="" />
             <div className="hashla">
               <h1>1</h1>
               <h1>2</h1>
@@ -117,6 +120,8 @@ export default function Page7() {
             </div>
           </div>
         </div>
+        </SwiperSlide>
+      </Swiper>
         <button className="Btn-Send" onClick={() => gorupGet()}>
           Отправить
         </button>
