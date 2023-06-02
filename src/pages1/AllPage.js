@@ -16,6 +16,12 @@ import { FaPhone } from 'react-icons/fa'
 import { TbBrandTelegram } from 'react-icons/tb'
 import { SlSocialVkontakte } from 'react-icons/sl'
 import ImgScrol from '../img/free-icon-news-5995360 1.png'
+import ImgScrol2 from '../img/free-icon-calendar-1254164 1.png'
+import ImgScrol3 from '../img/free-icon-family-7541766 1.png'
+import ImgScrol4 from '../img/free-icon-magazine-4621852 1.png'
+import ImgScrol5 from '../img/free-icon-business-report-7087350 1.png'
+import ImgScrol6 from '../img/free-icon-file-968545 1.png'
+import ImgScrol7 from '../img/free-icon-homework-3290148 1 (2).png'
 import Page1 from './Page1'
 import Page2 from './Page2'
 import Page3 from './Page3'
@@ -195,37 +201,37 @@ export default function App () {
             </a>
             <a href='/page2'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol2} alt='' />
                 <h2>РАСПИСАНИЕ</h2>
               </div>
             </a>
             <a href='/page3'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol3} alt='' />
                 <h2>ГРУППЫ</h2>
               </div>
             </a>
             <a href='/page4'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol4} alt='' />
                 <h2>ЖУРНАЛ</h2>
               </div>
             </a>
             <a href='/page5'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol5} alt='' />
                 <h2>ПОСЕЩЕНИЕ</h2>
               </div>
             </a>
             <a href='/page6'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol6} alt='' />
                 <h2>ЗАПИСИ О ПРОПУСКАХ</h2>
               </div>
             </a>
             <a href='/page7'>
               <div className='ScrollBar-h2'>
-                <img src={ImgScrol} alt='' />
+                <img src={ImgScrol7} alt='' />
                 <h2>ЗАДАНИЯ</h2>
               </div>
             </a>
