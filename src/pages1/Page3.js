@@ -21,7 +21,7 @@ export default function Page1() {
     setSelectedKid(chilid);
     var nn = document.querySelector(".Cards-Page1-1");
     var ff = document.querySelector(".Cards-Page1");
-    ff.style = "display: flex;";
+
     nn.style = "display: none;";
   };
   useEffect(() => {

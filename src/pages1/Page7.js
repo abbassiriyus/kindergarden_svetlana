@@ -146,7 +146,7 @@ state
             {item.question}
           </h2>
           <div className="Test_09">
-            <img src={img2} alt="" />
+            <img src={`${url}/` + item.question_img} alt={`${url}/` + item.question_img}/>
             <div className="hashla">
               <h1>1</h1>
               <h1>2</h1>
