@@ -164,7 +164,7 @@ export default class Employees extends Component {
 console.log("worked");
 setTimeout(() => {
   window.location.reload()
-}, 5000);
+}, 500);
                 })
                 // form99
             }else{
@@ -258,6 +258,7 @@ setTimeout(() => {
   }
 
   PostPerson2(key) {
+    var phonee = document.querySelectorAll('.form-control')[1].value
     var addressid = key.addressid
     var itemData = new FormData()
     itemData.append("personlastname", document.querySelector('.formItm').value)
@@ -269,7 +270,7 @@ setTimeout(() => {
     itemData.append("passportnumber", document.querySelector('.formItm8').value)
     itemData.append("passportdate", document.querySelector('.formItm9').value)
     itemData.append("email", document.querySelector('.formItm6').value)
-    itemData.append("phone", document.querySelector('.form-control').value)
+    itemData.append("phone", phonee)
     itemData.append("addressid", addressid)
     //itemData.append("syscreatedatutc", key.syscreatedatutc)
     //itemData.append("syschangedatutc", key.syschangedatutc)
@@ -492,10 +493,8 @@ setTimeout(() => {
                       <label htmlFor="form51">Телефон</label>
                       <br />
                       <PhoneInput
-                        id="userNumber2"
-                        className="userNumber2"
+                        type="tel"
                         country={"ru"}
-                      // placeholder={item.phone}
                       />
                     </div>
                     <div className="pages11">

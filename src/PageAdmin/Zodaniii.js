@@ -26,16 +26,16 @@ export default class App extends Component {
   }
   postData() {
     var formdata2 = new FormData();
-    formdata2.append("skillname", document.querySelector("#test10").value);
-    formdata2.append("skillgroupid", document.querySelector("#test3").value);
+    formdata2.append("skillname", 3);
+    formdata2.append("skillgroupid", 3);
     axios.post(`${url}/skill`, formdata2).then((res) => {
       axios.get(`${url}/skill`).then((res1) => {
         var resid = 0;
 
         res1.data.map((item) => {
           if (
-            item.skillname == document.querySelector("#test10").value &&
-            item.skillgroupid == document.querySelector("#test3").value
+            item.skillname == 3 &&
+            item.skillgroupid ==3
           ) {
             resid = item.skillid;
           }
@@ -240,8 +240,10 @@ handleChange2 = (event) => {
                 <br />
                 <label htmlFor="test3">Группа</label>
                 <br />
-                <select name="" id="test3">
-                  <option value={1}>Окружающий мир</option>
+                <select>
+                  {this.state.gruppa.map((item)=>{
+                    return<option>{item.groupname}</option>
+                  })}
                 </select>
               </div>
               <div className="pages11">
@@ -257,9 +259,12 @@ handleChange2 = (event) => {
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="test10">Область развития</label>
+                <label htmlFor="test10">Область развития</label><br />
+                <select name="" id="test3">
+                  <option value={1}>Окружающий мир</option>
+                </select>
                 <br />
-                <input id="test10" type="text" />
+                
               </div>
               <div className="pages11">
                 <label htmlFor="test4">Вопрос</label>

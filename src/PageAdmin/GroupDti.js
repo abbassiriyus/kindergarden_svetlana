@@ -47,6 +47,7 @@ export default function GroupDti() {
                     if (res4.data[i].personid === filteredGroup[j].person) {
                       filteredGroup[j].personlastname =
                         res4.data[i].personlastname;
+                        filteredGroup[j].personfirstname=res4.data[i].personfirstname
                     }
                   }
                 }
@@ -107,7 +108,7 @@ export default function GroupDti() {
     document.querySelector(".asdasdasdasd").style = "display: block";
   }
 
-  function postData(groupid) {
+  function putData(groupid) {
     const data = new FormData();
     data.append("groupname", document.querySelector("#textDobav").value);
     data.append("ageid", document.querySelector("#ageidDobav").value);
@@ -131,36 +132,6 @@ export default function GroupDti() {
      alert(err);
     });
   }
-
-
-
-  // function postData2() {
-  //   console.log(selectedValue);
-  //   const uu =selectedValue
-  //   var formData = new FormData();
-  //   formData.append("groupname",  document.querySelector('.textDobav2').value)
-  //   formData.append("ageid",  document.querySelector('.ageidDobav2').value)
-  //   axios.post(`${url}/group`,formData).then((res)=>{
-  //     axios.get(`${url}/group`).then((res2)=>{
-  //         for (let i = 0; i < res2.data.length; i++) {
-  //           if (res2.data[i].groupname===document.querySelector('.textDobav2')&&res2.data[i].ageid===document.querySelector('.ageidDobav2')) {
-  //             setGoid(res2.data[i].groupid)
-  //             alert("1")
-  //           }
-  //         }
-  //     })
-  //     // axios.post(`${url}/group_emp`,formData2).then((res)=>{
-  
-  //     // })
-  //   })
-  //   var formData2 = new FormData();
-  //   formData2.append("employeeid",  selectedValue)
-  //   formData2.append("groupid",  goig)
-  //   axios.post(`${url}/group_emp`,formData).then((res)=>{
-  //     alert("ishladi")
-  //   })
-
-  // }
   function postData2() {
     const zb1=document.querySelector('.textDobav2').value
      const kak1 =selectedValue
@@ -286,7 +257,7 @@ export default function GroupDti() {
               </div>
               <div className="grp_btn2">
                 <button onClick={() => closesModal2()}>Назад</button>
-                <button onClick={() => postData(item.groupid)}>
+                <button onClick={() => putData(item.groupid)}>
                   Сохранить
                 </button>
               </div>
@@ -336,7 +307,7 @@ export default function GroupDti() {
                         {" "}
                         {item.syscreatedatutc.slice(0, 10)}
                       </td>
-                      <td className="btnadmp_td1"> {item.personlastname}</td>
+                      <td className="btnadmp_td1"> {item.personlastname}   {item.personfirstname}</td>
                       <td className="btnadmp_td1">
                         <div
                           style={{

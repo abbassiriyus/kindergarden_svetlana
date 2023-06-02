@@ -761,9 +761,9 @@ export default class Employees extends Component {
             </div> */}
         <div className="dropw">
           <select className="selectRgroup">
-            {this.state.getPosition.map((item) => {
-              return <option>{item.positiontitle}</option>;
-            })}
+<option>Воспитатель
+</option>
+<option>Педагог</option>
           </select>
           <select className="selectRgroup">
             {this.state.getGroup.map((item) => {
