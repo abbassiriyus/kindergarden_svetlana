@@ -16,6 +16,13 @@ import url from "../host";
 import img from "../img/image 37.png";
 import imasd from "../img/image 46.png";
 // import imgtest from "/public/img"
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper";
+
+
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -346,12 +353,14 @@ export default function Page2() {
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className="divs-tst">
+          <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
             {test.map((item) => {
               if (selectedKid.childid === item.childid) {
                 return (
+                  <SwiperSlide className="swiperSlider">
                   <>
                     {question.map((item2) => {
-                      if (item.questionid === item2.questionid && "Какой из этих предметов не относится к живой природе?"===item2.question) {
+                      if (item.questionid === item2.questionid) {
                         return (
                           <div className="dvasew">
                             <p>{item2.question}</p>
@@ -390,54 +399,17 @@ export default function Page2() {
                             </div>
                           </div>
                         );
-                      }  if(item.questionid === item2.questionid && "На какую букву начинаются названия этих предметов?"===item2.question){
-                        return (
-                          <div className="dvasew">
-                            <p>{item2.question}</p>
-                            <div className="fykjh">
-                              {/* <img src={img} alt="" /> */}
-
-                              <img
-                                src={"./img/" + item2.question_img}
-                                alt={item2.question_img}
-                              />
-                              <div className="aysdu">
-                                <button
-                                  onClick={() => CHECK([3, item2.answer,item.testid])}
-                                >
-                                  Б
-                                </button>
-                                <br />
-                                <button
-                                  onClick={() => CHECK([2, item2.answer,item.testid])}
-                                >
-                                  В
-                                </button>
-                                <br />
-                                <button
-                                  onClick={() => CHECK([1, item2.answer,item.testid])}
-                                >
-                                  Г
-                                </button>
-                                <br />
-                                <button
-                                  onClick={() => CHECK([4, item2.answer,item.testid])}
-                                >
-                                  Д
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                        );
                       }
-
                       
-                  
+                      
+                      
                     })}
                   </>
+                    </SwiperSlide>
                 );
               } 
             })}
+            </Swiper>
           </div>
         </TabPanel>
       </Box>

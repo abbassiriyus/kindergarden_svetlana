@@ -124,7 +124,7 @@ export default function Page6() {
   return (
     <div className="only_you">
       <div className="BigModalChild">
-        <h1>Loading.....</h1>
+
         {rebenoki.map((item2) => {
           if (rebenok3 === item2.childid) {
             return (

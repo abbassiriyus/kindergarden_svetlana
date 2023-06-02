@@ -12,10 +12,10 @@ export default function Page1() {
   const [up, setup] = useState([]);
   const [child, setChild] = useState([]);
   const [selectedKid, setSelectedKid] = useState([]);
-   const [deti, setdeti] = useState([]);
-   const [relation, setRelation] = useState([]);
-   const [legalrep, setLegalrep] = useState([]);
-   const [person, setPerson] = useState([]);
+  const [deti, setdeti] = useState([]);
+  const [relation, setRelation] = useState([]);
+  const [legalrep, setLegalrep] = useState([]);
+  const [person, setPerson] = useState([]);
   const handleKidClick = (chilid) => {
     setSelectedKid(chilid);
     var nn = document.querySelector(".Cards-Page1-1");
@@ -122,12 +122,12 @@ export default function Page1() {
             </div>
             <div className="Input-grup">
               <h4>Группа</h4>
-              {deti.map((item)=>{
-                if (selectedKid.groupid===item.groupid) {
-                  return<p>{item.groupname}</p>
+              {deti.map((item) => {
+                if (selectedKid.groupid === item.groupid) {
+                  return <p>{item.groupname}</p>
                 }
               })}
-             
+
             </div>
             <div className="Input-grup">
               <h4>Дата рождения</h4>
@@ -136,51 +136,51 @@ export default function Page1() {
             <div className="Input-grup">
               <h4>Представители</h4>
               <ul>
-              {relation.map((item3) => {
-                            if (selectedKid.childid === item3.childid) {
-                              return (
-                                <li>
-                                  {" "}
-                                  {item3.status}
-                                  {legalrep.map((item4) => {
-                                    if (item3.legalrepid === item4.legalrepid) {
-                                      return (
-                                        <>
-                                          {person.map((item5) => {
-                                            if (
-                                              item4.personid === item5.personid
-                                            ) {
-                                              return (
-                                                <span>
-                                                  {" "}
-                                                  {item5.personlastname}{" "}
-                                                  {item5.personfirstname}{" "}
-                                                  {item5.personmiddlename}{" "}
-                                                  {item5.phone}
-                                                </span>
-                                              );
-                                            }
-                                          })}
-                                        </>
-                                      );
-                                    }
-                                  })}
-                                </li>
-                              );
-                            }
-                          })}
+                {relation.map((item3) => {
+                  if (selectedKid.childid === item3.childid) {
+                    return (
+                      <li>
+                        {" "}
+                        {item3.status}
+                        {legalrep.map((item4) => {
+                          if (item3.legalrepid === item4.legalrepid) {
+                            return (
+                              <>
+                                {person.map((item5) => {
+                                  if (
+                                    item4.personid === item5.personid
+                                  ) {
+                                    return (
+                                      <span>
+                                        {" "}
+                                        {item5.personlastname}{" "}
+                                        {item5.personfirstname}{" "}
+                                        {item5.personmiddlename}{" "}
+                                        {item5.phone}
+                                      </span>
+                                    );
+                                  }
+                                })}
+                              </>
+                            );
+                          }
+                        })}
+                      </li>
+                    );
+                  }
+                })}
               </ul>
             </div>
             <div className="Input-grup">
-                        <h4>Дополнительно</h4>
-                        <p>{selectedKid.comment}</p>
-                      </div>
-                      <div>
-                        <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
-                        </div>
-                        <div>
-                          <h1 className="zafik_h2">Карта индивидуального развития </h1>
-                        </div>
+              <h4>Дополнительно</h4>
+              <p>{selectedKid.comment}</p>
+            </div>
+            <div>
+              <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
+            </div>
+            <div>
+              <h1 className="zafik_h2">Карта индивидуального развития </h1>
+            </div>
           </div>
         </div>
       )}
