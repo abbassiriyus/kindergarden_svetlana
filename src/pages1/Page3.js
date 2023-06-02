@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Img002 from "../img/image 34.png";
 import Img001 from "../img/free-icon-daughter-8229500 (1).png";
+import Img0012 from "../img/free-icon-child-5238428 (1).png";
 import axios from "axios";
 import url from "../host";
 export default function Page1() {
@@ -86,17 +87,32 @@ export default function Page1() {
               <Typography className="typogRaf">
                 {child.map((item) => {
                   if (element.groupid === item.groupid) {
-                    return (
-                      <div
-                        onClick={() => handleKidClick(item)}
-                        className="kids-baby"
-                      >
-                        <div className="baby">
-                          <img src={Img001} alt="" />
-                          <h2>{item.childfirstname}</h2>
+                    if (item.gender==="м") {
+                      return (
+                        <div
+                          onClick={() => handleKidClick(item)}
+                          className="kids-baby"
+                        >
+                          <div className="baby">
+                            <img src={Img0012} alt="" />
+                            <h2>{item.childfirstname}</h2>
+                          </div>
                         </div>
-                      </div>
-                    );
+                      );
+                    }else{
+                      return (
+                        <div
+                          onClick={() => handleKidClick(item)}
+                          className="kids-baby"
+                        >
+                          <div className="baby">
+                            <img src={Img001} alt="" />
+                            <h2>{item.childfirstname}</h2>
+                          </div>
+                        </div>
+                      );
+                    }
+      
                   }
                 })}
               </Typography>
@@ -104,7 +120,87 @@ export default function Page1() {
           </Accordion>
         ))}
       </div>
-      {selectedKid && (
+      {selectedKid.gender==="м" &&  (
+        <div className="Cards-Page1">
+          <div className="CardProfil-Page1">
+            <img src={Img0012} alt="" />
+            <br />
+            <h4>{selectedKid.name}</h4>
+          </div>
+          <div className="Card-Page1">
+            <div className="Input-grup">
+              <h4>Фамилия</h4>
+              <p>{selectedKid.childlastname}</p>
+            </div>
+            <div className="Input-grup">
+              <h4>Имя</h4>
+              <p>{selectedKid.childfirstname}</p>
+            </div>
+            <div className="Input-grup">
+              <h4>Группа</h4>
+              {deti.map((item) => {
+                if (selectedKid.groupid === item.groupid) {
+                  return <p>{item.groupname}</p>
+                }
+              })}
+
+            </div>
+            <div className="Input-grup">
+              <h4>Дата рождения</h4>
+              <p>{selectedKid.dateofbirth}</p>
+            </div>
+            <div className="Input-grup">
+              <h4>Представители</h4>
+              <ul>
+                {relation.map((item3) => {
+                  if (selectedKid.childid === item3.childid) {
+                    return (
+                      <li>
+                        {" "}
+                        {item3.status}
+                        {legalrep.map((item4) => {
+                          if (item3.legalrepid === item4.legalrepid) {
+                            return (
+                              <>
+                                {person.map((item5) => {
+                                  if (
+                                    item4.personid === item5.personid
+                                  ) {
+                                    return (
+                                      <span>
+                                        {" "}
+                                        {item5.personlastname}{" "}
+                                        {item5.personfirstname}{" "}
+                                        {item5.personmiddlename}{" "}
+                                        {item5.phone}
+                                      </span>
+                                    );
+                                  }
+                                })}
+                              </>
+                            );
+                          }
+                        })}
+                      </li>
+                    );
+                  }
+                })}
+              </ul>
+            </div>
+            <div className="Input-grup">
+              <h4>Дополнительно</h4>
+              <p>{selectedKid.comment}</p>
+            </div>
+            <div>
+              <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>
+            </div>
+            <div>
+              <h1 className="zafik_h2">Карта индивидуального развития </h1>
+            </div>
+          </div>
+        </div>
+      )}
+            {selectedKid.gender==="ж" &&  (
         <div className="Cards-Page1">
           <div className="CardProfil-Page1">
             <img src={Img001} alt="" />

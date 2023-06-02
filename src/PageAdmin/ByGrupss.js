@@ -105,7 +105,7 @@ export default class App extends Component {
           " " +
           item.personfirstname +
           item.personmiddlename
-          }\n${item.roomid}-room`;
+          }\nКабинет-${item.roomid}`;
       }
     });
     if (kluch) {

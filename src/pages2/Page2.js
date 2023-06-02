@@ -368,8 +368,8 @@ export default function Page2() {
                               {/* <img src={img} alt="" /> */}
 
                               <img
-                                src={"./img/" + item2.question_img}
-                                alt={item2.question_img}
+                                src={`${url}/` + item2.question_img}
+                                alt={`${url}/` + item2.question_img}
                               />
                               <div className="aysdu">
                                 <button

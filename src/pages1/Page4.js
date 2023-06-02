@@ -190,64 +190,63 @@ function App() {
             <h1><span>Отсутствующие </span><br /> 10/9/1</h1>
               </div>
             <div id='names'>
-              <p>День</p>
-              <p>Отсутствующие</p>
+              <p>Занятие</p>
               <p>Тема</p>
+              <p>Время</p>
+              <p>Педагог</p>
               <p>Примечание</p>
             </div>
             <div id='inform1'>
               <div id='inform-p'>
-                <p>ПН 05/{state3}</p>
-                <p>10/9/1</p>
-                <p>Лес</p>
+                <p>ФЭМП</p>
+                <p>Порядок чисел от <br/> 1 до 10</p>
+                <p>09.00 - 09.25</p>
+                <p>Ручкина К.Е.</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1' className='back'>
+              <div id='inform-p'>
+                <p>Ритмика</p>
+                <p>Марш</p>
+                <p>09.35 - 10.00</p>
+                <p>Азанова А.А.</p>
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>
             <div id='inform1'>
               <div id='inform-p'>
-                <p>ВТ 05/{stateday1}</p>
-                <p>10/8/2</p>
-                <p>Горы</p>
+                <p>Лепка</p>
+                <p>Работа с глиной</p>
+                <p>10.00 - 10.25</p>
+                <p>Солнцева В.А.</p>
+                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
+              </div>
+            </div>
+            <div id='inform1' className='back'>
+              <div id='inform-p'>
+                <p>Музыка</p>
+                <p>Жанры</p>
+                <p>10.35 - 11.00</p>
+                <p>Азанова А.А.</p>
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>
             <div id='inform1'>
               <div id='inform-p'>
-                <p>СР 05/{stateday2}</p>
-                <p>10/10/0</p>
-                <p>Реки и моря</p>
+                <p>Психолог</p>
+                <p>Обида</p>
+                <p>15.05 - 15.30</p>
+                <p>Кнопкина О.П.</p>
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>
-            <div id='inform1'>
+            <div id='inform1' className='back'>
               <div id='inform-p'>
-                <p>ЧТ 05/{stateday3}</p>
-                <p>10/5/5</p>
-                <p>Космос</p>
-                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
-              </div>
-            </div>
-            <div id='inform1'>
-              <div id='inform-p'>
-                <p>ПТ 05/{stateday4}</p>
-                <p>10/2/8</p>
-                <p>Я люблю природу</p>
-                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
-              </div>
-            </div>
-            <div id='inform1'>
-              <div id='inform-p'>
-                <p>СБ 01/{stateday5}</p>
-                <p>10/1/9</p>
-                <p>Лес</p>
-                <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
-              </div>
-            </div>
-            <div id='inform1'>
-              <div id='inform-p'>
-                <p>ВС 01/{stateday6}</p>
-                <p>10/7/3</p>
-                <p>Космос</p>
+                <p>ОФП</p>
+                <p>Работа с мячом</p>
+                <p>16.00 - 16.30</p>
+                <p>Бубнов Р.А.</p>
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>

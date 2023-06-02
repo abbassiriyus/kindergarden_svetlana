@@ -14,10 +14,10 @@ export default function Vztsasd() {
   const [data3, setData3] = useState([]);
   const [state, setState] = useState([]);
   const [posted, setPosted] = useState([]);
-  const [getted, setGetted] = useState([]);
+
   const [finally2, setFinally] = useState(true);
   const [gettedGroup, setGroup] = useState([]);
-
+  const [startDate, setStartDate] = useState(new Date().toISOString().slice(0,10));
   useEffect(() => {
     function getsOne() {
       const hallo = [];
@@ -64,7 +64,9 @@ export default function Vztsasd() {
       window.location.reload();
     });
   }
-
+  const handleStartDateChange = (event) => {
+    setStartDate(event.target.value)
+  }
   function PutData(key) {
     axios.get(`${url}/attendance/${key}`).then((res) => {
       console.log(res.data);
@@ -121,9 +123,9 @@ export default function Vztsasd() {
     document.querySelector(".srdhcfghjbk2").style = "display: block";
     document.querySelector(".hyeraysd2").style = "display: block";
     // console.log(key);
-    axios.get(`${url}/attendance/${key}`).then((res) => {
-      setGetted(res.data);
-    });
+    // axios.get(`${url}/attendance/${key}`).then((res) => {
+    //   setGetted(res.data);
+    // });
   }
   function closeSRF2() {
     document.querySelector(".srdhcfghjbk2").style = "display: none";
@@ -196,15 +198,15 @@ export default function Vztsasd() {
                     )
                 })}
               </select>
-              <input type="date" className="inputDate" />
+              <input type="date" className="inputDate"value={startDate} onChange={handleStartDateChange} />
               <button id="btnlar1" onClick={() => OpenSRF()}>
                 Добавить посещение
               </button>
             </div>
             <ul className="ustoz">
-              <li className="madin">Отсутствующих: {data2.length}</li>
+            <li className="madin">Отсутствующих: {data2.filter((item) => item.datestart === startDate).length}</li>
               <li className="madin1">
-                Присутствующих: {data3.length}
+              Присутствующих: {data3.filter((item) => item.date.substring(0, 10) === startDate).length}
               </li>
             </ul>
           </div>
@@ -223,20 +225,6 @@ export default function Vztsasd() {
 
                     <th className="btnadmp_th2">Действие</th>
                   </tr>
-                  {/* 
-
-
-                           <tr className="btnadmp_tr1" >
-                              <td className="btnadmp_td1">1</td>
-                              <td className="btnadmp_td1">Малинина Наташа </td>
-                              <td className="btnadmp_td1">Отсутствует </td>
-                              <td className="btnadmp_td1"></td>
-                              <td className="btnadmp_td1"> </td>
-                              <td className="btnadmp_td1">
-                                 <button className="butadmp1">+</button>
-
-                              </td>
-                           </tr> */}
                   {finally2 === true ? (
                     <div className="bigEgos">
                       <Box className="bigEgos2" sx={{ width: 300 }}>
@@ -247,40 +235,42 @@ export default function Vztsasd() {
                     </div>
                   ) : (
                     data.map((item, key) => {
-                      return (
-                        <tr className="btnadmp_tr1">
-                          <td className="btnadmp_td1">{key + 1}</td>
-                          <td className="btnadmp_td1">{item.childlastname}</td>
-                          <td className="btnadmp_td1"> Присутствует </td>
-                          <td className="btnadmp_td1">
-                            {item.arrivaltime
-                              .slice(5)
-                              .replaceAll("-", "/")
-                              .replaceAll("T", " ")}
-                          </td>
-                          <td className="btnadmp_td1">
-                            {item.leavingtime
-                              .slice(5)
-                              .replaceAll("-", "/")
-                              .replaceAll("T", " ")}
-                          </td>
-
-                          <td className="btnadmp_td1">
-                            <button
-                              className="butadmp1"
-                              onClick={() => OpenSRF2(item.attendanceid)}
-                            >
-                              <img src={ico2} alt="" />
-                            </button>
-                            <button
-                              onClick={() => deleteData(item.attendanceid)}
-                              className="butadmp2"
-                            >
-                              <img src={ico1} alt="" />
-                            </button>
-                          </td>
-                        </tr>
-                      );
+                      if (item.date.slice(0,10)===startDate) {
+                        return (
+                          <tr className="btnadmp_tr1">
+                            <td className="btnadmp_td1">{key + 1}</td>
+                            <td className="btnadmp_td1">{item.childlastname}</td>
+                            <td className="btnadmp_td1"> Присутствует{item.date} </td>
+                            <td className="btnadmp_td1">
+                              {item.arrivaltime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
+                            <td className="btnadmp_td1">
+                              {item.leavingtime
+                                .slice(5)
+                                .replaceAll("-", "/")
+                                .replaceAll("T", " ")}
+                            </td>
+  
+                            <td className="btnadmp_td1">
+                              <button
+                                className="butadmp1"
+                                onClick={() => OpenSRF2(item.attendanceid)}
+                              >
+                                <img src={ico2} alt="" />
+                              </button>
+                              <button
+                                onClick={() => deleteData(item.attendanceid)}
+                                className="butadmp2"
+                              >
+                                <img src={ico1} alt="" />
+                              </button>
+                            </td>
+                          </tr>
+                        ); 
+                      }
                     })
                   )}
                 </table>

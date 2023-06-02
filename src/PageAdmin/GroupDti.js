@@ -79,10 +79,7 @@ export default function GroupDti() {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //    console.log(state);
-  //    // console.log(non);
-  // }, [state])
+
 
   function opensModal() {
     document.querySelector(".Dobav_Group").style = "display: block";
@@ -253,6 +250,18 @@ export default function GroupDti() {
                     placeholder={item.ageid}
                     type="number"
                   />
+                            <h4>Воспитатели</h4>
+          <select value={selectedValue} onChange={(event) => setSelectedValue(event.target.value)} className="hthgnhdnd">
+            <option>Выберите воспитателя</option>
+            {state2.map((item) => {
+              return <>{state3.map((item2) => {
+                if (item.personid === item2.personid) {
+                  return <option value={item.employeeid}>{item2.personlastname}     {item2.personfirstname}</option>;
+                }
+              })}</>
+
+            })}
+          </select>
                 </div>
               </div>
               <div className="grp_btn2">

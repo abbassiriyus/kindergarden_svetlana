@@ -192,7 +192,16 @@ export default function Zapissi() {
                 <p>{item.dateend.slice(0, 16)}</p>
                 <p>{item.childlastname}</p>
                 <p>{item.reason}</p>
-                <p>Marina</p>
+                <p>{person2.map((item56)=>{
+                  if (item.employeeid===item56.employeeid) {
+                    return<>{person3.map((item543)=>{
+                      if (item56.personid===item543.personid) {
+                        return<p>{item543.personlastname}  {item543.personfirstname}</p>
+                      }
+                    })}</>
+                  }
+                  
+                })}</p>
                 <p>
                   <img src={icon2} alt="" />
                   <img src={icon1} onClick={() => deleteExcuse(item.excuseid)} alt="" />

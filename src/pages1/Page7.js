@@ -6,7 +6,7 @@ import img2 from "../img/image 38.png";
 import img3 from "../img/image 39.png";
 import img4 from "../img/image 40.png";
 import url from "../host";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import imgUstz from '../img/image 34.png'
 import imgTst from '../img/301-3011314_pe-success-icon-task-done-removebg-preview.png'
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -18,63 +18,132 @@ import { Navigation } from "swiper";
 
 export default function Page7() {
   const [data, setData] = useState([]);
+  const[month2, setMonth]=useState([])
+  const[state, setState]=useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [
+          GroupEmp,
+          Group,
+          childRes,
+          excuseRes,
+          employeeRes,
+          personRes,
+        ] = await Promise.all([
+          axios.get(`${url}/group_emp`),
+          axios.get(`${url}/group`),
+          axios.get(`${url}/child`),
+          axios.get(`${url}/excuse`),
+          axios.get(`${url}/employee`),
+          axios.get(`${url}/person`),
+        ]);
+        
+        const employeeId = parseInt(localStorage.getItem("employ"));
+  
+        const groupEmpData = GroupEmp.data.filter((item) => item.employeeid === employeeId);
+        const groupIds = groupEmpData.map((item) => item.groupid);
+  
+        const childData = childRes.data.filter((item) => groupIds.includes(item.groupid));
+        const childIds = childData.map((item) => item.childid);
+  
 
-  function openTest() {
+  setState(childIds)
+
+  
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
+  useEffect(() => { }, [
+state
+  ]);
+
+
+
+  function openTest(id) {
+    axios.get(`${url}/question`).then((res) => {
+      var oy=[]
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].month===id) {
+          oy.push(res.data[i])
+        }  
+      }
+      setMonth(oy)
+    });
     document.querySelector(".divTest").style = "display: block";
     document.querySelector(".GroupsBtn").style = "display: none";
+    console.log(month2,"ishladi");
+    console.log(id,"nima");
   }
   function closeTest() {
     document.querySelector(".divTest").style = "display: none";
     document.querySelector(".GroupsBtn").style = "display: block";
   }
-
-  function gorupGet() {
-    axios.get(`${url}/group`).then((res) => {
-      setData(res.data);
-    });
-    document.querySelector('.getGrup').style = 'display: block;'
+  function formatDate(dateObj) {
+    var year = dateObj.getFullYear()
+    var month = ('0' + (dateObj.getMonth() + 1)).slice(-2)
+    var day = ('0' + dateObj.getDate()).slice(-2)
+    return year + '-' + month + '-' + day
   }
-
-  function getClose () {
-    document.querySelector('.getGrup').style = 'display: none;'
-    document.querySelector('.successfull').style = 'display: block;'
-    setTimeout(() => {
-      document.querySelector('.successfull').style = 'display: none;'
-    }, 1000000000)
+  async function gorupGet(id) {
+    for await (let item of state) {
+      var testData = new FormData()
+      testData.append("testtitle", "yeahhhhhh")
+      testData.append("childid", item)
+      testData.append("questionid", id)
+      testData.append("date", formatDate(new Date()))
+      testData.append("score", 0)
+      try {
+        const response = await axios.post(`${url}/test`, testData)
+        console.log(response.data)
+        alert("worked")
+      } catch (error) {
+        console.log(error)
+        alert("error")
+      }
+      await sleep(1000) // задержка между отправками запросов (в миллисекундах)
+    }
+  }
+  
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 
   return (
     <div>
       <div className="GroupsBtn">
         <div className="groupp">
-          <button onClick={() => openTest()}>ЯНВАРЬ</button>
-          <button onClick={() => openTest()}>ФЕВРАЛЬ</button>
-          <button onClick={() => openTest()}>МАРТ</button>
+          <button onClick={() => openTest("январь")}>ЯНВАРЬ</button>
+          <button onClick={() => openTest("февраль")}>ФЕВРАЛЬ</button>
+          <button onClick={() => openTest("марта")}>МАРТ</button>
         </div>
         <div className="groupp">
-          <button onClick={() => openTest()}>АПРЕЛЬ</button>
-          <button onClick={() => openTest()}>МАЙ</button>
-          <button onClick={() => openTest()}>ИЮНЬ</button>
+          <button onClick={() => openTest("апрель")}>АПРЕЛЬ</button>
+          <button onClick={() => openTest("мая")}>МАЙ</button>
+          <button onClick={() => openTest("июнь")}>ИЮНЬ</button>
         </div>
         <div className="groupp">
-          <button onClick={() => openTest()}>ИЮЛЬ</button>
-          <button onClick={() => openTest()}>АВГУСТ</button>
-          <button onClick={() => openTest()}>СЕНТЯБРЬ</button>
+          <button onClick={() => openTest("июль")}>ИЮЛЬ</button>
+          <button onClick={() => openTest("Август")}>АВГУСТ</button>
+          <button onClick={() => openTest("Сентябрь")}>СЕНТЯБРЬ</button>
         </div>
         <div className="groupp">
-          <button onClick={() => openTest()}>ОКТЯБРЬ</button>
-          <button onClick={() => openTest()}>НОЯБРЬ</button>
-          <button onClick={() => openTest()}>ДЕКАБРЬ</button>
+          <button onClick={() => openTest("Октябрь")}>ОКТЯБРЬ</button>
+          <button onClick={() => openTest("ноябрь")}>НОЯБРЬ</button>
+          <button onClick={() => openTest("Декабрь")}>ДЕКАБРЬ</button>
         </div>
       </div>
       <div className="divTest">
       <span  onClick={() => closeTest()}>X</span>
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
-        <SwiperSlide>
-          
+        {month2.map((item)=>{
+  return<SwiperSlide>  
         <div className="divTest2">
           <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?2
+            {item.question}
           </h2>
           <div className="Test_09">
             <img src={img2} alt="" />
@@ -86,56 +155,15 @@ export default function Page7() {
             </div>
           </div>
         </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          
-        <div className="divTest2">
-          <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?2
-          </h2>
-          <div className="Test_09">
-            <img src={img2} alt="" />
-            <div className="hashla">
-              <h1>1</h1>
-              <h1>2</h1>
-              <h1>3</h1>
-              <h1>4</h1>
-            </div>
-          </div>
-        </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          
-        <div className="divTest2">
-          <h2 className="ixx">
-            Какой из этих предметов не относится к живой природе?2
-          </h2>
-          <div className="Test_09">
-            <img src={img2} alt="" />
-            <div className="hashla">
-              <h1>1</h1>
-              <h1>2</h1>
-              <h1>3</h1>
-              <h1>4</h1>
-            </div>
-          </div>
-        </div>
-        </SwiperSlide>
-      </Swiper>
-        <button className="Btn-Send" onClick={() => gorupGet()}>
+        <button className="Btn-Send" onClick={() => gorupGet(item.questionid)}>
           Отправить
         </button>
-      </div>
-      <div className="getGrup">
-        {data.map((item) => {
-          return (
-            <div className="groupGet" onClick={() => getClose()}>
-              <img src={imgUstz} />
-              <h1>{item.groupname}</h1>
-            </div>
-          );
+        </SwiperSlide>
         })}
+      </Swiper>
+
       </div>
+
       <div className="successfull">
         <h1>Oтправлена!</h1>
         <img src={imgTst} />

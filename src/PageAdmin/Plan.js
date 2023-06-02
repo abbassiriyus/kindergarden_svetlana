@@ -145,7 +145,7 @@ axios
       <div className="biga-pages"></div>
       <div id="tables">
         <div id="names">
-          <p>МАЙ 2023</p>
+          <p>Январь 2023</p>
         </div>
         <div id="inform1">
           <div id="inform-p">
@@ -155,18 +155,20 @@ axios
             <p>3</p>
             <p>4</p>
             <p>5</p>
+            <p></p>
           </div>
         </div>
 
         <div id="inform1">
           <div id="inform-p1">
-            <p>Тема</p>
+            <p className="zxc">Тема</p>
             <p>
               Зимние <br /> забавы{" "}
             </p>
             <p>Зимний лес</p>
             <p>Горы</p>
             <p>Животные</p>
+            <p></p>
             <div id="iconci">
               <img src={icon1} alt="" />
               <img src={icon2} alt="" />
@@ -184,6 +186,7 @@ axios
                 <p>{item.winterles}</p>
                 <p>{item.mountain}</p>
                 <p>{item.animal}</p>
+                <p>0</p>
                 <div id="iconci">
                   <img src={icon1} alt="" />
                   <img src={icon2} alt="" />

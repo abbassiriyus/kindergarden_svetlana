@@ -327,13 +327,13 @@ export default class Employees extends Component {
       "passportdate",
       document.querySelector(".vidachiData").value + "T00:00:00.000Z"
     );
-    PutedPerson.append("phone", document.querySelector(".form-control").value);
+    PutedPerson.append("phone", document.querySelectorAll('.form-control')[1].value);
     PutedPerson.append("email", document.querySelector(".emailPerson").value);
     PutedPerson.append("addressid", addressidPerson);
     axios.put(`${url}/person/${key.personid}`, PutedPerson).then((res) => {
       console.log(res.data);
+      window.location.reload()
     });
-    console.log(document.querySelector(".form-control").value);
   }
   closededd() {
     document.querySelector("#dd2").style = "display: none";

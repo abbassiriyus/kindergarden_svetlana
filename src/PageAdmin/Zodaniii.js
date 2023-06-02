@@ -53,22 +53,7 @@ export default class App extends Component {
         axios.post(`${url}/question`, formdata).then((res) => {
           axios.get(`${url}/question`).then((res2) => {
             for (let i = 0; i < res2.data.length; i++) {
-              if (res2.data[i].question===document.querySelector("#test4").value&&res2.data[i].month===document.querySelector("#test1").value) {
-                  var a="ss"
-                  var b=5
-                  var formdata5 = new FormData();
-                  formdata5.append("testtitle", a);
-                  formdata5.append("childid", document.querySelector("#test33").value);
-                  formdata5.append("questionid", res2.data[i].questionid);
-                  formdata5.append("date", "2023-05-30");
-                  formdata5.append("score", b);
-                  axios.post(`${url}/test`,formdata5).then((res6)=>{
-                    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-                    window.location.reload()
-                })
-              }else{
-                console.log('TUPOY');
-              }
+              window.location.reload()
             }
           })
           // window.location.reload()
@@ -87,60 +72,9 @@ handleChange2 = (event) => {
   console.log(selectedValue2, "fffffffff");
 }
   componentDidMount = () => {
-    // axios.get(`${url}/question`).then((res) => {
-    //   axios.get(`${url}/skill`).then((res1) => {
-    //     for (let i = 0; i < res.data.length; i++) {
-    //       for (let j = 0; j < res1.data.length; j++) {
-    //         if (res.data[i].skillid == res1.data[j].skillid) {
-    //           res.data[i].skillname = res1.data[j].skillname;
-    //         }
-    //       }
-    //     }
-    //     console.log(res.data);
-    //     this.setState({ person: res.data });
-    //   });
-    // });
-    // axios.get(`${url}/test`).then((res) => {
-    //   axios.get(`${url}/question`).then((res1) => {
-    //     for (let i = 0; i < res.data.length; i++) {
-    //       for (let j = 0; j < res1.data.length; j++) {
-    //         if (res.data[i].questionid === res1.data[j].questionid) {
-    //           res.data[i].question = res1.data[j].question;
-    //           res.data[i].question_img = res1.data[j].question_img;
-    //           res.data[i].month = res1.data[j].month;
-    //           res.data[i].author = res1.data[j].author;
-    //           console.log( res.data[i].childid,"ddddd");
-    //         }
-    //       }
-    //     }
-    //     console.log(res.data);
-    //     this.setState({ person: res.data });
-    //   });
-    // });
-    axios.get(`${url}/test`).then((res) => {
-      axios.get(`${url}/question`).then((res1) => {
-        axios.get(`${url}/child`).then((res2) => {
-        for (let i = 0; i < res.data.length; i++) {
-          for (let j = 0; j < res1.data.length; j++) {
-            for (let b = 0; b < res2.data.length; b++) {
-              if (res.data[i].questionid === res1.data[j].questionid) {
-              res.data[i].question = res1.data[j].question;
-              res.data[i].question_img = res1.data[j].question_img;
-              res.data[i].month = res1.data[j].month;
-              res.data[i].author = res1.data[j].author;
-              console.log( res.data[i].childid,"ddddd");
-              if (res.data[i].childid=== res2.data[b].childid) {
-                res.data[i].groupid=res2.data[b].groupid
-              } 
-            }
-            }
-          }
-        }
-        console.log(res.data);
-        this.setState({ person: res.data });
-        })
-      });
-    });
+    axios.get(`${url}/question`).then((res)=>{
+      this.setState({person:res.data})
+    })
     axios.get(`${url}/skill_group`).then((res) => {
       this.setState({ group: res.data });
     });
@@ -247,18 +181,6 @@ handleChange2 = (event) => {
                 </select>
               </div>
               <div className="pages11">
-                <br />
-                <label htmlFor="test3">Ребенок</label>
-                <br />
-
-                <select name="" id="test33">
-                {this.state.child.map(iten=>{
-                                    return<option value={iten.childid}>{iten.childlastname}</option>
-                })}
-
-                </select>
-              </div>
-              <div className="pages11">
                 <label htmlFor="test10">Область развития</label><br />
                 <select name="" id="test3">
                   <option value={1}>Окружающий мир</option>
@@ -347,7 +269,6 @@ handleChange2 = (event) => {
                   <th className="btnadmp_th1">ID</th>
                   <th className="btnadmp_th">Рисунок</th>
                   <th className="btnadmp_th"> Месяц </th>
-                  <th className="btnadmp_th">Ребенок</th>
                   <th className="btnadmp_th">Дата отправки </th>
                   <th className="btnadmp_th">Автор</th>
                   <th className="btnadmp_th" id="borDr">
@@ -355,7 +276,6 @@ handleChange2 = (event) => {
                   </th>
                 </tr>
                 {this.state.person.map((item) => {
-                  if (item.month === this.state.selectedValue&&item.groupid===this.state.selectedValue2) {
                     return (
                       <tr className="btnadmp_tr1">
                         <td className="btnadmp_td1">{item.questionid}</td>
@@ -368,12 +288,7 @@ handleChange2 = (event) => {
                         </td>
   
                         <td className="btnadmp_td1">{item.month}</td>
-                        {this.state.child.map(item2=>{
-                          if (item.childid===item2.childid) {
-                            return <td className="btnadmp_td1"> {item2.childlastname}   {item2.childfirstname}</td>
-                          }
-                         
-                        })}
+  
                         
                         <td className="btnadmp_td1">
                           {" "}
@@ -394,46 +309,7 @@ handleChange2 = (event) => {
                         </td>
                       </tr>
                     );
-                  }else{
-                    return (
-                      <tr className="btnadmp_tr1">
-                        <td className="btnadmp_td1">{item.questionid}</td>
-                        <td className="btnadmp_td1">
-                          <img
-                            width="100px"
-                            src={`${url}/` + item.question_img}
-                            alt={`${url}/` + item.question_img}
-                          />
-                        </td>
-  
-                        <td className="btnadmp_td1">{item.month}</td>
-                        {this.state.child.map(item2=>{
-                          if (item.childid===item2.childid) {
-                            return <td className="btnadmp_td1"> {item2.childlastname}   {item2.childfirstname}</td>
-                          }
-                         
-                        })}
-                        
-                        <td className="btnadmp_td1">
-                          {" "}
-                          {item.syscreatedatutc.slice(0, 10)}
-                        </td>
-                        <td className="btnadmp_td1"> {item.author}</td>
-                        <td className="btnadmp_td1">
-                          <button className="butadmp1">
-                            <img src={ico2} alt="" />
-                          </button>
-                          <button className="butadmp2">
-                            <img
-                              onClick={() => this.deleteData(item)}
-                              src={ico1}
-                              alt=""
-                            />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  }
+                  
 
                 })}
               </table>
