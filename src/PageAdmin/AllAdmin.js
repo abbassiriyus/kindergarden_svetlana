@@ -39,7 +39,6 @@ import ByGrupss from "./ByGrupss";
 import PageProfilr from "./PageProfilr";
 import Statics from "./Statics";
 import Zapissi from "./Zapissi";
-import PostEmployee from "./PostEmployee/PostEmployee";
 import imgScrol from '../img/free-icon-stakeholder-7767362 1.png'
 import imgScrol2 from '../img/free-icon-family-3597788 1 (1).png'
 import imgScrol3 from '../img/free-icon-family-7541766 1.png'
@@ -605,7 +604,6 @@ export default function AllAdmin() {
               <Route path="/ByGrupss" element={<ByGrupss />} />
               <Route path="/PageProfilr" element={<PageProfilr />} />
               <Route path="/Zapissi" element={<Zapissi />} />
-              <Route path="/PostEmployee" element={<PostEmployee />} />
               <Route path="/Statics" element={<Statics />} />
             </Routes>
           </div>
