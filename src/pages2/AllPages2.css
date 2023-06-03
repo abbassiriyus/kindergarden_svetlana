@@ -1024,3 +1024,17 @@ position: absolute;
 .only_you .mySwiper{
   min-width: 860px !important;
 }
+
+.staticKid{
+  width: 100%;
+  display: none;
+}
+
+.staticKid select{
+  width: 30%;
+  height: 40px;
+  outline: none;
+  border-radius: 30px;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}

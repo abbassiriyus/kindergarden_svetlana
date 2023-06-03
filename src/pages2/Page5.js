@@ -6,6 +6,7 @@ import Img11 from "../img/Group 133.png";
 import Img2 from "../img/free-icon-kindergarden-5235725 1.png";
 import './AllPages2.css'
 import url from "../host";
+import imgStatic from '../img/график 1.png'
 
 export default function Page5() {
   const [child22, useChild2] = useState([]);
@@ -20,7 +21,7 @@ export default function Page5() {
             (child) =>
               child.personid === parseInt(localStorage.getItem("personid"))
           );
-          
+
           axios.get(`${url}/relation`).then((res22) => {
             const tempBolas = [];
             for (let i = 0; i < res22.data.length; i++) {
@@ -36,42 +37,61 @@ export default function Page5() {
             useBola2(tempBolas);
             // useChild(filteredChildren);
           });
-  
+
         })
         .catch((err) => {
           console.log(err);
         });
-        axios.get(`${url}/child`).then((res33) => {
+      axios.get(`${url}/child`).then((res33) => {
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useChild2(res33.data);
-        });
-        axios.get(`${url}/group`).then((res44) => {
-          // eslint-disable-next-line react-hooks/rules-of-hooks
-          useGroup22(res44.data);
-        });
-  
+      });
+      axios.get(`${url}/group`).then((res44) => {
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useGroup22(res44.data);
+      });
+
     };
     fetchData33();
   }, []);
-  
+
   useEffect(() => {
   }, [
     child22,
     group2,
   ]);
+  function openStatic() {
+    document.querySelector('.staticKid').style = 'display: block'
+    document.querySelector('.kids-Page2').style = 'display: none'
+  }
+  function closeStatic() {
+    document.querySelector('.kids-Page2').style = 'display: block'
+    document.querySelector('.staticKid').style = 'display: none'
+  }
+
   return (
     <div className='Page5niki'>
-
-<div className="kids-Page2">
+      <div className="staticKid">
+        <select>
+          <option> Окружающий мир (Природа) </option>
+          <option> Окружающий мир (Предметы) </option>
+          <option> Математика </option>
+          <option> Грамматика </option>
+          <option> Развитие речи </option>
+        </select>
+        <br />
+        <img src={imgStatic} alt='' />
+      </div>
+      <div className="kids-Page2">
         {bolas22.map((item) => (
-          <div className="kid-Page2">
+          <div className="kid-Page2" onClick={() => openStatic()}>
             {child22.map((item22) => {
               if (item.childid === item22.childid) {
-                if (item22.gender==="ж") {
+                if (item22.gender === "ж") {
                   return (
                     <div className="asd">
                       <div className="ing55">
-                      <img src={Img11} alt="" />
+                        <img src={Img11} alt="" />
                       </div>
                       <div className="kid-prfl">
                         <div className="asd23">
@@ -91,13 +111,13 @@ export default function Page5() {
                           }
                         })}
                       </div>
-  
+
                     </div>
-                  );               
-                }else{
+                  );
+                } else {
                   return (
                     <div className="asd">
-     <img src={Img12} alt="" />
+                      <img src={Img12} alt="" />
                       <div className="kid-prfl">
                         <div className="asd23">
                           <h4 className="kakak">
@@ -117,7 +137,7 @@ export default function Page5() {
                         })}
                       </div>
                     </div>
-                  ); 
+                  );
                 }
               }
             })}
