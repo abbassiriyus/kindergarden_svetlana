@@ -16,13 +16,22 @@ export default class App extends Component {
     child:[],
     baza:[],
     selectedValue: "январь",
-    selectedValue2: 2
+    selectedValue2: 2,
+    exquestion:[]
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
   }
+  openModal2(id) {
+    document.querySelector(".modal112").style = "display:block";
+    axios.get(`${url}/question/${id}`).then((res)=>{
+      this.setState({exquestion:res.data})
+      console.log();
+    })
+  }
   closeModal() {
     document.querySelector(".modal11").style = "display:none";
+    document.querySelector(".modal112").style = "display:none";
   }
   postData() {
     var formdata2 = new FormData();
@@ -56,6 +65,41 @@ export default class App extends Component {
               window.location.reload()
             }
           })
+          // window.location.reload()
+          console.log(res.data);
+        });
+      });
+    });
+  }
+  putData(id) {
+    var formdata2 = new FormData();
+    formdata2.append("skillname", 3);
+    formdata2.append("skillgroupid", 3);
+    axios.post(`${url}/skill`, formdata2).then((res) => {
+      axios.get(`${url}/skill`).then((res1) => {
+        var resid = 0;
+
+        res1.data.map((item) => {
+          if (
+            item.skillname == 3 &&
+            item.skillgroupid ==3
+          ) {
+            resid = item.skillid;
+          }
+        });
+        var formdata2 = new FormData();
+        formdata2.append("skillid", resid);
+        formdata2.append("month", document.querySelector("#test1p").value);
+        formdata2.append("question", document.querySelector("#test4p").value);
+        formdata2.append(
+          "question_img",
+          document.querySelector(".test6p").files[0]
+        );
+        formdata2.append("answer", document.querySelector("#test5p").value);
+        formdata2.append("author", document.querySelector("#test2p").value);
+        axios.put(`${url}/question/${id}`, formdata2).then((res) => {
+          console.log("ishladi");
+          window.location.reload()
           // window.location.reload()
           console.log(res.data);
         });
@@ -227,6 +271,97 @@ handleChange2 = (event) => {
             </div>
           </div>
         </div>
+        <div className="modal112">
+          {this.state.exquestion.map((item)=>{
+          return<div className="Apages1">
+          <div className="oyna101">
+            <div className="pages11">
+              <br />
+              <label htmlFor="test1"> Месяц </label>
+              <h5 htmlFor="test1">  Предыдущий:{item.month}</h5>
+              <br />
+              <select name="" id="test1p">
+                <option value="январь">январь</option>
+                <option value="февраль">февраль</option>
+                <option value="марта">март</option>
+                <option value="апрель">апрель</option>
+                <option value="мая">май</option>
+                <option value="июнь">июнь</option>
+                <option value="июль">июль</option>
+                <option value="Август">август</option>
+                <option value="Сентябрь">сентябрь</option>
+                <option value="Октябрь">октябрь</option>
+                <option value="ноябрь">ноябрь</option>
+                <option value="Декабрь">декабрь</option>
+              </select>
+            </div>
+            <div className="pages11">
+              <br />
+              <label htmlFor="test2"> Автор</label>
+              <h5 htmlFor="test1">  Предыдущий:{item.author}</h5>
+              <br />
+              <select name="" id="test2p">
+                {this.state.data.map((item) => {
+                  return (
+                    <option
+                      value={
+                        item.personlastname +
+                        " " +
+                        item.personfirstname +
+                        " " +
+                        item.personmiddlename
+                      }
+                    >
+                      {item.personlastname} {item.personfirstname}{" "}
+                      {item.personmiddlename}{" "}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
+
+            <div className="pages11">
+              <label htmlFor="test4p">Вопрос</label>
+              <h5 htmlFor="test1">  Предыдущий:{item.question}</h5>
+              <br />
+              <input id="test4p" type="text" />
+            </div>
+            <div className="pages11">
+              <label htmlFor="test5p">Ответ</label>
+              <h5 htmlFor="test1">  Предыдущий:{item.answer}</h5>
+              <br />
+              <input id="test5p" type="text" />
+            </div>
+            <div className="pages12">
+              <label htmlFor="test6p">Вложение</label>
+              <div className="upload_file">
+                <h1>+</h1>
+                <p>(Перетащите или щелкните, чтобы вставить)</p>
+              </div>
+              <input className="test6p" type="file" />
+            </div>
+          </div>
+          <div className="df_button">
+            <button
+              className="df_button1"
+              onClick={() => {
+                this.closeModal();
+              }}
+            >
+              Назад
+            </button>
+            <button
+              className="df_button2"
+              onClick={() => {
+                this.putData(item.questionid);
+              }}
+            >
+              Сохранить
+            </button>
+          </div>
+        </div>
+          })}
+        </div>
 
         <h1 className="sss22">Задания</h1>
         <div className="cake">
@@ -296,7 +431,9 @@ handleChange2 = (event) => {
                         </td>
                         <td className="btnadmp_td1"> {item.author}</td>
                         <td className="btnadmp_td1">
-                          <button className="butadmp1">
+                          <button   onClick={() => {
+                this.openModal2(item.questionid);
+              }} className="butadmp1">
                             <img src={ico2} alt="" />
                           </button>
                           <button className="butadmp2">
