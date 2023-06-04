@@ -749,16 +749,6 @@ export default class Employees extends Component {
           })}
         </div>
         <h1 className="bigah1">Список сотрудников</h1>
-        {/* <div>
-          <button
-            id="btnlar1"
-            onClick={() => {
-              this.openModal();
-            }}
-            >
-            + Добавить сотрудника
-          </button>
-            </div> */}
         <div className="dropw">
           <select className="selectRgroup">
 <option>Воспитатель

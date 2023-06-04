@@ -22,6 +22,7 @@ export default function Zapissi() {
           for (let j = 0; j < res2.data.length; j++) {
             if (res.data[i].childid == res2.data[j].childid) {
               res.data[i].childlastname = res2.data[j].childlastname
+              res.data[i].childfirstname = res2.data[j].childfirstname
             }
           }
         }
@@ -190,7 +191,7 @@ export default function Zapissi() {
                 <p>{item.excuseid}</p>
                 <p>{item.datestart.slice(0, 16)}</p>
                 <p>{item.dateend.slice(0, 16)}</p>
-                <p>{item.childlastname}</p>
+                <p>{item.childlastname}  {item.childfirstname}</p>
                 <p>{item.reason}</p>
                 <p>{person2.map((item56)=>{
                   if (item.employeeid===item56.employeeid) {

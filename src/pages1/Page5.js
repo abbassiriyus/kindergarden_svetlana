@@ -13,7 +13,7 @@ import Stack from "@mui/material/Stack";
 import ImgAcc from "../img/free-icon-calendar-1258262 1.png";
 import Imgcca from "../img/free-icon-file-968545 1.png";
 import "./AllPages.css";
-
+import Img0012 from "../img/free-icon-child-5238428 (1).png";
 export default function Page1() {
   const [up, setup] = useState([]);
   const [child, setChild] = useState([]);
@@ -100,39 +100,34 @@ export default function Page1() {
             </AccordionSummary>
             <AccordionDetails>
               <Typography className="typogRaf">
-                {child.map((item) => {
+              {child.map((item) => {
                   if (element.groupid === item.groupid) {
-                    return (
-                      <div
-                        onClick={() => handleKidClick(item)}
-                        className="kids-baby"
-                      >
-                        {child.map((thing) => {
-                          if (element.groupid === thing.groupid) {
-                            const filteredThings2 = oo.filter(
-                              (thing2) => thing.childid === thing2.childid
-                            );
-                            const data =
-                              filteredThings2.length > 0
-                                ? filteredThings2[0].datestart.slice(8, 10)
-                                : null;
-                            return (
-                              <>
-                                {filteredThings2.length > 0 && (
-                                  <p className="oooo">
-                                    {filteredThings2.length} отсутствует
-                                  </p>
-                                )}
-                              </>
-                            );
-                          }
-                        })}
-                        <div className="baby">
-                          <img src={Img001} alt="" />
-                          <h2>{item.childfirstname}</h2>
+                    if (item.gender==="м") {
+                      return (
+                        <div
+                          onClick={() => handleKidClick(item)}
+                          className="kids-baby"
+                        >
+                          <div className="baby">
+                            <img src={Img0012} alt="" />
+                            <h2>{item.childfirstname}</h2>
+                          </div>
                         </div>
-                      </div>
-                    );
+                      );
+                    }else{
+                      return (
+                        <div
+                          onClick={() => handleKidClick(item)}
+                          className="kids-baby"
+                        >
+                          <div className="baby">
+                            <img src={Img001} alt="" />
+                            <h2>{item.childfirstname}</h2>
+                          </div>
+                        </div>
+                      );
+                    }
+      
                   }
                 })}
               </Typography>

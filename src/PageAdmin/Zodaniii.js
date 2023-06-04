@@ -133,11 +133,25 @@ handleChange2 = (event) => {
   };
 
   deleteData(key) {
-    axios.delete(`${url}/question/${key.questionid}`).then((res) => {
-      axios.delete(`${url}/skill/${key.skillid}`).then((res1) => {
-        window.location.reload();
-      });
-    });
+    axios.delete(`${url}/question/${key.questionid}`)
+    .then(() => axios.delete(`${url}/skill/${key.skillid}`))
+    .then(() => axios.get(`${url}/test`))
+    .then((resd) => {
+      const testsToDelete = resd.data.filter((test) => test.questionid === key.questionid);
+      if (testsToDelete.length > 0) {
+        testsToDelete.forEach((testToDelete) => {
+          axios.delete(`${url}/test/${testToDelete.testid}`)
+            .then(() => {
+              console.log("Test successfully deleted.");
+              window.location.reload();
+            })
+            .catch((error) => console.log(error));
+        });
+      } else {
+        console.log("No relevant test found.");
+      }
+    })
+    .catch((error) => console.log(error)); 
   }
   getData11() {
     axios.get(`${url}/person`).then((res) => {
