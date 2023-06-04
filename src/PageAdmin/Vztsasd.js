@@ -118,6 +118,21 @@ export default function Vztsasd() {
       window.location = "/Vztsasd";
     });
   }
+  function put(id) {
+    var personname = document.querySelector(".loxp").value;
+    var data = new FormData();
+    data.append("date", document.querySelector(".datee1p").value);
+    data.append("childid", personname);
+    data.append("arrivaltime", document.querySelector(".datee1p").value);
+    data.append("leavingtime", document.querySelector(".datee2p").value);
+    data.append("employeeid", 1);
+    data.append("excuseid", 1);
+    console.log(data);
+    axios.put(`${url}/attendance/${id}`, data).then((res) => {
+      console.log(res.data);
+      window.location = "/Vztsasd";
+    });
+  }
 
   function OpenSRF2(key) {
     // document.querySelector(".srdhcfghjbk2").style = "display: block";
@@ -128,7 +143,7 @@ export default function Vztsasd() {
     });
   }
   function closeSRF2() {
-    document.querySelector(".srdhcfghjbk2").style = "display: none";
+    // document.querySelector(".srdhcfghjbk2").style = "display: none";
     document.querySelector(".hyeraysd2").style = "display: none";
   }
 
@@ -170,14 +185,14 @@ export default function Vztsasd() {
 
 
         <div className="hyeraysd2">
-          {getted.map((item)=>{
+          {getted.map((itemw)=>{
             return<div className="srdhcfghjbk">
             <h1>
               Введите новое приход и уход
-              <span onClick={() => closeSRF()}>X</span>
+              <span onClick={() => closeSRF2()}>X</span>
             </h1>
             <h4>Группа *</h4>
-            <select onClick={() => GetData()} className="dddaa">
+            <select onClick={() => GetData()} className="dddaap">
               {state.map((item) => {
                 return<option className="dddaa2" value={item.groupid}>
                     {item.groupname}
@@ -186,7 +201,7 @@ export default function Vztsasd() {
               })}
             </select>
             <h4>Дети *</h4>
-            <select className="lox">
+            <select className="loxp">
               {posted.map((item) => {
                 return (
                   <option value={item.childid}>{item.childlastname}</option>
@@ -194,10 +209,10 @@ export default function Vztsasd() {
               })}
             </select>
             <h4>Приход *</h4>
-            <input className="datee1" type="datetime-local" />
+            <input className="datee1p" type="datetime-local" />
             <h4>Уход *</h4>
-            <input className="datee2" type="datetime-local" />
-            <button onClick={() => postAtten()}>Сохранить</button>
+            <input className="datee2p" type="datetime-local" />
+            <button onClick={() => put(itemw.attendanceid)}>Сохранить</button>
           </div>
           })}
         </div>

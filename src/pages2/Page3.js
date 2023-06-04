@@ -45,6 +45,7 @@ export default function Page6() {
                 if (excuseRes.data[e].childid === relationRes.data[i].childid) {
                   tempBolas.push(excuseRes.data[e].datestart.slice(0, 10));
                   nol.push(excuseRes.data[e].childid);
+                
                 }
               }
             }
@@ -79,7 +80,8 @@ export default function Page6() {
   const handleClickDay = useCallback(
     async (date) => {
       const d = date;
-      const a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+      var b =`${d.getDate()}`
+      var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${b.padStart(2, '0')}`;
   
       const index = excuse.indexOf(a);
       if (index > -1) {
@@ -110,7 +112,8 @@ export default function Page6() {
   );
   const getTileContent = ({ date, view }) => {
     var d = date;
-    var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${d.getDate()}`;
+    var b =`${d.getDate()}`
+    var a = `${d.getFullYear()}-0${d.getMonth() + 1}-${b.padStart(2, '0')}`;
     for (let i = 0; i < excuse.length; i++) {
       if (a === excuse[i]) {
         return <img src={img3} alt={img3} />;
