@@ -1,68 +1,4 @@
-/* import React, { useState } from 'react'
-import Img1 from '../img/free-icon-user-149071 1 (1).png'
-import PhoneInput from 'react-phone-input-2'
-import './AllPages.css'
 
-export default function Page1() {
-  const [phone2, usePhone2] = useState()
-  return (
-    <div className='The-Big'>
-      <div className="Cards-Page1">
-        <div className="CardProfil-Page1">
-          <img src={Img1} alt="" /><br />
-          <button>Сменить фото</button>
-          <input type="file" className='inpOpacity' />
-        </div>
-        <div className="Card-Page1">
-          <h4>Должность</h4>
-          <p>Воспитатель</p>
-          <div className="Input-grup">
-            <h4>Фамилия</h4>
-            <input type="text" placeholder='Малинина' />
-          </div>
-          <div className="Input-grup">
-            <h4>Имя</h4>
-            <input type="text" placeholder='Виктория' />
-          </div>
-          <div className="Input-grup">
-            <h4>Отчество</h4>
-            <input type="text" placeholder='Петровна' />
-          </div>
-          <div className="Input-grup">
-            <h4>Дата рождения</h4>
-            <input type="date" placeholder='1979/12/20' />
-          </div>
-          <div className="Input-grup">
-            <h4>Улица</h4>
-            <input type="text" placeholder='Аткарская' />
-          </div>
-          <div className="Input-grup">
-            <h4>Дом</h4>
-            <input type="text" placeholder='50' />
-          </div>
-          <div className="Input-grup">
-            <h4>Квартира</h4>
-            <input type="text" placeholder='60' />
-          </div>
-          <div className="Input-grup">
-            <h4>Номер телефона</h4>
-            <PhoneInput
-             id="userNumber2"
-             className='userNumber2'
-             country={'ru'}
-             value={phone2}
-             onChange={phone2 => usePhone2}
-             />
-          </div>
-          <div className="Input-grup">
-            <h4>E-mail</h4>
-            <input type="gmail" placeholder='rew@mail.ru' />
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-} */
 import React, { Component, setUpdatedAt } from 'react'
 import Img1 from '../img/free-icon-user-149071 1 (1).png'
 import PhoneInput from 'react-phone-input-2'
@@ -165,7 +101,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnMiddle'
                     type='text'
-                    placeholder={item.personmiddlename}
+                    placeholder={item.personlastname}
                   />
                 )
               })}
@@ -177,7 +113,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnlastName'
                     type='text'
-                    placeholder={item.personlastname}
+                    placeholder={item.personfirstname}
                   />
                 )
               })}
@@ -189,7 +125,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnFirstNamr'
                     type='text'
-                    placeholder={item.personfirstname}
+                    placeholder={item.personmiddlename}
                   />
                 )
               })}
@@ -207,7 +143,7 @@ export default class PageProfil extends Component {
               })}
             </div>
             <div className='Input-grup'>
-              <h4>Улица</h4>
+              <h4>Город</h4>
               {this.state.person1.map(item => {
                 return <input type='title' className='addressPt' placeholder={item.address1} />
               })}

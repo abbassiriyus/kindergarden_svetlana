@@ -258,7 +258,6 @@ setTimeout(() => {
   }
 
   PostPerson2(key) {
-    var phonee = document.querySelectorAll('.form-control')[1].value
     var addressid = key.addressid
     var itemData = new FormData()
     itemData.append("personlastname", document.querySelector('.formItm').value)
@@ -270,7 +269,7 @@ setTimeout(() => {
     itemData.append("passportnumber", document.querySelector('.formItm8').value)
     itemData.append("passportdate", document.querySelector('.formItm9').value)
     itemData.append("email", document.querySelector('.formItm6').value)
-    itemData.append("phone", phonee)
+    itemData.append("phone",  document.querySelectorAll('.form-control')[1].value)
     itemData.append("addressid", addressid)
     //itemData.append("syscreatedatutc", key.syscreatedatutc)
     //itemData.append("syschangedatutc", key.syschangedatutc)

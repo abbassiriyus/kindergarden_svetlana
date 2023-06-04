@@ -101,7 +101,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnMiddle'
                     type='text'
-                    placeholder={item.personmiddlename}
+                    placeholder={item.personlastname}
                   />
                 )
               })}
@@ -113,7 +113,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnlastName'
                     type='text'
-                    placeholder={item.personlastname}
+                    placeholder={item.personfirstname}
                   />
                 )
               })}
@@ -125,7 +125,7 @@ export default class PageProfil extends Component {
                   <input
                     className='prsnFirstNamr'
                     type='text'
-                    placeholder={item.personfirstname}
+                    placeholder={item.personmiddlename}
                   />
                 )
               })}
@@ -143,7 +143,7 @@ export default class PageProfil extends Component {
               })}
             </div>
             <div className='Input-grup'>
-              <h4>Улица</h4>
+              <h4>Город</h4>
               {this.state.person1.map(item => {
                 return <input type='title' className='addressPt' placeholder={item.address1} />
               })}
@@ -166,7 +166,7 @@ export default class PageProfil extends Component {
                 id='userNumber2'
                 className='userNumber2'
                 country={'ru'}
-                /* placeholder={this.state.person1[0].phone} */
+                //  placeholder={this.state.person1[0].phone} 
               />
             </div>
             <div className='Input-grup'>
