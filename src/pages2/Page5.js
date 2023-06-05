@@ -7,6 +7,7 @@ import Img2 from "../img/free-icon-kindergarden-5235725 1.png";
 import './AllPages2.css'
 import url from "../host";
 import imgStatic from '../img/график 1.png'
+import imgStatic2 from './график-Копия Страница 1 1.png'
 
 export default function Page5() {
   const [child22, useChild2] = useState([]);
@@ -69,10 +70,16 @@ export default function Page5() {
     document.querySelector('.staticKid').style = 'display: none'
   }
 
+  function editImg () {
+    setTimeout(() => {
+      document.querySelector('.imgStat').src = imgStatic2
+    }, 1000)
+  }
+
   return (
     <div className='Page5niki'>
       <div className="staticKid">
-        <select>
+        <select onClick={() => editImg()}>
           <option> Окружающий мир (Природа) </option>
           <option> Окружающий мир (Предметы) </option>
           <option> Математика </option>
@@ -80,7 +87,7 @@ export default function Page5() {
           <option> Развитие речи </option>
         </select>
         <br />
-        <img src={imgStatic} alt='' />
+        <img className="imgStat" src={imgStatic} alt='' />
       </div>
       <div className="kids-Page2">
         {bolas22.map((item) => (
