@@ -7,6 +7,23 @@ import icon2 from "../img/free-icon-delete-5396993.png";
 import "./Employees.css";
 import axios from "axios";
 import url from "../host";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+];
 
 export default class Employees extends Component {
   state = {
@@ -22,6 +39,10 @@ export default class Employees extends Component {
     getGroup: [],
     getPosition: [],
   };
+
+  // componentDidMount() {
+
+  // }
 
   openModal() {
     document.querySelector("#dd").style = "display:block";
@@ -327,12 +348,15 @@ export default class Employees extends Component {
       "passportdate",
       document.querySelector(".vidachiData").value + "T00:00:00.000Z"
     );
-    PutedPerson.append("phone", document.querySelectorAll('.form-control')[1].value);
+    PutedPerson.append(
+      "phone",
+      document.querySelectorAll(".form-control")[1].value
+    );
     PutedPerson.append("email", document.querySelector(".emailPerson").value);
     PutedPerson.append("addressid", addressidPerson);
     axios.put(`${url}/person/${key.personid}`, PutedPerson).then((res) => {
       console.log(res.data);
-      window.location.reload()
+      window.location.reload();
     });
   }
   closededd() {
@@ -751,9 +775,8 @@ export default class Employees extends Component {
         <h1 className="bigah1">Список сотрудников</h1>
         <div className="dropw">
           <select className="selectRgroup">
-<option>Воспитатель
-</option>
-<option>Педагог</option>
+            <option>Воспитатель</option>
+            <option>Педагог</option>
           </select>
           <select className="selectRgroup">
             {this.state.getGroup.map((item) => {
@@ -774,117 +797,106 @@ export default class Employees extends Component {
           </button>
         </div>
 
-        <div id="tables">
+        {/* <div id="tables">
           <div id="names">
             <p>ID</p>
             <p>Фамилия</p>
             <p>Имя</p>
             <p>Отчество</p>
-            <p>
-              Дата <br /> рождения
-            </p>
+            <p>Дата рождения</p>
             <p>Должность</p>
-            <p>
-              Дата <br /> добавления
-            </p>
+            <p>Дата добавления</p>
             <p>Действие</p>
-          </div>
-          {this.state.data.map((item, key) => {
-            if (key % 2 === 0) {
-              return (
-                <div id="inform2">
-                  <div id="inform-p">
-                    <p className="itemPrsn">{item.personid}</p>
-                    <p className="itemPrsnLst">{item.personlastname}</p>
-                    <p className="itemPrsnLst">{item.personfirstname}</p>
-                    <p className="itemPrsnLst">{item.personmiddlename}</p>
-                    <p className="itemPrsnLst">
-                      {item.dateofbirth.slice(0, 10)}
-                    </p>
-                    <p className="itemPrsnLst">{item.positiontitle}</p>
-                    <p className="itemPrsnLst">
-                      {item.syscreatedatutc.slice(0, 10)}
-                    </p>
-                    <div id="iconci">
-                      {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                      <img
-                        onClick={() => {
-                          this.openModal2();
-                          this.getInfa(item.personid);
-                        }}
-                        src={icon1}
-                        alt=""
-                      />
-                      <img
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        src={icon2}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div id="inform1">
-                  <div id="inform-p">
-                    <p className="itemPrsn">{item.personid}</p>
-                    <p className="itemPrsnLst">{item.personlastname}</p>
-                    <p className="itemPrsnLst">{item.personfirstname}</p>
-                    <p className="itemPrsnLst">{item.personmiddlename}</p>
-                    <p className="itemPrsnLst">
-                      {item.dateofbirth.slice(0, 10)}
-                    </p>
-                    <p className="itemPrsnLst">{item.positiontitle}</p>
-                    <p className="itemPrsnLst">
-                      {item.syscreatedatutc.slice(0, 10)}
-                    </p>
-                    <div id="iconci">
-                      {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                      <img
-                        onClick={() => {
-                          this.openModal2();
-                          this.getInfa(item.personid);
-                        }}
-                        src={icon1}
-                        alt=""
-                      />
-                      <img
-                        onClick={() => {
-                          document.querySelector(".modal12").style =
-                            "display:flex";
-                          this.setState({ deleteData: item });
-                        }}
-                        src={icon2}
-                        alt=""
-                      />
-                    </div>
-                  </div>
-                </div>
-              );
-            }
-          })}
-
-          <div id="inform1">
-            <div id="inform-p">
-              {/* <p>1</p>
-          <p>Марина</p>
-          <p>Вероника</p>
-          <p>Петровна</p>
-          <p>20/03/1986</p>
-          <p>Воспитатель</p>
-          <p>15/07/2020</p>
-          <div id='iconci'>
-          <img src={icon1} alt=''/> 
-          <img src={icon2} alt=''/>
           </div> */}
-            </div>
-          </div>
-        </div>
+        <TableContainer component={Paper} className="TableZaff">
+          <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            {/* <caption>A basic table example with a caption</caption> */}
+            <TableHead className="tableroW">
+              <TableRow className="tableroW">
+                <TableCell>ID</TableCell>
+                <TableCell>Фамилия</TableCell>
+                <TableCell>Имя</TableCell>
+                <TableCell>Отчество</TableCell>
+                <TableCell>Дата рождения</TableCell>
+                <TableCell>Должность</TableCell>
+                <TableCell>Дата добавления</TableCell>
+                <TableCell>Действие</TableCell>
+              </TableRow>
+            </TableHead>
+            {this.state.data.map((item, index) => {
+              return (
+                <TableBody className="table_body-Zaff">
+                    <TableRow className="RowTable">
+                      <TableCell>{index+1}</TableCell>
+                      <TableCell>{item.personlastname}</TableCell>
+                      <TableCell>{item.personfirstname}</TableCell>
+                      <TableCell>{item.personmiddlename}</TableCell>
+                      <TableCell>{item.dateofbirth.slice(0, 10)}</TableCell>
+                      <TableCell>{item.positiontitle}</TableCell>
+                      <TableCell>{item.syscreatedatutc.slice(0, 10)}</TableCell>
+                      <TableCell>
+                      <div id="iconci">
+                       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                       <img
+                         onClick={() => {
+                           this.openModal2();
+                           this.getInfa(item.personid);
+                         }}
+                         src={icon1}
+                         alt=""
+                       />
+                       <img
+                         onClick={() => {
+                           document.querySelector(".modal12").style =
+                             "display:flex";
+                           this.setState({ deleteData: item });
+                         }}
+                         src={icon2}
+                         alt=""
+                       />
+                     </div>
+                      </TableCell>
+                    </TableRow>
+                </TableBody>
+                // <div id="inform2">
+                //   <div id="inform-p">
+                //     <p className="itemPrsn">{item.personid}</p>
+                //     <p className="itemPrsnLst">{item.personlastname}</p>
+                //     <p className="itemPrsnLst">{item.personfirstname}</p>
+                //     <p className="itemPrsnLst">{item.personmiddlename}</p>
+                //     <p className="itemPrsnLst">
+                //       {item.dateofbirth.slice(0, 10)}
+                //     </p>
+                //     <p className="itemPrsnLst">{item.positiontitle}</p>
+                //     <p className="itemPrsnLst">
+                //       {item.syscreatedatutc.slice(0, 10)}
+                //     </p>
+                //     <div id="iconci">
+                //       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                //       <img
+                //         onClick={() => {
+                //           this.openModal2();
+                //           this.getInfa(item.personid);
+                //         }}
+                //         src={icon1}
+                //         alt=""
+                //       />
+                //       <img
+                //         onClick={() => {
+                //           document.querySelector(".modal12").style =
+                //             "display:flex";
+                //           this.setState({ deleteData: item });
+                //         }}
+                //         src={icon2}
+                //         alt=""
+                //       />
+                //     </div>
+                //   </div>
+                // </div>
+              );
+            })}
+          </Table>
+        </TableContainer>
       </div>
     );
   }

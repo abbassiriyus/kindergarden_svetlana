@@ -50,6 +50,7 @@ export default function BasicTabs() {
   const [group, setGroup] = useState([]);
   const [data, setData] = useState([]);
   const [child, setChild] = useState([]);
+  // const [childd, setChildd] = useState([])
   useEffect(() => {
     axios.get(`${url}/group`).then((res) => {
       setGroup(res.data);
@@ -64,6 +65,18 @@ export default function BasicTabs() {
   };
 
   function modalOpen(key) {
+    // axios.get(`${url}/relation`).then(res => {
+    //   axios.get(`${url}/child`).then(res2 => {
+    //     for (let i = 0; i < res.data.length; i++) {
+    //       for (let j = 0; j < res2.data.length; j++) {
+    //         if (res.data[i].childid == res2.data[j].childid) {
+    //           res.data[i].childlastname = res2.data[j].childlastname
+    //         }
+    //       }          
+    //     }
+    //     setChildd(res.data)
+    //   })
+    // })
     axios.get(`${url}/child/${key}`).then(res => {
       axios.get(`${url}/group`).then(res2 => {
         for (let i = 0; i < res.data.length; i++) {
@@ -210,6 +223,8 @@ export default function BasicTabs() {
                           </div>
                           <div className="Input-grup">
                             <h4>Представители</h4>
+                            bg
+                            {/* {item.childlastname} */}
                           </div>
                           <div className="Input-grup">
                             <h4>Дополнительно</h4>

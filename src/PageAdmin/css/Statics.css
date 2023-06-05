@@ -76,3 +76,8 @@
     /* right: 10px; */
     color: black;
 }
+
+#inform-p p{
+    width: 120px !important;
+    margin-left: 30px;
+}

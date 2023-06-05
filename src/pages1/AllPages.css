@@ -1525,7 +1525,7 @@
   cursor: pointer;
 }
 
-.divTest span{
+.divTest span {
   font-size: 40px;
   margin-left: 90%;
   color: black;
@@ -2057,11 +2057,75 @@
   color: white;
 }
 
-.successfull img{
+.successfull img {
   width: 60%;
   min-height: 40vh;
 }
 
-.back{
+.back {
   background: #fff !important;
+}
+
+.table_body-Zaff .RowTable {
+  background: #313c4b43;
+}
+
+.table_body-Zaff .RowTable:nth-child(2) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(4) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(6) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(8) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(10) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(12) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(14) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(16) {
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(18){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(20){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(22){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(24){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(26){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(28){
+  background: #313c4ba6 !important;
+}
+
+.table_body-Zaff .RowTable:nth-child(30){
+  background: #313c4ba6 !important;
 }

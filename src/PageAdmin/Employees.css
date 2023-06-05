@@ -75,13 +75,19 @@
 }
 
 #names {
-  display: flex;
+  /* display: flex;
   justify-content: space-around;
   background: rgba(51, 65, 85, 0.5);
-  border-radius: 30px 30px 0px 0px;
+  border-radius: 30px 30px 0px 0px; */
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between !important;
+  padding: 10px;
 }
 
 #names p {
+  width: 150px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 700;
@@ -90,6 +96,11 @@
   /* text-align: center; */
   margin-top: 10px;
   color: #334155;
+}
+
+#names p:nth-child(4) {
+  width: 150px;
+  margin-left: -30px;
 }
 
 #inform1 {
@@ -104,9 +115,50 @@
 }
 
 #inform-p p {
-  width: 70px !important;
-  max-width: 150px;
+  background: #000 !important;
+  width: 30px !important;
+  max-width: 0vw !important;
 }
+
+/* .Zaffic-Table {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+} */
+
+/* .Zaffic-Table p {
+  width: 230px;
+}
+
+.Zaffic-Table p:nth-child(4){
+  width: 270px;
+  margin-left: -60px;
+  margin-right: -100px;
+  color: red;
+} */
+/* 
+.Zaffic-Table p:nth-child(1){
+  width: 230px;
+}
+
+.Zaffic-Table p:nth-child(5){
+  width: 150px;
+}
+
+.Zaffic-Table p:nth-child(6){
+  margin-right: -30px;
+  margin-left: 60px;
+} 
+
+.Zaffic-Table p:nth-child(7){
+  width: 150px;
+  position: absolute;
+  right: 100px;
+  color: red;
+}
+*/
 
 .p-width {
   width: 10px !important;
@@ -420,7 +472,6 @@
   margin-top: 100px;
 }
 
-
 .modal1122 {
   display: none;
   margin-top: 40px;
@@ -470,28 +521,21 @@
   outline: none;
 }
 
-.dropw{
+.dropw {
   margin-left: 10%;
 }
 
-.cake1 input{
+.cake1 input {
   width: 20%;
   height: 40px;
   border-radius: 30px;
   padding: 5px;
 }
 
-
-
-
-
 /* id="btnlar1"
 onClick={() => {
  this.openModal();
 }} */
-
-
-
 
 /* 
 <div>
@@ -518,3 +562,141 @@ onClick={() => {
   + Добавить Родитель
 </button>
 </div> */
+
+.Zaffic-Table {
+  width: 100%;
+}
+
+.Zaffic-names {
+  display: flex;
+  justify-content: space-between;
+  background: #334155;
+  padding: 15px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.Zaffic-names p {
+  width: 350px;
+  color: white;
+  font-weight: 700;
+}
+
+.Zaffic-p {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  height: 60px;
+  align-items: center;
+}
+
+.Zaffic-p p {
+  width: 300px;
+  padding: 15px;
+}
+
+#Zaffic-p2 {
+  background: #3341557b;
+}
+
+.Zaffic-icon {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.Zaffic-icon img {
+  width: 45%;
+}
+
+.TableZaff {
+  width: 90% !important;
+  margin: auto;
+  margin-top: 30px !important;
+  border-top-right-radius: 30px !important;
+  border-top-left-radius: 30px !important;
+}
+
+.tableroW {
+  background: #3341558b;
+  color: white !important;
+  border-top-right-radius: 30px !important;
+  border-top-left-radius: 30px !important;
+}
+
+.table_body-Zaff {
+  background: #d9d9d9;
+  margin-top: 0 !important;
+}
+
+.table_body-Zaff:nth-child(2) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(2) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(4) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(6) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(8) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(10) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(12) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(14) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(16) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(18) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(20) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(22) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(24) {
+  background: #8d939c !important;
+}
+
+.table_body-Zaff:nth-child(26) {
+  background: #8d939c !important;
+}
+.table_body-Zaff:nth-child(28) {
+  background: #8d939c !important;
+}
+.table_body-Zaff:nth-child(30) {
+  background: #8d939c !important;
+}
+.table_body-Zaff:nth-child(32) {
+  background: #8d939c !important;
+}
+.table_body-Zaff:nth-child(34) {
+  background: #8d939c !important;
+}
+.table_body-Zaff:nth-child(36) {
+  background: #8d939c !important;
+}

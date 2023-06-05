@@ -13,21 +13,21 @@ export default class App extends Component {
     data: [],
     group: [],
     gruppa: [],
-    child:[],
-    baza:[],
+    child: [],
+    baza: [],
     selectedValue: "январь",
     selectedValue2: 2,
-    exquestion:[]
+    exquestion: [],
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
   }
   openModal2(id) {
     document.querySelector(".modal112").style = "display:block";
-    axios.get(`${url}/question/${id}`).then((res)=>{
-      this.setState({exquestion:res.data})
+    axios.get(`${url}/question/${id}`).then((res) => {
+      this.setState({ exquestion: res.data });
       console.log();
-    })
+    });
   }
   closeModal() {
     document.querySelector(".modal11").style = "display:none";
@@ -42,10 +42,7 @@ export default class App extends Component {
         var resid = 0;
 
         res1.data.map((item) => {
-          if (
-            item.skillname == 3 &&
-            item.skillgroupid ==3
-          ) {
+          if (item.skillname == 3 && item.skillgroupid == 3) {
             resid = item.skillid;
           }
         });
@@ -62,9 +59,9 @@ export default class App extends Component {
         axios.post(`${url}/question`, formdata).then((res) => {
           axios.get(`${url}/question`).then((res2) => {
             for (let i = 0; i < res2.data.length; i++) {
-              window.location.reload()
+              window.location.reload();
             }
-          })
+          });
           // window.location.reload()
           console.log(res.data);
         });
@@ -80,10 +77,7 @@ export default class App extends Component {
         var resid = 0;
 
         res1.data.map((item) => {
-          if (
-            item.skillname == 3 &&
-            item.skillgroupid ==3
-          ) {
+          if (item.skillname == 3 && item.skillgroupid == 3) {
             resid = item.skillid;
           }
         });
@@ -99,7 +93,7 @@ export default class App extends Component {
         formdata2.append("author", document.querySelector("#test2p").value);
         axios.put(`${url}/question/${id}`, formdata2).then((res) => {
           console.log("ishladi");
-          window.location.reload()
+          window.location.reload();
           // window.location.reload()
           console.log(res.data);
         });
@@ -108,17 +102,17 @@ export default class App extends Component {
   }
   handleChange = (event) => {
     this.setState({ selectedValue: event.target.value });
-    console.log( event.target.value);
-}
-handleChange2 = (event) => {
-  const selectedValue2 = parseInt(event.target.value, 10);
-  this.setState({ selectedValue2 });
-  console.log(selectedValue2, "fffffffff");
-}
+    console.log(event.target.value);
+  };
+  handleChange2 = (event) => {
+    const selectedValue2 = parseInt(event.target.value, 10);
+    this.setState({ selectedValue2 });
+    console.log(selectedValue2, "fffffffff");
+  };
   componentDidMount = () => {
-    axios.get(`${url}/question`).then((res)=>{
-      this.setState({person:res.data})
-    })
+    axios.get(`${url}/question`).then((res) => {
+      this.setState({ person: res.data });
+    });
     axios.get(`${url}/skill_group`).then((res) => {
       this.setState({ group: res.data });
     });
@@ -133,25 +127,29 @@ handleChange2 = (event) => {
   };
 
   deleteData(key) {
-    axios.delete(`${url}/question/${key.questionid}`)
-    .then(() => axios.delete(`${url}/skill/${key.skillid}`))
-    .then(() => axios.get(`${url}/test`))
-    .then((resd) => {
-      const testsToDelete = resd.data.filter((test) => test.questionid === key.questionid);
-      if (testsToDelete.length > 0) {
-        testsToDelete.forEach((testToDelete) => {
-          axios.delete(`${url}/test/${testToDelete.testid}`)
-            .then(() => {
-              console.log("Test successfully deleted.");
-              window.location.reload();
-            })
-            .catch((error) => console.log(error));
-        });
-      } else {
-        console.log("No relevant test found.");
-      }
-    })
-    .catch((error) => console.log(error)); 
+    axios
+      .delete(`${url}/question/${key.questionid}`)
+      .then(() => axios.delete(`${url}/skill/${key.skillid}`))
+      .then(() => axios.get(`${url}/test`))
+      .then((resd) => {
+        const testsToDelete = resd.data.filter(
+          (test) => test.questionid === key.questionid
+        );
+        if (testsToDelete.length > 0) {
+          testsToDelete.forEach((testToDelete) => {
+            axios
+              .delete(`${url}/test/${testToDelete.testid}`)
+              .then(() => {
+                console.log("Test successfully deleted.");
+                window.location.reload();
+              })
+              .catch((error) => console.log(error));
+          });
+        } else {
+          console.log("No relevant test found.");
+        }
+      })
+      .catch((error) => console.log(error));
   }
   getData11() {
     axios.get(`${url}/person`).then((res) => {
@@ -233,18 +231,22 @@ handleChange2 = (event) => {
                 <label htmlFor="test3">Группа</label>
                 <br />
                 <select>
-                  {this.state.gruppa.map((item)=>{
-                    return<option>{item.groupname}</option>
+                  {this.state.gruppa.map((item) => {
+                    return <option>{item.groupname}</option>;
                   })}
                 </select>
               </div>
               <div className="pages11">
-                <label htmlFor="test10">Область развития</label><br />
+                <label htmlFor="test10">Область развития</label>
+                <br />
                 <select name="" id="test3">
-                  <option value={1}>Окружающий мир</option>
+                  <option>Окружающий мир (Природа)</option>
+                  <option>Окружающий мир (Предметы)</option>
+                  <option>Математика</option>
+                  <option>Грамматика</option>
+                  <option>Развитие речи</option>
                 </select>
                 <br />
-                
               </div>
               <div className="pages11">
                 <label htmlFor="test4">Вопрос</label>
@@ -286,115 +288,129 @@ handleChange2 = (event) => {
           </div>
         </div>
         <div className="modal112">
-          {this.state.exquestion.map((item)=>{
-          return<div className="Apages1">
-          <div className="oyna101">
-            <div className="pages11">
-              <br />
-              <label htmlFor="test1"> Месяц </label>
-              <h5 htmlFor="test1">  Предыдущий:{item.month}</h5>
-              <br />
-              <select name="" id="test1p">
-                <option value="январь">январь</option>
-                <option value="февраль">февраль</option>
-                <option value="марта">март</option>
-                <option value="апрель">апрель</option>
-                <option value="мая">май</option>
-                <option value="июнь">июнь</option>
-                <option value="июль">июль</option>
-                <option value="Август">август</option>
-                <option value="Сентябрь">сентябрь</option>
-                <option value="Октябрь">октябрь</option>
-                <option value="ноябрь">ноябрь</option>
-                <option value="Декабрь">декабрь</option>
-              </select>
-            </div>
-            <div className="pages11">
-              <br />
-              <label htmlFor="test2"> Автор</label>
-              <h5 htmlFor="test1">  Предыдущий:{item.author}</h5>
-              <br />
-              <select name="" id="test2p">
-                {this.state.data.map((item) => {
-                  return (
-                    <option
-                      value={
-                        item.personlastname +
-                        " " +
-                        item.personfirstname +
-                        " " +
-                        item.personmiddlename
-                      }
-                    >
-                      {item.personlastname} {item.personfirstname}{" "}
-                      {item.personmiddlename}{" "}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+          {this.state.exquestion.map((item) => {
+            return (
+              <div className="Apages1">
+                <div className="oyna101">
+                  <div className="pages11">
+                    <br />
+                    <label htmlFor="test1"> Месяц </label>
+                    <h5 htmlFor="test1"> Предыдущий:{item.month}</h5>
+                    <br />
+                    <select name="" id="test1p">
+                      <option value="январь">январь</option>
+                      <option value="февраль">февраль</option>
+                      <option value="марта">март</option>
+                      <option value="апрель">апрель</option>
+                      <option value="мая">май</option>
+                      <option value="июнь">июнь</option>
+                      <option value="июль">июль</option>
+                      <option value="Август">август</option>
+                      <option value="Сентябрь">сентябрь</option>
+                      <option value="Октябрь">октябрь</option>
+                      <option value="ноябрь">ноябрь</option>
+                      <option value="Декабрь">декабрь</option>
+                    </select>
+                  </div>
+                  <div className="pages11">
+                    <br />
+                    <label htmlFor="test2"> Автор</label>
+                    <h5 htmlFor="test1"> Предыдущий:{item.author}</h5>
+                    <br />
+                    <select name="" id="test2p">
+                      {this.state.data.map((item) => {
+                        return (
+                          <option
+                            value={
+                              item.personlastname +
+                              " " +
+                              item.personfirstname +
+                              " " +
+                              item.personmiddlename
+                            }
+                          >
+                            {item.personlastname} {item.personfirstname}{" "}
+                            {item.personmiddlename}{" "}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
 
-            <div className="pages11">
-              <label htmlFor="test4p">Вопрос</label>
-              <h5 htmlFor="test1">  Предыдущий:{item.question}</h5>
-              <br />
-              <input id="test4p" type="text" />
-            </div>
-            <div className="pages11">
-              <label htmlFor="test5p">Ответ</label>
-              <h5 htmlFor="test1">  Предыдущий:{item.answer}</h5>
-              <br />
-              <input id="test5p" type="text" />
-            </div>
-            <div className="pages12">
-              <label htmlFor="test6p">Вложение</label>
-              <div className="upload_file">
-                <h1>+</h1>
-                <p>(Перетащите или щелкните, чтобы вставить)</p>
+                  <div className="pages11">
+                    <label htmlFor="test4p">Вопрос</label>
+                    <h5 htmlFor="test1"> Предыдущий:{item.question}</h5>
+                    <br />
+                    <input id="test4p" type="text" />
+                  </div>
+                  <div className="pages11">
+                    <label htmlFor="test5p">Ответ</label>
+                    <h5 htmlFor="test1"> Предыдущий:{item.answer}</h5>
+                    <br />
+                    <input id="test5p" type="text" />
+                  </div>
+                  <div className="pages12">
+                    <label htmlFor="test6p">Вложение</label>
+                    <div className="upload_file">
+                      <h1>+</h1>
+                      <p>(Перетащите или щелкните, чтобы вставить)</p>
+                    </div>
+                    <input className="test6p" type="file" />
+                  </div>
+                </div>
+                <div className="df_button">
+                  <button
+                    className="df_button1"
+                    onClick={() => {
+                      this.closeModal();
+                    }}
+                  >
+                    Назад
+                  </button>
+                  <button
+                    className="df_button2"
+                    onClick={() => {
+                      this.putData(item.questionid);
+                    }}
+                  >
+                    Сохранить
+                  </button>
+                </div>
               </div>
-              <input className="test6p" type="file" />
-            </div>
-          </div>
-          <div className="df_button">
-            <button
-              className="df_button1"
-              onClick={() => {
-                this.closeModal();
-              }}
-            >
-              Назад
-            </button>
-            <button
-              className="df_button2"
-              onClick={() => {
-                this.putData(item.questionid);
-              }}
-            >
-              Сохранить
-            </button>
-          </div>
-        </div>
+            );
           })}
         </div>
 
         <h1 className="sss22">Задания</h1>
         <div className="cake">
           <div className="cake1">
-          <select value={this.state.selectedValue} onChange={this.handleChange} className="mad" name="" id="test100">
-                  <option value="январь">январь</option>
-                  <option value="февраль">февраль</option>
-                  <option value="марта">март</option>
-                  <option value="апрель">ацпрель</option>
-                  <option value="мая">май</option>
-                  <option value="июнь">июнь</option>
-                  <option value="июль">июль</option>
-                  <option value="Август">август</option>
-                  <option value="Сентябрь">сентябрь</option>
-                  <option value="Октябрь">октябрь</option>
-                  <option value="ноябрь">ноябрь</option>
-                  <option value="Декабрь">Декабрь</option>
-                </select>
-            <select value={this.state.selectedValue2} onChange={this.handleChange2} className="mad" name="" id="">
+            <select
+              value={this.state.selectedValue}
+              onChange={this.handleChange}
+              className="mad"
+              name=""
+              id="test100"
+            >
+              <option value="январь">январь</option>
+              <option value="февраль">февраль</option>
+              <option value="марта">март</option>
+              <option value="апрель">ацпрель</option>
+              <option value="мая">май</option>
+              <option value="июнь">июнь</option>
+              <option value="июль">июль</option>
+              <option value="Август">август</option>
+              <option value="Сентябрь">сентябрь</option>
+              <option value="Октябрь">октябрь</option>
+              <option value="ноябрь">ноябрь</option>
+              <option value="Декабрь">Декабрь</option>
+            </select>
+            <select
+              value={this.state.selectedValue2}
+              onChange={this.handleChange2}
+              className="mad"
+              name=""
+              id=""
+            >
               {this.state.gruppa.map((item) => {
                 return <option value={item.groupid}>{item.groupname}</option>;
               })}
@@ -425,43 +441,43 @@ handleChange2 = (event) => {
                   </th>
                 </tr>
                 {this.state.person.map((item) => {
-                    return (
-                      <tr className="btnadmp_tr1">
-                        <td className="btnadmp_td1">{item.questionid}</td>
-                        <td className="btnadmp_td1">
-                          <img
-                            width="100px"
-                            src={`${url}/` + item.question_img}
-                            alt={`${url}/` + item.question_img}
-                          />
-                        </td>
-  
-                        <td className="btnadmp_td1">{item.month}</td>
-  
-                        
-                        <td className="btnadmp_td1">
-                          {" "}
-                          {item.syscreatedatutc.slice(0, 10)}
-                        </td>
-                        <td className="btnadmp_td1"> {item.author}</td>
-                        <td className="btnadmp_td1">
-                          <button   onClick={() => {
-                this.openModal2(item.questionid);
-              }} className="butadmp1">
-                            <img src={ico2} alt="" />
-                          </button>
-                          <button className="butadmp2">
-                            <img
-                              onClick={() => this.deleteData(item)}
-                              src={ico1}
-                              alt=""
-                            />
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  
+                  return (
+                    <tr className="btnadmp_tr1">
+                      <td className="btnadmp_td1">{item.questionid}</td>
+                      <td className="btnadmp_td1">
+                        <img
+                          width="100px"
+                          src={`${url}/` + item.question_img}
+                          alt={`${url}/` + item.question_img}
+                        />
+                      </td>
 
+                      <td className="btnadmp_td1">{item.month}</td>
+
+                      <td className="btnadmp_td1">
+                        {" "}
+                        {item.syscreatedatutc.slice(0, 10)}
+                      </td>
+                      <td className="btnadmp_td1"> {item.author}</td>
+                      <td className="btnadmp_td1">
+                        <button
+                          onClick={() => {
+                            this.openModal2(item.questionid);
+                          }}
+                          className="butadmp1"
+                        >
+                          <img src={ico2} alt="" />
+                        </button>
+                        <button className="butadmp2">
+                          <img
+                            onClick={() => this.deleteData(item)}
+                            src={ico1}
+                            alt=""
+                          />
+                        </button>
+                      </td>
+                    </tr>
+                  );
                 })}
               </table>
             </div>

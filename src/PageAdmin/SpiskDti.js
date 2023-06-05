@@ -8,6 +8,23 @@ import PhoneInput from "react-phone-input-2";
 import axios from "axios";
 import url from "../host";
 import image_file from "../img/free-icon-cloud-upload-7838250 1.png";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+];
 
 export default class ChildAdmin extends Component {
   state = {
@@ -207,6 +224,7 @@ export default class ChildAdmin extends Component {
         console.log(perent, "kook");
         this.setState({ parent: perent });
       });
+      console.log(this.state.data, "ioiihughj");
     });
 
     axios.get(`${url}/group`).then((res) => {
@@ -916,7 +934,10 @@ export default class ChildAdmin extends Component {
                     this.state.nomi.map((item) => {
                       return (
                         <option value="">
-                          <p>{item.personlastname}{" "}{item.personfirstname}{" "}{item.personmiddlename}</p>
+                          <p>
+                            {item.personlastname} {item.personfirstname}{" "}
+                            {item.personmiddlename}
+                          </p>
                         </option>
                       );
                     })}
@@ -1305,7 +1326,7 @@ export default class ChildAdmin extends Component {
               <button onClick={() => this.openModal()}>Добавить ребенка</button>
             </div>
           </div>
-          <div id="tables">
+          {/* <div id="tables">
             <div id="names">
               <p>ID</p>
               <p>Фамилия</p>
@@ -1387,7 +1408,96 @@ export default class ChildAdmin extends Component {
             <div id="inform1">
               <div id="inform-p"></div>
             </div>
-          </div>
+          </div> */}
+          <TableContainer component={Paper} className="TableZaff">
+            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+              {/* <caption>A basic table example with a caption</caption> */}
+              <TableHead className="tableroW">
+                <TableRow className="tableroW">
+                  <TableCell>ID</TableCell>
+                  <TableCell>Фамилия</TableCell>
+                  <TableCell>Имя</TableCell>
+                  <TableCell>Отчество</TableCell>
+                  <TableCell>Дата рождения</TableCell>
+                  <TableCell>Пол</TableCell>
+                  <TableCell>Дата добавления</TableCell>
+                  <TableCell>Действие</TableCell>
+                </TableRow>
+              </TableHead>
+              {this.state.data.map((item, index) => {
+                return (
+                  <TableBody className="table_body-Zaff">
+                    <TableRow className="RowTable">
+                      <TableCell>{index + 1}</TableCell>
+                      <TableCell>{item.childfirstname}</TableCell>
+                      <TableCell>{item.childlastname}</TableCell>
+                      <TableCell>{item.childmiddlename}</TableCell>
+                      <TableCell>{item.dateofbirth.slice(0, 10)}</TableCell>
+                      <TableCell>{item.gender}</TableCell>
+                      <TableCell>{item.syscreatedatutc.slice(0, 10)}</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa(item.personid);
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                          <img
+                            onClick={() => {
+                              document.querySelector(".modal12").style =
+                                "display:flex";
+                              this.setState({ deleteData: item });
+                            }}
+                            src={icon2}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                  // <div id="inform2">
+                  //   <div id="inform-p">
+                  //     <p className="itemPrsn">{item.personid}</p>
+                  //     <p className="itemPrsnLst">{item.personlastname}</p>
+                  //     <p className="itemPrsnLst">{item.personfirstname}</p>
+                  //     <p className="itemPrsnLst">{item.personmiddlename}</p>
+                  //     <p className="itemPrsnLst">
+                  //       {item.dateofbirth.slice(0, 10)}
+                  //     </p>
+                  //     <p className="itemPrsnLst">{item.positiontitle}</p>
+                  //     <p className="itemPrsnLst">
+                  //       {item.syscreatedatutc.slice(0, 10)}
+                  //     </p>
+                  //     <div id="iconci">
+                  //       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                  //       <img
+                  //         onClick={() => {
+                  //           this.openModal2();
+                  //           this.getInfa(item.personid);
+                  //         }}
+                  //         src={icon1}
+                  //         alt=""
+                  //       />
+                  //       <img
+                  //         onClick={() => {
+                  //           document.querySelector(".modal12").style =
+                  //             "display:flex";
+                  //           this.setState({ deleteData: item });
+                  //         }}
+                  //         src={icon2}
+                  //         alt=""
+                  //       />
+                  //     </div>
+                  //   </div>
+                  // </div>
+                );
+              })}
+            </Table>
+          </TableContainer>
         </div>
       </div>
     );

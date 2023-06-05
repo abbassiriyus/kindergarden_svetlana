@@ -363,7 +363,7 @@ export default function Page2() {
                       if (item.questionid === item2.questionid) {
                         return (
                           <div className="dvasew">
-                            <p>{item2.question}</p>
+                            <h1 style={{ fontSize: 40 }}>{item2.question}</h1>
                             <div className="fykjh">
                               {/* <img src={img} alt="" /> */}
 

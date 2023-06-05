@@ -4,10 +4,19 @@ import './AllPages.css';
 import icon1 from "../img/free-icon-edit-3756597.png"
 import usr from '../img/free-icon-group-5942363 1.png'
 import { useEffect, useState } from 'react';
+// import icon1 from "../img/icon1.svg";
+import icon2 from "../img/icon21.svg";
 import axios from 'axios';
 import url from '../host';
 import imgOpn from '../img/free-icon-information-932010.png'
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 
 
@@ -22,6 +31,17 @@ function App() {
   const [stateday4, setstateday4] = useState([])
   const [stateday5, setstateday5] = useState([])
   const [stateday6, setstateday6] = useState([])
+  
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+];
+
   function openbypg4() {
     document.querySelector('.ModalByPage-4').style = 'opacity: 1;z-index: 99;'
   }
@@ -115,7 +135,184 @@ function App() {
             <div className="Ten"><img src={usr} alt="" /> 10</div>
             <p>2023/05/{state3} - 2023/05/{state4}</p>
           </div>
-          <div id='tables'>
+          
+          <TableContainer component={Paper} className="TableZaff">
+            <Table sx={{ minWidth: 650 }} aria-label="caption table">
+              {/* <caption>A basic table example with a caption</caption> */}
+              <TableHead className="tableroW">
+                <TableRow className="tableroW">
+                  <TableCell>День</TableCell>
+                  <TableCell>Отсутствующие</TableCell>
+                  <TableCell>Тема</TableCell>
+                  <TableCell>Примечание</TableCell>
+                </TableRow>
+              </TableHead>
+                  <TableBody className="table_body-Zaff">
+                    <TableRow className="RowTable">
+                      <TableCell>ПН 05/{state3}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/9/1</TableCell>
+                      <TableCell>Лес</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>ВТ 05/{stateday1}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/8/2</TableCell>
+                      <TableCell>Горы</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>СР 05/{stateday2}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/10/0</TableCell>
+                      <TableCell>Реки и моря</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>ЧТ 05/{stateday3}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/5/5</TableCell>
+                      <TableCell>Космос</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>ПТ 05/{stateday3}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/2/8</TableCell>
+                      <TableCell>Я люблю природу</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>СБ 01/{stateday3}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/1/9</TableCell>
+                      <TableCell>Лес</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow className="RowTable">
+                      <TableCell>ВС 01/{stateday3}<img src={imgOpn} onClick={() => openTable2()} /></TableCell>
+                      <TableCell>10/7/3</TableCell>
+                      <TableCell>Космос</TableCell>
+                      <TableCell>
+                        <div id="iconci">
+                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                          <img
+                            onClick={() => {
+                              this.openModal2();
+                              this.getInfa();
+                            }}
+                            src={icon1}
+                            alt=""
+                          />
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                  {/* // <div id="inform2">
+                  //   <div id="inform-p">
+                  //     <p className="itemPrsn">{item.personid}</p>
+                  //     <p className="itemPrsnLst">{item.personlastname}</p>
+                  //     <p className="itemPrsnLst">{item.personfirstname}</p>
+                  //     <p className="itemPrsnLst">{item.personmiddlename}</p>
+                  //     <p className="itemPrsnLst">
+                  //       {item.dateofbirth.slice(0, 10)}
+                  //     </p>
+                  //     <p className="itemPrsnLst">{item.positiontitle}</p>
+                  //     <p className="itemPrsnLst">
+                  //       {item.syscreatedatutc.slice(0, 10)}
+                  //     </p>
+                  //     <div id="iconci">
+                  //       <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' />
+                  //       <img
+                  //         onClick={() => {
+                  //           this.openModal2();
+                  //           this.getInfa(item.personid);
+                  //         }}
+                  //         src={icon1}
+                  //         alt=""
+                  //       />
+                  //       <img
+                  //         onClick={() => {
+                  //           document.querySelector(".modal12").style =
+                  //             "display:flex";
+                  //           this.setState({ deleteData: item });
+                  //         }}
+                  //         src={icon2}
+                  //         alt=""
+                  //       />
+                  //     </div>
+                  //   </div>
+                  // </div> */}
+            </Table>
+          </TableContainer>
+          {/* <div id='tables'>
             <div id='names'>
               <p>День</p>
               <p>Отсутствующие</p>
@@ -178,7 +375,7 @@ function App() {
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>
               </div>
             </div>
-          </div>
+          </div> */}
           </div>
 
 

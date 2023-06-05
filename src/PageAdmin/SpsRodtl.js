@@ -7,13 +7,32 @@ import "./Employees.css";
 import axios from "axios";
 import url from "../host";
 import PhoneInput from "react-phone-input-2";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+
+function createData(name, calories, fat, carbs, protein) {
+  return { name, calories, fat, carbs, protein };
+}
+
+const rows = [
+  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
+  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
+  createData("Eclair", 262, 16.0, 24, 6.0),
+];
 
 export default class Employees extends Component {
   state = {
     data: [],
     deleteData: {},
     PersonGet: [],
-    gorupGet: []
+    gorupGet: [],
+    relation:[],
+    child:[],
   };
   openModal() {
     document.querySelector(".modal11").style = "display:block";
@@ -49,27 +68,30 @@ export default class Employees extends Component {
             }
           }
         }
-        axios.get(`${url}/relation`).then((res3) => {
-          for (let i = 0; i < data1.length; i++) {
-            for (let j = 0; j < res3.data.length; j++) {
-              if (res3.data[j].legalrepid == data1[i].legalrepid) {
-                data1[i].childid = res3.data[j].childid;
-              }
-            }
-            data1[i].child = ``;
-          }
-          axios.get(`${url}/child`).then((res4) => {
-            for (let i = 0; i < res4.data.length; i++) {
-              for (let j = 0; j < data1.length; j++) {
-                if (res4.data[i].childid == data1[j].childid) {
-                  data1[j].child =
-                    data1[j].child + `<br/>` + res4.data[i].child;
-                }
-              }
-            }
-            this.setState({ data: data1 });
-          });
-        });
+        this.setState({ data: data1 });
+        // axios.get(`${url}/relation`).then((res3) => {
+        //   for (let i = 0; i < data1.length; i++) {
+        //     for (let j = 0; j < res3.data.length; j++) {
+        //       if (res3.data[j].legalrepid === data1[i].legalrepid) {
+        //         data1[i].childid = res3.data[j].childid;
+        //       }
+        //     }
+        //     // data1[i].child = ``;
+        //   }
+        //   axios.get(`${url}/child`).then((res4) => {
+        //     for (let i = 0; i < res4.data.length; i++) {
+        //       for (let j = 0; j < data1.length; j++) {
+        //         if (res4.data[i].childid == data1[j].childid) {
+        //           data1[j].child =
+        //             data1[j].child + `<br/>` + res4.data[i].child;
+        //             data1[j].childlastname = res4.data[i].childlastname
+        //             data1[j].childfirstname = res4.data[i].childfirstname
+        //         }
+        //       }
+        //     }
+        //     this.setState({ data: data1 });
+        //   });
+        // });
       });
     });
   };
@@ -78,6 +100,12 @@ export default class Employees extends Component {
     this.getPerson();
     axios.get(`${url}/group`).then(res => {
       this.setState({ gorupGet: res.data })
+    })
+    axios.get(`${url}/relation`).then(res2 => {
+      this.setState({ relation: res2.data })
+    })
+    axios.get(`${url}/child`).then(res3 => {
+      this.setState({ child: res3.data })
     })
   }
 
@@ -582,62 +610,41 @@ setTimeout(() => {
               + Добавить Родитель
             </button>
           </div> */}
-          <div id="tables">
-            <div id="names">
-              <p>ID</p>
-              <p>Фамилия</p>
-              <p>Имя</p>
-              <p>Отчество</p>
-              <p>
-                Дата <br /> рождения
-              </p>
-              <p>
-                Дата <br /> добавления
-              </p>
-              <p>Действие</p>
-            </div>
-            {this.state.data.map((item, key) => {
-              if (key % 2 === 0) {
-                return (
-                  <div id="inform2">
-                    <div id="inform-p">
-                      <p className="hyjkkl">{item.personid}</p>
-                      <p>{item.personlastname}</p>
-                      <p>{item.personfirstname}</p>
-                      <p>{item.personmiddlename}</p>
-                      <p>{item.dateofbirth.slice(0, 10)}</p>
-                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                      <div id="iconci">
-                        <img
-                          onClick={() => {
-                            this.openModal2(item.personid);
-                          }}
-                          src={icon1}
-                          alt=""
-                        />
-                        <img
-                          src={icon2}
-                          onClick={() => {
-                            document.querySelector(".modal12").style =
-                              "display:flex";
-                            this.setState({ deleteData: item });
-                          }}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <div id="inform1">
-                    <div id="inform-p">
-                      <p>{item.personid}</p>
-                      <p>{item.personlastname}</p>
-                      <p>{item.personfirstname}</p>
-                      <p>{item.personmiddlename}</p>
-                      <p>{item.dateofbirth.slice(0, 10)}</p>
-                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
+           <TableContainer component={Paper} className="TableZaff">
+          <Table sx={{ minWidth: 650 }} aria-label="caption table">
+            {/* <caption>A basic table example with a caption</caption> */}
+            <TableHead className="tableroW">
+              <TableRow className="tableroW">
+                <TableCell>ID</TableCell>
+                <TableCell>Фамилия</TableCell>
+                <TableCell>Имя</TableCell>
+                <TableCell>Отчество</TableCell>
+                <TableCell>Дети</TableCell>
+                <TableCell>Телефон</TableCell>
+                <TableCell>Дата добавления</TableCell>
+                <TableCell>Действие</TableCell>
+              </TableRow>
+            </TableHead>
+            {this.state.data.map((item, index) => {
+              return (
+                <TableBody className="table_body-Zaff">
+                    <TableRow className="RowTable">
+                      <TableCell>{index+1}</TableCell>
+                      <TableCell>{item.personlastname}</TableCell>
+                      <TableCell>{item.personfirstname}</TableCell>
+                      <TableCell>{item.personmiddlename}</TableCell>
+                      <TableCell>{this.state.relation.map((item2)=>{
+                        if (item.legalrepid===item2.legalrepid) {
+                          return<>{this.state.child.map((item3)=>{
+                            if (item2.childid===item3.childid) {
+                              return<p  >{item3.childlastname}   {item3.childfirstname}</p>
+                            }
+                          })}</>
+                        }
+                      })}</TableCell>
+                      <TableCell>{item.dateofbirth.slice(0, 10)}</TableCell>
+                      <TableCell>{item.syscreatedatutc.slice(0, 10)}</TableCell>
+                      <TableCell>
                       <div id="iconci">
                         <img
                           onClick={() => {
@@ -656,28 +663,49 @@ setTimeout(() => {
                           alt=""
                         />
                       </div>
-                    </div>
-                  </div>
-                );
-              }
+                      </TableCell>
+                    </TableRow>
+                </TableBody>
+                // <div id="inform2">
+                //   <div id="inform-p">
+                //     <p className="itemPrsn">{item.personid}</p>
+                //     <p className="itemPrsnLst">{item.personlastname}</p>
+                //     <p className="itemPrsnLst">{item.personfirstname}</p>
+                //     <p className="itemPrsnLst">{item.personmiddlename}</p>
+                //     <p className="itemPrsnLst">
+                //       {item.dateofbirth.slice(0, 10)}
+                //     </p>
+                //     <p className="itemPrsnLst">{item.positiontitle}</p>
+                //     <p className="itemPrsnLst">
+                //       {item.syscreatedatutc.slice(0, 10)}
+                //     </p>
+                //     <div id="iconci">
+                //       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
+                //       <img
+                //         onClick={() => {
+                //           this.openModal2();
+                //           this.getInfa(item.personid);
+                //         }}
+                //         src={icon1}
+                //         alt=""
+                //       />
+                //       <img
+                //         onClick={() => {
+                //           document.querySelector(".modal12").style =
+                //             "display:flex";
+                //           this.setState({ deleteData: item });
+                //         }}
+                //         src={icon2}
+                //         alt=""
+                //       />
+                //     </div>
+                //   </div>
+                // </div>
+              );
             })}
-
-            <div id="inform1">
-              <div id="inform-p">
-                {/* <p>1</p>
-          <p>Марина</p>
-          <p>Вероника</p>
-          <p>Петровна</p>
-          <p>20/03/1986</p>
-          <p>Воспитатель</p>
-          <p>15/07/2020</p>
-          <div id='iconci'>
-          <img src={icon1} alt=''/> 
-          <img src={icon2} alt=''/>
-          </div> */}
-              </div>
-            </div>
-          </div>
+          </Table>
+        </TableContainer>
+       
         </div>
       </div>
     );

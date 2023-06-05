@@ -499,8 +499,21 @@ export default function AllAdmin() {
                       Посещение
                     </h5>
                   </a>
-                  <a href="/Zapissi">
-                    <h5>Записи о пропусках</h5>
+                                    <a
+                    href="/Vztsasd"
+                    onClick={() => {
+                      sessionStorage.setItem("page12", 99);
+                    }}
+                  >
+                    <h5
+                      style={
+                        page12 == 99
+                          ? { background: "white" }
+                          : { background: "none" }
+                      }
+                    >
+                      Записи о пропусках
+                    </h5>
                   </a>
                   <a
                     href="/Zodaniii"
