@@ -458,7 +458,7 @@ export default function Page2() {
                           <h4 className="kakak">
                             {item22.childlastname} {item22.childfirstname}
                           </h4>
-                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} лет года</h5>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} лет </h5>
                         </div>
                         {group.map((item33) => {
                           if (item22.groupid === item33.groupid) {
