@@ -191,18 +191,6 @@ export default function GroupDti() {
             <option>Да</option>
             <option>Нет</option>
           </select>
-          {/* <h4>Дети</h4> */}
-          {/* <select>
-            <option></option>
-            {Deti.map((item) => {
-              return (
-                <option>
-                  {item.childlastname} {item.childfirstname}{" "}
-                  {item.childmiddlename}
-                </option>
-              );
-            })}
-          </select> */}
         </div>
         <div className="grp_btn">
           <button onClick={() => closesModal()}>Назад</button>

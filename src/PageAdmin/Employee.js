@@ -796,21 +796,8 @@ export default class Employees extends Component {
             Добавить сотрудника
           </button>
         </div>
-
-        {/* <div id="tables">
-          <div id="names">
-            <p>ID</p>
-            <p>Фамилия</p>
-            <p>Имя</p>
-            <p>Отчество</p>
-            <p>Дата рождения</p>
-            <p>Должность</p>
-            <p>Дата добавления</p>
-            <p>Действие</p>
-          </div> */}
         <TableContainer component={Paper} className="TableZaff">
           <Table sx={{ minWidth: 650 }} aria-label="caption table">
-            {/* <caption>A basic table example with a caption</caption> */}
             <TableHead className="tableroW">
               <TableRow className="tableroW">
                 <TableCell>ID</TableCell>

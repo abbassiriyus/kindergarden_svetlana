@@ -173,8 +173,9 @@ export default function Page2() {
 
       </div>
 
-      <div className="modall2">
-      </div>
+      {/* <div className="modall2">
+
+      </div> */}
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -429,7 +430,7 @@ export default function Page2() {
                       <div className="kid-prfl">
                         <div className="asd23">
                           <h4 className="kakak">
-                            {item22.childlastname} {item22.childfirstname}
+                            {item22.childlastname} {item22.childfirstname} 
                           </h4>
                           <h5>{2023 - item22.dateofbirth.slice(0, 4)}  лет</h5>
                         </div>
@@ -452,11 +453,13 @@ export default function Page2() {
                 }else{
                   return (
                     <div className="asd">
-     <img src={Img12} alt="" />
+       <div className="ing56">
+                        <img src={Img11} alt="" />
+                        </div>
                       <div className="kid-prfl">
                         <div className="asd23">
                           <h4 className="kakak">
-                            {item22.childlastname} {item22.childfirstname}
+                            {item22.childlastname} {item22.childfirstname} 
                           </h4>
                           <h5>{2023 - item22.dateofbirth.slice(0, 4)} лет </h5>
                         </div>
@@ -510,7 +513,10 @@ export default function Page2() {
                   }else{
                     return (
                       <div className="asd">
-       <img src={Img12} alt="" />
+       {/* <img src={Img12} alt="" /> */}
+       <div className="ing56">
+                        <img src={Img11} alt="" />
+                        </div>
                         <div className="kid-prfl">
                           <div className="asd23">
                             <h4 className="kakak">

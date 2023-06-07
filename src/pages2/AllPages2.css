@@ -1013,6 +1013,24 @@ bottom: 70px;
 left: 60px;
 position: absolute;
 }
+.ing56{
+  width: 100px;
+height: 100px;
+background-image: url(../img/free-icon-child-5238428.png);
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+/* display: flex;
+justify-content: end;
+align-items: flex-start; */
+position: relative;
+}
+.ing56 img{
+bottom: 70px;
+left: 60px;
+position: absolute;
+}
+
 
 .swiperSlider{
   width: 900px;
