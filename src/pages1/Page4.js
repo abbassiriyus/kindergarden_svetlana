@@ -153,17 +153,7 @@ const rows = [
                       <TableCell>10/9/1</TableCell>
                       <TableCell>Лес</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -171,17 +161,7 @@ const rows = [
                       <TableCell>10/8/2</TableCell>
                       <TableCell>Горы</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -189,17 +169,7 @@ const rows = [
                       <TableCell>10/10/0</TableCell>
                       <TableCell>Реки и моря</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -207,17 +177,7 @@ const rows = [
                       <TableCell>10/5/5</TableCell>
                       <TableCell>Космос</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -225,17 +185,7 @@ const rows = [
                       <TableCell>10/2/8</TableCell>
                       <TableCell>Я люблю природу</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -243,17 +193,7 @@ const rows = [
                       <TableCell>10/1/9</TableCell>
                       <TableCell>Лес</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                     <TableRow className="RowTable">
@@ -261,17 +201,7 @@ const rows = [
                       <TableCell>10/7/3</TableCell>
                       <TableCell>Космос</TableCell>
                       <TableCell>
-                        <div id="iconci">
-                          {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                          <img
-                            onClick={() => {
-                              this.openModal2();
-                              this.getInfa();
-                            }}
-                            src={icon1}
-                            alt=""
-                          />
-                        </div>
+                    
                       </TableCell>
                     </TableRow>
                   </TableBody>
@@ -396,7 +326,7 @@ const rows = [
             <div id='inform1'>
               <div id='inform-p'>
                 <p>ФЭМП</p>
-                <p>Порядок чисел от <br/> 1 до 10</p>
+                <p style={{ background: '' }}>Порядок от 1 до 10</p>
                 <p>09.00 - 09.25</p>
                 <p>Ручкина К.Е.</p>
                 <p><img id='iconciAlo' onClick={() => openbypg4()} src={icon1} alt='' /></p>

@@ -669,6 +669,23 @@
   /* margin-left: 7%; */
 }
 
+.The-Big #inform-p p:nth-child(2){
+  width: 100% !important;
+  /* color: red; */
+  /* padding: 20px; */
+  margin-top: -20px;
+  padding-top: 5px;
+}
+
+.The-Big #inform-p p:nth-child(3){
+  width: 100% !important;
+  height: 10px !important;
+  /* color: red; */
+  /* padding: 20px; */
+  margin-top: -20px;
+  padding-top: 5px;
+}
+
 .The-Big #inform-p p img {
   width: 20px;
   height: 20px;
