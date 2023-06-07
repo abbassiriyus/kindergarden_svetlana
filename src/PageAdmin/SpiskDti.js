@@ -1312,8 +1312,8 @@ export default class ChildAdmin extends Component {
                   <TableBody className="table_body-Zaff">
                     <TableRow className="RowTable">
                       <TableCell>{index + 1}</TableCell>
-                      <TableCell>{item.childfirstname}</TableCell>
                       <TableCell>{item.childlastname}</TableCell>
+                      <TableCell>{item.childlastname} </TableCell>
                       <TableCell>{item.childmiddlename}</TableCell>
                       <TableCell>{item.dateofbirth.slice(0, 10)}</TableCell>
                       <TableCell>{item.gender}</TableCell>

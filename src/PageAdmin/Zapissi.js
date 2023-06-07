@@ -96,7 +96,7 @@ export default function Zapissi() {
         <select value={selectedValue} onChange={(event) => setSelectedValue(event.target.value)} id="uudeti" className="selectDeti">
         <option>Выберите</option>
            {person.map((item)=>{
-            return<option value={item.childid}>{item.childfirstname}</option>
+            return<option value={item.childid}>{item.childfirstname} {item.childlastname}</option>
            })}
         </select>
         <div className="datanachl">
@@ -160,7 +160,7 @@ export default function Zapissi() {
             {
               person.map(item => {
                 return(
-                  <option>{item.childfirstname}&nbsp;&nbsp;{item.childmiddlename}</option>
+                  <option> {item.childlastname}&nbsp;&nbsp;{item.childfirstname}</option>
                 )
               })
             }
