@@ -47,9 +47,12 @@ export default class ChildAdmin extends Component {
     Getted: [],
     nomi: [],
   };
-
   openModal() {
     document.querySelector(".modal11").style = "display:block";
+    console.log("kfkjfjfjf");
+  }
+  openModal2() {
+    document.querySelector(".modal1122").style = "display:block";
     console.log("kfkjfjfjf");
   }
   closeModal() {
@@ -236,7 +239,6 @@ export default class ChildAdmin extends Component {
     this.openPageNumber(1);
     this.getDataChild();
   }
-  // get input child data post address
   postData1() {
     var formData = new FormData();
     formData.append("childlastname", document.querySelector("#child1").value);
@@ -351,39 +353,6 @@ export default class ChildAdmin extends Component {
     // window.location.reload()
   }
 
-  // getGroupVaditel(event) {
-  //   var uu =event.target.value
-  //   var uu2 =parseInt(uu)
-  //   // this.setState({ namef: event.target.value });
-  //   // console.log(this.state.namef,"ddd");
-  //   var uu3 =[]
-  //   axios.get(`${url}/group_emp`).then((res)=>{
-  //       for (let i = 0; i < res.data.length; i++) {
-  //        if (res.data[i].groupid===uu2) {
-  //         console.log(res.data[i],"jjjjjjjjj");
-  //         axios.get(`${url}/employee`).then((res2)=>{
-  //          for (let w = 0; w < res2.data.length; w++) {
-  //           if (res2.data[w].employeeid===res.data[i].employeeid) {
-  //             axios.get(`${url}/person`).then((res3)=>{
-  //               for (let e = 0; e < res3.data.length; e++) {
-  //                if (res3.data[e].personid===res2.data[w].personid) {
-  //                 console.log(res3.data[e],"fff");
-  //                 uu3.push(res3.data[e])
-
-  //                }
-  //               }
-  //             })
-  //           }
-  //          }
-  //         })
-  //        }
-  //       }
-  //   })
-  //   // console.log(event.target.value,"kfgkgkgkgkgkgkgkgkgk");
-  //   // console.log(uu2, "rabotate");
-  //   // console.log( document.querySelector("#group0").value,"ejarijgesughhwurg");
-  //   this.setState({nomi:uu3})
-  // }
   getGroupVaditel = (event) => {
     const uu = event.target.value;
     const uu2 = parseInt(uu);
@@ -426,10 +395,7 @@ export default class ChildAdmin extends Component {
   }
 
   Getperson(key) {
-    var childid = key.childid;
-    // var groupid = key.groupid;
-    // var addressid = key.addressid;
-    // console.log(groupid);
+    var childid = key
     axios.get(`${url}/child/${childid}`).then((res) => {
       this.setState({ Monro: res.data });
     });
@@ -1326,89 +1292,6 @@ export default class ChildAdmin extends Component {
               <button onClick={() => this.openModal()}>Добавить ребенка</button>
             </div>
           </div>
-          {/* <div id="tables">
-            <div id="names">
-              <p>ID</p>
-              <p>Фамилия</p>
-              <p>Имя</p>
-              <p>Отчество</p>
-              <p>
-                Дата <br /> рождения
-              </p>
-              <p>Пол</p>
-              <p>
-                Дата <br /> добавления
-              </p>
-              <p>Действие</p>
-            </div>
-            {this.state.data.map((item, key) => {
-              if (key % 2 === 0) {
-                return (
-                  <div id="inform2">
-                    <div id="inform-p">
-                      <p className="p-width">{item.childid}</p>
-                      <p>{item.childlastname}</p>
-                      <p>{item.childfirstname}</p>
-                      <p>{item.childmiddlename}</p>
-                      <p>{item.dateofbirth.slice(0, 10)}</p>
-                      <p>{item.gender}</p>
-                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                      <div id="iconci">
-                        <img
-                          onClick={() => this.Getperson(item)}
-                          src={icon1}
-                          alt=""
-                        />
-                        <img
-                          src={icon2}
-                          onClick={() => {
-                            document.querySelector(".modal12").style =
-                              "display:flex";
-                            this.setState({ deleteData: item });
-                          }}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              } else {
-                return (
-                  <div id="inform1">
-                    <div id="inform-p">
-                      <p className="p-width">{item.childid}</p>
-                      <p>{item.childlastname}</p>
-                      <p>{item.childfirstname}</p>
-                      <p>{item.childmiddlename}</p>
-                      <p>{item.dateofbirth.slice(0, 10)}</p>
-                      <p>{item.gender}</p>
-                      <p>{item.syscreatedatutc.slice(0, 10)}</p>
-                      <div id="iconci">
-                        <img
-                          src={icon1}
-                          alt=""
-                          onClick={() => this.Getperson(item)}
-                        />
-                        <img
-                          onClick={() => {
-                            document.querySelector(".modal12").style =
-                              "display:flex";
-                            this.setState({ deleteData: item });
-                          }}
-                          src={icon2}
-                          alt=""
-                        />
-                      </div>
-                    </div>
-                  </div>
-                );
-              }
-            })}
-
-            <div id="inform1">
-              <div id="inform-p"></div>
-            </div>
-          </div> */}
           <TableContainer component={Paper} className="TableZaff">
             <Table sx={{ minWidth: 650 }} aria-label="caption table">
               {/* <caption>A basic table example with a caption</caption> */}
@@ -1441,7 +1324,7 @@ export default class ChildAdmin extends Component {
                           <img
                             onClick={() => {
                               this.openModal2();
-                              this.getInfa(item.personid);
+                              this.Getperson(item.childid);
                             }}
                             src={icon1}
                             alt=""
@@ -1459,41 +1342,6 @@ export default class ChildAdmin extends Component {
                       </TableCell>
                     </TableRow>
                   </TableBody>
-                  // <div id="inform2">
-                  //   <div id="inform-p">
-                  //     <p className="itemPrsn">{item.personid}</p>
-                  //     <p className="itemPrsnLst">{item.personlastname}</p>
-                  //     <p className="itemPrsnLst">{item.personfirstname}</p>
-                  //     <p className="itemPrsnLst">{item.personmiddlename}</p>
-                  //     <p className="itemPrsnLst">
-                  //       {item.dateofbirth.slice(0, 10)}
-                  //     </p>
-                  //     <p className="itemPrsnLst">{item.positiontitle}</p>
-                  //     <p className="itemPrsnLst">
-                  //       {item.syscreatedatutc.slice(0, 10)}
-                  //     </p>
-                  //     <div id="iconci">
-                  //       {/* <img src={icon1} onClick={()=>postModalopen(item.personid)} alt='' /> */}
-                  //       <img
-                  //         onClick={() => {
-                  //           this.openModal2();
-                  //           this.getInfa(item.personid);
-                  //         }}
-                  //         src={icon1}
-                  //         alt=""
-                  //       />
-                  //       <img
-                  //         onClick={() => {
-                  //           document.querySelector(".modal12").style =
-                  //             "display:flex";
-                  //           this.setState({ deleteData: item });
-                  //         }}
-                  //         src={icon2}
-                  //         alt=""
-                  //       />
-                  //     </div>
-                  //   </div>
-                  // </div>
                 );
               })}
             </Table>
@@ -1504,37 +1352,3 @@ export default class ChildAdmin extends Component {
   }
 }
 
-// <div className="dvasew">
-//   <p>{item2.question}</p>
-//   <div className="fykjh">
-//     <img
-//       src={"./img/" + item2.question_img}
-//       alt={item2.question_img}
-//     />
-//     <div className="aysdu">
-//       <button
-//         onClick={() => CHECK([1, item2.answer,item.testid])}
-//       >
-//         1
-//       </button>
-//       <br />
-//       <button
-//         onClick={() => CHECK([2, item2.answer,item.testid])}
-//       >
-//         2
-//       </button>
-//       <br />
-//       <button
-//         onClick={() => CHECK([3, item2.answer,item.testid])}
-//       >
-//         3
-//       </button>
-//       <br />
-//       <button
-//         onClick={() => CHECK([4, item2.answer,item.testid])}
-//       >
-//         4
-//       </button>
-//     </div>
-//   </div>
-// </div>

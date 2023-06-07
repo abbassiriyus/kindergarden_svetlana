@@ -642,7 +642,7 @@ setTimeout(() => {
                           })}</>
                         }
                       })}</TableCell>
-                      <TableCell>{item.dateofbirth.slice(0, 10)}</TableCell>
+                      <TableCell>{item.phone}</TableCell>
                       <TableCell>{item.syscreatedatutc.slice(0, 10)}</TableCell>
                       <TableCell>
                       <div id="iconci">

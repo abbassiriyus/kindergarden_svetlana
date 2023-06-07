@@ -197,7 +197,7 @@ export default function Zapissi() {
                   if (item.employeeid===item56.employeeid) {
                     return<>{person3.map((item543)=>{
                       if (item56.personid===item543.personid) {
-                        return<p>{item543.personlastname}  {item543.personfirstname}</p>
+                        return<p>{item543.personlastname}  {item543.personfirstname.slice(0,1)}.{item543.personmiddlename.slice(0,1)}</p>
                       }
                     })}</>
                   }

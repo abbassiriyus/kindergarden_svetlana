@@ -500,7 +500,7 @@ export default function AllAdmin() {
                     </h5>
                   </a>
                                     <a
-                    href="/Vztsasd"
+                    href="/Zapissi"
                     onClick={() => {
                       sessionStorage.setItem("page12", 99);
                     }}

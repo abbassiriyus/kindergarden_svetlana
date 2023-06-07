@@ -89,18 +89,13 @@ export default function Vztsasd() {
     axios.get(`${url}/child`).then((res) => {
       var data1 = [];
       res.data.map((data) => {
-        if (data.groupid == document.querySelector(".dddaa").value) {
+        if (data.groupid == document.querySelector(".dddaa").value||data.groupid == document.querySelector(".dddaap").value) {
           data1.push(data);
         }
       });
       setPosted(data1);
     });
     console.log(posted, "iuoooooobykgjl");
-    // console.log("hello world");
-
-    // console.log(key, "hello world");
-    // var asd = document.querySelector(".dddaa").value;
-    // console.log(asd, "kdkdkdkd");
   }
 
   function postAtten() {
@@ -135,15 +130,16 @@ export default function Vztsasd() {
   }
 
   function OpenSRF2(key) {
-    // document.querySelector(".srdhcfghjbk2").style = "display: block";
     document.querySelector(".hyeraysd2").style = "display: block";
     console.log(key);
     axios.get(`${url}/attendance/${key}`).then((res) => {
       setGetted(res.data);
     });
+    axios.get(`${url}/group`).then((res) => {
+      setState(res.data);
+    });
   }
   function closeSRF2() {
-    // document.querySelector(".srdhcfghjbk2").style = "display: none";
     document.querySelector(".hyeraysd2").style = "display: none";
   }
 

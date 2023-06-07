@@ -50,6 +50,9 @@ export default function BasicTabs() {
   const [group, setGroup] = useState([]);
   const [data, setData] = useState([]);
   const [child, setChild] = useState([]);
+  const [relation, setRelation] = useState([]);
+  const [legalrep, setLegalrep] = useState([]);
+  const [person, setPerson] = useState([]);
   // const [childd, setChildd] = useState([])
   useEffect(() => {
     axios.get(`${url}/group`).then((res) => {
@@ -58,6 +61,15 @@ export default function BasicTabs() {
     axios.get(`${url}/child`).then((res) => {
       setData(res.data);
     });
+    axios.get(`${url}/relation`).then(res0=>{
+      setRelation(res0.data)
+    })
+    axios.get(`${url}/Legal_Rep`).then(res1=>{
+      setLegalrep(res1.data)
+    })
+    axios.get(`${url}/person`).then(res2=>{
+      setPerson(res2.data)
+    })
   }, []);
 
   const handleChange = (event, newValue) => {
@@ -65,18 +77,6 @@ export default function BasicTabs() {
   };
 
   function modalOpen(key) {
-    // axios.get(`${url}/relation`).then(res => {
-    //   axios.get(`${url}/child`).then(res2 => {
-    //     for (let i = 0; i < res.data.length; i++) {
-    //       for (let j = 0; j < res2.data.length; j++) {
-    //         if (res.data[i].childid == res2.data[j].childid) {
-    //           res.data[i].childlastname = res2.data[j].childlastname
-    //         }
-    //       }          
-    //     }
-    //     setChildd(res.data)
-    //   })
-    // })
     axios.get(`${url}/child/${key}`).then(res => {
       axios.get(`${url}/group`).then(res2 => {
         for (let i = 0; i < res.data.length; i++) {
@@ -89,6 +89,7 @@ export default function BasicTabs() {
         setChild(res.data)
       })
     })
+
     document.querySelector('.Cards-Pagesstatic2').style = 'display: flex;'
   }
 
@@ -176,31 +177,13 @@ export default function BasicTabs() {
                   })
                 }
               </div>
-
-              {/* <div id='inform2'>
-                        <div id='inform-p'>
-                            <p>2</p>
-                            <p>Носова</p>
-                            <p>Вероника</p>
-                            <p>Петровна</p>
-                            <p>20/03/1986</p>
-                            <p>Воспитатель</p>
-                            <p>15/07/2020</p>
-                            <div id='iconci'>
-                                <img src={icon2} alt='' />
-                            </div>
-                        </div>
-                    </div> */}
               <div className="Cards-Pagesstatic2">
-
                 {child.map(item => {
                   return (
                     <div className="Cards-Pagesstatic">
                       <span className="ikx" onClick={() => modalClose()}>X</span>
-
                       <div className="Cards-Page1">
                         <div className="CardProfil-Page1">
-                          {/* <img src={Img001} alt="" /> */}
                           <br />
                           <h4>{item.childlastname}</h4>
                         </div>
@@ -223,12 +206,25 @@ export default function BasicTabs() {
                           </div>
                           <div className="Input-grup">
                             <h4>Представители</h4>
-                            bg
-                            {/* {item.childlastname} */}
+                            {relation.map((item2)=>{
+                              if (item.childid===item2.childid) {
+                                return<>{legalrep.map((item3)=>{
+                                  if (item2.legalrepid===item3.legalrepid) {
+                                    return<>{person.map((item4)=>{
+                                      if (item3.personid===item4.personid) {
+                                        return<><p>{item4.phone} {item4.personlastname} {item4.personfirstname} {item4.personmiddlename}</p></>
+                                      }
+                                    })}</>
+                                    
+                                  }
+                                })}</>
+                                
+                              }
+                            })}
                           </div>
                           <div className="Input-grup">
                             <h4>Дополнительно</h4>
-                            <p>asd</p>
+                            <p>{item.comment}</p>
                           </div>
                           <div>
                             <a href="/page6"> <h1 className="zafik_h1">Записи о пропусках</h1></a>

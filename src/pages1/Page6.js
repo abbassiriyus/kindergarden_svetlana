@@ -6,6 +6,7 @@ import "react-calendar/dist/Calendar.css";
 import "./AllPages.css";
 import url from "../host";
 import img from "../img/free-icon-daughter-8229500 (2).png";
+import Img0012 from "../img/free-icon-child-5238428 (1).png";
 export default function Page6() {
   const [date, setDate] = useState(new Date());
   const [excuse, setExcuse] = useState([]);
@@ -335,7 +336,56 @@ function functionDeleteExcuse (id) {
                     item2.childid === item3.childid &&
                     rebenok2 === item3.datestart.slice(0, 10)
                   ) {
-                    return (
+                    if (item2.gender==="м") {
+                      return (
+                        <>
+                          <h4 className="ixk">
+                            Детали отсутствия {item3.datestart.slice(0, 10)}
+                            <span onClick={() => closeChildModal()}>X</span>
+                          </h4>
+                          <br />
+                          <h4 className="uu">Ребенок </h4>
+                          <div classname="childs">
+                            <img src={Img0012} alt="" />
+                            <p>
+                              {item2.childfirstname} {item2.childlastname}
+                            </p>
+                          </div>
+                          <h4 className="uu">Дата</h4>
+                          <div className="mchj">
+                            <h4 className="uu">{item3.datestart.slice(0, 10)}</h4>
+                            <h4 className="uu">{item3.daypart}</h4>
+                          </div>
+                          <h4 className="uu">Причина </h4>
+                          <p className="uu">{item3.reason}</p>
+                          <br />
+                          <p>
+                            {employ.map((item4) => {
+                              if (item3.employeeid === item4.employeeid) {
+                                return person.map((item5) => {
+                                  if (item4.personid === item5.personid) {
+                                    return (
+                                      <p>
+                                        Автор:{item5.personlastname}{" "}
+                                        {item5.personfirstname}{" "}
+                                        {item5.personmiddlename}
+                                      </p>
+                                    );
+                                  }
+                                });
+                              }
+                            })}
+                            <br />
+                            Дата:{item3.syschangedatutc.slice(0, 10)}
+                          </p>
+                          <div className="btn_Groupo">
+                            <button onClick={() => simSim(item3.excuseid)}>Редактировать</button>
+                            <button onClick={() => functionDeleteExcuse(item3.excuseid)} >Удалить</button>
+                          </div>
+                        </>
+                      );
+                    }else{
+               return (
                       <>
                         <h4 className="ixk">
                           Детали отсутствия {item3.datestart.slice(0, 10)}
@@ -382,6 +432,8 @@ function functionDeleteExcuse (id) {
                         </div>
                       </>
                     );
+                    }
+     
                   }
                 })}
               </div>
