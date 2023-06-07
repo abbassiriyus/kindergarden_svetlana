@@ -94,18 +94,19 @@ export default function Page5() {
           <div className="kid-Page2" onClick={() => openStatic()}>
             {child22.map((item22) => {
               if (item.childid === item22.childid) {
-                if (item22.gender === "ж") {
+                if (2023-item22.dateofbirth.slice(0,4)>3) {
+                   if (item22.gender==="ж") {
                   return (
                     <div className="asd">
                       <div className="ing55">
-                        <img src={Img11} alt="" />
+                      <img src={Img11} alt="" />
                       </div>
                       <div className="kid-prfl">
                         <div className="asd23">
                           <h4 className="kakak">
-                            {item22.childlastname} {item22.childfirstname}
+                            {item22.childlastname} {item22.childfirstname} 
                           </h4>
-                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)}  лет</h5>
                         </div>
                         {group2.map((item33) => {
                           if (item22.groupid === item33.groupid) {
@@ -120,17 +121,19 @@ export default function Page5() {
                       </div>
 
                     </div>
-                  );
-                } else {
+                  );               
+                }else{
                   return (
                     <div className="asd">
-                      <img src={Img12} alt="" />
+       <div className="ing56">
+                        <img src={Img11} alt="" />
+                        </div>
                       <div className="kid-prfl">
                         <div className="asd23">
                           <h4 className="kakak">
-                            {item22.childlastname} {item22.childfirstname}
+                            {item22.childlastname} {item22.childfirstname} 
                           </h4>
-                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                          <h5>{2023 - item22.dateofbirth.slice(0, 4)} лет </h5>
                         </div>
                         {group2.map((item33) => {
                           if (item22.groupid === item33.groupid) {
@@ -143,8 +146,67 @@ export default function Page5() {
                           }
                         })}
                       </div>
+    
                     </div>
-                  );
+                  ); 
+                }
+                }else{
+                  if (item22.gender==="ж") {
+                    return (
+                      <div className="asd">
+                        <div className="ing55">
+                        <img src={Img11} alt="" />
+                        </div>
+                        <div className="kid-prfl">
+                          <div className="asd23">
+                            <h4 className="kakak">
+                              {item22.childlastname} {item22.childfirstname}
+                            </h4>
+                            <h5>{2023 - item22.dateofbirth.slice(0, 4)}  года</h5>
+                          </div>
+                          {group2.map((item33) => {
+                            if (item22.groupid === item33.groupid) {
+                              return (
+                                <div className="volss">
+                                  <img src={Img2} alt="" />
+                                  <p>{item33.groupname}</p>
+                                </div>
+                              );
+                            }
+                          })}
+                        </div>
+       
+                      </div>
+                    );               
+                  }else{
+                    return (
+                      <div className="asd">
+       {/* <img src={Img12} alt="" /> */}
+       <div className="ing56">
+                        <img src={Img11} alt="" />
+                        </div>
+                        <div className="kid-prfl">
+                          <div className="asd23">
+                            <h4 className="kakak">
+                              {item22.childlastname} {item22.childfirstname}
+                            </h4>
+                            <h5>{2023 - item22.dateofbirth.slice(0, 4)} года</h5>
+                          </div>
+                          {group2.map((item33) => {
+                            if (item22.groupid === item33.groupid) {
+                              return (
+                                <div className="volss">
+                                  <img src={Img2} alt="" />
+                                  <p>{item33.groupname}</p>
+                                </div>
+                              );
+                            }
+                          })}
+                        </div>
+
+                      </div>
+                    ); 
+                  }
                 }
               }
             })}
