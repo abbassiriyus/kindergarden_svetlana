@@ -141,10 +141,11 @@ state
       <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
         {month2.map((item)=>{
   return<SwiperSlide>  
+     <h1>{item.question}</h1>
         <div className="divTest2">
-          <h2 className="ixx">
-            {item.question}
-          </h2>
+          <div className="ixx">
+          
+          </div>
           <div className="Test_09">
             <img src={`${url}/` + item.question_img} alt={`${url}/` + item.question_img}/>
             <div className="hashla">

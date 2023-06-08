@@ -1540,6 +1540,8 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+
+  background: #000;
 }
 
 .divTest span {
