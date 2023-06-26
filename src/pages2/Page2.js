@@ -148,13 +148,13 @@ export default function Page2() {
     console.log(javob);
     console.log(test, "test");
     if (variant === javob) {
-      console.log("turi");
+      console.log("true");
       document.querySelector(".modall").style='display: block;'
       setTimeout(() => {
         document.querySelector(".modall").style='display: none;'
       }, 2000);
     } else {
-      console.log("notori");
+      console.log("false");
       document.querySelector(".modall2").style='display: block;'
       setTimeout(() => {
         document.querySelector(".modall2").style='display: none;'
