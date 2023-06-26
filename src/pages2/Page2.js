@@ -66,11 +66,6 @@ export default function Page2() {
   const [person, setPerson] = useState([]);
   const [test, setTest] = useState([]);
   const [question, setQuestion] = useState([]);
-  const [skill, setKill] = useState([]);
-  const [skillgroup, setKillgroup] = useState([]);
-  // const a ="5773268.png"
-  // const[gruo,setGruo]=useState()
-
   useEffect(() => {
     const fetchData3 = async () => {
       axios
@@ -154,15 +149,15 @@ export default function Page2() {
     console.log(test, "test");
     if (variant === javob) {
       console.log("turi");
-      document.querySelector(".modall").style.display = "block";
+      document.querySelector(".modall").style='display: block;'
       setTimeout(() => {
-        document.querySelector(".modall").style.display = "none";
+        document.querySelector(".modall").style='display: none;'
       }, 2000);
     } else {
       console.log("notori");
-      document.querySelector(".modall2").style.display = "block";
+      document.querySelector(".modall2").style='display: block;'
       setTimeout(() => {
-        document.querySelector(".modall2").style.display = "none";
+        document.querySelector(".modall2").style='display: none;'
       }, 2000);
     }
   }
@@ -172,10 +167,6 @@ export default function Page2() {
       <div className="modall">
 
       </div>
-
-      {/* <div className="modall2">
-
-      </div> */}
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
           <Tabs
@@ -513,7 +504,6 @@ export default function Page2() {
                   }else{
                     return (
                       <div className="asd">
-       {/* <img src={Img12} alt="" /> */}
        <div className="ing56">
                         <img src={Img11} alt="" />
                         </div>
