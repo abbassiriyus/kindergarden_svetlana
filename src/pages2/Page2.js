@@ -149,15 +149,15 @@ export default function Page2() {
     console.log(test, "test");
     if (variant === javob) {
       console.log("true");
-      document.querySelector(".modall").style='display: block;'
+      document.querySelector(".modall").style.display = 'block';
       setTimeout(() => {
-        document.querySelector(".modall").style='display: none;'
+        document.querySelector(".modall").style.display = 'none';
       }, 2000);
     } else {
       console.log("false");
-      document.querySelector(".modall2").style='display: block;'
+      document.querySelector(".modall2").style.display = 'block';
       setTimeout(() => {
-        document.querySelector(".modall2").style='display: none;'
+        document.querySelector(".modall2").style.display = 'none';
       }, 2000);
     }
   }
@@ -165,7 +165,10 @@ export default function Page2() {
   return (
     <div>
       <div className="modall">
-
+<span></span>
+      </div>
+      <div className="modall2">
+<span></span>
       </div>
       <Box sx={{ width: "100%" }} className="box-ss">
         <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
@@ -357,8 +360,6 @@ export default function Page2() {
                           <div className="dvasew">
                             <h1 style={{ fontSize: 40 }}>{item2.question}</h1>
                             <div className="fykjh">
-                              {/* <img src={img} alt="" /> */}
-
                               <img
                                 src={`${url}/` + item2.question_img}
                                 alt={`${url}/` + item2.question_img}
